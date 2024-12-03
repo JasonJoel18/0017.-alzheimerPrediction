@@ -1,0 +1,288 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{2012131}{article}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{issn}{1552-5260}
+      \field{journaltitle}{Alzheimer's \& Dementia}
+      \field{number}{2}
+      \field{title}{2012 Alzheimer's disease facts and figures}
+      \field{volume}{8}
+      \field{year}{2012}
+      \field{pages}{131\bibrangedash 168}
+      \range{pages}{38}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.jalz.2012.02.001
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S1552526012000325
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S1552526012000325
+      \endverb
+      \keyw{Alzheimer's disease Dementia,Diagnostic criteria,Prevalence,Incidence,Mortality,Caregivers,Family caregiver,Spouse caregiver,Health care costs,Health care expenditures,Long-term care costs,Hospice care costs,Medicare spending,Medicaid spending,Live alone,Living arrangements,Unmet needs}
+    \endentry
+    \entry{2019321}{article}{}
+      \name{author}{1}{}{%
+        {{hash=4c88a1138ed688de70add198ff1fb0b9}{%
+           family={Association},
+           familyi={A\bibinitperiod},
+           given={Alzheimer's},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{4c88a1138ed688de70add198ff1fb0b9}
+      \strng{fullhash}{4c88a1138ed688de70add198ff1fb0b9}
+      \strng{bibnamehash}{4c88a1138ed688de70add198ff1fb0b9}
+      \strng{authorbibnamehash}{4c88a1138ed688de70add198ff1fb0b9}
+      \strng{authornamehash}{4c88a1138ed688de70add198ff1fb0b9}
+      \strng{authorfullhash}{4c88a1138ed688de70add198ff1fb0b9}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Alzheimer's \& Dementia}
+      \field{number}{3}
+      \field{title}{2019 Alzheimer's disease facts and figures}
+      \field{volume}{15}
+      \field{pages}{321\bibrangedash 387}
+      \range{pages}{67}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.jalz.2019.01.010
+      \endverb
+      \verb{eprint}
+      \verb https://alz-journals.onlinelibrary.wiley.com/doi/pdf/10.1016/j.jalz.2019.01.010
+      \endverb
+      \verb{urlraw}
+      \verb https://alz-journals.onlinelibrary.wiley.com/doi/abs/10.1016/j.jalz.2019.01.010
+      \endverb
+      \verb{url}
+      \verb https://alz-journals.onlinelibrary.wiley.com/doi/abs/10.1016/j.jalz.2019.01.010
+      \endverb
+      \keyw{Alzheimer's disease,Alzheimer's dementia,Dementia,Diagnostic criteria,Risk factors,Prevalence,Incidence,Mortality,Morbidity,Caregivers,Family caregiver,Spouse caregiver,Health care professional,Health care costs,Health care expenditures,Long-term care costs,Medicare spending,Medicaid spending,Brief cognitive assessment,Primary care physician,Medicare Annual Wellness Visit,Early detection}
+    \endentry
+    \entry{mayo_alzheimers_2024}{article}{}
+      \name{author}{1}{}{%
+        {{hash=dc57de6010935465d2f186a7616c138d}{%
+           family={Clinic},
+           familyi={C\bibinitperiod},
+           given={Mayo},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{dc57de6010935465d2f186a7616c138d}
+      \strng{fullhash}{dc57de6010935465d2f186a7616c138d}
+      \strng{bibnamehash}{dc57de6010935465d2f186a7616c138d}
+      \strng{authorbibnamehash}{dc57de6010935465d2f186a7616c138d}
+      \strng{authornamehash}{dc57de6010935465d2f186a7616c138d}
+      \strng{authorfullhash}{dc57de6010935465d2f186a7616c138d}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: November 19, 2024}
+      \field{title}{Alzheimer's Disease: Symptoms and Causes}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://www.mayoclinic.org/diseases-conditions/alzheimers-disease/symptoms-causes/syc-20350447
+      \endverb
+      \verb{url}
+      \verb https://www.mayoclinic.org/diseases-conditions/alzheimers-disease/symptoms-causes/syc-20350447
+      \endverb
+    \endentry
+    \entry{Cummings2024}{article}{}
+      \name{author}{5}{}{%
+        {{hash=ef8d5963741dc94bd63f3d747e8f7957}{%
+           family={Cummings},
+           familyi={C\bibinitperiod},
+           given={Jeffrey},
+           giveni={J\bibinitperiod}}}%
+        {{hash=f3ae7d3b1ff24c2354fab86ed7d389a2}{%
+           family={Osse},
+           familyi={O\bibinitperiod},
+           given={Annemieke\bibnamedelima ML},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=97e65a0b6b766b98b15220e39aa985bb}{%
+           family={Cammann},
+           familyi={C\bibinitperiod},
+           given={Danielle},
+           giveni={D\bibinitperiod}}}%
+        {{hash=d9340eeac093f13f58e894a0f22c032b}{%
+           family={Powell},
+           familyi={P\bibinitperiod},
+           given={Julie},
+           giveni={J\bibinitperiod}}}%
+        {{hash=11c05b885f1bc92570da26e49722e81d}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Jing},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{fd7e77cd1209bcfa715281191fda134b}
+      \strng{fullhash}{e9450fdc2e9ae408fb02c8cbbae2c9a5}
+      \strng{bibnamehash}{fd7e77cd1209bcfa715281191fda134b}
+      \strng{authorbibnamehash}{fd7e77cd1209bcfa715281191fda134b}
+      \strng{authornamehash}{fd7e77cd1209bcfa715281191fda134b}
+      \strng{authorfullhash}{e9450fdc2e9ae408fb02c8cbbae2c9a5}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{BioDrugs}
+      \field{number}{1}
+      \field{title}{Anti-Amyloid Monoclonal Antibodies for the Treatment of Alzheimer's Disease}
+      \field{volume}{38}
+      \field{year}{2024}
+      \field{pages}{5\bibrangedash 22}
+      \range{pages}{18}
+      \verb{doi}
+      \verb 10.1007/s40259-023-00633-2
+      \endverb
+    \endentry
+    \entry{Ewers2011}{article}{}
+      \name{author}{5}{}{%
+        {{hash=e22c9b96e574e21442daa83290a763cb}{%
+           family={Ewers},
+           familyi={E\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=c6f2dc574dfc5425c0300dd8eeea36fa}{%
+           family={Sperling},
+           familyi={S\bibinitperiod},
+           given={Reisa\bibnamedelima A},
+           giveni={R\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=b690c15863489fff6b23038a093e2774}{%
+           family={Klunk},
+           familyi={K\bibinitperiod},
+           given={William\bibnamedelima E},
+           giveni={W\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=f359ac64f21049a1484bcd89003b917d}{%
+           family={Weiner},
+           familyi={W\bibinitperiod},
+           given={Michael\bibnamedelima W},
+           giveni={M\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=95cbc57f9fd77a7dc55e5c4a837f5f36}{%
+           family={Hampel},
+           familyi={H\bibinitperiod},
+           given={Harald},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{becee31403896add76d84edf4f87eafe}
+      \strng{fullhash}{5c3c38aa2332b88a2dfa237921ac8909}
+      \strng{bibnamehash}{becee31403896add76d84edf4f87eafe}
+      \strng{authorbibnamehash}{becee31403896add76d84edf4f87eafe}
+      \strng{authornamehash}{becee31403896add76d84edf4f87eafe}
+      \strng{authorfullhash}{5c3c38aa2332b88a2dfa237921ac8909}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Trends in neurosciences}
+      \field{number}{8}
+      \field{title}{Neuroimaging markers for the prediction and early diagnosis of Alzheimer's disease dementia}
+      \field{volume}{34}
+      \field{year}{2011}
+      \field{pages}{430\bibrangedash 442}
+      \range{pages}{13}
+    \endentry
+    \entry{10.3389/fnagi.2024.1363458}{article}{}
+      \name{author}{9}{}{%
+        {{hash=8fa8e2695ecb3bca27e81097e9b4ee8e}{%
+           family={Mi},
+           familyi={M\bibinitperiod},
+           given={Jie},
+           giveni={J\bibinitperiod}}}%
+        {{hash=09896aa5fbccc018f8f5276bd3c2cc51}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Chao},
+           giveni={C\bibinitperiod}}}%
+        {{hash=f543120c6d319624f3c61806db0489b5}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Honglei},
+           giveni={H\bibinitperiod}}}%
+        {{hash=35aaeaaf5934b3d462b16116092c1413}{%
+           family={Qian},
+           familyi={Q\bibinitperiod},
+           given={Yan},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=ea8942768539d2af564e452a352a50d1}{%
+           family={Zhu},
+           familyi={Z\bibinitperiod},
+           given={Jingyi},
+           giveni={J\bibinitperiod}}}%
+        {{hash=027d944c3e6dac0a951217ff35f6dec4}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Yachao},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=2745b8dabe1c7dc4875a379269c6a69b}{%
+           family={Liang},
+           familyi={L\bibinitperiod},
+           given={Yizhi},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=d135ba66e52e54827be85382fc2e6005}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Lidai},
+           giveni={L\bibinitperiod}}}%
+        {{hash=c9595358886502ff42267161f421399b}{%
+           family={Ta},
+           familyi={T\bibinitperiod},
+           given={Dean},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{9aea54531a14662b08b836bc76629276}
+      \strng{fullhash}{dd63514db7551b9e8219bf03d85ec9a3}
+      \strng{bibnamehash}{9aea54531a14662b08b836bc76629276}
+      \strng{authorbibnamehash}{9aea54531a14662b08b836bc76629276}
+      \strng{authornamehash}{9aea54531a14662b08b836bc76629276}
+      \strng{authorfullhash}{dd63514db7551b9e8219bf03d85ec9a3}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1663-4365}
+      \field{journaltitle}{Frontiers in Aging Neuroscience}
+      \field{title}{Light on Alzheimer’s disease: from basic insights to preclinical studies}
+      \field{volume}{16}
+      \field{year}{2024}
+      \verb{doi}
+      \verb 10.3389/fnagi.2024.1363458
+      \endverb
+      \verb{urlraw}
+      \verb https://www.frontiersin.org/journals/aging-neuroscience/articles/10.3389/fnagi.2024.1363458
+      \endverb
+      \verb{url}
+      \verb https://www.frontiersin.org/journals/aging-neuroscience/articles/10.3389/fnagi.2024.1363458
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
