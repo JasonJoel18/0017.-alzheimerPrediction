@@ -1,3 +1,9 @@
-data/
-data2/
+data/external/MildDemented/
+data/external/ModerateDemented/
 data/external/NonDemented/
+data/external/VeryMildDemented/
+
+data2/external/MildDemented/
+data2/external/ModerateDemented/
+data2/external/NonDemented/
+data2/external/VeryMildDemented/
