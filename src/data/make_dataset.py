@@ -9,96 +9,119 @@ from keras.utils import to_categorical
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import LabelEncoder
+import tensorflow as tf
+# from tensorflow.keras.preprocessing.image import ImageDataGenerator
+
+# print(tf.__version__)
 
 # --------------------------------------------------------------
 # Functions
 # --------------------------------------------------------------
 
-def contour_and_crop(image):
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    _, binary = cv2.threshold(gray, 50, 255, cv2.THRESH_BINARY)
-    contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-    largest_contour = max(contours, key=cv2.contourArea)
-    x, y, w, h = cv2.boundingRect(largest_contour)
-    return image[y:y+h, x:x+w]
-
-# Resize and normalize image
-def preprocess_image(image, target_size=(128, 128)):
-    cropped_image = contour_and_crop(image)
-    resized_image = cv2.resize(cropped_image, target_size, interpolation=cv2.INTER_AREA)
-    normalized_image = resized_image / 255.0
-    return normalized_image
-
-# Load dataset and preprocess
-def load_data(data_dir, target_size=(128, 128)):
-    images = []
-    labels = []
-    classes = os.listdir(data_dir)
-    for label, class_name in enumerate(classes):
-        if class_name == '.gitkeep':
-            continue
-        class_dir = os.path.join(data_dir, class_name)
-        for file in os.listdir(class_dir):
-            img_path = os.path.join(class_dir, file)
-            img = cv2.imread(img_path)
-            if img is not None:
-                processed_img = preprocess_image(img, target_size)
-                images.append(processed_img)
-                labels.append(class_name)  # Store the class name directly
-    return np.array(images), np.array(labels)
-
 # --------------------------------------------------------------
 # Preprocess data
 # --------------------------------------------------------------
-data_dir = "/Volumes/Jason's T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external"
-X, y = load_data(data_dir)
+dir = {
+    'Mild Demented': '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/MildDemented',
+    'Moderate Demented': '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/ModerateDemented',
+    'Non Demented': '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/NonDemented',
+    'Very MildDemented': '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/VeryMildDemented'
+}
+img_path = []
+lbl = []
+for cls, dir in dir.items():
+    for img in os.listdir(dir):
+        img_path.append(os.path.join(dir, img))
+        lbl.append(cls)
 
-# Convert labels to numeric values
-encoder = LabelEncoder()
-y_encoded = encoder.fit_transform(y)
-# y_categorical = to_categorical(y_encoded)
+print(img_path)
+print(lbl)
+
+dt = pd.DataFrame({'img_path': img_path, 'lbl': lbl})
+print(dt.head())
+print(dt['lbl'].value_counts())
 
 # Train-test split
-X_train, X_test, y_train, y_test = train_test_split(X, y_encoded, test_size=0.2, random_state=42)
-X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.2, random_state=42)
+train_path, test_path = train_test_split(dt, test_size=0.4, random_state=42)
+test_path, val_path = train_test_split(test_path, test_size=0.5, random_state=42)
 
-# One-hot encode labels
-# y_train = to_categorical(y_train)
-# y_val = to_categorical(y_val)
-# y_test = to_categorical(y_test)
 
-print(f"Training data shape: {X_train.shape}")
-print(f"Validation data shape: {X_val.shape}")
-print(f"Test data shape: {X_test.shape}")
+print(f"Training data shape: {train_path.shape}")
+print(f"Validation data shape: {val_path.shape}")
+print(f"Test data shape: {test_path.shape}")
+
+print(train_path)
 
 # --------------------------------------------------------------
 # View Images
 # --------------------------------------------------------------
 
-# Function to display images with labels
-def display_images(images, labels, class_names, num_images=10):
-    # Convert one-hot encoded labels back to integers
-    if len(labels.shape) > 1 and labels.shape[1] > 1:  # Check if labels are one-hot encoded
-        labels = np.argmax(labels, axis=1)
+
+label_mapping = {'Non Demented': 0, 'Moderate Demented': 1, 'Mild Demented': 2, 'Very MildDemented': 3}
+print("Label Mapping:", label_mapping)
+
+train_path['lbl'] = train_path['lbl'].map(label_mapping)
+val_path['lbl'] = val_path['lbl'].map(label_mapping)
+test_path['lbl'] = test_path['lbl'].map(label_mapping)
+
+img_size = (224, 224)
+btc_size = 32
+
+import tensorflow as tf
+print(train_path)
+
+# Define constants
+IMAGE_SIZE = (224, 224)
+BATCH_SIZE = 32
+AUTOTUNE = tf.data.AUTOTUNE
+
+# Preprocessing function
+def preprocess_image(filepath, label):
+    # Read and decode image
+    image = tf.io.read_file(filepath)
+    try:
+        image = tf.image.decode_jpeg(image, channels=3)  # Decode as JPEG (assumes your images are JPEG)
+    except tf.errors.InvalidArgumentError:
+        print(f"Error decoding image: {filepath}")
+        return None, label
+    image = tf.image.resize(image, IMAGE_SIZE)  # Resize image
+    image = tf.keras.applications.mobilenet_v2.preprocess_input(image)  # Preprocess for MobileNetV2
+    return image, label
+
+# --------------------------------------------------------------
+# Create Dataset
+# --------------------------------------------------------------
+def create_dataset(dataframe, x_col, y_col, batch_size, shuffle=False):
+    # Validate file paths
+    dataframe = dataframe[dataframe[x_col].apply(os.path.exists)]
     
-    fig, axes = plt.subplots(nrows=2, ncols=6, figsize=(15, 6))
-    for i in range(num_images):
-        ax = axes.flat[i]
-        ax.imshow(images[i])
-        ax.set_title(f"{class_names[labels[i]]}")  # Display label name
-        ax.axis('off')
-    plt.tight_layout()
-    plt.show()
+    # Create TensorFlow dataset
+    filepaths = dataframe[x_col].values
+    labels = dataframe[y_col].values
+    dataset = tf.data.Dataset.from_tensor_slices((filepaths, labels))
+    
+    # Apply preprocessing
+    dataset = dataset.map(preprocess_image, num_parallel_calls=AUTOTUNE)
+    
+    # Remove None values (from failed preprocessing)
+    dataset = dataset.filter(lambda img, label: img is not None)
+    
+    # Shuffle, batch, and prefetch
+    if shuffle:
+        dataset = dataset.shuffle(buffer_size=len(dataframe))
+    dataset = dataset.batch(batch_size).prefetch(AUTOTUNE)
+    return dataset
 
-# Example usage:
-display_images(X_train, y_train, class_names=encoder.classes_, num_images=12)
+# Create datasets
+train_dataset = create_dataset(train_path, x_col="img_path", y_col="lbl", batch_size=BATCH_SIZE, shuffle=True)
+test_dataset = create_dataset(test_path, x_col="img_path", y_col="lbl", batch_size=BATCH_SIZE, shuffle=False)
+val_dataset = create_dataset(val_path, x_col="img_path", y_col="lbl", batch_size=BATCH_SIZE, shuffle=False)
+# Print label mapping
+print("Label Mapping:", label_mapping)
 
-# --------------------------------------------------------------
-# Export dataset
-# --------------------------------------------------------------
+# Debugging
+for images, labels in train_dataset.take(1):
+    print("Batch images shape:", images.shape)
+    print("Batch labels:", labels)
 
-
-
-# --------------------------------------------------------------
-# Export dataset
-# --------------------------------------------------------------
+print("Datasets created successfully!")
