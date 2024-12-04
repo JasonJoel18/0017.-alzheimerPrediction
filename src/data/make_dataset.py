@@ -10,9 +10,6 @@ from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import LabelEncoder
 import tensorflow as tf
-# from tensorflow.keras.preprocessing.image import ImageDataGenerator
-
-# print(tf.__version__)
 
 # --------------------------------------------------------------
 # Functions
@@ -50,8 +47,6 @@ print(f"Training data shape: {train_path.shape}")
 print(f"Validation data shape: {val_path.shape}")
 print(f"Test data shape: {test_path.shape}")
 
-print(train_path)
-
 # --------------------------------------------------------------
 # View Images
 # --------------------------------------------------------------
@@ -67,8 +62,6 @@ test_path['lbl'] = test_path['lbl'].map(label_mapping)
 img_size = (224, 224)
 btc_size = 32
 
-import tensorflow as tf
-print(train_path)
 
 # Define constants
 IMAGE_SIZE = (224, 224)
@@ -122,6 +115,53 @@ print("Label Mapping:", label_mapping)
 # Debugging
 for images, labels in train_dataset.take(1):
     print("Batch images shape:", images.shape)
-    print("Batch labels:", labels)
+    print("Batch labels:", labels.shape)
 
 print("Datasets created successfully!")
+
+# ================================================================
+
+
+
+
+
+
+
+
+
+
+# =================================================================
+
+
+def show_images(dataset, label_mapping, max_images=25):
+    """
+    Display a batch of images with their corresponding labels.
+    
+    Args:
+    - dataset (tf.data.Dataset): TensorFlow dataset to visualize.
+    - label_mapping (dict): Dictionary mapping numeric labels to class names.
+    - max_images (int): Maximum number of images to display.
+    """
+    # Reverse the label mapping for lookup
+    reverse_label_mapping = {v: k for k, v in label_mapping.items()}
+    
+    # Get a batch of images and labels
+    for images, labels in dataset.take(1):  # Take one batch from the dataset
+        plt.figure(figsize=(20, 20))
+        num_images = min(max_images, len(labels))
+        for i in range(num_images):
+            plt.subplot(5, 5, i + 1)
+            image = (images[i].numpy() + 1) / 2  # Rescale images to [0, 1] if necessary
+            plt.imshow(image)
+            class_name = reverse_label_mapping[labels[i].numpy()]
+            plt.title(class_name, color="green", fontsize=16)
+            plt.axis('off')
+        plt.show()
+        break
+    
+# Visualize training dataset
+show_images(train_dataset, label_mapping)
+
+print(train_dataset)
+
+

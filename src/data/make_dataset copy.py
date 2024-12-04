@@ -69,21 +69,49 @@ BATCH_SIZE = 32
 AUTOTUNE = tf.data.AUTOTUNE
 
 # Preprocessing function
-def preprocess_image(filepath, label):
-    # Read and decode image
-    image = tf.io.read_file(filepath)
-    try:
-        image = tf.image.decode_jpeg(image, channels=3)  # Decode as JPEG (assumes your images are JPEG)
-    except tf.errors.InvalidArgumentError:
-        print(f"Error decoding image: {filepath}")
-        return None, label
-    image = tf.image.resize(image, IMAGE_SIZE)  # Resize image
-    image = tf.keras.applications.mobilenet_v2.preprocess_input(image)  # Preprocess for MobileNetV2
-    return image, label
+import cv2
+import numpy as np
+
+
 
 # --------------------------------------------------------------
 # Create Dataset
 # --------------------------------------------------------------
+
+
+def preprocess_image_with_opencv(filepath, label):
+    def preprocess(filepath):
+        # Read the image using OpenCV
+        filepath = filepath.decode('utf-8')  # Decode the TensorFlow string tensor to Python string
+        image = cv2.imread(filepath)
+        if image is None:
+            raise ValueError(f"Image at path {filepath} could not be read.")
+        
+        # Convert to grayscale for contour detection
+        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        _, thresh = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
+        
+        # Find contours
+        contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        if contours:
+            # Find the largest contour and get its bounding box
+            largest_contour = max(contours, key=cv2.contourArea)
+            x, y, w, h = cv2.boundingRect(largest_contour)
+            image = image[y:y+h, x:x+w]  # Crop the image to the bounding box
+        
+        # Resize the image to the target size
+        image = cv2.resize(image, IMAGE_SIZE)
+        
+        # Normalize the image for MobileNetV2
+        image = tf.keras.applications.mobilenet_v2.preprocess_input(image)
+        return image
+    
+    # Use tf.numpy_function to apply the NumPy-based preprocessing
+    image = tf.numpy_function(preprocess, [filepath], tf.float32)
+    image.set_shape(IMAGE_SIZE + (3,))
+    label = tf.one_hot(label, depth=4)  # One-hot encode labels
+    return image, label
+
 def create_dataset(dataframe, x_col, y_col, batch_size, shuffle=False):
     # Validate file paths
     dataframe = dataframe[dataframe[x_col].apply(os.path.exists)]
@@ -94,16 +122,14 @@ def create_dataset(dataframe, x_col, y_col, batch_size, shuffle=False):
     dataset = tf.data.Dataset.from_tensor_slices((filepaths, labels))
     
     # Apply preprocessing
-    dataset = dataset.map(preprocess_image, num_parallel_calls=AUTOTUNE)
-    
-    # Remove None values (from failed preprocessing)
-    dataset = dataset.filter(lambda img, label: img is not None)
+    dataset = dataset.map(preprocess_image_with_opencv, num_parallel_calls=AUTOTUNE)
     
     # Shuffle, batch, and prefetch
     if shuffle:
         dataset = dataset.shuffle(buffer_size=len(dataframe))
     dataset = dataset.batch(batch_size).prefetch(AUTOTUNE)
     return dataset
+
 
 # Create datasets
 train_dataset = create_dataset(train_path, x_col="img_path", y_col="lbl", batch_size=BATCH_SIZE, shuffle=True)
@@ -115,7 +141,7 @@ print("Label Mapping:", label_mapping)
 # Debugging
 for images, labels in train_dataset.take(1):
     print("Batch images shape:", images.shape)
-    print("Batch labels:", labels)
+    print("Batch labels:", labels.shape)
 
 print("Datasets created successfully!")
 

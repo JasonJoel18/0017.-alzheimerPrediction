@@ -25,7 +25,7 @@ model = Sequential([
 # Compile the model
 model.compile(
     optimizer=tf.keras.optimizers.Adamax(learning_rate=0.001),
-    loss='categorical_crossentropy',
+    loss='sparse_categorical_crossentropy',  # Use sparse categorical crossentropy
     metrics=['accuracy']
 )
 
