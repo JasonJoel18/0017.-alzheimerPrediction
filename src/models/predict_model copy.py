@@ -101,6 +101,8 @@ def create_dataset(dataframe, x_col, y_col, batch_size, shuffle=False):
     dataset = dataset.batch(batch_size).prefetch(AUTOTUNE)
     return dataset
 
+
+
 train_dataset = create_dataset(train_path, x_col="img_path", y_col="lbl", batch_size=BATCH_SIZE, shuffle=True)
 test_dataset = create_dataset(test_path, x_col="img_path", y_col="lbl", batch_size=BATCH_SIZE, shuffle=False)
 val_dataset = create_dataset(val_path, x_col="img_path", y_col="lbl", batch_size=BATCH_SIZE, shuffle=False)
@@ -117,9 +119,11 @@ print("Datasets created successfully!")
 # --------------------------------------------------------------
 # Define Model
 # --------------------------------------------------------------
+from keras.models import Sequential
+from keras.layers import Dense, Dropout, Flatten
 
-base_model = tf.keras.applications.Xception(
-    include_top=False, weights="imagenet", input_shape=img_shape, pooling='max')
+img_shape = (224, 224, 3)
+base_model = tf.keras.applications.Xception(include_top=False, weights="imagenet", input_shape=img_shape, pooling='max')
 
 model = Sequential([
     base_model,
@@ -130,11 +134,15 @@ model = Sequential([
     Dense(4, activation='softmax')  # Output layer for 4 classes
 ])
 
+# Compile the model
 model.compile(
     optimizer=tf.keras.optimizers.Adamax(learning_rate=0.001),
     loss='categorical_crossentropy',
     metrics=['accuracy']
 )
+
+# Print the model summary
+# model.summary()
 
 # --------------------------------------------------------------
 # Train the Model

@@ -1,49 +1,72 @@
+import numpy as np
+from keras.utils import to_categorical
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import LabelEncoder
 import tensorflow as tf
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten
+from keras.callbacks import EarlyStopping
 
-# Define input shape
-img_shape = (224, 224, 3)
 
-# Load pre-trained Xception model
-base_model = tf.keras.applications.Xception(include_top= False, weights= "imagenet",
-                            input_shape= img_shape, pooling= 'max')
+# --------------------------------------------------------------
+# Constants and Configuration
+# --------------------------------------------------------------
+img_shape = (224, 224,3)
 
-# for layer in base_model.layers:
-#     layer.trainable = False
-    
+base_model = tf.keras.applications.Xception(
+    include_top=False, weights="imagenet", input_shape=img_shape, pooling='max')
+
 model = Sequential([
-    tf.keras.layers.InputLayer(input_shape=img_shape),
     base_model,
     Flatten(),
-    Dropout(rate= 0.3),
-    Dense(128, activation= 'relu'),
-    Dropout(rate= 0.25),
-    Dense(4, activation= 'softmax')
+    Dropout(rate=0.3),
+    Dense(128, activation='relu'),
+    Dropout(rate=0.25),
+    Dense(4, activation='softmax')
 ])
 
-# Compile the model
 model.compile(
     optimizer=tf.keras.optimizers.Adamax(learning_rate=0.001),
-    loss='sparse_categorical_crossentropy',  # Use sparse categorical crossentropy
+    loss='categorical_crossentropy',
     metrics=['accuracy']
 )
 
-# Print the model summary
-model.summary()
-
-# model.build(input_shape=(None, *img_shape))
-# tf.keras.utils.plot_model(model, show_shapes=True)
-
-for images, labels in train_dataset.take(1):
-    print("Image batch shape:", images.shape)
-    print("Label batch shape:", labels.shape)
-    
-    
-    
+# --------------------------------------------------------------
+# Train the Model
+# --------------------------------------------------------------
+early_stopping = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
 history = model.fit(
     train_dataset,
     epochs=10,
     validation_data=val_dataset,
     validation_freq=1
 )
+
+# --------------------------------------------------------------
+# Evaluate the Model
+# --------------------------------------------------------------
+test_loss, test_accuracy = model.evaluate(test_dataset)
+print(f"Test Loss: {test_loss}")
+print(f"Test Accuracy: {test_accuracy}")
+
+
+# import sys
+
+# # import tensorflow.keras
+# import pandas as pd
+# import sklearn as sk
+# import scipy as sp
+# import tensorflow as tf
+# import platform
+
+# print(f"Python Platform: {platform.platform()}")
+# print(f"Tensor Flow Version: {tf.__version__}")
+# # print(f"Keras Version: {tf.keras.__version__}")
+# print()
+# print(f"Python {sys.version}")
+# print(f"Pandas {pd.__version__}")
+# print(f"Scikit-Learn {sk.__version__}")
+# print(f"SciPy {sp.__version__}")
+# gpu = len(tf.config.list_physical_devices('GPU'))>0
+# print("GPU is", "available" if gpu else "NOT AVAILABLE")
+
