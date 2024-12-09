@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.17)  29 NOV 2024 02:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.17)  9 DEC 2024 20:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -628,19 +628,19 @@ LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/b/n' will be
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/b/n' will be
 (Font)              scaled to size 24.88pt on input line 137.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/n' will be
-(Font)              scaled to size 14.4pt on input line 142.
+(Font)              scaled to size 14.4pt on input line 141.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/b/n' will be
-(Font)              scaled to size 14.4pt on input line 142.
+(Font)              scaled to size 14.4pt on input line 141.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 145.
+(Font)              scaled to size 12.0pt on input line 144.
  [1
 
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/ebgaramond/ebg_byuyni.enc}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/ebgaramond/ebg_tcdnmr.enc}]
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/b/n' will be
-(Font)              scaled to size 17.28pt on input line 156.
+(Font)              scaled to size 17.28pt on input line 155.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 174.
+(Font)              scaled to size 9.0pt on input line 173.
 
 
 Package fancyhdr Warning: \headheight is too small (10.0pt): 
@@ -650,12 +650,12 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-10.39996pt}.
 
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/b/n' will be
-(Font)              scaled to size 12.0pt on input line 174.
+(Font)              scaled to size 12.0pt on input line 173.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.174 \tableofcontents
+l.173 \tableofcontents
                        [1
 
 
@@ -713,10 +713,10 @@ Chapter 1.
 <figures/fig1.png, id=94, 1261.71375pt x 948.54375pt>
 File: figures/fig1.png Graphic file (type png)
 <use figures/fig1.png>
-Package pdftex.def Info: figures/fig1.png  used on input line 187.
+Package pdftex.def Info: figures/fig1.png  used on input line 186.
 (pdftex.def)             Requested size: 200.31396pt x 150.58327pt.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/it' will be
-(Font)              scaled to size 9.0pt on input line 188.
+(Font)              scaled to size 9.0pt on input line 187.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -724,7 +724,7 @@ Chapter 2.
 <figures/fig2.jpeg, id=95, 1682.285pt x 1260.71pt>
 File: figures/fig2.jpeg Graphic file (type jpg)
 <use figures/fig2.jpeg>
-Package pdftex.def Info: figures/fig2.jpeg  used on input line 208.
+Package pdftex.def Info: figures/fig2.jpeg  used on input line 207.
 (pdftex.def)             Requested size: 200.31396pt x 150.10522pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -741,67 +741,67 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 {/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/ebgaramond/ebg_ljow5q.enc} <./figures/fig1.png>]
 Chapter 3.
 
-Overfull \hbox (22.22107pt too wide) in paragraph at lines 229--230
+Overfull \hbox (22.22107pt too wide) in paragraph at lines 228--229
 []   |   []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 231--232
+Underfull \hbox (badness 10000) in paragraph at lines 230--231
 []   |   []   |   []
  []
 
 
-Underfull \hbox (badness 3439) in paragraph at lines 233--234
+Underfull \hbox (badness 3439) in paragraph at lines 232--233
 []   |   []   |   []   |   []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 233--234
+Underfull \hbox (badness 10000) in paragraph at lines 232--233
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Underfull \hbox (badness 7256) in paragraph at lines 233--234
+Underfull \hbox (badness 7256) in paragraph at lines 232--233
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Overfull \hbox (4.27112pt too wide) in paragraph at lines 235--236
+Overfull \hbox (4.27112pt too wide) in paragraph at lines 234--235
 []   |   []
  []
 
 
-Underfull \hbox (badness 3919) in paragraph at lines 235--236
+Underfull \hbox (badness 3919) in paragraph at lines 234--235
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Underfull \hbox (badness 6157) in paragraph at lines 235--236
+Underfull \hbox (badness 6157) in paragraph at lines 234--235
 |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Underfull \hbox (badness 1199) in paragraph at lines 237--238
+Underfull \hbox (badness 1199) in paragraph at lines 236--237
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Underfull \hbox (badness 5147) in paragraph at lines 237--238
+Underfull \hbox (badness 5147) in paragraph at lines 236--237
 |   []   |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Underfull \hbox (badness 5417) in paragraph at lines 237--238
+Underfull \hbox (badness 5417) in paragraph at lines 236--237
 |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 237--238
+Underfull \hbox (badness 10000) in paragraph at lines 236--237
 |   []   |   []   |   []   |   []   |   []   |   []   |   []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 239--240
+Underfull \hbox (badness 10000) in paragraph at lines 238--239
 []   |   []   |   []
  []
 
@@ -836,26 +836,26 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-10.39996pt}.
 
 [7]
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 270.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 269.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
-Underfull \hbox (badness 10000) in paragraph at lines 271--271
+Underfull \hbox (badness 10000) in paragraph at lines 270--270
 []\T1/EBGaramond-OsF/m/n/10 ``2012 Alzheimer's dis-ease facts and fig-ures''. In:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 271--271
+Underfull \hbox (badness 10000) in paragraph at lines 270--270
 |   [] \T1/EBGaramond-OsF/m/n/10 8.2 (2012), pp. 131^^U168. \T1/EBGaramond-OsF/m/sc/10 issn\T1/EBGaramond-OsF/m/n/10 :
  []
 
 
-Underfull \hbox (badness 1286) in paragraph at lines 271--271
+Underfull \hbox (badness 1286) in paragraph at lines 270--270
 \T1/EBGaramond-OsF/m/n/10 fig-ures''. In: |   [] 15.3 (), pp. 321^^U387.
  []
 
 
-Underfull \hbox (badness 2961) in paragraph at lines 271--271
+Underfull \hbox (badness 2961) in paragraph at lines 270--270
 \T1/EBGaramond-OsF/m/n/10 ti-bod-ies for the Treat-ment of Alzheimer's Dis-ease''. In:
  []
 
@@ -884,13 +884,13 @@ Package logreq Info: Writing requests to 'AlzheimerPrediction.run.xml'.
 Here is how much of TeX's memory you used:
  19775 strings out of 474116
  351125 string characters out of 5743681
- 1975187 words of memory out of 5000000
+ 1976187 words of memory out of 5000000
  41878 multiletter control sequences out of 15000+600000
  639713 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  69i,12n,117p,1828b,1359s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/ebgaramond/EBGaramond-Bold.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/ebgaramond/EBGaramond-Italic.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/ebgaramond/EBGaramond-Regular.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on AlzheimerPrediction.pdf (9 pages, 795587 bytes).
+Output written on AlzheimerPrediction.pdf (9 pages, 795866 bytes).
 PDF statistics:
  185 PDF objects out of 1000 (max. 8388607)
  160 compressed objects within 2 object streams
