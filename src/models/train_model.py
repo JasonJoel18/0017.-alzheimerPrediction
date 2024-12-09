@@ -11,7 +11,7 @@ from keras.callbacks import EarlyStopping
 # --------------------------------------------------------------
 # Constants and Configuration
 # --------------------------------------------------------------
-img_shape = (224, 224,3)
+img_shape = (244, 244,3)
 
 base_model = tf.keras.applications.Xception(
     include_top=False, weights="imagenet", input_shape=img_shape, pooling='max')
@@ -37,7 +37,7 @@ model.compile(
 early_stopping = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
 history = model.fit(
     train_dataset,
-    epochs=10,
+    epochs=1,
     validation_data=val_dataset,
     validation_freq=1
 )
@@ -69,4 +69,5 @@ print(f"Test Accuracy: {test_accuracy}")
 # print(f"SciPy {sp.__version__}")
 # gpu = len(tf.config.list_physical_devices('GPU'))>0
 # print("GPU is", "available" if gpu else "NOT AVAILABLE")
+
 

@@ -9,10 +9,11 @@ import tensorflow as tf
 print("TensorFlow version:", tf.__version__)
 
 
+
 # --------------------------------------------------------------
 # Constants and Configuration
 # --------------------------------------------------------------
-IMAGE_SIZE = (224,224)
+IMAGE_SIZE = (244,244)
 BATCH_SIZE = 32
 AUTOTUNE = tf.data.AUTOTUNE
 
