@@ -42,6 +42,83 @@
       \endverb
       \keyw{Alzheimer's disease Dementia,Diagnostic criteria,Prevalence,Incidence,Mortality,Caregivers,Family caregiver,Spouse caregiver,Health care costs,Health care expenditures,Long-term care costs,Hospice care costs,Medicare spending,Medicaid spending,Live alone,Living arrangements,Unmet needs}
     \endentry
+    \entry{2022Ahmed}{article}{}{}
+      \name{author}{9}{}{%
+        {{hash=36ba0fce5988865190d67d0a79e0772c}{%
+           family={Ahmed},
+           familyi={A\bibinitperiod},
+           given={Gulnaz},
+           giveni={G\bibinitperiod}}}%
+        {{hash=536656dd6eb55cb4c875d3fea8c31e12}{%
+           family={Er},
+           familyi={E\bibinitperiod},
+           given={Meng\bibnamedelima Joo},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=14c2323f2a8efed068a998a7c409cb7a}{%
+           family={Fareed},
+           familyi={F\bibinitperiod},
+           given={Mian\bibnamedelimb Muhammad\bibnamedelima Sadiq},
+           giveni={M\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=e121d8295f126c10a48cea6bcaf55ba8}{%
+           family={Zikria},
+           familyi={Z\bibinitperiod},
+           given={Shahid},
+           giveni={S\bibinitperiod}}}%
+        {{hash=70a0b3aed17ce2e894477f51674be6b0}{%
+           family={Mahmood},
+           familyi={M\bibinitperiod},
+           given={Saqib},
+           giveni={S\bibinitperiod}}}%
+        {{hash=2a808725cf238223cc20fcfaf0b61144}{%
+           family={He},
+           familyi={H\bibinitperiod},
+           given={Jiao},
+           giveni={J\bibinitperiod}}}%
+        {{hash=a3c6a731fa44be8327191d0ed58523c8}{%
+           family={Asad},
+           familyi={A\bibinitperiod},
+           given={Muhammad},
+           giveni={M\bibinitperiod}}}%
+        {{hash=9ab704da3b5c5dadbf67708d971042d4}{%
+           family={Jilani},
+           familyi={J\bibinitperiod},
+           given={Syeda\bibnamedelima Fizzah},
+           giveni={S\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=af716e51c01e88028b6828be6d5aee67}{%
+           family={Aslam},
+           familyi={A\bibinitperiod},
+           given={Muhammad},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{100bf04c77ed3d0813d1de1c37f9a137}
+      \strng{fullhash}{89540e100e0f6c7c678e88c9352341f4}
+      \strng{fullhashraw}{89540e100e0f6c7c678e88c9352341f4}
+      \strng{bibnamehash}{100bf04c77ed3d0813d1de1c37f9a137}
+      \strng{authorbibnamehash}{100bf04c77ed3d0813d1de1c37f9a137}
+      \strng{authornamehash}{100bf04c77ed3d0813d1de1c37f9a137}
+      \strng{authorfullhash}{89540e100e0f6c7c678e88c9352341f4}
+      \strng{authorfullhashraw}{89540e100e0f6c7c678e88c9352341f4}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Alzheimer’s Disease (AD) is a neurological brain disorder that causes dementia and neurological dysfunction, affecting memory, behavior, and cognition. Deep Learning (DL), a kind of Artificial Intelligence (AI), has paved the way for new AD detection and automation methods. The DL model’s prediction accuracy depends on the dataset’s size. The DL models lose their accuracy when the dataset has an imbalanced class problem. This study aims to use the deep Convolutional Neural Network (CNN) to develop a reliable and efficient method for identifying Alzheimer’s disease using MRI. In this study, we offer a new CNN architecture for diagnosing Alzheimer’s disease with a modest number of parameters, making it perfect for training a smaller dataset. This proposed model correctly separates the early stages of Alzheimer’s disease and displays class activation patterns on the brain as a heat map. The proposed Detection of Alzheimer’s Disease Network (DAD-Net) is developed from scratch to correctly classify the phases of Alzheimer’s disease while reducing parameters and computation costs. The Kaggle MRI image dataset has a severe problem with class imbalance. Therefore, we used a synthetic oversampling technique to distribute the image throughout the classes and avoid the problem. Precision, recall, F1-score, Area Under the Curve (AUC), and loss are all used to compare the proposed DAD-Net against DEMENET and CNN Model. For accuracy, AUC, F1-score, precision, and recall, the DAD-Net achieved the following values for evaluation metrics: 99.22%, 99.91%, 99.19%, 99.30%, and 99.14%, respectively. The presented DAD-Net outperforms other state-of-the-art models in all evaluation metrics, according to the simulation results.}
+      \field{issn}{1420-3049}
+      \field{journaltitle}{Molecules}
+      \field{number}{20}
+      \field{title}{DAD-Net: Classification of Alzheimer’s Disease Using ADASYN Oversampling Technique and Optimized Neural Network}
+      \field{volume}{27}
+      \field{year}{2022}
+      \verb{doi}
+      \verb 10.3390/molecules27207085
+      \endverb
+      \verb{urlraw}
+      \verb https://www.mdpi.com/1420-3049/27/20/7085
+      \endverb
+      \verb{url}
+      \verb https://www.mdpi.com/1420-3049/27/20/7085
+      \endverb
+    \endentry
     \entry{2019321}{article}{}{}
       \name{author}{1}{}{%
         {{hash=4c88a1138ed688de70add198ff1fb0b9}{%
@@ -164,6 +241,44 @@
       \range{pages}{18}
       \verb{doi}
       \verb 10.1007/s40259-023-00633-2
+      \endverb
+    \endentry
+    \entry{2024Desai}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=701aeeb148d56b6b5cc2d5ec86fc507a}{%
+           family={Desai},
+           familyi={D\bibinitperiod},
+           given={Maitry\bibnamedelima Bimalbhai},
+           giveni={M\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=2b25cc0be79bfbeb80eb386d9097a555}{%
+           family={Kumar},
+           familyi={K\bibinitperiod},
+           given={Yogesh},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=9ff9bd424f4480928d6aab2a5423fe51}{%
+           family={Pandey},
+           familyi={P\bibinitperiod},
+           given={Shilpa},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{68f413a9c0469d2569a40d35f07dcaed}
+      \strng{fullhash}{68f413a9c0469d2569a40d35f07dcaed}
+      \strng{fullhashraw}{68f413a9c0469d2569a40d35f07dcaed}
+      \strng{bibnamehash}{68f413a9c0469d2569a40d35f07dcaed}
+      \strng{authorbibnamehash}{68f413a9c0469d2569a40d35f07dcaed}
+      \strng{authornamehash}{68f413a9c0469d2569a40d35f07dcaed}
+      \strng{authorfullhash}{68f413a9c0469d2569a40d35f07dcaed}
+      \strng{authorfullhashraw}{68f413a9c0469d2569a40d35f07dcaed}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Efficient Approach for Diagnosis and Detection of Alzheimer Diseases Using Deep Learning}
+      \field{year}{2024}
+      \field{pages}{1\bibrangedash 5}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1109/ACROSET62108.2024.10743886
       \endverb
     \endentry
     \entry{Duy2024}{article}{}{}
@@ -407,6 +522,72 @@
       \endverb
       \verb{url}
       \verb https://www.frontiersin.org/journals/aging-neuroscience/articles/10.3389/fnagi.2024.1363458
+      \endverb
+    \endentry
+    \entry{2022Sarang}{article}{}{}
+      \name{author}{7}{}{%
+        {{hash=73774d0d5dec1bb4a9ba7ebaaec84610}{%
+           family={Sharma},
+           familyi={S\bibinitperiod},
+           given={Sarang},
+           giveni={S\bibinitperiod}}}%
+        {{hash=5f8bb1cd056981fb3d47502cbe57dcc8}{%
+           family={Gupta},
+           familyi={G\bibinitperiod},
+           given={Sheifali},
+           giveni={S\bibinitperiod}}}%
+        {{hash=33b7e054004c222743c131c12fb2f441}{%
+           family={Gupta},
+           familyi={G\bibinitperiod},
+           given={Deepali},
+           giveni={D\bibinitperiod}}}%
+        {{hash=5ca22930673c7a42d1d159104be17014}{%
+           family={Altameem},
+           familyi={A\bibinitperiod},
+           given={Ayman},
+           giveni={A\bibinitperiod}}}%
+        {{hash=8f351656ed0b2869c62b32e46e99299b}{%
+           family={Saudagar},
+           familyi={S\bibinitperiod},
+           given={Abdul\bibnamedelimb Khader\bibnamedelima Jilani},
+           giveni={A\bibinitperiod\bibinitdelim K\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=c69424dda77296e8124f3df64fa36d05}{%
+           family={Poonia},
+           familyi={P\bibinitperiod},
+           given={Ramesh\bibnamedelima Chandra},
+           giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=4008266b4234fbd141e00038ea8d82de}{%
+           family={Nayak},
+           familyi={N\bibinitperiod},
+           given={Soumya\bibnamedelima Ranjan},
+           giveni={S\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \strng{namehash}{47fc13dc3b3c16d9722c432e61839f37}
+      \strng{fullhash}{3bdd006f9ae787cc1f128bb29b7f30bd}
+      \strng{fullhashraw}{3bdd006f9ae787cc1f128bb29b7f30bd}
+      \strng{bibnamehash}{47fc13dc3b3c16d9722c432e61839f37}
+      \strng{authorbibnamehash}{47fc13dc3b3c16d9722c432e61839f37}
+      \strng{authornamehash}{47fc13dc3b3c16d9722c432e61839f37}
+      \strng{authorfullhash}{3bdd006f9ae787cc1f128bb29b7f30bd}
+      \strng{authorfullhashraw}{3bdd006f9ae787cc1f128bb29b7f30bd}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2075-4418}
+      \field{journaltitle}{Diagnostics}
+      \field{number}{8}
+      \field{title}{HTLML: Hybrid AI Based Model for Detection of Alzheimer’s Disease}
+      \field{volume}{12}
+      \field{year}{2022}
+      \verb{doi}
+      \verb 10.3390/diagnostics12081833
+      \endverb
+      \verb{urlraw}
+      \verb https://www.mdpi.com/2075-4418/12/8/1833
+      \endverb
+      \verb{url}
+      \verb https://www.mdpi.com/2075-4418/12/8/1833
       \endverb
     \endentry
     \entry{zou2023}{article}{}{}

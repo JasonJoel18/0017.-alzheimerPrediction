@@ -1,21 +1,22 @@
 [0] Config.pm:308> INFO - This is Biber 2.20
 [0] Config.pm:311> INFO - Logfile is 'AlzheimerPrediction.blg'
-[66] biber-darwin:340> INFO - === Wed Dec 11, 2024, 01:47:48
-[83] Biber.pm:420> INFO - Reading 'AlzheimerPrediction.bcf'
-[160] Biber.pm:994> INFO - Found 16 citekeys in bib section 0
-[173] Biber.pm:4463> INFO - Processing section 0
-[185] Biber.pm:4654> INFO - Looking for bibtex file 'mybib.bib' for section 0
-[187] bibtex.pm:1713> INFO - LaTeX decoding ...
-[202] bibtex.pm:1519> INFO - Found BibTeX data source 'mybib.bib'
-[306] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[306] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[306] Biber.pm:4283> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[306] Biber.pm:4289> INFO - No sort tailoring available for locale 'en-US'
-[322] bbl.pm:676> INFO - Writing 'AlzheimerPrediction.bbl' with encoding 'UTF-8'
-[328] bbl.pm:779> INFO - Output to AlzheimerPrediction.bbl
-[330] Biber.pm:131> WARN - legacy month field 'aug' in entry '2019Jo' is not an integer - this will probably not sort properly.
-[330] Biber.pm:131> WARN - I didn't find a database entry for 'sarraf2016' (section 0)
-[330] Biber.pm:131> WARN - I didn't find a database entry for 'kendall2017' (section 0)
-[330] Biber.pm:131> WARN - I didn't find a database entry for 'leibig2017' (section 0)
-[330] Biber.pm:131> WARN - I didn't find a database entry for 'wang2019' (section 0)
-[330] Biber.pm:133> INFO - WARNINGS: 5
+[101] biber-darwin:340> INFO - === Wed Dec 11, 2024, 13:41:16
+[148] Biber.pm:420> INFO - Reading 'AlzheimerPrediction.bcf'
+[500] Biber.pm:994> INFO - Found 17 citekeys in bib section 0
+[552] Biber.pm:4463> INFO - Processing section 0
+[588] Biber.pm:4654> INFO - Looking for bibtex file 'mybib.bib' for section 0
+[595] bibtex.pm:1713> INFO - LaTeX decoding ...
+[685] bibtex.pm:1519> INFO - Found BibTeX data source 'mybib.bib'
+[1326] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1326] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1326] Biber.pm:4283> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[1326] Biber.pm:4289> INFO - No sort tailoring available for locale 'en-US'
+[1393] bbl.pm:676> INFO - Writing 'AlzheimerPrediction.bbl' with encoding 'UTF-8'
+[1413] bbl.pm:779> INFO - Output to AlzheimerPrediction.bbl
+[1419] Biber.pm:131> WARN - legacy month field 'aug' in entry '2019Jo' is not an integer - this will probably not sort properly.
+[1419] Biber.pm:131> WARN - I didn't find a database entry for 'sarraf2016' (section 0)
+[1419] Biber.pm:131> WARN - I didn't find a database entry for 'IslamZhang2021' (section 0)
+[1419] Biber.pm:131> WARN - I didn't find a database entry for 'kendall2017' (section 0)
+[1419] Biber.pm:131> WARN - I didn't find a database entry for 'leibig2017' (section 0)
+[1419] Biber.pm:131> WARN - I didn't find a database entry for 'wang2019' (section 0)
+[1419] Biber.pm:133> INFO - WARNINGS: 6

@@ -4,15 +4,18 @@ import numpy as np
 import warnings
 import tensorflow as tf
 from tensorflow.keras.models import Sequential, Model
-from tensorflow.keras.layers import Dense, Dropout
+from tensorflow.keras.layers import Dense, Dropout, Flatten
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.callbacks import EarlyStopping, LearningRateScheduler
 from sklearn.metrics import classification_report, roc_auc_score, confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
 from tensorflow.keras.applications import EfficientNetB0
+from tensorflow.keras.applications.efficientnet import EfficientNetB0, preprocess_input
 from tensorflow.keras.optimizers import Adamax
 from sklearn.metrics import accuracy_score, recall_score, precision_score, f1_score
+from PIL import Image
+from tensorflow.keras.callbacks import ReduceLROnPlateau
 
 warnings.filterwarnings(action="ignore")
 
@@ -34,38 +37,81 @@ for i, j in enumerate(dict_list):
         filepaths.append(fpath)
         labels.append(class_labels[i])
 
+# Filter out corrupted image files
+valid_filepaths, valid_labels = [], []
+for filepath, label in zip(filepaths, labels):
+    try:
+        with Image.open(filepath) as img:
+            img.verify()  # Verify that the file is not corrupted
+            valid_filepaths.append(filepath)
+            valid_labels.append(label)
+    except (IOError, SyntaxError):
+        print(f"Corrupted image file: {filepath}")
+        
 # Create DataFrame
-data_df = pd.DataFrame({"filepaths": filepaths, "labels": labels})
+data_df = pd.DataFrame({"filepaths": valid_filepaths, "labels": valid_labels})
 print(data_df["labels"].value_counts())
+
 
 # Train-test-validation split
 from sklearn.model_selection import train_test_split
 train_images, test_images = train_test_split(data_df, test_size=0.3, random_state=42)
 train_set, val_set = train_test_split(train_images, test_size=0.2, random_state=42)
 
-# Data augmentation and preprocessing
-def normalize_images(image):
-    return (image - np.mean(image)) / np.std(image)
 
-image_gen = ImageDataGenerator(preprocessing_function=normalize_images)
+image_gen_train = ImageDataGenerator(
+    preprocessing_function=preprocess_input,
+    rotation_range=20,
+    width_shift_range=0.2,
+    height_shift_range=0.2,
+    shear_range=0.2,
+    zoom_range=0.2,
+    horizontal_flip=True
+)
+image_gen_val_test = ImageDataGenerator(
+    preprocessing_function=preprocess_input
+)
 
-train = image_gen.flow_from_dataframe(train_set, x_col="filepaths", y_col="labels",
+
+train = image_gen_train.flow_from_dataframe(train_set, x_col="filepaths", y_col="labels",
                                     target_size=(224, 224), color_mode='rgb',
                                     class_mode="categorical", batch_size=32, shuffle=True)
 
-val = image_gen.flow_from_dataframe(val_set, x_col="filepaths", y_col="labels",
+val = image_gen_val_test.flow_from_dataframe(val_set, x_col="filepaths", y_col="labels",
                                     target_size=(224, 224), color_mode='rgb',
                                     class_mode="categorical", batch_size=32, shuffle=False)
 
-test = image_gen.flow_from_dataframe(test_images, x_col="filepaths", y_col="labels",
+test = image_gen_val_test.flow_from_dataframe(test_images, x_col="filepaths", y_col="labels",
                                     target_size=(224, 224), color_mode='rgb',
                                     class_mode="categorical", batch_size=32, shuffle=False)
+
+
+# def visualize_raw_images(images, actual_labels, class_labels):
+#     plt.figure(figsize=(15, 10))
+    
+#     for i in range(10):
+#         plt.subplot(2, 5, i + 1)
+#         img = images[i]
+        
+#         # Assuming images are already in [0, 1] range or [0, 255], rescale if needed
+#         img = np.clip(img, 0, 255).astype(np.uint8)  # Clipping to valid range and casting to uint8
+        
+#         plt.imshow(img)
+#         plt.axis('off')
+        
+#         actual_label = class_labels[actual_labels[i]]
+        
+#         plt.title(f"Actual: {actual_label}", fontsize=10)
+    
+#     plt.tight_layout()
+#     plt.show()
 
 # Define the model with EfficientNetB0
 base_model = EfficientNetB0(include_top=False, weights="imagenet", input_shape=(224, 224, 3), pooling="avg")
 
 model = Sequential([
     base_model,
+    Flatten(),
     Dense(128, activation='relu'),
     Dropout(0.3),
     Dense(4, activation='softmax')
@@ -77,14 +123,24 @@ model.compile(optimizer=Adamax(learning_rate=0.001),
 
 # Add EarlyStopping and LearningRateScheduler
 early_stopping = EarlyStopping(monitor="val_loss", patience=5, restore_best_weights=True)
-annealer = LearningRateScheduler(lambda x: 1e-3 * 0.95 ** x, verbose=0)
+# annealer = LearningRateScheduler(lambda x: 1e-3 * 0.95 ** x, verbose=0)
 
+reduce_lr = ReduceLROnPlateau(
+    monitor='val_loss', 
+    factor=0.5, 
+    patience=3, 
+    min_lr=1e-6
+)
 # Train the model
-history = model.fit(train, epochs=2, validation_data=val, callbacks=[early_stopping, annealer])
+history = model.fit(train, epochs=2, validation_data=val, callbacks=[early_stopping, reduce_lr])
 
 # Evaluate the model
 test_loss, test_accuracy = model.evaluate(test)
 print(f"Test Accuracy: {test_accuracy:.2f}")
+
+# Save the trained model
+model.save('/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/models/jason_alzheimer_prediction_model.keras')
+print("Model saved successfully.")
 
 from tqdm import tqdm
 import numpy as np
@@ -182,3 +238,67 @@ plt.show()
 threshold = 0.3  # Define uncertainty threshold
 high_uncertainty_count = sum(u > threshold for u in uncertainty)
 print(f"Number of high-uncertainty predictions (uncertainty > {threshold}): {high_uncertainty_count}")
+
+
+
+# Visualization function
+def visualize_predictions_with_uncertainty(images, actual_labels, predicted_labels, uncertainty, class_labels):
+    """
+    Visualize 10 samples with actual label, predicted label, and uncertainty value.
+    
+    Args:
+    - images: List of image tensors.
+    - actual_labels: List of actual labels (indices).
+    - predicted_labels: List of predicted labels (indices).
+    - uncertainty: List of uncertainty values.
+    - class_labels: List of class names.
+    """
+    plt.figure(figsize=(15, 10))
+    
+    for i in range(10):
+        plt.subplot(2, 5, i + 1)
+        img = images[i]
+        
+        # Assuming images are already in [0, 1] range or [0, 255], rescale if needed
+        img = np.clip(img, 0, 255).astype(np.uint8)  # Clipping to valid range and casting to uint8
+        
+        plt.imshow(img)
+        plt.axis('off')
+        
+        actual_label = class_labels[actual_labels[i]]
+        predicted_label = class_labels[predicted_labels[i]]
+        
+        # Check if uncertainty[i] is an array and get the scalar value
+        if isinstance(uncertainty[i], np.ndarray):
+            uncertainty_value = uncertainty[i].flatten()[0]  # Extract the scalar value
+        else:
+            uncertainty_value = uncertainty[i]
+        
+        plt.title(f"Actual: {actual_label}\nPred: {predicted_label}\nUncertainty: {uncertainty_value:.2f}", fontsize=10)
+    
+    plt.tight_layout()
+    plt.show()
+    
+
+# Extract 10 samples from the test set
+sample_images, sample_labels = next(test)  # Get a batch from the test set
+sample_images = sample_images[:10]  # Select the first 10 images
+
+# Make predictions with uncertainty estimation
+mean_preds, uncertainty = predict_with_uncertainty(model, test, n_samples=10)
+
+# Get the predicted labels (index of highest probability class)
+predicted_labels = np.argmax(mean_preds, axis=1)
+
+# Get the actual labels (true values from the batch)
+actual_labels = sample_labels[:10]
+actual_labels_indices = np.argmax(actual_labels, axis=1)
+
+# Visualize the predictions with uncertainty
+visualize_predictions_with_uncertainty(sample_images, actual_labels_indices, predicted_labels, uncertainty[:10], class_labels)
+
+# visualize_raw_images(sample_images, actual_labels_indices, predicted_labels)
+
+# Save the trained model
+model.save('/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/models/jason_alzheimer_prediction_model.keras')
+print("Model saved successfully.")
