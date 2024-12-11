@@ -1,4 +1,4 @@
-\documentclass[10pt,twocolumn]{report}
+\documentclass[12pt,twocolumn]{report}
 
 \usepackage{ulem}
 
@@ -220,32 +220,101 @@ Personally for me this paper is driven by the fact that I have seen many people 
 
 \chapter{Contribution}
 
-The contribution of this thesis paper is to use the advanced Machine Learning algorithms to find a solution to problems of early detection of the Alzheimer's disease. This will include implementing various different advance machine learning models to improve the predicting of the disease based on the MRI images that we are using for this research. The main contributions are such as:
+The contribution of this thesis paper is to use the advanced Machine Learning algorithms to find a solution to problems of early detection of the Alzheimer's disease. This is to provide a novel extension to the community of deep learning models to the Alzheimer’s stage classification.This will include implementing various different advance machine learning models to improve the predicting of the disease based on the MRI images that we are using for this research. The main contributions are such as:
 
-\begin{enumerate}[nosep]
-    \item \textbf{Develop a Machine Learning Model to predict the disease at a Early Stage:} In this research patient's MRI images will be analyzed which are divided into various stages of Alzheimer's and build a Classification Model using these images. This will enable to find a pattern even at a early stage of Alzheimer's find it.
+\begin{enumerate}
+    \item \textbf{ Inclusion of Uncertainty-Aware Framework:} In this research patient's MRI images will be analyzed which are divided into various stages of Alzheimer's and build a Classification Model using these images. Many high performing models are already presend online but in this thesis we will looking one of them and which performed the best and implement Monte Carlo Dropout Uncertainty calcucation so that the confidence of the model can be analyzed. This will help in knowing how confident the model is when predicting the class.
 
-    \sout{ \textbf{Evaluation of Machine Learning and Deep Learning Models:} Multiple traditional and state-of-the-art deep learning models were implemented and compared, including random forests, support vector machines (SVM), and neural networks. The performance of these models was rigorously evaluated using metrics like accuracy, precision, recall, and F1-score to identify the most effective prediction approach.}
+    \item  \textbf{ Improved Model Interpretation:} The addition made to the code to include the Uncertainty indication will help in knowing how confident the model is when predicting the classes. This will also help in the clinical environment where the professionals looking at the results of the models they will not blindly accept the stage of alzheimer's disease, they can check if the model was confident when predicting the class. If not they can furthur review with their senior doctors about the case.
 
-    \sout{ \textbf{Parameter Optimization for Enhanced Accuracy:} A detailed hyperparameter tuning process was undertaken to optimize model performance. Techniques such as grid search and cross-validation were employed to ensure the robustness and generalizability of the selected models.}
+    \item \textbf{ Addition of Uncertainty Score in Predicted Results:}
+    In this thesis a very much necessary steps in the deep learning models when it comes to medical usage are being looked at and included. These additional metrics will ensure that models performance is not evaluated only based on the accuracy but important factors like Uncertainty or confidence is considered so that cases with high uncertainty can be taken for further studies instead of just labeling whatever the model is classifying it as. A well structure visualization framework is put into action to highlight uncertainty for each and every individual predicted images. These information on the visualization will allow clinicians to find and focus on unique and unknown cases, which will allow them to make more informed decision-making.
+    
 
-    \sout{ \textbf{Utilization of Publicly Available Datasets:} The study extensively utilized data from the Open Access Series of Imaging Studies (OASIS), a recognized resource in Alzheimer’s research. This ensured the research adhered to ethical guidelines while leveraging high-quality, real-world data.}
+    \item \textbf{Utilization of Publicly Available Datasets:} The MRI images used for this study is a cleaned dataset which is availabel on kaggle which is sourced from ADNI websites which are the MRI images of actual people with true labels. Since it's is very reliable source this study uses real world data to train the model at the same time following all the ethical guidelines.
+    
+    \item \textbf{Visualization of Uncertainty in Predictions:} By focusing on machine learning approaches, the research aims to provide scalable and cost-effective solutions for early AD diagnosis. This could significantly improve accessibility, especially in resource-constrained settings where sophisticated imaging technologies are not viable.
 
-    \sout{ \textbf{Early Detection Potential with Cost-Effective Solutions:} By focusing on machine learning approaches, the research aims to provide scalable and cost-effective solutions for early AD diagnosis. This could significantly improve accessibility, especially in resource-constrained settings where sophisticated imaging technologies are not viable.}
+    \item \textbf{New addition will make it possible for this to be applied in a clinical setup:} By introduction Uncertainty into account when classifying the Alzheimer’s Disease into multiple classes this thesis reseach will help reducing the rist of wrong diagnosis in a medical setup who are ready to introduce AI into for their diagnostics setup. It is especially important in medical field as misdiagnosis might cause a major problems in a persons life.
 
-    \sout{ \textbf{Contributions to Medical AI Research:} Beyond practical applications, this study contributes to the broader field of medical AI by exploring the interpretability of predictive models. Attention was given to ensuring that model predictions align with known clinical findings, thereby increasing trust in machine learning applications for healthcare.}
-
-    \sout{ \textbf{Open-Source Codebase and Documentation:} To facilitate future research, the methodologies, datasets, and source code have been documented comprehensively. The study encourages replication and extension of the findings by other researchers in the domain.}
+    \item \textbf{Contribution to the AD community as well as open sourcing these projects:} The code used for this thesis will be open to everyone to view and as this will allow to access and reproduce this models for further studies. By adding Uncertainty to these already well performing models this reasearch further improves the the communities acceptence of these new technologies into their system, as it also allows human proffessionals to take things into their hands the models is not so sure how to react the unexpected situations.
 
 \end{enumerate}
 
-These contributions underscore the potential of advanced AI techniques in transforming Alzheimer’s Disease diagnosis, offering hope for timely interventions and improved patient outcomes.
 
-\chapter{Related Work}
-Your introduction goes here.
 
 \chapter{Literature Review}
-Your literature review goes here.
+
+In the recent years have seen a impressive amount of progress in the utilization of the deep learning models for the Alzheimer’s Disease detection based on the MRI data. And alot of advancement focus on how to improve, how accurately the model predicts the Disease of how accurately it classifies the images or data into different classes. Whereas the integration of Uncertainty calculation is something that is not explored too much, nevertheless. In this Literature review the previous research papers are being studied and will be compared and seen if there are any gaps in the study that can be full filled.
+
+\section{Overview of techniques used on MRI}
+All thanks to the impressive technology of the Magnetic Resonance Imaging(MRI), Alzheimer's disease (AD) can be detected at a very early stage compared to earlier. The 3 Dimensional high quality images of brain captured using MRI machines provide a view of our brain with which we can find the patterns in the parts of the brain like temporal regions and hippocampal region which helps in diagnose of the Alzheimer’s Disease. By taking a look at the white matter integrity and functional connectivity, the help of diffusion tensor imaging (DTI) and functional magnetic resonance imaging (fMRI) make amazing contributions to this. Methods such as cortical thickness measurement and voxel-based morphometry have been widely used for quantitative analysis of structural changes and brain volume\cite{zou2023}.
+
+Recently, there have been studies that are going on to create synthetic longitudinal MRI images for Alzheimer's disease using a conditional diffusion model. Diffusion models are are excellent at producing high-quality images with consistent training, which are used in this strategy. The models can produce realistic target pictures that mimic the course of the disease by using the time interval and the source MRI scan as conditioning elements. This strategy may be able to get around the drawbacks of current techniques like GANs and VAEs, which can have unstable, undiversified, or hazy results. The suggested model offers a useful tool for Alzheimer's disease research and clinical applications, producing high-fidelity synthetic MRI scans with encouraging findings\cite{Duy2024}.
+
+
+\section{Using Deep Learning for Alzheimer’s Detection}
+The most common type of dementia that causes a lot of trouble for  millions of people worldwide is Alzheimer's disease (AD). In order to manage symptoms and maybe reduce the progression of the disease, early recognition of AD is essential\cite{2023ShenLiu}.Conventional diagnosis techniques depend on radiologists' subjective and time-consuming manual review of brain imaging data. And that is where Deep Learning brings an serious advantage over the time consuming tasks. Deep Learning models can predict these kind of tasks with the mater of seconds.
+
+With the use of deep neural networds we have see an amazing results in the recent years. Using the MRI data, and deep learning neural networks in prediction of the early detection of the Alzheimer’s Disease has been a very promision method with great acccuracy. The convolutional neural networks as well as the recurrent neural netword have have drastically improve the prediction for this desease when compared to the traditionaL Machine Learning alternatives. This is because the Deep Learning models are able undertand the complex nature of the high dementional data that are used in training these models and to capture the brain image\cite{2019Jo}. Recent improvements in the this field, specially deep leaning have changed the landscape of the Alzheimer’s Detection. It is able to provide an objective and efficient solution.
+
+% In a study by Liu et al. (2019), the authors employed deep learning methods to classify MRI images into different stages of Alzheimer’s, achieving an accuracy of 93\%. Another notable work by Zhang et al. (2021) utilized convolutional neural networks (CNNs) to extract features from MRI data, obtaining a classification accuracy of 94\%. These results highlight the effectiveness of deep learning models in early AD detection.
+
+% However, despite the impressive performance of these models, a major challenge remains: the uncertainty associated with deep learning predictions. Deep learning models, while powerful, often lack interpretability and do not provide an uncertainty measure, which is crucial in medical applications where misdiagnosis can have serious consequences.
+
+% Deep learning approaches have been widely adopted for analyzing MRI data due to their ability to capture complex patterns. Table~\ref{tab:methods_comparison} summarizes key studies in this domain.%
+
+\begin{table*}[h!]
+    \centering
+    \caption{Comparison of Studies on Alzheimer’s Disease Detection}
+    \label{tab:methods_comparison}
+    \begin{tabular}{|p{4cm}|p{3cm}|p{3cm}|p{2cm}|p{2cm}|}
+        \hline
+        \textbf{Study} & \textbf{Dataset} & \textbf{Model} & \textbf{Accuracy} & \textbf{Limitations} \\ \hline
+        Sharma, Sarang (2022)\cite{2022Sarang} & Kaggle & Deep Learning model & 91.75\% & Lacks uncertainty estimation \\ \hline
+        Desai, Maitri(2024)\cite{2024Desai} & OASIS & Multi-Task CNN & 91.0\% & Limited generalizability \\ \hline
+        Sarraf et al. (2016) \cite{sarraf2016} & ADNI & AlexNet & 89.5\% & High false negatives \\ \hline
+        Islam and Zhang (2021) & Custom MRI Dataset & ResNet-50 & 94.7\% & No reliability assessment \\ \hline
+    \end{tabular}
+\end{table*}
+
+\noindent As shown in Table~\ref{tab:methods_comparison}, the primary focus of these studies has been on improving classification accuracy. However, none of the studies address the reliability of predictions, which is crucial for clinical deployment.
+
+
+\section{Uncertainty Estimation in Medical Imaging}
+
+Uncertainty estimation techniques, such as Monte Carlo (MC) Dropout and Bayesian Neural Networks, have been explored in other areas of medical imaging but are largely absent in Alzheimer’s disease detection. Table~\ref{tab:uncertainty_methods} provides an overview of studies incorporating uncertainty estimation in medical imaging.
+
+\begin{table*}[h!]
+  \centering
+  \caption{Studies Incorporating Uncertainty Estimation in Medical Imaging}
+  \label{tab:methods_comparison}
+  \begin{tabular}{|p{4cm}|p{3cm}|p{3cm}|p{2cm}|}
+      \hline
+      \textbf{Study} & \textbf{Domain} & \textbf{Technique} & \textbf{Uncertainty Measure} \\ \hline
+      Kendall and Gal (2017) \cite{kendall2017} & Segmentation & MC Dropout & Epistemic, Aleatoric \\ \hline
+      Leibig et al. (2017) \cite{leibig2017} & Diabetic Retinopathy & Bayesian NN & Model uncertainty \\ \hline
+      Wang et al. (2019) \cite{wang2019} & Lung Nodule Detection & MC Dropout & Prediction confidence \\ \hline
+\end{tabular}
+\end{table*}
+
+\noindent These studies demonstrate the potential of uncertainty estimation in improving model reliability and interpretability. However, their application to Alzheimer’s disease detection remains unaddressed.
+
+
+
+\section{Research Gaps}
+While the studies reviewed demonstrate high accuracy, they fail to address:
+\begin{enumerate}
+    \item \textbf{Uncertainty Awareness:} Essential for clinical implementation.
+    \item \textbf{Generalizability:} Robustness across datasets.
+    \item \textbf{Visualization:} Intuitive display of predictions for clinicians.
+\end{enumerate}
+
+\subsection{Summary}
+
+This review highlights that while deep learning has achieved significant advancements in Alzheimer’s disease detection, its integration into clinical practice requires improvements in model reliability, interpretability, and generalizability. By addressing these gaps through the incorporation of uncertainty estimation techniques, this thesis aims to enhance the trustworthiness and applicability of deep learning models in healthcare.
+
+
 
 \chapter{Methodology}
 Your methodology goes here.

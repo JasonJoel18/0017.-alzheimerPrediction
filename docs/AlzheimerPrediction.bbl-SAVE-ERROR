@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex bbl format version 3.2 $
+% $ biblatex bbl format version 3.3 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -18,8 +18,8 @@
 
 
 \refsection{0}
-  \datalist[entry]{nty/global//global/global}
-    \entry{2012131}{article}{}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{2012131}{article}{}{}
       \field{sortinit}{2}
       \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labeltitlesource}{title}
@@ -42,7 +42,7 @@
       \endverb
       \keyw{Alzheimer's disease Dementia,Diagnostic criteria,Prevalence,Incidence,Mortality,Caregivers,Family caregiver,Spouse caregiver,Health care costs,Health care expenditures,Long-term care costs,Hospice care costs,Medicare spending,Medicaid spending,Live alone,Living arrangements,Unmet needs}
     \endentry
-    \entry{2019321}{article}{}
+    \entry{2019321}{article}{}{}
       \name{author}{1}{}{%
         {{hash=4c88a1138ed688de70add198ff1fb0b9}{%
            family={Association},
@@ -52,10 +52,12 @@
       }
       \strng{namehash}{4c88a1138ed688de70add198ff1fb0b9}
       \strng{fullhash}{4c88a1138ed688de70add198ff1fb0b9}
+      \strng{fullhashraw}{4c88a1138ed688de70add198ff1fb0b9}
       \strng{bibnamehash}{4c88a1138ed688de70add198ff1fb0b9}
       \strng{authorbibnamehash}{4c88a1138ed688de70add198ff1fb0b9}
       \strng{authornamehash}{4c88a1138ed688de70add198ff1fb0b9}
       \strng{authorfullhash}{4c88a1138ed688de70add198ff1fb0b9}
+      \strng{authorfullhashraw}{4c88a1138ed688de70add198ff1fb0b9}
       \field{sortinit}{A}
       \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
       \field{labelnamesource}{author}
@@ -80,7 +82,7 @@
       \endverb
       \keyw{Alzheimer's disease,Alzheimer's dementia,Dementia,Diagnostic criteria,Risk factors,Prevalence,Incidence,Mortality,Morbidity,Caregivers,Family caregiver,Spouse caregiver,Health care professional,Health care costs,Health care expenditures,Long-term care costs,Medicare spending,Medicaid spending,Brief cognitive assessment,Primary care physician,Medicare Annual Wellness Visit,Early detection}
     \endentry
-    \entry{mayo_alzheimers_2024}{article}{}
+    \entry{mayo_alzheimers_2024}{article}{}{}
       \name{author}{1}{}{%
         {{hash=dc57de6010935465d2f186a7616c138d}{%
            family={Clinic},
@@ -90,10 +92,12 @@
       }
       \strng{namehash}{dc57de6010935465d2f186a7616c138d}
       \strng{fullhash}{dc57de6010935465d2f186a7616c138d}
+      \strng{fullhashraw}{dc57de6010935465d2f186a7616c138d}
       \strng{bibnamehash}{dc57de6010935465d2f186a7616c138d}
       \strng{authorbibnamehash}{dc57de6010935465d2f186a7616c138d}
       \strng{authornamehash}{dc57de6010935465d2f186a7616c138d}
       \strng{authorfullhash}{dc57de6010935465d2f186a7616c138d}
+      \strng{authorfullhashraw}{dc57de6010935465d2f186a7616c138d}
       \field{sortinit}{C}
       \field{sortinithash}{4d103a86280481745c9c897c925753c0}
       \field{labelnamesource}{author}
@@ -108,7 +112,7 @@
       \verb https://www.mayoclinic.org/diseases-conditions/alzheimers-disease/symptoms-causes/syc-20350447
       \endverb
     \endentry
-    \entry{Cummings2024}{article}{}
+    \entry{Cummings2024}{article}{}{}
       \name{author}{5}{}{%
         {{hash=ef8d5963741dc94bd63f3d747e8f7957}{%
            family={Cummings},
@@ -141,10 +145,12 @@
       }
       \strng{namehash}{fd7e77cd1209bcfa715281191fda134b}
       \strng{fullhash}{e9450fdc2e9ae408fb02c8cbbae2c9a5}
+      \strng{fullhashraw}{e9450fdc2e9ae408fb02c8cbbae2c9a5}
       \strng{bibnamehash}{fd7e77cd1209bcfa715281191fda134b}
       \strng{authorbibnamehash}{fd7e77cd1209bcfa715281191fda134b}
       \strng{authornamehash}{fd7e77cd1209bcfa715281191fda134b}
       \strng{authorfullhash}{e9450fdc2e9ae408fb02c8cbbae2c9a5}
+      \strng{authorfullhashraw}{e9450fdc2e9ae408fb02c8cbbae2c9a5}
       \field{sortinit}{C}
       \field{sortinithash}{4d103a86280481745c9c897c925753c0}
       \field{labelnamesource}{author}
@@ -160,7 +166,44 @@
       \verb 10.1007/s40259-023-00633-2
       \endverb
     \endentry
-    \entry{Ewers2011}{article}{}
+    \entry{Duy2024}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=77d5bb5766d493806528903bcabd10a3}{%
+           family={Duy\bibnamedelima Phuong},
+           familyi={D\bibinitperiod\bibinitdelim P\bibinitperiod},
+           given={Dao},
+           giveni={D\bibinitperiod}}}%
+        {{hash=8caf120c569acb0fd41608cd83d11ad0}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Hyung-Jeong},
+           giveni={H\bibinithyphendelim J\bibinitperiod}}}%
+        {{hash=01d673db20301eeee6e7a282cc56be32}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Jahae},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{c7bdf6a20b06174f3cf6951ce735a7dc}
+      \strng{fullhash}{c7bdf6a20b06174f3cf6951ce735a7dc}
+      \strng{fullhashraw}{c7bdf6a20b06174f3cf6951ce735a7dc}
+      \strng{bibnamehash}{c7bdf6a20b06174f3cf6951ce735a7dc}
+      \strng{authorbibnamehash}{c7bdf6a20b06174f3cf6951ce735a7dc}
+      \strng{authornamehash}{c7bdf6a20b06174f3cf6951ce735a7dc}
+      \strng{authorfullhash}{c7bdf6a20b06174f3cf6951ce735a7dc}
+      \strng{authorfullhashraw}{c7bdf6a20b06174f3cf6951ce735a7dc}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{11}
+      \field{title}{Conditional Diffusion Model for Longitudinal Medical Image Generation}
+      \field{year}{2024}
+      \verb{doi}
+      \verb 10.48550/arXiv.2411.05860
+      \endverb
+    \endentry
+    \entry{Ewers2011}{article}{}{}
       \name{author}{5}{}{%
         {{hash=e22c9b96e574e21442daa83290a763cb}{%
            family={Ewers},
@@ -193,10 +236,12 @@
       }
       \strng{namehash}{becee31403896add76d84edf4f87eafe}
       \strng{fullhash}{5c3c38aa2332b88a2dfa237921ac8909}
+      \strng{fullhashraw}{5c3c38aa2332b88a2dfa237921ac8909}
       \strng{bibnamehash}{becee31403896add76d84edf4f87eafe}
       \strng{authorbibnamehash}{becee31403896add76d84edf4f87eafe}
       \strng{authornamehash}{becee31403896add76d84edf4f87eafe}
       \strng{authorfullhash}{5c3c38aa2332b88a2dfa237921ac8909}
+      \strng{authorfullhashraw}{5c3c38aa2332b88a2dfa237921ac8909}
       \field{sortinit}{E}
       \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
       \field{labelnamesource}{author}
@@ -209,7 +254,87 @@
       \field{pages}{430\bibrangedash 442}
       \range{pages}{13}
     \endentry
-    \entry{10.3389/fnagi.2024.1363458}{article}{}
+    \entry{2019Jo}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=99dd4eb01efcc17ce0c5338818ef278f}{%
+           family={Jo},
+           familyi={J\bibinitperiod},
+           given={T},
+           giveni={T\bibinitperiod}}}%
+        {{hash=a7c5453f01bf12e46f5458187df65c1f}{%
+           family={Nho},
+           familyi={N\bibinitperiod},
+           given={K},
+           giveni={K\bibinitperiod}}}%
+        {{hash=a6ad062e817c1fc741c3c682694cc845}{%
+           family={Saykin},
+           familyi={S\bibinitperiod},
+           given={AJ},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{e271ce0a0b948931771b3ee7c6557365}
+      \strng{fullhash}{e271ce0a0b948931771b3ee7c6557365}
+      \strng{fullhashraw}{e271ce0a0b948931771b3ee7c6557365}
+      \strng{bibnamehash}{e271ce0a0b948931771b3ee7c6557365}
+      \strng{authorbibnamehash}{e271ce0a0b948931771b3ee7c6557365}
+      \strng{authornamehash}{e271ce0a0b948931771b3ee7c6557365}
+      \strng{authorfullhash}{e271ce0a0b948931771b3ee7c6557365}
+      \strng{authorfullhashraw}{e271ce0a0b948931771b3ee7c6557365}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Frontiers in Aging Neuroscience}
+      \field{month}{8}
+      \field{title}{Deep Learning in Alzheimer's Disease: Diagnostic Classification and Prognostic Prediction Using Neuroimaging Data}
+      \field{volume}{11}
+      \field{year}{2019}
+      \field{pages}{220}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3389/fnagi.2019.00220
+      \endverb
+    \endentry
+    \entry{2023ShenLiu}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=92faacc6874983183ce7fb86e39f31ec}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=33fab335390275bd54eb0f5594874778}{%
+           family={Masurkar},
+           familyi={M\bibinitperiod},
+           given={A.V.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=86cedc0eb114d9de2e34a17aaad425ec}{%
+           family={Rusinek},
+           familyi={R\bibinitperiod},
+           given={H.\bibnamedelimi et\bibnamedelima al.},
+           giveni={H\bibinitperiod\bibinitdelim e\bibinitperiod\bibinitdelim a\bibinitperiod}}}%
+      }
+      \strng{namehash}{c9f481b1f6b8f5fffb1f7065ae83451f}
+      \strng{fullhash}{c9f481b1f6b8f5fffb1f7065ae83451f}
+      \strng{fullhashraw}{c9f481b1f6b8f5fffb1f7065ae83451f}
+      \strng{bibnamehash}{c9f481b1f6b8f5fffb1f7065ae83451f}
+      \strng{authorbibnamehash}{c9f481b1f6b8f5fffb1f7065ae83451f}
+      \strng{authornamehash}{c9f481b1f6b8f5fffb1f7065ae83451f}
+      \strng{authorfullhash}{c9f481b1f6b8f5fffb1f7065ae83451f}
+      \strng{authorfullhashraw}{c9f481b1f6b8f5fffb1f7065ae83451f}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Scientific Reports}
+      \field{number}{1}
+      \field{title}{Generalizable deep learning model for early Alzheimer's disease detection from structural MRIs}
+      \field{volume}{12}
+      \field{year}{2022}
+      \verb{doi}
+      \verb 10.1038/s41598-022-20674-x
+      \endverb
+    \endentry
+    \entry{10.3389/fnagi.2024.1363458}{article}{}{}
       \name{author}{9}{}{%
         {{hash=8fa8e2695ecb3bca27e81097e9b4ee8e}{%
            family={Mi},
@@ -259,10 +384,12 @@
       }
       \strng{namehash}{9aea54531a14662b08b836bc76629276}
       \strng{fullhash}{dd63514db7551b9e8219bf03d85ec9a3}
+      \strng{fullhashraw}{dd63514db7551b9e8219bf03d85ec9a3}
       \strng{bibnamehash}{9aea54531a14662b08b836bc76629276}
       \strng{authorbibnamehash}{9aea54531a14662b08b836bc76629276}
       \strng{authornamehash}{9aea54531a14662b08b836bc76629276}
       \strng{authorfullhash}{dd63514db7551b9e8219bf03d85ec9a3}
+      \strng{authorfullhashraw}{dd63514db7551b9e8219bf03d85ec9a3}
       \field{sortinit}{M}
       \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
       \field{labelnamesource}{author}
@@ -282,7 +409,70 @@
       \verb https://www.frontiersin.org/journals/aging-neuroscience/articles/10.3389/fnagi.2024.1363458
       \endverb
     \endentry
+    \entry{zou2023}{article}{}{}
+      \name{author}{6}{}{%
+        {{hash=abecd9cea7e3bbe91365bfefdeb0566f}{%
+           family={Zou},
+           familyi={Z\bibinitperiod},
+           given={Ke},
+           giveni={K\bibinitperiod}}}%
+        {{hash=768e8bbe6bcd1d406ff7f225f500f995}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Zhihao},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=702c84567e5d6f711dfd071cef98c852}{%
+           family={Yuan},
+           familyi={Y\bibinitperiod},
+           given={Xuedong},
+           giveni={X\bibinitperiod}}}%
+        {{hash=9986611266313b7ade5986477de0cb86}{%
+           family={Shen},
+           familyi={S\bibinitperiod},
+           given={Xiaojing},
+           giveni={X\bibinitperiod}}}%
+        {{hash=00b734eb3fb588e4c6c94e4271080d0b}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Meng},
+           giveni={M\bibinitperiod}}}%
+        {{hash=a21d8ed9c42aacc78cd26af8cfed8847}{%
+           family={Fu},
+           familyi={F\bibinitperiod},
+           given={Huazhu},
+           giveni={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{04298112769b50f6e4c4a38bc50216b2}
+      \strng{fullhash}{72284e209f63666328894b40b5e2a9c9}
+      \strng{fullhashraw}{72284e209f63666328894b40b5e2a9c9}
+      \strng{bibnamehash}{04298112769b50f6e4c4a38bc50216b2}
+      \strng{authorbibnamehash}{04298112769b50f6e4c4a38bc50216b2}
+      \strng{authornamehash}{04298112769b50f6e4c4a38bc50216b2}
+      \strng{authorfullhash}{72284e209f63666328894b40b5e2a9c9}
+      \strng{authorfullhashraw}{72284e209f63666328894b40b5e2a9c9}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{eess.IV}
+      \field{eprinttype}{arXiv}
+      \field{title}{A Review of Uncertainty Estimation and its Application in Medical Imaging}
+      \field{year}{2023}
+      \verb{eprint}
+      \verb 2302.08119
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2302.08119
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2302.08119
+      \endverb
+    \endentry
   \enddatalist
+  \missing{kendall2017}
+  \missing{leibig2017}
+  \missing{sarraf2016}
+  \missing{wang2019}
 \endrefsection
 \endinput
 

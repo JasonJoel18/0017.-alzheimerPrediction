@@ -128,7 +128,7 @@ def show_knee_images(image_gen):
     plt.show()
     
     
-    show_knee_images(train)
+# show_knee_images(train)
     
 
 
@@ -172,62 +172,62 @@ model1.evaluate(test, verbose=1)
 
 # model1.save("/Volumes/Jason's T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/models/model1.h5")
 
-# pred = model1.predict(test)
-# pred = np.argmax(pred, axis=1) #pick class with highest  probability
+pred = model1.predict(test)
+pred = np.argmax(pred, axis=1) #pick class with highest  probability
 
-# labels = (train.class_indices)
-# labels = dict((v,k) for k,v in labels.items())
-# pred2 = [labels[k] for k in pred]
+labels = (train.class_indices)
+labels = dict((v,k) for k,v in labels.items())
+pred2 = [labels[k] for k in pred]
 
-# plt.plot(history1.history['accuracy'] + history1.history['accuracy'])
-# plt.plot(history1.history['val_accuracy'] + history1.history['val_accuracy'])
-# plt.title('model1 accuracy')
-# plt.ylabel('accuracy')
-# plt.xlabel('epoch')
-# plt.legend(['train', 'val'], loc='upper left')
-# plt.show()
+plt.plot(history1.history['accuracy'] + history1.history['accuracy'])
+plt.plot(history1.history['val_accuracy'] + history1.history['val_accuracy'])
+plt.title('model1 accuracy')
+plt.ylabel('accuracy')
+plt.xlabel('epoch')
+plt.legend(['train', 'val'], loc='upper left')
+plt.show()
 
-# plt.plot(history1.history['loss'] + history1.history['loss'])
-# plt.plot(history1.history['val_loss'] + history1.history['val_loss'])
-# plt.title('model1 loss')
-# plt.ylabel('loss')
-# plt.xlabel('epoch')
-# plt.legend(['train', 'val'], loc='upper left')
-# plt.show()
-
-
-# from sklearn.metrics import confusion_matrix, accuracy_score
-
-# y_test = test_images.labels # set y_test to the expected output
-# print(classification_report(y_test, pred2))
-# print("Accuracy of the Model1:","{:.1f}%".format(accuracy_score(y_test, pred2)*100))
+plt.plot(history1.history['loss'] + history1.history['loss'])
+plt.plot(history1.history['val_loss'] + history1.history['val_loss'])
+plt.title('model1 loss')
+plt.ylabel('loss')
+plt.xlabel('epoch')
+plt.legend(['train', 'val'], loc='upper left')
+plt.show()
 
 
-# import matplotlib.pyplot as plt
-# import seaborn as sns
-# from sklearn.metrics import confusion_matrix
+from sklearn.metrics import confusion_matrix, accuracy_score
 
-# # Define the class labels
-# class_labels = ['Mild Demented', 'Moderate Demented', 'Non Demented', 'Very MildDemented']
+y_test = test_images.labels # set y_test to the expected output
+print(classification_report(y_test, pred2))
+print("Accuracy of the Model1:","{:.1f}%".format(accuracy_score(y_test, pred2)*100))
 
-# # Calculate the confusion matrix
-# cm = confusion_matrix(y_test, pred2)
 
-# # Create a figure and plot the confusion matrix as a heatmap
-# plt.figure(figsize=(10, 5))
-# sns.heatmap(cm, annot=True, fmt='g', vmin=0, cmap='Blues')
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.metrics import confusion_matrix
 
-# # Set tick labels and axis labels
-# plt.xticks(ticks=[0.5, 1.5, 2.5, 3.5], labels=class_labels)
-# plt.yticks(ticks=[0.5, 1.5, 2.5, 3.5], labels=class_labels)
-# plt.xlabel("Predicted")
-# plt.ylabel("Actual")
+# Define the class labels
+class_labels = ['Mild Demented', 'Moderate Demented', 'Non Demented', 'Very MildDemented']
 
-# # Set the title
-# plt.title("Confusion Matrix")
+# Calculate the confusion matrix
+cm = confusion_matrix(y_test, pred2)
 
-# # Show the plot
-# plt.show()
+# Create a figure and plot the confusion matrix as a heatmap
+plt.figure(figsize=(10, 5))
+sns.heatmap(cm, annot=True, fmt='g', vmin=0, cmap='Blues')
+
+# Set tick labels and axis labels
+plt.xticks(ticks=[0.5, 1.5, 2.5, 3.5], labels=class_labels)
+plt.yticks(ticks=[0.5, 1.5, 2.5, 3.5], labels=class_labels)
+plt.xlabel("Predicted")
+plt.ylabel("Actual")
+
+# Set the title
+plt.title("Confusion Matrix")
+
+# Show the plot
+plt.show()
 
 
 
