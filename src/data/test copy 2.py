@@ -302,3 +302,65 @@ visualize_predictions_with_uncertainty(sample_images, actual_labels_indices, pre
 # Save the trained model
 model.save('/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/models/jason_alzheimer_prediction_model.keras')
 print("Model saved successfully.")
+
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+import matplotlib.patches as patches
+
+def visualize_predictions_with_uncertainty(images, actual_labels, predicted_labels, uncertainty, class_labels):
+    """
+    Visualize 10 samples with actual label, predicted label, and confidence bar with indicator.
+    
+    Args:
+    - images: List of image tensors.
+    - actual_labels: List of actual labels (indices).
+    - predicted_labels: List of predicted labels (indices).
+    - uncertainty: List of uncertainty values (higher uncertainty means lower confidence).
+    - class_labels: List of class names.
+    """
+    # Create a figure with 10 subplots (2 rows, 5 columns)
+    fig, axes = plt.subplots(2, 5, figsize=(15, 10))
+    
+    for i in range(10):
+        ax_img = axes[i // 5, i % 5]  # Get the appropriate axis for the image
+        ax_bar = ax_img.inset_axes([0.0, -0.3, 1.0, 0.2])  # Create an inset axis for the confidence bar, lower than image
+
+        # Display the image
+        img = images[i]
+        img = np.clip(img, 0, 255).astype(np.uint8)  # Ensure valid range for images
+        ax_img.imshow(img)
+        ax_img.axis('off')  # Hide axes for better clarity of the image
+        
+        # Get the actual and predicted labels
+        actual_label = class_labels[actual_labels[i]]
+        predicted_label = class_labels[predicted_labels[i]]
+        
+        # Calculate uncertainty and confidence
+        if isinstance(uncertainty[i], np.ndarray):
+            uncertainty_value = uncertainty[i].flatten()[0]
+        else:
+            uncertainty_value = uncertainty[i]
+        
+        confidence = 1 - uncertainty_value  # Confidence is the inverse of uncertainty
+        
+        # Display title on top of the image
+        ax_img.set_title(f"Actual: {actual_label}\nPred: {predicted_label}\nUncertainty: {uncertainty_value:.2f}", fontsize=10)
+        
+        # Create a gradient bar for the confidence
+        ax_bar.imshow(np.linspace(0, 1, 100).reshape(1, -1), aspect='auto', cmap='RdYlGn')  # Gradient from red to green
+        
+        # Add a vertical line to show the confidence level on the bar
+        ax_bar.plot([confidence * 100, confidence * 100], [0, 1], color='black', lw=2)  # Vertical line indicating confidence
+        
+        # Add the confidence value at the center of the bar
+        ax_bar.text(50, 0.5, f'{confidence * 100:.2f}%', ha='center', va='center', color='black', fontsize=12, fontweight='bold')
+
+        ax_bar.set_xlim(0, 100)  # Set limits for the bar to go from 0 to 100 (percentage scale)
+        ax_bar.axis('off')  # Hide axes for the confidence bar
+
+    # Adjust layout to prevent overlap and make space for the confidence bars
+    plt.tight_layout()
+    plt.show()
+visualize_predictions_with_uncertainty(sample_images, actual_labels_indices, predicted_labels, uncertainty[:10], class_labels)
