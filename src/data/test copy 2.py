@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from tensorflow.keras.applications import EfficientNetB0
 from tensorflow.keras.optimizers import Adamax
+from sklearn.metrics import accuracy_score, recall_score, precision_score, f1_score
 
 warnings.filterwarnings(action="ignore")
 
@@ -20,7 +21,6 @@ MildDemented_dir = '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017
 ModerateDemented_dir = '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/ModerateDemented'
 NonDemented_dir = '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/NonDemented'
 VeryMildDemented_dir = '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/VeryMildDemented'
-
 
 # Load dataset
 filepaths, labels = [], []
@@ -50,16 +50,16 @@ def normalize_images(image):
 image_gen = ImageDataGenerator(preprocessing_function=normalize_images)
 
 train = image_gen.flow_from_dataframe(train_set, x_col="filepaths", y_col="labels",
-                                      target_size=(224, 224), color_mode='rgb',
-                                      class_mode="categorical", batch_size=32, shuffle=True)
+                                    target_size=(224, 224), color_mode='rgb',
+                                    class_mode="categorical", batch_size=32, shuffle=True)
 
 val = image_gen.flow_from_dataframe(val_set, x_col="filepaths", y_col="labels",
                                     target_size=(224, 224), color_mode='rgb',
                                     class_mode="categorical", batch_size=32, shuffle=False)
 
 test = image_gen.flow_from_dataframe(test_images, x_col="filepaths", y_col="labels",
-                                     target_size=(224, 224), color_mode='rgb',
-                                     class_mode="categorical", batch_size=32, shuffle=False)
+                                    target_size=(224, 224), color_mode='rgb',
+                                    class_mode="categorical", batch_size=32, shuffle=False)
 
 # Define the model with EfficientNetB0
 base_model = EfficientNetB0(include_top=False, weights="imagenet", input_shape=(224, 224, 3), pooling="avg")
@@ -72,8 +72,8 @@ model = Sequential([
 ])
 
 model.compile(optimizer=Adamax(learning_rate=0.001),
-              loss='categorical_crossentropy',
-              metrics=['accuracy'])
+            loss='categorical_crossentropy',
+            metrics=['accuracy'])
 
 # Add EarlyStopping and LearningRateScheduler
 early_stopping = EarlyStopping(monitor="val_loss", patience=5, restore_best_weights=True)
@@ -86,79 +86,99 @@ history = model.fit(train, epochs=2, validation_data=val, callbacks=[early_stopp
 test_loss, test_accuracy = model.evaluate(test)
 print(f"Test Accuracy: {test_accuracy:.2f}")
 
-# ROC-AUC Score
+from tqdm import tqdm
+import numpy as np
+import pandas as pd
+import tensorflow as tf
+from sklearn.metrics import classification_report, accuracy_score, recall_score, precision_score, f1_score, confusion_matrix
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Monte Carlo Dropout for uncertainty estimation
+def predict_with_uncertainty(model, dataset, n_samples=10):
+    predictions = []
+
+    # Loop over the dataset iterator with tqdm progress bar
+    for _ in tqdm(range(n_samples), desc="Monte Carlo Sampling", dynamic_ncols=True):
+        # Get a batch of images from the iterator
+        images, _ = next(dataset)
+        
+        # Enable Dropout during inference
+        preds = model(images, training=True)  # Enable Dropout during inference
+        predictions.append(preds)
+    
+    predictions = tf.stack(predictions, axis=0)  # Shape: [n_samples, batch_size, num_classes]
+    mean_preds = tf.reduce_mean(predictions, axis=0).numpy()  # Mean predictions
+    uncertainty = tf.math.reduce_std(predictions, axis=0).numpy()  # Uncertainty
+    return mean_preds, uncertainty
+
+# Evaluate predictions on test set
+mean_predictions, uncertainty = predict_with_uncertainty(model, test, n_samples=10)
+
+# Get the true labels
 y_true = test.classes
-y_probs = model.predict(test)
-roc_auc = roc_auc_score(y_true, y_probs, multi_class="ovr")
-print(f"ROC-AUC Score: {roc_auc:.2f}")
 
-# Confusion Matrix
-preds = np.argmax(y_probs, axis=1)
-cm = confusion_matrix(y_true, preds)
+# Calculate classification metrics
+y_pred = np.argmax(mean_predictions, axis=1)
+report = classification_report(y_true, y_pred, target_names=class_labels, output_dict=True)
 
-# Plot Confusion Matrix
-plt.figure(figsize=(10, 5))
-sns.heatmap(cm, annot=True, fmt='g', cmap='Blues', xticklabels=class_labels, yticklabels=class_labels)
-plt.xlabel("Predicted")
-plt.ylabel("Actual")
+# Display metrics
+class_metrics = pd.DataFrame(report).transpose()
+print("\nPer-Class Metrics:")
+print(class_metrics)
+
+# --------------------------------------------------------------
+# Metrics Calculation: Accuracy, Recall, Precision, F1-score
+# --------------------------------------------------------------
+accuracy = accuracy_score(y_true, y_pred)
+recall = recall_score(y_true, y_pred, average=None)
+precision = precision_score(y_true, y_pred, average=None)
+f1 = f1_score(y_true, y_pred, average=None)
+
+print(f"Accuracy: {accuracy:.2f}")
+print(f"Recall (per class): {recall}")
+print(f"Precision (per class): {precision}")
+print(f"F1 Score (per class): {f1}")
+
+# --------------------------------------------------------------
+# Micro, Macro, and Weighted Averages
+# --------------------------------------------------------------
+micro_avg_recall = recall_score(y_true, y_pred, average='micro')
+macro_avg_recall = recall_score(y_true, y_pred, average='macro')
+weighted_avg_recall = recall_score(y_true, y_pred, average='weighted')
+
+micro_avg_precision = precision_score(y_true, y_pred, average='micro')
+macro_avg_precision = precision_score(y_true, y_pred, average='macro')
+weighted_avg_precision = precision_score(y_true, y_pred, average='weighted')
+
+micro_avg_f1 = f1_score(y_true, y_pred, average='micro')
+macro_avg_f1 = f1_score(y_true, y_pred, average='macro')
+weighted_avg_f1 = f1_score(y_true, y_pred, average='weighted')
+
+print(f"Micro Average Recall: {micro_avg_recall:.2f}")
+print(f"Macro Average Recall: {macro_avg_recall:.2f}")
+print(f"Weighted Average Recall: {weighted_avg_recall:.2f}")
+
+print(f"Micro Average Precision: {micro_avg_precision:.2f}")
+print(f"Macro Average Precision: {macro_avg_precision:.2f}")
+print(f"Weighted Average Precision: {weighted_avg_precision:.2f}")
+
+print(f"Micro Average F1: {micro_avg_f1:.2f}")
+print(f"Macro Average F1: {macro_avg_f1:.2f}")
+print(f"Weighted Average F1: {weighted_avg_f1:.2f}")
+
+# --------------------------------------------------------------
+# Confusion Matrix with Uncertainty
+# --------------------------------------------------------------
+cm = confusion_matrix(y_true, y_pred)
+plt.figure(figsize=(10, 8))
+sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", xticklabels=class_labels, yticklabels=class_labels)
+plt.xlabel("Predicted Labels")
+plt.ylabel("True Labels")
 plt.title("Confusion Matrix")
 plt.show()
 
-# Grad-CAM for explainability
-# Generate Grad-CAM heatmap function
-def generate_gradcam(model, image, class_idx, layer_name):
-    # Ensure the layer_name is correct
-    layer_output = model.get_layer(layer_name).output
-    
-    # Define Grad-CAM model
-    grad_model = Model(inputs=model.input, outputs=[layer_output, model.output])
-    
-    # Compute gradients
-    with tf.GradientTape() as tape:
-        conv_outputs, predictions = grad_model(image)
-        loss = predictions[:, class_idx]
-    grads = tape.gradient(loss, conv_outputs)
-    
-    # Pool gradients over spatial dimensions
-    pooled_grads = tf.reduce_mean(grads, axis=(0, 1, 2))
-    
-    # Weight the convolution outputs
-    conv_outputs = conv_outputs[0]
-    heatmap = tf.reduce_sum(pooled_grads * conv_outputs, axis=-1)
-    
-    # Normalize the heatmap
-    heatmap = np.maximum(heatmap, 0) / np.max(heatmap)
-    return heatmap.numpy()
-
-# Test Dataset
-sample_image, sample_label = next(iter(test))
-class_idx = np.argmax(sample_label[0])
-
-# Fix: Call the model to initialize it
-_ = model.predict(tf.expand_dims(sample_image[0], axis=0))
-
-# Check layer names to ensure layer_name exists
-print("Model Layers:")
-for layer in model.layers:
-    print(layer.name)
-
-# Specify the correct layer name
-layer_name = "last_conv_layer"  # Replace with the correct name from your model
-
-# Generate Grad-CAM
-heatmap = generate_gradcam(model, tf.expand_dims(sample_image[0], axis=0), class_idx, layer_name)
-
-# Visualize Grad-CAM
-plt.imshow(sample_image[0])
-plt.imshow(heatmap, cmap="jet", alpha=0.5)
-plt.title(f"Grad-CAM for Class {class_labels[class_idx]}")
-plt.show()
-
-# Monte Carlo Dropout for uncertainty estimation
-n_samples = 100
-predictions = np.array([model.predict(test) for _ in range(n_samples)])
-mean_prediction = predictions.mean(axis=0)
-uncertainty = predictions.var(axis=0)
-
-print("Mean Prediction: ", mean_prediction)
-print("Uncertainty: ", uncertainty)
+# Highlight high-uncertainty predictions
+threshold = 0.3  # Define uncertainty threshold
+high_uncertainty_count = sum(u > threshold for u in uncertainty)
+print(f"Number of high-uncertainty predictions (uncertainty > {threshold}): {high_uncertainty_count}")
