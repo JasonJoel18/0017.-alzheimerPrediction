@@ -17,13 +17,16 @@ from sklearn.metrics import accuracy_score, recall_score, precision_score, f1_sc
 from PIL import Image
 from tensorflow.keras.callbacks import ReduceLROnPlateau
 
+ep = 2
+bs = 32
+
 warnings.filterwarnings(action="ignore")
 
 # Paths to the dataset
-MildDemented_dir = '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data/external/MildDemented'
-ModerateDemented_dir = '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data/external/ModerateDemented'
-NonDemented_dir = '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data/external/NonDemented'
-VeryMildDemented_dir = '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data/external/VeryMildDemented'
+MildDemented_dir = '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/MildDemented'
+ModerateDemented_dir = '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/ModerateDemented'
+NonDemented_dir = '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/NonDemented'
+VeryMildDemented_dir = '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/VeryMildDemented'
 
 # Load dataset
 filepaths, labels = [], []
@@ -55,8 +58,8 @@ print(data_df["labels"].value_counts())
 
 # Train-test-validation split
 from sklearn.model_selection import train_test_split
-train_images, test_images = train_test_split(data_df, test_size=0.3, random_state=42)
-train_set, val_set = train_test_split(train_images, test_size=0.2, random_state=42)
+train_set, test_images = train_test_split(data_df, test_size=0.3, random_state=42)
+val_set, test_images  = train_test_split(test_images, test_size=0.5, random_state=42)
 
 
 image_gen_train = ImageDataGenerator(
@@ -75,17 +78,19 @@ image_gen_val_test = ImageDataGenerator(
 
 train = image_gen_train.flow_from_dataframe(train_set, x_col="filepaths", y_col="labels",
                                     target_size=(224, 224), color_mode='rgb',
-                                    class_mode="categorical", batch_size=32, shuffle=True)
+                                    class_mode="categorical", batch_size=bs, shuffle=True)
 
 val = image_gen_val_test.flow_from_dataframe(val_set, x_col="filepaths", y_col="labels",
                                     target_size=(224, 224), color_mode='rgb',
-                                    class_mode="categorical", batch_size=32, shuffle=False)
+                                    class_mode="categorical", batch_size=bs, shuffle=False)
 
 test = image_gen_val_test.flow_from_dataframe(test_images, x_col="filepaths", y_col="labels",
                                     target_size=(224, 224), color_mode='rgb',
-                                    class_mode="categorical", batch_size=32, shuffle=False)
+                                    class_mode="categorical", batch_size=bs, shuffle=False)
 
-
+print(f'Train images:{len(train_set)}')
+print(f'Val images:{len(val_set)}')
+print(f'Test images:{len(test_images)}')
 # def visualize_raw_images(images, actual_labels, class_labels):
 #     plt.figure(figsize=(15, 10))
     
@@ -132,15 +137,27 @@ reduce_lr = ReduceLROnPlateau(
     min_lr=1e-6
 )
 # Train the model
-history = model.fit(train, epochs=2, validation_data=val, callbacks=[early_stopping, reduce_lr])
+history = model.fit(train, epochs=ep, validation_data=val, callbacks=[early_stopping, reduce_lr])
 
 # Evaluate the model
 test_loss, test_accuracy = model.evaluate(test)
 print(f"Test Accuracy: {test_accuracy:.2f}")
 
 # Save the trained model
-model.save('/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/models/jason_alzheimer_prediction_model.keras')
+num_train_images = len(train_set)
+model_save_path = f'/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/models/jason_alzheimer_prediction_model_{num_train_images}_images_{ep}_epochs.keras'
+model.save(model_save_path)
 print("Model saved successfully.")
+
+
+# =================================================================
+# =================================================================
+# =================================================================
+# =================================================================
+# =================================================================
+
+
+model = tf.keras.models.load_model('/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/models/jason_alzheimer_prediction_model.keras')
 
 from tqdm import tqdm
 import numpy as np
@@ -151,88 +168,84 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # Monte Carlo Dropout for uncertainty estimation
-def predict_with_uncertainty(model, dataset, n_samples=10):
+def predict_with_uncertainty(model, dataset, n_samples=5):
     predictions = []
+    total_batches = len(dataset)
+    pbar_outer = tqdm(total=n_samples, desc="Monte Carlo Sampling", dynamic_ncols=True)
 
-    # Loop over the dataset iterator with tqdm progress bar
-    for _ in tqdm(range(n_samples), desc="Monte Carlo Sampling", dynamic_ncols=True):
-        # Get a batch of images from the iterator
-        images, _ = next(dataset)
-        
-        # Enable Dropout during inference
-        preds = model(images, training=True)  # Enable Dropout during inference
-        predictions.append(preds)
-    
-    predictions = tf.stack(predictions, axis=0)  # Shape: [n_samples, batch_size, num_classes]
-    mean_preds = tf.reduce_mean(predictions, axis=0).numpy()  # Mean predictions
-    uncertainty = tf.math.reduce_std(predictions, axis=0).numpy()  # Uncertainty
+    for sample_idx in range(n_samples):
+        batch_preds = []
+        dataset.reset()
+        pbar_inner = tqdm(total=total_batches, position=1, leave=False, desc=f"Processing Sample {sample_idx + 1}/{n_samples}", ncols=80)
+
+        for batch_idx, (images, _) in enumerate(dataset):
+            if batch_idx >= total_batches:
+                break
+
+            # print(f"Processing batch {batch_idx + 1}/{total_batches}")
+            preds = model(images, training=True)
+            batch_preds.append(preds.numpy())
+            pbar_inner.update(1)
+        pbar_inner.close()
+        predictions.append(np.vstack(batch_preds))
+        pbar_outer.update(1)
+    pbar_outer.close()
+    predictions = np.stack(predictions, axis=0)
+    mean_preds = np.mean(predictions, axis=0)
+    uncertainty = np.std(predictions, axis=0)
+
     return mean_preds, uncertainty
 
 # Evaluate predictions on test set
-mean_predictions, uncertainty = predict_with_uncertainty(model, test, n_samples=10)
+mean_predictions, uncertainty = predict_with_uncertainty(model, test, n_samples=5)
 
 # Get the true labels
 y_true = test.classes
 
-# Calculate classification metrics
-y_pred = np.argmax(mean_predictions, axis=1)
+y_true = np.array(y_true)  # Ensure y_true is a numpy array if it's not already
+y_pred = np.argmax(mean_predictions, axis=1)  # Assuming mean_predictions is the model's output
+
+# Generate the classification report
 report = classification_report(y_true, y_pred, target_names=class_labels, output_dict=True)
 
-# Display metrics
+# Convert the classification report to a DataFrame
 class_metrics = pd.DataFrame(report).transpose()
-print("\nPer-Class Metrics:")
-print(class_metrics)
 
-# --------------------------------------------------------------
-# Metrics Calculation: Accuracy, Recall, Precision, F1-score
-# --------------------------------------------------------------
-accuracy = accuracy_score(y_true, y_pred)
-recall = recall_score(y_true, y_pred, average=None)
-precision = precision_score(y_true, y_pred, average=None)
-f1 = f1_score(y_true, y_pred, average=None)
+# Calculate per-class accuracy
+class_accuracy = [np.sum(y_pred == idx) / len(y_true) for idx in range(len(class_labels))]
 
-print(f"Accuracy: {accuracy:.2f}")
-print(f"Recall (per class): {recall}")
-print(f"Precision (per class): {precision}")
-print(f"F1 Score (per class): {f1}")
+# Add per-class accuracy to the DataFrame
+class_metrics.loc[class_labels, 'accuracy'] = class_accuracy
 
-# --------------------------------------------------------------
-# Micro, Macro, and Weighted Averages
-# --------------------------------------------------------------
-micro_avg_recall = recall_score(y_true, y_pred, average='micro')
-macro_avg_recall = recall_score(y_true, y_pred, average='macro')
-weighted_avg_recall = recall_score(y_true, y_pred, average='weighted')
+# Calculate overall accuracy for macro, micro, and weighted averages
+accuracy_macro = np.mean(class_accuracy)  # Average of per-class accuracy
+accuracy_micro = np.sum(y_pred == y_true) / len(y_true)  # Micro average (total correct predictions)
+accuracy_weighted = np.average(class_accuracy, weights=[np.sum(y_true == i) for i in range(len(class_labels))])  # Weighted average
 
-micro_avg_precision = precision_score(y_true, y_pred, average='micro')
-macro_avg_precision = precision_score(y_true, y_pred, average='macro')
-weighted_avg_precision = precision_score(y_true, y_pred, average='weighted')
+# Update the averages in the DataFrame
+class_metrics.loc['macro avg', 'accuracy'] = accuracy_macro
+class_metrics.loc['micro avg', 'accuracy'] = accuracy_micro
+class_metrics.loc['weighted avg', 'accuracy'] = accuracy_weighted
 
-micro_avg_f1 = f1_score(y_true, y_pred, average='micro')
-macro_avg_f1 = f1_score(y_true, y_pred, average='macro')
-weighted_avg_f1 = f1_score(y_true, y_pred, average='weighted')
+# Micro average for precision, recall, and f1-score
+precision_micro = precision_score(y_true, y_pred, average='micro')
+recall_micro = recall_score(y_true, y_pred, average='micro')
+f1_micro = f1_score(y_true, y_pred, average='micro')
 
-print(f"Micro Average Recall: {micro_avg_recall:.2f}")
-print(f"Macro Average Recall: {macro_avg_recall:.2f}")
-print(f"Weighted Average Recall: {weighted_avg_recall:.2f}")
+# Update the DataFrame with micro averages for precision, recall, and f1-score
+class_metrics.loc['micro avg', 'precision'] = precision_micro
+class_metrics.loc['micro avg', 'recall'] = recall_micro
+class_metrics.loc['micro avg', 'f1-score'] = f1_micro
 
-print(f"Micro Average Precision: {micro_avg_precision:.2f}")
-print(f"Macro Average Precision: {macro_avg_precision:.2f}")
-print(f"Weighted Average Precision: {weighted_avg_precision:.2f}")
+# Display the updated DataFrame
+print("\nPer-Class Metrics with Micro Averages:")
+class_metrics
 
-print(f"Micro Average F1: {micro_avg_f1:.2f}")
-print(f"Macro Average F1: {macro_avg_f1:.2f}")
-print(f"Weighted Average F1: {weighted_avg_f1:.2f}")
 
 # --------------------------------------------------------------
 # Confusion Matrix with Uncertainty
 # --------------------------------------------------------------
-cm = confusion_matrix(y_true, y_pred)
-plt.figure(figsize=(10, 8))
-sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", xticklabels=class_labels, yticklabels=class_labels)
-plt.xlabel("Predicted Labels")
-plt.ylabel("True Labels")
-plt.title("Confusion Matrix")
-plt.show()
+
 
 # Highlight high-uncertainty predictions
 threshold = 0.3  # Define uncertainty threshold
@@ -296,12 +309,6 @@ actual_labels_indices = np.argmax(actual_labels, axis=1)
 
 # Visualize the predictions with uncertainty
 visualize_predictions_with_uncertainty(sample_images, actual_labels_indices, predicted_labels, uncertainty[:10], class_labels)
-
-# visualize_raw_images(sample_images, actual_labels_indices, predicted_labels)
-
-# Save the trained model
-model.save('/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/models/jason_alzheimer_prediction_model.keras')
-print("Model saved successfully.")
 
 
 

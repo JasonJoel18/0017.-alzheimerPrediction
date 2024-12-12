@@ -1,167 +1,159 @@
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.metrics import classification_report, confusion_matrix
+import os
 import pandas as pd
+import numpy as np
+import warnings
+import tensorflow as tf
+from tensorflow.keras.models import Sequential, Model
+from tensorflow.keras.layers import Dense, Dropout, Flatten
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.callbacks import EarlyStopping, LearningRateScheduler
+from sklearn.metrics import classification_report, roc_auc_score, confusion_matrix
+import matplotlib.pyplot as plt
 import seaborn as sns
+from tensorflow.keras.applications import EfficientNetB0
+from tensorflow.keras.applications.efficientnet import EfficientNetB0, preprocess_input
+from tensorflow.keras.optimizers import Adamax
+from sklearn.metrics import accuracy_score, recall_score, precision_score, f1_score
+from PIL import Image
+from tensorflow.keras.callbacks import ReduceLROnPlateau
 
-class_names = ['Mild Demented', 'Moderate Demented', 'Non Demented', 'Very MildDemented']
+warnings.filterwarnings(action="ignore")
 
-# --------------------------------------------------------------
-# Uncertainty-Aware Model Evaluation
-# --------------------------------------------------------------
-def evaluate_model_with_uncertainty(mc_model, dataset, class_names, n_samples=10):
-    """
-    Evaluate the model with uncertainty estimation using Monte Carlo Dropout.
+# Paths to the dataset
+MildDemented_dir = '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/MildDemented'
+ModerateDemented_dir = '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/ModerateDemented'
+NonDemented_dir = '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/NonDemented'
+VeryMildDemented_dir = '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/VeryMildDemented'
 
-    Args:
-    - mc_model: Trained TensorFlow model with Dropout enabled.
-    - dataset: tf.data.Dataset to evaluate.
-    - class_names: List of class names.
-    - n_samples: Number of Monte Carlo samples for uncertainty estimation.
+# Load dataset
+filepaths, labels = [], []
+class_labels = ['Mild Demented', 'Moderate Demented', 'Non Demented', 'Very MildDemented']
+dict_list = [MildDemented_dir, ModerateDemented_dir, NonDemented_dir, VeryMildDemented_dir]
 
-    Returns:
-    - metrics_df: DataFrame containing per-class metrics.
-    - avg_metrics: Dictionary of micro, macro, and weighted averages.
-    - true_labels: Ground truth labels.
-    - mean_predictions: Mean predictions across Monte Carlo samples.
-    - uncertainty: Uncertainty (standard deviation) across Monte Carlo samples.
-    """
-    true_labels = []
-    mean_predictions = []
-    uncertainty_list = []
+for i, j in enumerate(dict_list):
+    flist = os.listdir(j)
+    for f in flist:
+        fpath = os.path.join(j, f)
+        filepaths.append(fpath)
+        labels.append(class_labels[i])
 
-    for images, labels in dataset:
-        # Monte Carlo Sampling
-        predictions = []
-        for _ in range(n_samples):
-            preds = mc_model(images, training=True)  # Enable Dropout
-            predictions.append(preds)
+# Filter out corrupted image files
+valid_filepaths, valid_labels = [], []
+for filepath, label in zip(filepaths, labels):
+    try:
+        with Image.open(filepath) as img:
+            img.verify()  # Verify that the file is not corrupted
+            valid_filepaths.append(filepath)
+            valid_labels.append(label)
+    except (IOError, SyntaxError):
+        print(f"Corrupted image file: {filepath}")
         
-        predictions = tf.stack(predictions, axis=0)  # Shape: [n_samples, batch_size, num_classes]
-        mean_preds = tf.reduce_mean(predictions, axis=0).numpy()  # Mean predictions
-        uncertainty = tf.math.reduce_std(predictions, axis=0).numpy()  # Uncertainty
-        
-        mean_predictions.extend(np.argmax(mean_preds, axis=1))  # Predicted labels
-        uncertainty_list.extend(np.max(uncertainty, axis=1))  # Max uncertainty per prediction
-        true_labels.extend(np.argmax(labels, axis=1))  # True labels
+# Create DataFrame
+data_df = pd.DataFrame({"filepaths": valid_filepaths, "labels": valid_labels})
+print(data_df["labels"].value_counts())
 
-    # Classification Report
-    report = classification_report(
-        true_labels,
-        mean_predictions,
-        target_names=class_names,
-        output_dict=True,
-        zero_division=0
-    )
-    
-    metrics_df = pd.DataFrame(report).transpose()
-    class_metrics = metrics_df.iloc[:-3, :]  # Exclude averages
-    avg_metrics = metrics_df.iloc[-3:, :]  # Micro, macro, weighted averages
 
-    return class_metrics, avg_metrics, true_labels, mean_predictions, uncertainty_list
+# Train-test-validation split
+from sklearn.model_selection import train_test_split
+train_set, test_images = train_test_split(data_df, test_size=0.3, random_state=42)
+val_set, test_images  = train_test_split(test_images, test_size=0.5, random_state=42)
 
-# Evaluate the model
-class_metrics, avg_metrics, true_labels, mean_predictions, uncertainties = evaluate_model_with_uncertainty(
-    model, test_dataset, class_names, n_samples=10
+
+image_gen_train = ImageDataGenerator(
+    preprocessing_function=preprocess_input,
+    rotation_range=20,
+    width_shift_range=0.2,
+    height_shift_range=0.2,
+    shear_range=0.2,
+    zoom_range=0.2,
+    horizontal_flip=True
+)
+image_gen_val_test = ImageDataGenerator(
+    preprocessing_function=preprocess_input
 )
 
-# Display metrics
-print("\nPer-Class Metrics:")
-print(class_metrics.to_string(index=True))
-print("\nAverage Metrics:")
-print(avg_metrics.to_string(index=True))
 
-# --------------------------------------------------------------
-# Confusion Matrix with Uncertainty
-# --------------------------------------------------------------
-def plot_uncertainty_confusion_matrix(true_labels, predictions, uncertainties, class_names, threshold=0.3):
-    """
-    Plot a confusion matrix highlighting uncertain predictions.
+train = image_gen_train.flow_from_dataframe(train_set, x_col="filepaths", y_col="labels",
+                                    target_size=(224, 224), color_mode='rgb',
+                                    class_mode="categorical", batch_size=6)
 
-    Args:
-    - true_labels: Ground truth labels.
-    - predictions: Predicted labels.
-    - uncertainties: List of uncertainty values for predictions.
-    - class_names: List of class names.
-    - threshold: Uncertainty threshold to flag high-uncertainty predictions.
-    """
-    cm = confusion_matrix(true_labels, predictions)
-    plt.figure(figsize=(10, 8))
-    sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", xticklabels=class_names, yticklabels=class_names)
-    plt.xlabel("Predicted Labels")
-    plt.ylabel("True Labels")
-    plt.title("Confusion Matrix")
-    plt.show()
+val = image_gen_val_test.flow_from_dataframe(val_set, x_col="filepaths", y_col="labels",
+                                    target_size=(224, 224), color_mode='rgb',
+                                    class_mode="categorical", batch_size=6)
 
-    # Highlight high-uncertainty predictions
-    high_uncertainty_count = sum(u > threshold for u in uncertainties)
-    print(f"Number of high-uncertainty predictions (uncertainty > {threshold}): {high_uncertainty_count}")
+test = image_gen_val_test.flow_from_dataframe(test_images, x_col="filepaths", y_col="labels",
+                                    target_size=(224, 224), color_mode='rgb',
+                                    class_mode="categorical", batch_size=6)
 
-plot_uncertainty_confusion_matrix(true_labels, mean_predictions, uncertainties, class_names)
+print(f'Train images:{len(train_set)}')
+print(f'Val images:{len(val_set)}')
+print(f'Test images:{len(test_images)}')
 
-# --------------------------------------------------------------
-# Visualization with Uncertainty
-# --------------------------------------------------------------
+from tqdm import tqdm
 import numpy as np
-import matplotlib.pyplot as plt
+import pandas as pd
 import tensorflow as tf
+from sklearn.metrics import classification_report, accuracy_score, recall_score, precision_score, f1_score, confusion_matrix
+import seaborn as sns
+import matplotlib.pyplot as plt
 
-def visualize_predictions_with_uncertainty(mc_model, dataset, class_names, uncertainties, num_images=10):
-    """
-    Visualize predictions, highlighting uncertain ones and adding color indicators for uncertainty.
+model = tf.keras.models.load_model('/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/models/jason_alzheimer_prediction_model.keras')
 
-    Args:
-    - mc_model: Trained TensorFlow model with Dropout enabled.
-    - dataset: tf.data.Dataset to evaluate.
-    - class_names: List of class names.
-    - uncertainties: List of uncertainty values for predictions.
-    - num_images: Number of images to display.
-    """
-    uncertainties = np.array(uncertainties)  # Ensure uncertainties are in numpy format
-    
-    dataset = dataset.unbatch()
-    dataset = dataset.batch(num_images)
+import numpy as np
+from tqdm import tqdm
 
-    for images, labels in dataset.take(1):  # Take one batch of data
-        preds = []
-        for _ in range(10):  # Monte Carlo sampling
-            preds.append(mc_model(images, training=True))  # Enable dropout
+# Monte Carlo Dropout for uncertainty estimation
+def predict_with_uncertainty(model, dataset, n_samples=1):
+    predictions = []
+    total_batches = len(dataset)
+    pbar_outer = tqdm(total=n_samples, desc="Monte Carlo Sampling", dynamic_ncols=True)
 
-        preds = tf.reduce_mean(tf.stack(preds, axis=0), axis=0).numpy()
-        predicted_labels = np.argmax(preds, axis=1)
-        true_labels = np.argmax(labels.numpy(), axis=1)
+    for sample_idx in range(n_samples):
+        batch_preds = []
+        dataset.reset()
+        pbar_inner = tqdm(total=total_batches, position=1, leave=False, desc=f"Processing Sample {sample_idx + 1}/{n_samples}", ncols=80)
 
-        images = (images + 1) / 2.0  # Scale images to [0, 1]
+        for batch_idx, (images, _) in enumerate(dataset):
+            if batch_idx >= total_batches:
+                break
 
-        plt.figure(figsize=(15, 10))
-        for i in range(min(num_images, len(images))):
-            plt.subplot(2, 5, i + 1)
-            img = images[i].numpy()
-            plt.imshow(img)
+            # print(f"Processing batch {batch_idx + 1}/{total_batches}")
+            preds = model(images, training=True)
+            batch_preds.append(preds.numpy())
+            pbar_inner.update(1)
+        pbar_inner.close()
+        predictions.append(np.vstack(batch_preds))
+        pbar_outer.update(1)
+    pbar_outer.close()
+    predictions = np.stack(predictions, axis=0)
+    mean_preds = np.mean(predictions, axis=0)
+    uncertainty = np.std(predictions, axis=0)
 
-            true_label = class_names[true_labels[i]]
-            pred_label = class_names[predicted_labels[i]]
-            uncertainty = uncertainties[i]  # Match uncertainty to this index
+    return mean_preds, uncertainty
 
-            # Determine the color based on uncertainty
-            if uncertainty < 0.2:
-                indicator_color = "green"  # 🟢
-            elif 0.2 <= uncertainty < 0.4:
-                indicator_color = "yellow"  # 🟡
-            else:
-                indicator_color = "red"  # 🔴
+# Evaluate the model with Monte Carlo Dropout on the test dataset
+mean_predictions, uncertainty = predict_with_uncertainty(model, test, n_samples=1)
 
-            # Set color based on correctness
-            title_color = "green" if true_label == pred_label else "red"
-            plt.title(f"True: {true_label}\nPred: {pred_label}\nUnc: {uncertainty:.3f}", color=title_color)
-            plt.axis('off')
 
-            # Add a colored dot as uncertainty indicator
-            plt.scatter(0.05, 0.05, s=100, c=indicator_color, transform=plt.gca().transAxes, marker='o')
+# Get the true labels
+y_true = test.classes
 
-        plt.tight_layout()
-        plt.show()
-        
+# Ensure y_pred aligns with the entire test set
+y_pred = np.argmax(mean_predictions, axis=1)
 
-# Visualize predictions with uncertainty
-visualize_predictions_with_uncertainty(model, test_dataset, class_names, uncertainties)
+
+y_true_test = np.array(y_true) 
+print(y_pred.shape)
+print(y_true_test.shape)
+
+assert len(y_true) == len(y_pred), "Mismatch between true labels and predictions."
+
+# Generate classification report
+report = classification_report(y_true, y_pred, target_names=class_labels, output_dict=True)
+
+
+
+# Display per-class metrics
+class_metrics = pd.DataFrame(report).transpose()
+print("\nPer-Class Metrics:")
+print(class_metrics)
