@@ -251,90 +251,30 @@ class_metrics
 threshold = 0.3  # Define uncertainty threshold
 high_uncertainty_count = sum(u > threshold for u in uncertainty)
 print(f"Number of high-uncertainty predictions (uncertainty > {threshold}): {high_uncertainty_count}")
-
-
-
-# Visualization function
-def visualize_predictions_with_uncertainty(images, actual_labels, predicted_labels, uncertainty, class_labels):
-    """
-    Visualize 10 samples with actual label, predicted label, and uncertainty value.
-    
-    Args:
-    - images: List of image tensors.
-    - actual_labels: List of actual labels (indices).
-    - predicted_labels: List of predicted labels (indices).
-    - uncertainty: List of uncertainty values.
-    - class_labels: List of class names.
-    """
-    plt.figure(figsize=(15, 10))
-    
-    for i in range(10):
-        plt.subplot(2, 5, i + 1)
-        img = images[i]
-        
-        # Assuming images are already in [0, 1] range or [0, 255], rescale if needed
-        img = np.clip(img, 0, 255).astype(np.uint8)  # Clipping to valid range and casting to uint8
-        
-        plt.imshow(img)
-        plt.axis('off')
-        
-        actual_label = class_labels[actual_labels[i]]
-        predicted_label = class_labels[predicted_labels[i]]
-        
-        # Check if uncertainty[i] is an array and get the scalar value
-        if isinstance(uncertainty[i], np.ndarray):
-            uncertainty_value = uncertainty[i].flatten()[0]  # Extract the scalar value
-        else:
-            uncertainty_value = uncertainty[i]
-        
-        plt.title(f"Actual: {actual_label}\nPred: {predicted_label}\nUncertainty: {uncertainty_value:.2f}", fontsize=10)
-    
-    plt.tight_layout()
-    plt.show()
     
 
-# Extract 10 samples from the test set
-sample_images, sample_labels = next(test)  # Get a batch from the test set
-sample_images = sample_images[:10]  # Select the first 10 images
-
-# Make predictions with uncertainty estimation
+sample_images, sample_labels = next(test)
+sample_images = sample_images[:10]
 mean_preds, uncertainty = predict_with_uncertainty(model, test, n_samples=10)
-
-# Get the predicted labels (index of highest probability class)
 predicted_labels = np.argmax(mean_preds, axis=1)
-
-# Get the actual labels (true values from the batch)
 actual_labels = sample_labels[:10]
 actual_labels_indices = np.argmax(actual_labels, axis=1)
-
-# Visualize the predictions with uncertainty
-visualize_predictions_with_uncertainty(sample_images, actual_labels_indices, predicted_labels, uncertainty[:10], class_labels)
-
 
 
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib.colors as mcolors
 
+
 def visualize_predictions_with_uncertainty(images, actual_labels, predicted_labels, uncertainty, class_labels):
-    """
-    Visualize 10 samples with actual label, predicted label, and confidence bar with indicator.
-    
-    Args:
-    - images: List of image tensors.
-    - actual_labels: List of actual labels (indices).
-    - predicted_labels: List of predicted labels (indices).
-    - uncertainty: List of uncertainty values (higher uncertainty means lower confidence).
-    - class_labels: List of class names.
-    """
     # Create a figure with 10 subplots (2 rows, 5 columns), more compact size
     fig, axes = plt.subplots(2, 5, figsize=(15, 8))  # Adjusted figure size to make it more compact
-    plt.subplots_adjust(hspace=0.2, wspace=0.2)  # Reduced space between subplots
+    plt.subplots_adjust(hspace=0.5, wspace=0.2)  # Adjust space between subplots for better clarity
     
     for i in range(10):
         ax_img = axes[i // 5, i % 5]  # Get the appropriate axis for the image
-        ax_bar = ax_img.inset_axes([0.0, -0.25, 1.0, 0.15])  # Make space for the confidence bar closer to image
-
+        ax_bar = ax_img.inset_axes([0.0, -0.25, 1.0, 0.1])  # Make space for the confidence bar closer to image
+        
         # Display the image
         img = images[i]
         img = np.clip(img, 0, 255).astype(np.uint8)  # Ensure valid range for images
@@ -363,8 +303,8 @@ def visualize_predictions_with_uncertainty(images, actual_labels, predicted_labe
         # Add a vertical line to show the confidence level on the bar
         ax_bar.plot([confidence * 100, confidence * 100], [0, 1], color='black', lw=2)  # Vertical line indicating confidence
         
-        # Add the confidence value at the center of the bar
-        ax_bar.text(50, 0.5, f'{confidence * 100:.2f}%', ha='center', va='center', color='black', fontsize=12, fontweight='bold')
+        # Add the confidence value just below the image, centered
+        ax_img.text(0.5, -0.1, f'{confidence * 100:.2f}%', ha='center', va='center', color='black', fontsize=12, fontweight='bold', transform=ax_img.transAxes)
 
         ax_bar.set_xlim(0, 100)  # Set limits for the bar to go from 0 to 100 (percentage scale)
         ax_bar.axis('off')  # Hide axes for the confidence bar
@@ -372,4 +312,5 @@ def visualize_predictions_with_uncertainty(images, actual_labels, predicted_labe
     # Final adjustments for compact spacing and clean layout
     plt.tight_layout()
     plt.show()
+
 visualize_predictions_with_uncertainty(sample_images, actual_labels_indices, predicted_labels, uncertainty[:10], class_labels)
