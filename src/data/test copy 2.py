@@ -20,10 +20,10 @@ from tensorflow.keras.callbacks import ReduceLROnPlateau
 warnings.filterwarnings(action="ignore")
 
 # Paths to the dataset
-MildDemented_dir = '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/MildDemented'
-ModerateDemented_dir = '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/ModerateDemented'
-NonDemented_dir = '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/NonDemented'
-VeryMildDemented_dir = '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/VeryMildDemented'
+MildDemented_dir = '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data/external/MildDemented'
+ModerateDemented_dir = '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data/external/ModerateDemented'
+NonDemented_dir = '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data/external/NonDemented'
+VeryMildDemented_dir = '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data/external/VeryMildDemented'
 
 # Load dataset
 filepaths, labels = [], []
@@ -307,7 +307,7 @@ print("Model saved successfully.")
 
 import matplotlib.pyplot as plt
 import numpy as np
-import matplotlib.patches as patches
+import matplotlib.colors as mcolors
 
 def visualize_predictions_with_uncertainty(images, actual_labels, predicted_labels, uncertainty, class_labels):
     """
@@ -320,12 +320,13 @@ def visualize_predictions_with_uncertainty(images, actual_labels, predicted_labe
     - uncertainty: List of uncertainty values (higher uncertainty means lower confidence).
     - class_labels: List of class names.
     """
-    # Create a figure with 10 subplots (2 rows, 5 columns)
-    fig, axes = plt.subplots(2, 5, figsize=(15, 10))
+    # Create a figure with 10 subplots (2 rows, 5 columns), more compact size
+    fig, axes = plt.subplots(2, 5, figsize=(15, 8))  # Adjusted figure size to make it more compact
+    plt.subplots_adjust(hspace=0.2, wspace=0.2)  # Reduced space between subplots
     
     for i in range(10):
         ax_img = axes[i // 5, i % 5]  # Get the appropriate axis for the image
-        ax_bar = ax_img.inset_axes([0.0, -0.3, 1.0, 0.2])  # Create an inset axis for the confidence bar, lower than image
+        ax_bar = ax_img.inset_axes([0.0, -0.25, 1.0, 0.15])  # Make space for the confidence bar closer to image
 
         # Display the image
         img = images[i]
@@ -346,10 +347,11 @@ def visualize_predictions_with_uncertainty(images, actual_labels, predicted_labe
         confidence = 1 - uncertainty_value  # Confidence is the inverse of uncertainty
         
         # Display title on top of the image
-        ax_img.set_title(f"Actual: {actual_label}\nPred: {predicted_label}\nUncertainty: {uncertainty_value:.2f}", fontsize=10)
+        ax_img.set_title(f"Actual: {actual_label}\nPred: {predicted_label}", fontsize=10, loc='center')
         
-        # Create a gradient bar for the confidence
-        ax_bar.imshow(np.linspace(0, 1, 100).reshape(1, -1), aspect='auto', cmap='RdYlGn')  # Gradient from red to green
+        # Create a more visible gradient bar for the confidence with more saturated colors
+        cmap = mcolors.LinearSegmentedColormap.from_list("pastel_red_green", ['#FF4C4C', '#FFD34F', '#4CFF4C'])  # Red to Yellow to Green
+        ax_bar.imshow(np.linspace(0, 1, 100).reshape(1, -1), aspect='auto', cmap=cmap)  # Gradient from red to green
         
         # Add a vertical line to show the confidence level on the bar
         ax_bar.plot([confidence * 100, confidence * 100], [0, 1], color='black', lw=2)  # Vertical line indicating confidence
@@ -360,7 +362,7 @@ def visualize_predictions_with_uncertainty(images, actual_labels, predicted_labe
         ax_bar.set_xlim(0, 100)  # Set limits for the bar to go from 0 to 100 (percentage scale)
         ax_bar.axis('off')  # Hide axes for the confidence bar
 
-    # Adjust layout to prevent overlap and make space for the confidence bars
+    # Final adjustments for compact spacing and clean layout
     plt.tight_layout()
     plt.show()
 visualize_predictions_with_uncertainty(sample_images, actual_labels_indices, predicted_labels, uncertainty[:10], class_labels)
