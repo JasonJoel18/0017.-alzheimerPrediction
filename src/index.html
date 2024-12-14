@@ -17,12 +17,23 @@
         <div id="uploaded-image" class="uploaded-image">
             <img id="input-image" src="" alt="Uploaded Image">
         </div>
+        
+        <!-- Progress bar for processing -->
+        <div class="progress-bar" id="progress-bar">
+            <div class="progress-bar-inner" id="progress-bar-inner"></div>
+        </div>
+
+        <!-- Prediction result -->
         <div id="result" class="result">
             <h2>Prediction Result</h2>
             <img id="output-image" src="static/output.png" alt="Prediction Visualization">
             <p id="prediction-text"></p>
         </div>
+
+        <!-- New prediction button -->
+        <button id="new-prediction-btn" class="new-prediction-btn">New Prediction</button>
     </div>
+
     <script>
         const form = document.getElementById('upload-form');
         const predictBtn = document.getElementById('predict-btn');
@@ -31,10 +42,12 @@
         const predictionText = document.getElementById('prediction-text');
         const uploadedImageDiv = document.getElementById('uploaded-image');
         const resultDiv = document.getElementById('result');
+        const progressBar = document.getElementById('progress-bar');
+        const progressBarInner = document.getElementById('progress-bar-inner');
+        const newPredictionBtn = document.getElementById('new-prediction-btn');
 
         document.getElementById('file-upload').addEventListener('change', (e) => {
             if (e.target.files.length > 0) {
-                // Show uploaded image and enable the predict button
                 inputImage.src = URL.createObjectURL(e.target.files[0]);
                 uploadedImageDiv.style.display = 'block';
                 predictBtn.disabled = false;
@@ -47,6 +60,17 @@
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const formData = new FormData(form);
+            progressBar.style.display = 'block';  // Show progress bar
+            let progress = 0;
+            const interval = setInterval(() => {
+                if (progress < 100) {
+                    progress += 10;
+                    progressBarInner.style.width = `${progress}%`;
+                } else {
+                    clearInterval(interval);
+                }
+            }, 300);
+
             const response = await fetch('/predict', {
                 method: 'POST',
                 body: formData,
@@ -56,10 +80,27 @@
                 alert(data.error);
                 return;
             }
-            // Show the prediction result
+
+            // Hide progress bar
+            progressBar.style.display = 'none';
+            progressBarInner.style.width = '0';
+
+            // Show prediction result
             predictionText.innerHTML = `Prediction: ${data.predicted_label}<br>Confidence: ${(data.confidence * 100).toFixed(2)}%`;
             resultDiv.style.display = 'block';
             outputImage.src = '/static/output.png';
+
+            // Show new prediction button
+            newPredictionBtn.style.display = 'inline-block';
+        });
+
+        newPredictionBtn.addEventListener('click', () => {
+            // Reset everything for a new prediction
+            uploadedImageDiv.style.display = 'none';
+            resultDiv.style.display = 'none';
+            newPredictionBtn.style.display = 'none';
+            predictBtn.disabled = true;
+            document.getElementById('file-upload').value = '';
         });
     </script>
 </body>
