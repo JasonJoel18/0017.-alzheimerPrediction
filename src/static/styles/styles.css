@@ -148,3 +148,30 @@ button:hover:not(:disabled) {
 .new-prediction-btn:hover {
     background-color: #5a6268;
 }
+
+/* Container for displaying the image */
+.image-display {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;   /* Center horizontally */
+    align-items: center;       /* Center vertically */
+    width: 100%;
+    height: 300px;  /* Adjust this height as needed */
+    position: relative;
+    overflow: hidden;  /* Prevents overflow */
+}
+
+/* Image itself */
+#input-image, #output-image {
+    max-width: 100%;    /* Limit image width to 100% of container */
+    max-height: 100%;   /* Limit image height to 100% of container */
+    object-fit: contain;  /* Ensures image maintains its aspect ratio */
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;  /* Horizontally centers the image */
+}
+
+/* Smooth transitions */
+button, .file-upload-label, .new-prediction-btn {
+    transition: all 0.3s ease;
+}

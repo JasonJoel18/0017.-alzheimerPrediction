@@ -5,17 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alzheimer's Prediction</title>
     <link rel="stylesheet" href="static/styles/styles.css">
+    <!-- Link to Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <h1>Alzheimer's Prediction with Uncertainty</h1>
         <form id="upload-form">
-            <label for="file-upload" class="file-upload-label">Upload MRI Image</label>
+            <label for="file-upload" class="file-upload-label">
+                <i class="fas fa-cloud-upload-alt"></i> Upload MRI Image
+            </label>
             <input type="file" id="file-upload" name="file" required>
-            <button type="submit" id="predict-btn" disabled>Predict</button>
+            <button type="submit" id="predict-btn" disabled>
+                <i class="fas fa-play"></i> Predict
+            </button>
         </form>
-        <div id="uploaded-image" class="uploaded-image">
-            <img id="input-image" src="" alt="Uploaded Image">
+        
+        <!-- Show uploaded image preview or output image -->
+        <div id="image-display" class="image-display">
+            <img id="input-image" src="" alt="Uploaded Image" style="display: none;">
+            <img id="output-image" src="static/output.png" alt="Prediction Visualization" style="display: none;">
         </div>
         
         <!-- Progress bar for processing -->
@@ -26,12 +35,13 @@
         <!-- Prediction result -->
         <div id="result" class="result">
             <h2>Prediction Result</h2>
-            <img id="output-image" src="static/output.png" alt="Prediction Visualization">
             <p id="prediction-text"></p>
         </div>
 
         <!-- New prediction button -->
-        <button id="new-prediction-btn" class="new-prediction-btn">New Prediction</button>
+        <button id="new-prediction-btn" class="new-prediction-btn">
+            <i class="fas fa-redo"></i> New Prediction
+        </button>
     </div>
 
     <script>
@@ -40,7 +50,7 @@
         const inputImage = document.getElementById('input-image');
         const outputImage = document.getElementById('output-image');
         const predictionText = document.getElementById('prediction-text');
-        const uploadedImageDiv = document.getElementById('uploaded-image');
+        const uploadedImageDiv = document.getElementById('image-display');
         const resultDiv = document.getElementById('result');
         const progressBar = document.getElementById('progress-bar');
         const progressBarInner = document.getElementById('progress-bar-inner');
@@ -48,7 +58,10 @@
 
         document.getElementById('file-upload').addEventListener('change', (e) => {
             if (e.target.files.length > 0) {
+                // Show uploaded image and enable the predict button
                 inputImage.src = URL.createObjectURL(e.target.files[0]);
+                inputImage.style.display = 'block';  // Show the uploaded image
+                outputImage.style.display = 'none'; // Hide the output image initially
                 uploadedImageDiv.style.display = 'block';
                 predictBtn.disabled = false;
             } else {
@@ -85,13 +98,18 @@
             progressBar.style.display = 'none';
             progressBarInner.style.width = '0';
 
-            // Show prediction result
+            // Hide initial image and show prediction result
+            inputImage.style.display = 'none';
+            outputImage.style.display = 'block';
+            
             predictionText.innerHTML = `Prediction: ${data.predicted_label}<br>Confidence: ${(data.confidence * 100).toFixed(2)}%`;
             resultDiv.style.display = 'block';
-            outputImage.src = '/static/output.png';
 
             // Show new prediction button
             newPredictionBtn.style.display = 'inline-block';
+
+            // Hide the upload and predict buttons
+            document.getElementById('upload-form').style.display = 'none';
         });
 
         newPredictionBtn.addEventListener('click', () => {
@@ -100,7 +118,10 @@
             resultDiv.style.display = 'none';
             newPredictionBtn.style.display = 'none';
             predictBtn.disabled = true;
+            document.getElementById('upload-form').style.display = 'block';
             document.getElementById('file-upload').value = '';
+            inputImage.style.display = 'none';
+            outputImage.style.display = 'none';
         });
     </script>
 </body>
