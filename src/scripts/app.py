@@ -5,7 +5,8 @@ import tensorflow as tf
 from PIL import Image
 from tensorflow.keras.applications.efficientnet import preprocess_input
 import matplotlib
-matplotlib.use('Agg')
+
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 
@@ -13,7 +14,7 @@ import matplotlib.colors as mcolors
 app = Flask(
     __name__,
     static_folder="../static",  # Locate `static/` at `src/static`
-    template_folder="../"       # Locate `index.html` at `src/`
+    template_folder="../",  # Locate `index.html` at `src/`
 )
 
 # Load your trained model
@@ -29,12 +30,14 @@ class_labels = [
     "Very Mild Demented",
 ]
 
+
 # Preprocess image
 def preprocess_image(image_path):
     img = Image.open(image_path).resize((224, 224)).convert("RGB")
     img_array = np.array(img) / 255.0
     img_array = np.expand_dims(img_array, axis=0)
     return preprocess_input(img_array)
+
 
 # Predict with uncertainty
 def predict_with_uncertainty(model, image, n_samples=10):
@@ -44,12 +47,13 @@ def predict_with_uncertainty(model, image, n_samples=10):
     uncertainty = tf.math.reduce_std(predictions, axis=0).numpy()
     return mean_preds, uncertainty
 
+
 # Visualization
 def visualize_prediction_with_uncertainty(image_path, predicted_label, confidence):
     img = Image.open(image_path).resize((224, 224))
     colors = ["#FF4C4C", "#FFD34F", "#4CFF4C"]
     cmap = mcolors.LinearSegmentedColormap.from_list("custom_gradient", colors, N=100)
-    
+
     plt.figure(figsize=(8, 6))
     plt.imshow(img)
     plt.axis("off")
@@ -62,10 +66,12 @@ def visualize_prediction_with_uncertainty(image_path, predicted_label, confidenc
     plt.savefig(output_path)
     plt.close()
 
+
 # Flask routes
 @app.route("/")
 def home():
     return render_template("index.html")
+
 
 @app.route("/predict", methods=["POST"])
 def predict():
@@ -75,12 +81,15 @@ def predict():
         os.makedirs(os.path.dirname(filepath), exist_ok=True)
         file.save(filepath)
         img_array = preprocess_image(filepath)
-        mean_preds, uncertainty = predict_with_uncertainty(model, img_array, n_samples=10)
+        mean_preds, uncertainty = predict_with_uncertainty(
+            model, img_array, n_samples=10
+        )
         predicted_label = class_labels[np.argmax(mean_preds)]
         confidence = 1 - uncertainty.flatten()[0]
         visualize_prediction_with_uncertainty(filepath, predicted_label, confidence)
         return jsonify({"predicted_label": predicted_label, "confidence": confidence})
     return jsonify({"error": "No file uploaded"}), 400
+
 
 if __name__ == "__main__":
     app.run(debug=True)
