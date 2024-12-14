@@ -21,7 +21,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib.colors as mcolors
 from rich import print
-import shap
 
 
 ep = 2
@@ -148,6 +147,8 @@ early_stopping = EarlyStopping(
 )
 
 reduce_lr = ReduceLROnPlateau(monitor="val_loss", factor=0.5, patience=3, min_lr=1e-6)
+
+model.summary()
 
 history = model.fit(
     train, epochs=ep, validation_data=val, callbacks=[early_stopping, reduce_lr]
@@ -330,3 +331,8 @@ visualize_predictions_with_uncertainty(
     uncertainty[:10],
     class_labels,
 )
+
+
+# ==================================
+
+
