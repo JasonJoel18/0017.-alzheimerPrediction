@@ -1,34 +1,52 @@
 import os
+for dirname, _, filenames in os.walk('/kaggle/input'):
+    for filename in filenames:
+        os.path.join(dirname, filename)
+
 import pandas as pd
 import numpy as np
+import keras
 import warnings
-import tensorflow as tf
-from tensorflow.keras.models import Sequential, Model
-from tensorflow.keras.layers import Dense, Dropout, Flatten
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras.callbacks import EarlyStopping, LearningRateScheduler
-from sklearn.metrics import classification_report, roc_auc_score, confusion_matrix
-import matplotlib.pyplot as plt
-import seaborn as sns
-from tensorflow.keras.applications import EfficientNetB0
-from tensorflow.keras.applications.efficientnet import EfficientNetB0, preprocess_input
-from tensorflow.keras.optimizers import Adamax
-from sklearn.metrics import accuracy_score, recall_score, precision_score, f1_score
-from PIL import Image
-from tensorflow.keras.callbacks import ReduceLROnPlateau
-
 warnings.filterwarnings(action="ignore")
+import matplotlib.pyplot as plt
+# %matplotlib inline
+import seaborn as sns
 
-# Paths to the dataset
+from keras.models import Sequential
+from keras.layers import Dense, Dropout, Flatten
+from keras.layers import Conv2D, MaxPooling2D
+from keras import backend as K
+
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report
+import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
+from tensorflow.keras.applications.vgg19 import VGG19
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.losses import SparseCategoricalCrossentropy
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.callbacks import TensorBoard,EarlyStopping
+
+import sklearn.metrics as metrics
+from keras.callbacks import LearningRateScheduler
+annealer = LearningRateScheduler(lambda x: 1e-3 * 0.95 ** x, verbose=0)
+
+
+import os
+import pandas as pd
+
 MildDemented_dir = '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/MildDemented'
 ModerateDemented_dir = '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/ModerateDemented'
 NonDemented_dir = '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/NonDemented'
 VeryMildDemented_dir = '/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/VeryMildDemented'
 
-# Load dataset
-filepaths, labels = [], []
-class_labels = ['Mild Demented', 'Moderate Demented', 'Non Demented', 'Very MildDemented']
+filepaths = []
+labels = []
 dict_list = [MildDemented_dir, ModerateDemented_dir, NonDemented_dir, VeryMildDemented_dir]
+class_labels = ['Mild Demented', 'Moderate Demented', 'Non Demented', 'Very MildDemented']
 
 for i, j in enumerate(dict_list):
     flist = os.listdir(j)
@@ -37,123 +55,165 @@ for i, j in enumerate(dict_list):
         filepaths.append(fpath)
         labels.append(class_labels[i])
 
-# Filter out corrupted image files
-valid_filepaths, valid_labels = [], []
-for filepath, label in zip(filepaths, labels):
-    try:
-        with Image.open(filepath) as img:
-            img.verify()  # Verify that the file is not corrupted
-            valid_filepaths.append(filepath)
-            valid_labels.append(label)
-    except (IOError, SyntaxError):
-        print(f"Corrupted image file: {filepath}")
-        
-# Create DataFrame
-data_df = pd.DataFrame({"filepaths": valid_filepaths, "labels": valid_labels})
-print(data_df["labels"].value_counts())
+Fseries = pd.Series(filepaths, name="filepaths")
+Lseries = pd.Series(labels, name="labels")
+Alzheimer_data = pd.concat([Fseries, Lseries], axis=1)
+Alzheimer_df = pd.DataFrame(Alzheimer_data)
+print(Alzheimer_df.head())
+print(Alzheimer_df["labels"].value_counts())
 
 
-# Train-test-validation split
-from sklearn.model_selection import train_test_split
-train_set, test_images = train_test_split(data_df, test_size=0.3, random_state=42)
-val_set, test_images  = train_test_split(test_images, test_size=0.5, random_state=42)
+
+Alzheimer_df.shape
+
+train_images, test_images = train_test_split(Alzheimer_df, test_size=0.3, random_state=42)
+train_set, val_set = train_test_split(Alzheimer_df, test_size=0.2, random_state=42)
+
+print(train_set.shape)
+print(test_images.shape)
+print(val_set.shape)
+print(train_images.shape)
+
+image_gen = ImageDataGenerator(preprocessing_function= tf.keras.applications.mobilenet_v2.preprocess_input)
+train = image_gen.flow_from_dataframe(dataframe= train_set,x_col="filepaths",y_col="labels",
+                                      target_size=(244,244),
+                                      color_mode='rgb',
+                                      class_mode="categorical", #used for Sequential Model
+                                      batch_size=32,
+                                      shuffle=False            #do not shuffle data
+                                     )
+test = image_gen.flow_from_dataframe(dataframe= test_images,x_col="filepaths", y_col="labels",
+                                     target_size=(244,244),
+                                     color_mode='rgb',
+                                     class_mode="categorical",
+                                     batch_size=32,
+                                     shuffle= False
+                                    )
+val = image_gen.flow_from_dataframe(dataframe= val_set,x_col="filepaths", y_col="labels",
+                                    target_size=(244,244),
+                                    color_mode= 'rgb',
+                                    class_mode="categorical",
+                                    batch_size=32,
+                                    shuffle=False
+                                   )
+
+classes=list(train.class_indices.keys())
+print (classes)
+
+def show_knee_images(image_gen):
+    test_dict = test.class_indices
+    classes = list(test_dict.keys())
+    images, labels=next(image_gen) # get a sample batch from the generator
+    plt.figure(figsize=(20,20))
+    length = len(labels)
+    if length<25:
+        r=length
+    else:
+        r=25
+    for i in range(r):
+        plt.subplot(5,5,i+1)
+        image=(images[i]+1)/2 #scale images between 0 and 1
+        plt.imshow(image)
+        index=np.argmax(labels[i])
+        class_name=classes[index]
+        plt.title(class_name, color="green",fontsize=16)
+        plt.axis('off')
+    plt.show()
+    
+show_knee_images(train)
+
+# ==================================
 
 
-image_gen_train = ImageDataGenerator(
-    preprocessing_function=preprocess_input,
-    rotation_range=20,
-    width_shift_range=0.2,
-    height_shift_range=0.2,
-    shear_range=0.2,
-    zoom_range=0.2,
-    horizontal_flip=True
-)
-image_gen_val_test = ImageDataGenerator(
-    preprocessing_function=preprocess_input
-)
+from tensorflow.keras.optimizers import Adamax
 
+img_shape=(244,244,3)
+base_model = tf.keras.applications.Xception(include_top= False, weights= "imagenet",
+                            input_shape= img_shape, pooling= 'max')
 
-train = image_gen_train.flow_from_dataframe(train_set, x_col="filepaths", y_col="labels",
-                                    target_size=(224, 224), color_mode='rgb',
-                                    class_mode="categorical", batch_size=6)
+# for layer in base_model.layers:
+#     layer.trainable = False
+    
+model = Sequential([
+    base_model,
+    Flatten(),
+    Dropout(rate= 0.3),
+    Dense(128, activation= 'relu'),
+    Dropout(rate= 0.25),
+    Dense(4, activation= 'softmax')
+])
 
-val = image_gen_val_test.flow_from_dataframe(val_set, x_col="filepaths", y_col="labels",
-                                    target_size=(224, 224), color_mode='rgb',
-                                    class_mode="categorical", batch_size=6)
+model.compile(Adamax(learning_rate= 0.001),
+              loss= 'categorical_crossentropy',
+              metrics= ['accuracy'])
 
-test = image_gen_val_test.flow_from_dataframe(test_images, x_col="filepaths", y_col="labels",
-                                    target_size=(224, 224), color_mode='rgb',
-                                    class_mode="categorical", batch_size=6)
+model.summary()
 
-print(f'Train images:{len(train_set)}')
-print(f'Val images:{len(val_set)}')
-print(f'Test images:{len(test_images)}')
+model.build(input_shape=(None, *img_shape))
+tf.keras.utils.plot_model(model, show_shapes=True)
 
-from tqdm import tqdm
-import numpy as np
-import pandas as pd
-import tensorflow as tf
-from sklearn.metrics import classification_report, accuracy_score, recall_score, precision_score, f1_score, confusion_matrix
-import seaborn as sns
+history = model.fit(train, epochs=10, validation_data=val, validation_freq=1)
+
+model.evaluate(test, verbose=1)
+
+history1 = model.fit(train, epochs=1, validation_data=val, validation_freq=1)
+
+model.evaluate(test, verbose=1)
+
+model.save("/Volumes/Jason's T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/models/Augmented_Alzheimer_Model_99.5.h5")
+
+pred = model.predict(test)
+pred = np.argmax(pred, axis=1) #pick class with highest  probability
+
+labels = (train.class_indices)
+labels = dict((v,k) for k,v in labels.items())
+pred2 = [labels[k] for k in pred]
+
+plt.plot(history.history['accuracy'] + history1.history['accuracy'])
+plt.plot(history.history['val_accuracy'] + history1.history['val_accuracy'])
+plt.title('model accuracy')
+plt.ylabel('accuracy')
+plt.xlabel('epoch')
+plt.legend(['train', 'val'], loc='upper left')
+plt.show()
+
+plt.plot(history.history['loss'] + history1.history['loss'])
+plt.plot(history.history['val_loss'] + history1.history['val_loss'])
+plt.title('model loss')
+plt.ylabel('loss')
+plt.xlabel('epoch')
+plt.legend(['train', 'val'], loc='upper left')
+plt.show()
+
+from sklearn.metrics import confusion_matrix, accuracy_score
+
+y_test = test_images.labels # set y_test to the expected output
+print(classification_report(y_test, pred2))
+print("Accuracy of the Model:","{:.1f}%".format(accuracy_score(y_test, pred2)*100))
+
 import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.metrics import confusion_matrix
 
-model = tf.keras.models.load_model('/Volumes/Jason\'s T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/models/jason_alzheimer_prediction_model.keras')
+# Define the class labels
+class_labels = ['Mild Demented', 'Moderate Demented', 'Non Demented', 'Very MildDemented']
 
-import numpy as np
-from tqdm import tqdm
+# Calculate the confusion matrix
+cm = confusion_matrix(y_test, pred2)
 
-# Monte Carlo Dropout for uncertainty estimation
-def predict_with_uncertainty(model, dataset, n_samples=1):
-    predictions = []
-    total_batches = len(dataset)
-    pbar_outer = tqdm(total=n_samples, desc="Monte Carlo Sampling", dynamic_ncols=True)
+# Create a figure and plot the confusion matrix as a heatmap
+plt.figure(figsize=(10, 5))
+sns.heatmap(cm, annot=True, fmt='g', vmin=0, cmap='Blues')
 
-    for sample_idx in range(n_samples):
-        batch_preds = []
-        dataset.reset()
-        pbar_inner = tqdm(total=total_batches, position=1, leave=False, desc=f"Processing Sample {sample_idx + 1}/{n_samples}", ncols=80)
+# Set tick labels and axis labels
+plt.xticks(ticks=[0.5, 1.5, 2.5, 3.5], labels=class_labels)
+plt.yticks(ticks=[0.5, 1.5, 2.5, 3.5], labels=class_labels)
+plt.xlabel("Predicted")
+plt.ylabel("Actual")
 
-        for batch_idx, (images, _) in enumerate(dataset):
-            if batch_idx >= total_batches:
-                break
+# Set the title
+plt.title("Confusion Matrix")
 
-            # print(f"Processing batch {batch_idx + 1}/{total_batches}")
-            preds = model(images, training=True)
-            batch_preds.append(preds.numpy())
-            pbar_inner.update(1)
-        pbar_inner.close()
-        predictions.append(np.vstack(batch_preds))
-        pbar_outer.update(1)
-    pbar_outer.close()
-    predictions = np.stack(predictions, axis=0)
-    mean_preds = np.mean(predictions, axis=0)
-    uncertainty = np.std(predictions, axis=0)
+# Show the plot
+plt.show()
 
-    return mean_preds, uncertainty
-
-# Evaluate the model with Monte Carlo Dropout on the test dataset
-mean_predictions, uncertainty = predict_with_uncertainty(model, test, n_samples=1)
-
-
-# Get the true labels
-y_true = test.classes
-
-# Ensure y_pred aligns with the entire test set
-y_pred = np.argmax(mean_predictions, axis=1)
-
-
-y_true_test = np.array(y_true) 
-print(y_pred.shape)
-print(y_true_test.shape)
-
-assert len(y_true) == len(y_pred), "Mismatch between true labels and predictions."
-
-# Generate classification report
-report = classification_report(y_true, y_pred, target_names=class_labels, output_dict=True)
-
-
-
-# Display per-class metrics
-class_metrics = pd.DataFrame(report).transpose()
-print("\nPer-Class Metrics:")
-print(class_metrics)

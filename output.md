@@ -1,6 +1,0 @@
-Here are some freely available research papers discussing MRI datasets categorized into classes such as Mild Demented, Moderate Demented, Very Mild Demented, and Non Demented, relevant to your query:
-	1.	Deep Learning for Alzheimer’s Classification: This study uses MRI data with a focus on Alzheimer’s stages. It employs two-phase transfer learning using models like ResNet50V2, VGG16, and others to classify dementia stages effectively. You can explore the research on their application of advanced pre-trained networks here.
-	2.	Classification of Alzheimer’s Disease Using MRI Images: This research evaluates various machine learning classifiers, such as Random Forest and SVM, to distinguish between different Alzheimer’s stages using feature extraction techniques on MRI images. The detailed study is available here.
-	3.	MRI-Based SVM Classification for Alzheimer’s Stages: This paper employs a supervised learning approach using the OASIS dataset to train an SVM classifier. The model achieved a classification accuracy of 74.21%. The full details can be accessed here.
-
-These papers explore different methodologies and tools for processing and classifying MRI images based on dementia stages, providing insights into the use of machine learning and deep learning techniques in medical imaging.

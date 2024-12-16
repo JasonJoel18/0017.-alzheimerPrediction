@@ -23,15 +23,15 @@ import matplotlib.colors as mcolors
 from rich import print
 
 
-ep = 2
+ep = 10
 bs = 32
 
 warnings.filterwarnings(action="ignore")
 
-MildDemented_dir = "/Volumes/Jason's T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/MildDemented"
-ModerateDemented_dir = "/Volumes/Jason's T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/ModerateDemented"
-NonDemented_dir = "/Volumes/Jason's T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/NonDemented"
-VeryMildDemented_dir = "/Volumes/Jason's T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/VeryMildDemented"
+MildDemented_dir = "/Volumes/Jason's T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data/external/MildDemented"
+ModerateDemented_dir = "/Volumes/Jason's T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data/external/ModerateDemented"
+NonDemented_dir = "/Volumes/Jason's T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data/external/NonDemented"
+VeryMildDemented_dir = "/Volumes/Jason's T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data/external/VeryMildDemented"
 
 filepaths, labels = [], []
 class_labels = [
@@ -154,8 +154,12 @@ history = model.fit(
     train, epochs=ep, validation_data=val, callbacks=[early_stopping, reduce_lr]
 )
 
+# model = tf.keras.models.load_model(
+#     f"/Volumes/Jason's T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/models/jason_alzheimer_prediction_model_{num_train_images}_images_{ep}_epochs.keras"
+# )
+
 test_loss, test_accuracy = model.evaluate(test)
-print(f"Test Accuracy: {test_accuracy:.2f}")
+print(f"Test Accuracy: {test_accuracy}")
 
 num_train_images = len(train_set)
 model_save_path = f"/Volumes/Jason's T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/models/jason_alzheimer_prediction_model_{num_train_images}_images_{ep}_epochs.keras"
@@ -164,7 +168,7 @@ print("Model saved successfully.")
 
 
 model = tf.keras.models.load_model(
-    "/Volumes/Jason's T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/models/jason_alzheimer_prediction_model.keras"
+    f"/Volumes/Jason's T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/models/jason_alzheimer_prediction_model_{num_train_images}_images_{ep}_epochs.keras"
 )
 
 from tqdm import tqdm

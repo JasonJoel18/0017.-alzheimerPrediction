@@ -31,14 +31,14 @@
 \fancyhf{}
 
 % Set up the left, center, and right parts of the header
-\lhead{\textcolor{lightgray}{\small Jason Joel Pinto}} % Left header
-\chead{}                                        % Center header (empty)
-\rhead{\hfill \textcolor{lightgray}{\small Uncertainty-Aware Deep Learning for Early Detection of Alzheimer’s Disease Using MRI images Data}} % Right-aligned header
+\lhead{\textit{\textcolor{lightgray}{\small Jason Joel Pinto}}} % Left header
+\chead{}                                                       % Center header (empty)
+\rhead{\hfill \textit{\textcolor{lightgray}{\small Uncertainty-Aware Deep Learning for Early Detection of Alzheimer’s Disease Using MRI images Data}}} % Right-aligned header
 
 % Set up the left, center, and right parts of the footer
-\lfoot{\textcolor{lightgray}{\small Gisma University of Applied Sciences}}  % Left footer
-\cfoot{\textcolor{lightgray}{\large \bfseries \thepage}}                   % Center footer (page number)
-\rfoot{\hfill \textcolor{lightgray}{\small December, 2024}}                % Right footer with date
+\lfoot{\textit{\textcolor{lightgray}{\small Gisma University of Applied Sciences}}}  % Left footer
+\cfoot{\textcolor{lightgray}{\large \bfseries \thepage}}                             % Center footer (page number)
+\rfoot{\hfill \textit{\textcolor{lightgray}{\small December, 2024}}}                % Right footer with date
 
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
@@ -258,67 +258,165 @@ The most common type of dementia that causes a lot of trouble for  millions of p
 
 With the use of deep neural networds we have see an amazing results in the recent years. Using the MRI data, and deep learning neural networks in prediction of the early detection of the Alzheimer’s Disease has been a very promision method with great acccuracy. The convolutional neural networks as well as the recurrent neural netword have have drastically improve the prediction for this desease when compared to the traditionaL Machine Learning alternatives. This is because the Deep Learning models are able undertand the complex nature of the high dementional data that are used in training these models and to capture the brain image\cite{2019Jo}. Recent improvements in the this field, specially deep leaning have changed the landscape of the Alzheimer’s Detection. It is able to provide an objective and efficient solution.
 
-% In a study by Liu et al. (2019), the authors employed deep learning methods to classify MRI images into different stages of Alzheimer’s, achieving an accuracy of 93\%. Another notable work by Zhang et al. (2021) utilized convolutional neural networks (CNNs) to extract features from MRI data, obtaining a classification accuracy of 94\%. These results highlight the effectiveness of deep learning models in early AD detection.
+Convolutional Neural Networks (CNNs) is a kind of deep learning model which has showed the world it's abilities with great results in prediction of Alzheimer’s with the help of MRI images. Very high resolution images or high dimensional data's can be trained using these models, which will find the existing patters in these data, and helps in detecting Alzheimer’s at a very early stage. By drastically reducing the time and efforts required in the diagnosis process of the Alzheimer’s Disease and being able to predict with great precision,these deep learning models perform impressively better than than the conventional machine learning models.
 
-% However, despite the impressive performance of these models, a major challenge remains: the uncertainty associated with deep learning predictions. Deep learning models, while powerful, often lack interpretability and do not provide an uncertainty measure, which is crucial in medical applications where misdiagnosis can have serious consequences.
 
-% Deep learning approaches have been widely adopted for analyzing MRI data due to their ability to capture complex patterns. Table~\ref{tab:methods_comparison} summarizes key studies in this domain.%
-
+Let's check some of the recent studies. The summary of the studies is provided in the Table~\ref{tab:methods_comparison} :
 \begin{table*}[h!]
     \centering
     \caption{Comparison of Studies on Alzheimer’s Disease Detection}
     \label{tab:methods_comparison}
-    \begin{tabular}{|p{4cm}|p{3cm}|p{3cm}|p{2cm}|p{2cm}|}
+    \begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|p{2cm}|p{4cm}|}
         \hline
         \textbf{Study} & \textbf{Dataset} & \textbf{Model} & \textbf{Accuracy} & \textbf{Limitations} \\ \hline
-        Sharma, Sarang (2022) \cite{2022Sarang} & Kaggle & Deep Learning model & 91.75\% & Lacks uncertainty estimation \\ \hline
-        Desai, Maitri (2024) \cite{2024Desai} & OASIS & Multi-Task CNN & 91.0\% & Limited generalizability \\ \hline
-        Sarang, Sharma (2022) \cite{2022Sarang} & OASIS & CNN & 99.22\% & Does not include Uncertainty \\ \hline
-        Sarraf et al. (2016) \cite{sarraf2016} & ADNI & AlexNet & 89.5\% & High false negatives \\ \hline
-        Islam and Zhang (2021) \cite{IslamZhang2021} & Custom MRI Dataset & ResNet-50 & 94.7\% & No reliability assessment \\ \hline
+        Sharma, Sarang (2022) \cite{2022Sarang} & Kaggle & Hybrid Deep Learning Model & 91.75\% & No uncertainty estimation, limited interpretability \\ \hline
+        Desai, Maitri (2024) \cite{2024Desai} & OASIS & Multi-Task CNN & 91.0\% & Limited generalizability, lacks uncertainty \\ \hline
+        Ahmed, Gulnaz (2022) \cite{2022Ahmed} & OASIS & DAD-Net & 99.22\% & No reliability or uncertainty analysis \\ \hline
+        Sarraf et al. (2016) \cite{sarraf2016} & ADNI & CNN (LeNet-5) & 98.84\% & High false negatives \\ \hline
+        Farhana Islam et al. (2023) \cite{Islam2023} & Custom MRI Dataset & ResNet-50 & 98.71\% & No uncertainty estimation \\ \hline
+        Santos et al. (2023)  \cite{Santos2023} & Kaggle & Neural Network & 80.6\% & Moderate accuracy, lacks optimization \\ \hline
+        El-Latif et al. (2023) \cite{Latif2023} & Kaggle & Lightweight Deep Learning Model & 95.9\% & No uncertainty quantification \\ \hline
+        Isunuri et al. (2023) \cite{Isunuri2023} & Kaggle & Transfer Learning with CNN & 97.32\% & Limited interpretability \\ \hline
+        Murugan et al. (2023) \cite{Murugan2021} & Kaggle & DEMNET & 95.23\% & No uncertainty assessment \\ \hline
+        Gupta et al. (2023) \cite{Gupta2019} & NRC Korea & DEMNET & 96.89\% & No reliability metrics \\ \hline
     \end{tabular}
 \end{table*}
 
-\noindent As shown in Table~\ref{tab:methods_comparison}, the primary focus of these studies has been on improving classification accuracy. However, none of the studies address the reliability of predictions, which is crucial for clinical deployment.
+In recent studies, various different techniques have been used to predict the alzheimers disease. Out of all of them deep learning models have shows a lot of potential and promise with great results. Deep learning is widely used acrross various fields or study, but the stream where we excel the most is classification of the images. As in recent times people are able to get hands on the powerful hardware as it has become accessible, and more research are being conducted on Deep Learning models there has been alot of improvement in the performance and hence the reliability of these models have been increased \cite{Yu2023}.
+Particularly for alzheimer's there have been several studied that have been conducted. In this study we will be looking at few of them. In a paper by Sharma et al. \cite{2022Sarang} they propose HTLML. It is a hybrid deep learning model that uses the Kaggle dataset to predict the Alzheimer’s Disease. In their implementations they were able to achieve an accuracy of 91.75\%. Which is a very good performace. But what it lacks is the implementation of uncertainty estimation. When it comes to a clinical environment it would be very advantageous for clinicians to know how confident the model is. The lack of uncertainty estimation is a rather common gap found in many existing studies, limiting them to consider for a clinical deployment.In the reseach conducted by Desai et al. \cite{2024Desai}, they use a Multi-Task CNN model using the OASIS dataset to diagnose Alzheimer’s. Their model achieved an accuracy of 91.0\%, but limitations of the model is it's generalizability. The authors themselves mention in the paper that the model performs good on the OSIS dataset but it might struggle to perform well in the real-world clinical data. Generalizability is considered to be a very common issue with the deep learning models. Specially when there is not enough data to be trained on or there is no diverse patient data. Or when tested to perform with the real world data. In a paper by author Ahmed et al. \cite{2022Ahmed} has experimented with DAD-Net, it is also a deep learning-based model for Alzheimer’s detection. Here they have used ADASYN to oversample the data as the dataset they used was imbalanced. Using the deep leaning network they managed to get an impressive accuracy of 99.22\%. This model again however does not incorporate Uncertainty calcucation. Even through the model prediction is high, without the model confidence/ Uncertainty implementation it's implementation in a clinical environment will be very low because even when the model is struggling the clinicians needs to know it so that they can take a informed desicion. the model does not incorporate uncertainty estimation, which is a crucial factor for clinical decision-making. While the high accuracy is promising, the lack of uncertainty estimation limits the model's applicability in high-stakes environments such as healthcare.
+Sarraf et al. \cite{sarraf2016} use CNNs and LeNet-5 for the classification of Alzheimer’s classification with the ADNI image dataset. They achieved an accuracy of 98.84\%. However, the study is criticized for its high false-negative rate, which can lead to misdiagnosis in clinical applications. Additionally, this work does not include any discussion of uncertainty estimation, further limiting its clinical relevance. Islam et al. \cite{Islam2023} proposed a method using the ResNet50 feature extractor and an SVM classifier for diagnosing Alzheimer’s disease from MRI images. This study achieved an accuracy of 98.71\%, but it lacked assessment of the model reliability. Since there is no assessment with the unseen data the reliablity of the model is hard to know with the real world data. Even in this paper the Uncertainty calcucation is not considered. Further in the study of neural network model for Alzheimer’s prediction by Santos et al. \cite{Santos2023}, they employed a neural network model on  the Kaggle dataset, and were able to get a accuracy of 80.6\%. While the model is able to provide the diagnosis and classification the performance of the model could be improved compared to other models. In the conclusion the authors suggested that the model could be improved through further research, but uncertainty estimation is not part of their investigation, which is a limitation. El-Latif et al. \cite{Latif2023} presented a very lightweight deep learning model for Alzheimer’s disease detection using MRI data. The model achieved an accuracy of 95.9\%, but like the previous case the authors acknowledged that the performance could be improved further. Again the lack of uncertainty estimation is a limitation. Isunuri et al. \cite{Isunuri2023} employ transfer learning and a CNN for Alzheimer’s severity classification, achieving an accuracy of 97.32\%. Even though the model demonstrates very good performance performance, there is no mention of uncertainty estimation, which could add a layer of reliability and interpretability to the model’s predictions. The authors also note that the model outperforms competing models in several metrics, yet its generalizability to other datasets is unclear.
+Murugan et al. \cite{Murugan2021} introduced DEMNET, again it a type of deep learning model itself for the sake of early diagnosis of Alzheimer’s disease from MRI images. The model achieved an accuracy of 95.23\%, but the authors acknowledged that the performance of the model could have been be improved. While the model is promising, it does not incorporate uncertainty estimation, which is a critical aspect for clinical use as earlier mentioned where decisions based on model predictions can have serious consequences. Gupta et al. \cite{Gupta2019} use combined features from voxel-based morphometry and cortical, subcortical, and hippocampus regions of MRI T1 brain images for early Alzheimer’s diagnosis. With an accuracy of 96.89\%, the study demonstrates a robust method for Alzheimer’s detection. But similar to other studies, it lacks a mechanism for assessing uncertainty, which is important for practical deployment in healthcare environments.
+
+\section{Limitations of Existing Approaches}
+Table \ref{tab:methods_comparison} all the previous existing papers and research have been summarized, it also highlights the study's limitations. Many papers and research have models that do exceptionally well with accuracy, but then all the paper lacks the attempt to include uncertainty score as an output which might turn out to be invaluable and crucial in a clinical environment in decision-making. Furthermore, some of the models had issues with high false-negative rates, less generalizability, and dataset bias still exists. These problems support a requirement or necessity for the inclusion of uncertainty estimation so that the clinical usability and reliability of the model can be improved. When the stakes are high in clinical settings, it is challenging to trust models that lack uncertainty measurements. Adding uncertainty estimates to deep learning models can improve their interpretability and give medical professionals important information about the accuracy of the model's predictions. By using uncertainty-aware deep learning to enhance the applicability of Alzheimer's diagnosis models, this study fills a significant gap in the body of existing literature.
 
 
-\section{Uncertainty Estimation in Medical Imaging}
+\section{Novelty of the Proposed Approach}
+The integration of uncertainty estimation into deep learning models addresses critical gaps in existing research. By providing confidence scores alongside predictions, clinicians can make informed decisions, reducing the risks associated with false negatives or overfitting to biased datasets. This approach also enhances model interpretability, a vital factor for clinical adoption.
 
-Uncertainty estimation techniques, such as Monte Carlo (MC) Dropout and Bayesian Neural Networks, have been explored in other areas of medical imaging but are largely absent in Alzheimer’s disease detection. Table~\ref{tab:uncertainty_methods} provides an overview of studies incorporating uncertainty estimation in medical imaging.
-
-\begin{table*}[h!]
-  \centering
-  \caption{Studies Incorporating Uncertainty Estimation in Medical Imaging}
-  \label{tab:methods_comparison}
-  \begin{tabular}{|p{4cm}|p{3cm}|p{3cm}|p{2cm}|}
-      \hline
-      \textbf{Study} & \textbf{Domain} & \textbf{Technique} & \textbf{Uncertainty Measure} \\ \hline
-      Kendall and Gal (2017) \cite{kendall2017} & Segmentation & MC Dropout & Epistemic, Aleatoric \\ \hline
-      Leibig et al. (2017) \cite{leibig2017} & Diabetic Retinopathy & Bayesian NN & Model uncertainty \\ \hline
-      Wang et al. (2019) \cite{wang2019} & Lung Nodule Detection & MC Dropout & Prediction confidence \\ \hline
-\end{tabular}
-\end{table*}
-
-\noindent These studies demonstrate the potential of uncertainty estimation in improving model reliability and interpretability. However, their application to Alzheimer’s disease detection remains unaddressed.
-
-
-
-\section{Research Gaps}
-While the studies reviewed demonstrate high accuracy, they fail to address:
-\begin{enumerate}
-    \item \textbf{Uncertainty Awareness:} Essential for clinical implementation.
-    \item \textbf{Generalizability:} Robustness across datasets.
-    \item \textbf{Visualization:} Intuitive display of predictions for clinicians.
-\end{enumerate}
-
-\subsection{Summary}
-
-This review highlights that while deep learning has achieved significant advancements in Alzheimer’s disease detection, its integration into clinical practice requires improvements in model reliability, interpretability, and generalizability. By addressing these gaps through the incorporation of uncertainty estimation techniques, this thesis aims to enhance the trustworthiness and applicability of deep learning models in healthcare.
-
-
+% =====================================
+% =====================================
+% =====================================
 
 \chapter{Methodology}
-Your methodology goes here.
+
+This chapter elaborates on the methodology adopted to develop, train, and evaluate an uncertainty-aware deep learning model for Alzheimer’s disease (AD) detection using MRI scans. Each step, from dataset preparation to model evaluation, is designed to ensure reproducibility, robustness, and clinical utility.
+
+\section{Data Acquisition and Description}
+
+\subsection{Dataset Sources}
+This study combines three publicly available datasets to ensure diversity in imaging protocols and patient demographics:
+\begin{enumerate}
+    \item \textbf{Kaggle MRI Dataset} – A collection of 5,000 T1-weighted MRI scans labeled into cognitively normal (CN), mild cognitive impairment (MCI), and Alzheimer’s disease (AD).
+    \item \textbf{OASIS Database} – A dataset of 3,000 MRIs, supplemented with demographic details like age and gender for secondary analyses.
+    \item \textbf{ADNI (Alzheimer’s Disease Neuroimaging Initiative)} – Provides 4,500 MRI scans, including longitudinal data that capture disease progression.
+\end{enumerate}
+
+\subsection{Data Integration and Class Balancing}
+Since the datasets differ in class distributions, a resampling strategy is employed. Under-sampling is applied to the majority class (CN), while over-sampling techniques, such as Synthetic Minority Over-sampling Technique (SMOTE), are applied to the minority class (AD).
+
+\subsection{Ethical and Legal Considerations}
+All datasets are anonymized and publicly released under ethical agreements. This study adheres strictly to their terms of use, ensuring no patient-sensitive data is accessed or distributed.
+
+\section{Data Preprocessing}
+
+Preprocessing is a critical step in preparing MRI scans for deep learning. It ensures consistency, reduces noise, and enhances interpretability.
+
+\subsection{Image Standardization}
+MRI scans are normalized to ensure uniformity in pixel intensity values. The pixel values are scaled to the range [0,1] to align with deep learning input requirements.
+
+\subsection{Resizing and Cropping}
+All images are resized to $224 \times 224$ pixels. Additionally, brain regions are cropped using bounding boxes generated by automated segmentation algorithms, reducing irrelevant spatial details.
+
+\subsection{Skull Stripping and Brain Masking}
+To isolate brain structures, skull-stripping tools like SimpleITK are used. This step reduces extraneous anatomical features (e.g., bones, skin) that may confound model predictions.
+
+\subsection{Augmentation Strategies}
+Data augmentation techniques enhance data diversity and improve model robustness. The following transformations are applied:
+\begin{itemize}
+    \item \textit{Rotation}: Random rotations within $\pm15^\circ$.
+    \item \textit{Flipping}: Horizontal flips to simulate variations in patient positioning.
+    \item \textit{Intensity Variations}: Gaussian noise and brightness adjustments mimic imaging artifacts.
+    \item \textit{Elastic Deformations}: Applied to simulate anatomical variations.
+\end{itemize}
+
+\section{Proposed Model Architecture}
+
+The model employs a ResNet-50 backbone for feature extraction and incorporates uncertainty estimation mechanisms.
+
+\subsection{Backbone Architecture}
+ResNet-50, a convolutional neural network (CNN) with residual connections, is chosen due to its superior performance on medical imaging tasks. The residual connections mitigate the vanishing gradient problem, enabling effective training of deeper networks.
+
+\subsection{Incorporating Uncertainty Estimation}
+To model uncertainty, Monte Carlo (MC) Dropout is applied. Dropout layers are inserted after key convolutional blocks, enabling stochastic forward passes during inference. Uncertainty is quantified as:
+% \begin{equation}
+%     \text{Uncertainty} = \text{Var}\left(\hat{y}_1, \hat{y}_2, \dots, \hat{y}_N\right),
+% \end{equation}
+% where $\hat{y}_i$ represents the prediction from the $i$-th stochastic pass.
+
+\subsection{Output Layer}
+The final layer includes three neurons (one per class) with softmax activation, yielding probability scores for CN, MCI, and AD. A temperature-scaling mechanism calibrates these scores.
+
+\section{Training and Optimization}
+
+\subsection{Loss Function}
+The model optimizes a combined loss function:
+\begin{itemize}
+    \item \textbf{Cross-Entropy Loss} ($\mathcal{L}_{CE}$): For classification accuracy.
+    \item \textbf{KL-Divergence Loss} ($\mathcal{L}_{KL}$): To penalize overconfidence in predictions.
+\end{itemize}
+The total loss $\mathcal{L}$ is defined as:
+\begin{equation}
+    \mathcal{L} = \mathcal{L}_{CE} + \lambda \mathcal{L}_{KL},
+\end{equation}
+where $\lambda$ is a weighting factor.
+
+\subsection{Optimization Techniques}
+The Adam optimizer is used with:
+\begin{itemize}
+    \item Learning rate: $1 \times 10^{-3}$.
+    \item Batch size: 32.
+    \item Regularization: L2 weight decay ($1 \times 10^{-4}$).
+\end{itemize}
+
+\subsection{Training Schedule}
+Training is conducted for 50 epochs, with early stopping based on validation loss. Learning rate scheduling reduces the rate by 10\% upon plateau.
+
+\section{Evaluation Metrics}
+
+\subsection{Performance Metrics}
+The model’s predictive performance is measured using:
+\begin{itemize}
+    \item \textbf{Accuracy}: Overall correctness of predictions.
+    \item \textbf{Precision, Recall, F1-Score}: Metrics for imbalanced datasets.
+    \item \textbf{Area Under Curve (AUC)}: Evaluates discriminative capability.
+\end{itemize}
+
+\subsection{Uncertainty Metrics}
+Uncertainty estimates are evaluated using:
+\begin{itemize}
+    \item \textbf{Expected Calibration Error (ECE)}: Measures the alignment of confidence with accuracy.
+    \item \textbf{Reliability Diagrams}: Visualize calibration quality.
+\end{itemize}
+
+\subsection{Explainability Assessment}
+Grad-CAM is used to generate heatmaps highlighting brain regions contributing to predictions. This ensures clinical interpretability.
+
+\section{Pipeline Integration}
+
+The final model is integrated into a Flask-based web application, enabling clinicians to upload MRI scans and visualize predictions with confidence scores.
+
+\section{Implementation Details}
+
+The model is developed using PyTorch and trained on an NVIDIA RTX 3090 GPU with 24 GB VRAM. A detailed workflow of the pipeline is illustrated in Figure~\ref{fig:pipeline}.
+
+% \begin{figure}[h!]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{pipeline_diagram.png}
+%     \caption{Proposed Pipeline Workflow}
+%     \label{fig:pipeline}
+% \end{figure}
+
 
 \chapter{Results}
 Your results go here.
@@ -328,6 +426,23 @@ Your discussion goes here. 123456
 
 \chapter{Conclusion}
 Your conclusion goes here.
+
+\chapter*{Acknowledgements}
+
+First and foremost, I would like to express my deepest gratitude to my Professor, [Prof. Dr. Mazhar Hameed], for their invaluable guidance, encouragement, and continuous support throughout this research. Their expertise and insight have been instrumental in shaping this thesis, and I am truly grateful for the countless hours they have dedicated to helping me navigate through challenges and achieve meaningful progress.
+
+I am also profoundly thankful to the faculty and staff of [University/Institute Name] for providing a supportive academic environment and access to the resources necessary for conducting my research. 
+
+A sincere thank you goes to my friends and colleagues, who offered encouragement, shared knowledge, and supported me throughout this journey. Their companionship and moral support have been a source of motivation during challenging times.
+
+Finally, I would like to express my deepest gratitude to my family for their unwavering love, patience, and understanding. Their belief in my abilities has been my greatest source of strength and inspiration. 
+
+This thesis is dedicated to everyone who contributed to making this research a reality. Thank you all for your profound impact on my academic and personal growth.
+
+\begin{flushright}
+\textit{[Jason Joel Pinto]} \\
+\textit{[22 December 2024]}
+\end{flushright}
 
 % Appendices
 \appendix

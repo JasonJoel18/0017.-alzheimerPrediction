@@ -101,14 +101,14 @@
       \field{sortinit}{A}
       \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
       \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{Alzheimer’s Disease (AD) is a neurological brain disorder that causes dementia and neurological dysfunction, affecting memory, behavior, and cognition. Deep Learning (DL), a kind of Artificial Intelligence (AI), has paved the way for new AD detection and automation methods. The DL model’s prediction accuracy depends on the dataset’s size. The DL models lose their accuracy when the dataset has an imbalanced class problem. This study aims to use the deep Convolutional Neural Network (CNN) to develop a reliable and efficient method for identifying Alzheimer’s disease using MRI. In this study, we offer a new CNN architecture for diagnosing Alzheimer’s disease with a modest number of parameters, making it perfect for training a smaller dataset. This proposed model correctly separates the early stages of Alzheimer’s disease and displays class activation patterns on the brain as a heat map. The proposed Detection of Alzheimer’s Disease Network (DAD-Net) is developed from scratch to correctly classify the phases of Alzheimer’s disease while reducing parameters and computation costs. The Kaggle MRI image dataset has a severe problem with class imbalance. Therefore, we used a synthetic oversampling technique to distribute the image throughout the classes and avoid the problem. Precision, recall, F1-score, Area Under the Curve (AUC), and loss are all used to compare the proposed DAD-Net against DEMENET and CNN Model. For accuracy, AUC, F1-score, precision, and recall, the DAD-Net achieved the following values for evaluation metrics: 99.22%, 99.91%, 99.19%, 99.30%, and 99.14%, respectively. The presented DAD-Net outperforms other state-of-the-art models in all evaluation metrics, according to the simulation results.}
+      \field{abstract}{Alzheimers Disease (AD) is a neurological brain disorder that causes dementia and neurological dysfunction, affecting memory, behavior, and cognition. Deep Learning (DL), a kind of Artificial Intelligence (AI), has paved the way for new AD detection and automation methods. The DL model’s prediction accuracy depends on the dataset’s size. The DL models lose their accuracy when the dataset has an imbalanced class problem. This study aims to use the deep Convolutional Neural Network (CNN) to develop a reliable and efficient method for identifying Alzheimer’s disease using MRI. In this study, we offer a new CNN architecture for diagnosing Alzheimer’s disease with a modest number of parameters, making it perfect for training a smaller dataset. This proposed model correctly separates the early stages of Alzheimer’s disease and displays class activation patterns on the brain as a heat map. The proposed Detection of Alzheimer’s Disease Network (DAD-Net) is developed from scratch to correctly classify the phases of Alzheimer’s disease while reducing parameters and computation costs. The Kaggle MRI image dataset has a severe problem with class imbalance. Therefore, we used a synthetic oversampling technique to distribute the image throughout the classes and avoid the problem. Precision, recall, F1-score, Area Under the Curve (AUC), and loss are all used to compare the proposed DAD-Net against DEMENET and CNN Model. For accuracy, AUC, F1-score, precision, and recall, the DAD-Net achieved the following values for evaluation metrics: 99.22%, 99.91%, 99.19%, 99.30%, and 99.14%, respectively. The presented DAD-Net outperforms other state-of-the-art models in all evaluation metrics, according to the simulation results.}
       \field{issn}{1420-3049}
       \field{journaltitle}{Molecules}
       \field{number}{20}
-      \field{title}{DAD-Net: Classification of Alzheimer’s Disease Using ADASYN Oversampling Technique and Optimized Neural Network}
       \field{volume}{27}
       \field{year}{2022}
+      \field{pages}{7085}
+      \range{pages}{1}
       \verb{doi}
       \verb 10.3390/molecules27207085
       \endverb
@@ -650,6 +650,7 @@
       \endverb
     \endentry
   \enddatalist
+  \missing{IslamZhang2021}
   \missing{kendall2017}
   \missing{leibig2017}
   \missing{sarraf2016}

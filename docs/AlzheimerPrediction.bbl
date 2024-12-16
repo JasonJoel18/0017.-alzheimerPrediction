@@ -42,6 +42,84 @@
       \endverb
       \keyw{Alzheimer's disease Dementia,Diagnostic criteria,Prevalence,Incidence,Mortality,Caregivers,Family caregiver,Spouse caregiver,Health care costs,Health care expenditures,Long-term care costs,Hospice care costs,Medicare spending,Medicaid spending,Live alone,Living arrangements,Unmet needs}
     \endentry
+    \entry{2022Ahmed}{article}{}{}
+      \name{author}{9}{}{%
+        {{hash=36ba0fce5988865190d67d0a79e0772c}{%
+           family={Ahmed},
+           familyi={A\bibinitperiod},
+           given={Gulnaz},
+           giveni={G\bibinitperiod}}}%
+        {{hash=536656dd6eb55cb4c875d3fea8c31e12}{%
+           family={Er},
+           familyi={E\bibinitperiod},
+           given={Meng\bibnamedelima Joo},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=14c2323f2a8efed068a998a7c409cb7a}{%
+           family={Fareed},
+           familyi={F\bibinitperiod},
+           given={Mian\bibnamedelimb Muhammad\bibnamedelima Sadiq},
+           giveni={M\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=e121d8295f126c10a48cea6bcaf55ba8}{%
+           family={Zikria},
+           familyi={Z\bibinitperiod},
+           given={Shahid},
+           giveni={S\bibinitperiod}}}%
+        {{hash=70a0b3aed17ce2e894477f51674be6b0}{%
+           family={Mahmood},
+           familyi={M\bibinitperiod},
+           given={Saqib},
+           giveni={S\bibinitperiod}}}%
+        {{hash=2a808725cf238223cc20fcfaf0b61144}{%
+           family={He},
+           familyi={H\bibinitperiod},
+           given={Jiao},
+           giveni={J\bibinitperiod}}}%
+        {{hash=a3c6a731fa44be8327191d0ed58523c8}{%
+           family={Asad},
+           familyi={A\bibinitperiod},
+           given={Muhammad},
+           giveni={M\bibinitperiod}}}%
+        {{hash=9ab704da3b5c5dadbf67708d971042d4}{%
+           family={Jilani},
+           familyi={J\bibinitperiod},
+           given={Syeda\bibnamedelima Fizzah},
+           giveni={S\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=af716e51c01e88028b6828be6d5aee67}{%
+           family={Aslam},
+           familyi={A\bibinitperiod},
+           given={Muhammad},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{100bf04c77ed3d0813d1de1c37f9a137}
+      \strng{fullhash}{89540e100e0f6c7c678e88c9352341f4}
+      \strng{fullhashraw}{89540e100e0f6c7c678e88c9352341f4}
+      \strng{bibnamehash}{100bf04c77ed3d0813d1de1c37f9a137}
+      \strng{authorbibnamehash}{100bf04c77ed3d0813d1de1c37f9a137}
+      \strng{authornamehash}{100bf04c77ed3d0813d1de1c37f9a137}
+      \strng{authorfullhash}{89540e100e0f6c7c678e88c9352341f4}
+      \strng{authorfullhashraw}{89540e100e0f6c7c678e88c9352341f4}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1420-3049}
+      \field{journaltitle}{Molecules}
+      \field{number}{20}
+      \field{title}{DAD-Net: Classification of Alzheimers Disease Using ADASYN Oversampling Technique and Optimized Neural Network}
+      \field{volume}{27}
+      \field{year}{2022}
+      \field{pages}{7085}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3390/molecules27207085
+      \endverb
+      \verb{urlraw}
+      \verb https://www.mdpi.com/1420-3049/27/20/7085
+      \endverb
+      \verb{url}
+      \verb https://www.mdpi.com/1420-3049/27/20/7085
+      \endverb
+    \endentry
     \entry{2019321}{article}{}{}
       \name{author}{1}{}{%
         {{hash=4c88a1138ed688de70add198ff1fb0b9}{%
@@ -292,6 +370,220 @@
       \field{pages}{430\bibrangedash 442}
       \range{pages}{13}
     \endentry
+    \entry{Santos2023}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=67d947abbee1c38b9baa0a38a4a2a021}{%
+           family={Francisco\bibnamedelima Santos},
+           familyi={F\bibinitperiod\bibinitdelim S\bibinitperiod},
+           given={Dheiver},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {Institute of Electrical}%
+        {Electronics Engineers (IEEE)}%
+      }
+      \strng{namehash}{67d947abbee1c38b9baa0a38a4a2a021}
+      \strng{fullhash}{67d947abbee1c38b9baa0a38a4a2a021}
+      \strng{fullhashraw}{67d947abbee1c38b9baa0a38a4a2a021}
+      \strng{bibnamehash}{67d947abbee1c38b9baa0a38a4a2a021}
+      \strng{authorbibnamehash}{67d947abbee1c38b9baa0a38a4a2a021}
+      \strng{authornamehash}{67d947abbee1c38b9baa0a38a4a2a021}
+      \strng{authorfullhash}{67d947abbee1c38b9baa0a38a4a2a021}
+      \strng{authorfullhashraw}{67d947abbee1c38b9baa0a38a4a2a021}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{title}{Advancing Automated Diagnosis: Convolutional Neural Networks for Alzheimer’s Disease Classification through MRI Image Processing}
+      \field{year}{2023}
+      \verb{doi}
+      \verb 10.36227/techrxiv.23002007.v1
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.36227/techrxiv.23002007.v1
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.36227/techrxiv.23002007.v1
+      \endverb
+    \endentry
+    \entry{Gupta2019}{article}{}{}
+      \name{author}{8}{}{%
+        {{hash=19aa757b3cf8b5a1ce784025affb6be7}{%
+           family={Gupta},
+           familyi={G\bibinitperiod},
+           given={Yubraj},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=c12c25aef4e5316a1a1b4140099312e5}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Kun\bibnamedelima Ho},
+           giveni={K\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=63c0faa91f11a670a9d1bf6beb7a646c}{%
+           family={Choi},
+           familyi={C\bibinitperiod},
+           given={Kyu\bibnamedelima Yeong},
+           giveni={K\bibinitperiod\bibinitdelim Y\bibinitperiod}}}%
+        {{hash=c3cb970713a310881fb213804deb06eb}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Jang\bibnamedelima Jae},
+           giveni={J\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=563399f28fbe3bba1ca29e35d8ef55e3}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Byeong\bibnamedelima Chae},
+           giveni={B\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=c14cfa42f50cbe90983893662c6f9e4c}{%
+           family={Kwon},
+           familyi={K\bibinitperiod},
+           given={Goo\bibnamedelima Rak},
+           giveni={G\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=87a44824775db7c20a106c7d5c22898e}{%
+           family={National\bibnamedelimb Research\bibnamedelimb Center\bibnamedelimb for\bibnamedelima Dementia},
+           familyi={N\bibinitperiod\bibinitdelim R\bibinitperiod\bibinitdelim C\bibinitperiod\bibinitdelim f\bibinitperiod\bibinitdelim D\bibinitperiod},
+           prefix={the},
+           prefixi={t\bibinitperiod}}}%
+        {{hash=d7cb1099f209b086d91d9dffcca16590}{%
+           family={Initiative},
+           familyi={I\bibinitperiod},
+           given={Alzheimer’s\bibnamedelimb Disease\bibnamedelima Neuroimaging},
+           giveni={A\bibinitperiod\bibinitdelim D\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Public Library of Science}%
+      }
+      \strng{namehash}{bf5f0e413a2dbc01730ab21199fe7c89}
+      \strng{fullhash}{cbb55867fde48b522c0ab0535bd65469}
+      \strng{fullhashraw}{cbb55867fde48b522c0ab0535bd65469}
+      \strng{bibnamehash}{bf5f0e413a2dbc01730ab21199fe7c89}
+      \strng{authorbibnamehash}{bf5f0e413a2dbc01730ab21199fe7c89}
+      \strng{authornamehash}{bf5f0e413a2dbc01730ab21199fe7c89}
+      \strng{authorfullhash}{cbb55867fde48b522c0ab0535bd65469}
+      \strng{authorfullhashraw}{cbb55867fde48b522c0ab0535bd65469}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{PLOS ONE}
+      \field{month}{10}
+      \field{number}{10}
+      \field{title}{Early diagnosis of Alzheimer’s disease using combined features from voxel-based morphometry and cortical, subcortical, and hippocampus regions of MRI T1 brain images}
+      \field{volume}{14}
+      \field{year}{2019}
+      \field{pages}{1\bibrangedash 30}
+      \range{pages}{30}
+      \verb{doi}
+      \verb 10.1371/journal.pone.0222446
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1371/journal.pone.0222446
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1371/journal.pone.0222446
+      \endverb
+    \endentry
+    \entry{Islam2023}{article}{}{}
+      \name{author}{5}{}{%
+        {{hash=36d6e2941b7ba4aeb5c37e900dc58e20}{%
+           family={Islam},
+           familyi={I\bibinitperiod},
+           given={Farhana},
+           giveni={F\bibinitperiod}}}%
+        {{hash=5ffa1e50af65b5f5cd1dd4a0bc31c8b3}{%
+           family={Rahman},
+           familyi={R\bibinitperiod},
+           given={Md.\bibnamedelimi Habibur},
+           giveni={M\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=9508f35f6a499ed1d5871d7ccf2cfa28}{%
+           family={Nurjahan},
+           familyi={N\bibinitperiod}}}%
+        {{hash=afdcb82d338cb3a2e872e4c759a6c8a7}{%
+           family={Hossain},
+           familyi={H\bibinitperiod},
+           given={Md.\bibnamedelimi Selim},
+           giveni={M\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=2355197e7b59b1fb2db5f089e6430b62}{%
+           family={Ahmed},
+           familyi={A\bibinitperiod},
+           given={Samsuddin},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {The Science}%
+        {Information Organization}%
+      }
+      \strng{namehash}{2f8dd1d78966ef8fda8097d5dcc38821}
+      \strng{fullhash}{acc39c14adc2c43f3004182923897bee}
+      \strng{fullhashraw}{acc39c14adc2c43f3004182923897bee}
+      \strng{bibnamehash}{2f8dd1d78966ef8fda8097d5dcc38821}
+      \strng{authorbibnamehash}{2f8dd1d78966ef8fda8097d5dcc38821}
+      \strng{authornamehash}{2f8dd1d78966ef8fda8097d5dcc38821}
+      \strng{authorfullhash}{acc39c14adc2c43f3004182923897bee}
+      \strng{authorfullhashraw}{acc39c14adc2c43f3004182923897bee}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed online from IJACSA website}
+      \field{title}{A Novel Method for Diagnosing Alzheimer’s Disease from MRI Scans using the ResNet50 Feature Extractor and the SVM Classifier}
+      \field{year}{2023}
+      \field{pages}{1233\bibrangedash 1240}
+      \range{pages}{8}
+      \verb{urlraw}
+      \verb http://www.ijacsa.thesai.org
+      \endverb
+      \verb{url}
+      \verb http://www.ijacsa.thesai.org
+      \endverb
+      \keyw{Alzheimer’s disease,MRI,deep learning,ResNet50,support vector machine,multi-class classification}
+    \endentry
+    \entry{Isunuri2023}{inproceedings}{}{}
+      \name{author}{2}{}{%
+        {{hash=b3acb8dd3362d1b4b1b973490b326733}{%
+           family={Isunuri},
+           familyi={I\bibinitperiod},
+           given={Bala\bibnamedelima Venkateswarlu},
+           giveni={B\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+        {{hash=3854cb29631c4c88744fe751da9b1415}{%
+           family={Kakarla},
+           familyi={K\bibinitperiod},
+           given={Dr\bibnamedelima Jagadeesh},
+           giveni={D\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Gandhinagar, India}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{2f7bdfe736a305b173a34a1040ac7161}
+      \strng{fullhash}{2f7bdfe736a305b173a34a1040ac7161}
+      \strng{fullhashraw}{2f7bdfe736a305b173a34a1040ac7161}
+      \strng{bibnamehash}{2f7bdfe736a305b173a34a1040ac7161}
+      \strng{authorbibnamehash}{2f7bdfe736a305b173a34a1040ac7161}
+      \strng{authornamehash}{2f7bdfe736a305b173a34a1040ac7161}
+      \strng{authorfullhash}{2f7bdfe736a305b173a34a1040ac7161}
+      \strng{authorfullhashraw}{2f7bdfe736a305b173a34a1040ac7161}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9781450398220}
+      \field{series}{ICVGIP '22}
+      \field{title}{Alzheimer’s severity classification using Transfer Learning and Residual Separable Convolution Network}
+      \field{year}{2023}
+      \verb{doi}
+      \verb 10.1145/3571600.3571610
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/3571600.3571610
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/3571600.3571610
+      \endverb
+      \keyw{Alxheimer’s disease,Residual Separable Convolution Network,Severity classification,Transfer Learning}
+    \endentry
     \entry{2019Jo}{article}{}{}
       \name{author}{3}{}{%
         {{hash=99dd4eb01efcc17ce0c5338818ef278f}{%
@@ -331,6 +623,57 @@
       \range{pages}{1}
       \verb{doi}
       \verb 10.3389/fnagi.2019.00220
+      \endverb
+    \endentry
+    \entry{Latif2023}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=1fa7a2ab6d2b05b9ca7231076fd126ff}{%
+           family={El-Latif},
+           familyi={E\bibinithyphendelim L\bibinitperiod},
+           given={Ahmed\bibnamedelimb A.\bibnamedelimi Abd},
+           giveni={A\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=9313b3b9f56c7e6a11b1f478b527d5e7}{%
+           family={Chelloug},
+           familyi={C\bibinitperiod},
+           given={Samia\bibnamedelima Allaoua},
+           giveni={S\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=a36bd1b757e25171747d6e5155cbe015}{%
+           family={Alabdulhafith},
+           familyi={A\bibinitperiod},
+           given={Maali},
+           giveni={M\bibinitperiod}}}%
+        {{hash=cb4f5dd4b542a4e86828bd72460883c9}{%
+           family={Hammad},
+           familyi={H\bibinitperiod},
+           given={Mohamed},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{df7357487cfe9f9d9ba9f5a8c8edad84}
+      \strng{fullhash}{4b7bcc9d00cd8502662c090bbb57e0e3}
+      \strng{fullhashraw}{4b7bcc9d00cd8502662c090bbb57e0e3}
+      \strng{bibnamehash}{df7357487cfe9f9d9ba9f5a8c8edad84}
+      \strng{authorbibnamehash}{df7357487cfe9f9d9ba9f5a8c8edad84}
+      \strng{authornamehash}{df7357487cfe9f9d9ba9f5a8c8edad84}
+      \strng{authorfullhash}{4b7bcc9d00cd8502662c090bbb57e0e3}
+      \strng{authorfullhashraw}{4b7bcc9d00cd8502662c090bbb57e0e3}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2075-4418}
+      \field{journaltitle}{Diagnostics}
+      \field{number}{7}
+      \field{title}{Accurate Detection of Alzheimer’s Disease Using Lightweight Deep Learning Model on MRI Data}
+      \field{volume}{13}
+      \field{year}{2023}
+      \verb{doi}
+      \verb 10.3390/diagnostics13071216
+      \endverb
+      \verb{urlraw}
+      \verb https://www.mdpi.com/2075-4418/13/7/1216
+      \endverb
+      \verb{url}
+      \verb https://www.mdpi.com/2075-4418/13/7/1216
       \endverb
     \endentry
     \entry{2023ShenLiu}{article}{}{}
@@ -447,6 +790,106 @@
       \verb https://www.frontiersin.org/journals/aging-neuroscience/articles/10.3389/fnagi.2024.1363458
       \endverb
     \endentry
+    \entry{Murugan2021}{article}{}{}
+      \name{author}{7}{}{%
+        {{hash=fea8069161cefc1e8e16c19b9e184670}{%
+           family={Murugan},
+           familyi={M\bibinitperiod},
+           given={Suriya},
+           giveni={S\bibinitperiod}}}%
+        {{hash=5acfdf28d161adf611a5d8c68f276c66}{%
+           family={Venkatesan},
+           familyi={V\bibinitperiod},
+           given={Chandran},
+           giveni={C\bibinitperiod}}}%
+        {{hash=2797c13749fc94e4901f5cb4ce7750a9}{%
+           family={Sumithra},
+           familyi={S\bibinitperiod},
+           given={M.\bibnamedelimi G.},
+           giveni={M\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=1c9c8372454a255f393a606926279c71}{%
+           family={Gao},
+           familyi={G\bibinitperiod},
+           given={Xiao-Zhi},
+           giveni={X\bibinithyphendelim Z\bibinitperiod}}}%
+        {{hash=c30aa0e446132ebd3d1fd1cca87dc3e5}{%
+           family={Elakkiya},
+           familyi={E\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod}}}%
+        {{hash=655ee8e8631619fdeb880ce8c9ab4a9d}{%
+           family={Akila},
+           familyi={A\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=7593152d17411113bc08b3309a65e6c7}{%
+           family={Manoharan},
+           familyi={M\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{5fca15753858a5934910a4db70f2063f}
+      \strng{fullhash}{5dbc78ca70961ffcff10507595837897}
+      \strng{fullhashraw}{5dbc78ca70961ffcff10507595837897}
+      \strng{bibnamehash}{5fca15753858a5934910a4db70f2063f}
+      \strng{authorbibnamehash}{5fca15753858a5934910a4db70f2063f}
+      \strng{authornamehash}{5fca15753858a5934910a4db70f2063f}
+      \strng{authorfullhash}{5dbc78ca70961ffcff10507595837897}
+      \strng{authorfullhashraw}{5dbc78ca70961ffcff10507595837897}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Access}
+      \field{title}{DEMNET: A Deep Learning Model for Early Diagnosis of Alzheimer Diseases and Dementia From MR Images}
+      \field{volume}{9}
+      \field{year}{2021}
+      \field{pages}{90319\bibrangedash 90329}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1109/ACCESS.2021.3090474
+      \endverb
+      \keyw{Magnetic resonance imaging;Feature extraction;Alzheimer's disease;Brain modeling;Deep learning;Neuroimaging;Computational modeling;Deep learning;Alzheimer’s Disease;MRI image;convolutional neural network;Cohen’s kappa}
+    \endentry
+    \entry{sarraf2016}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=b255192ff82bbdf9ae48be666266a023}{%
+           family={Sarraf},
+           familyi={S\bibinitperiod},
+           given={Saman},
+           giveni={S\bibinitperiod}}}%
+        {{hash=ae94c496b9361f84de99c1a8535a6947}{%
+           family={Tofighi},
+           familyi={T\bibinitperiod},
+           given={Ghassem},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{c73bba83de364f27c56e9932af65e154}
+      \strng{fullhash}{c73bba83de364f27c56e9932af65e154}
+      \strng{fullhashraw}{c73bba83de364f27c56e9932af65e154}
+      \strng{bibnamehash}{c73bba83de364f27c56e9932af65e154}
+      \strng{authorbibnamehash}{c73bba83de364f27c56e9932af65e154}
+      \strng{authornamehash}{c73bba83de364f27c56e9932af65e154}
+      \strng{authorfullhash}{c73bba83de364f27c56e9932af65e154}
+      \strng{authorfullhashraw}{c73bba83de364f27c56e9932af65e154}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.CV}
+      \field{eprinttype}{arXiv}
+      \field{title}{Classification of Alzheimer's Disease using fMRI Data and Deep Learning Convolutional Neural Networks}
+      \field{year}{2016}
+      \verb{eprint}
+      \verb 1603.08631
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/1603.08631
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/1603.08631
+      \endverb
+    \endentry
     \entry{2022Sarang}{article}{}{}
       \name{author}{7}{}{%
         {{hash=73774d0d5dec1bb4a9ba7ebaaec84610}{%
@@ -513,6 +956,50 @@
       \verb https://www.mdpi.com/2075-4418/12/8/1833
       \endverb
     \endentry
+    \entry{Yu2023}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=295289d4f67d93b294fa22bc113cc457}{%
+           family={Yu},
+           familyi={Y\bibinitperiod},
+           given={Yanzheng},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Xiamen, China}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{295289d4f67d93b294fa22bc113cc457}
+      \strng{fullhash}{295289d4f67d93b294fa22bc113cc457}
+      \strng{fullhashraw}{295289d4f67d93b294fa22bc113cc457}
+      \strng{bibnamehash}{295289d4f67d93b294fa22bc113cc457}
+      \strng{authorbibnamehash}{295289d4f67d93b294fa22bc113cc457}
+      \strng{authornamehash}{295289d4f67d93b294fa22bc113cc457}
+      \strng{authorfullhash}{295289d4f67d93b294fa22bc113cc457}
+      \strng{authorfullhashraw}{295289d4f67d93b294fa22bc113cc457}
+      \field{sortinit}{Y}
+      \field{sortinithash}{fd67ad5a9ef0f7456bdd9aab10fe1495}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 2022 6th International Conference on Electronic Information Technology and Computer Engineering}
+      \field{isbn}{9781450397148}
+      \field{series}{EITCE '22}
+      \field{title}{Deep Learning Approaches for Image Classification}
+      \field{year}{2023}
+      \field{pages}{1494\bibrangedash 1498}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1145/3573428.3573691
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/3573428.3573691
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/3573428.3573691
+      \endverb
+      \keyw{Convolution neural network,Deep learning,Image classification}
+    \endentry
     \entry{zou2023}{article}{}{}
       \name{author}{6}{}{%
         {{hash=abecd9cea7e3bbe91365bfefdeb0566f}{%
@@ -573,11 +1060,6 @@
       \endverb
     \endentry
   \enddatalist
-  \missing{IslamZhang2021}
-  \missing{kendall2017}
-  \missing{leibig2017}
-  \missing{sarraf2016}
-  \missing{wang2019}
 \endrefsection
 \endinput
 
