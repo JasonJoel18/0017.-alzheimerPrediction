@@ -282,6 +282,28 @@
       \verb 10.1109/ACROSET62108.2024.10743886
       \endverb
     \endentry
+    \entry{efficientnet_medium}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=e2de8cece98417baaeb7e6145d1cd970}{%
+           family={DhanushKumar},
+           familyi={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{e2de8cece98417baaeb7e6145d1cd970}
+      \strng{fullhash}{e2de8cece98417baaeb7e6145d1cd970}
+      \strng{fullhashraw}{e2de8cece98417baaeb7e6145d1cd970}
+      \strng{bibnamehash}{e2de8cece98417baaeb7e6145d1cd970}
+      \strng{authorbibnamehash}{e2de8cece98417baaeb7e6145d1cd970}
+      \strng{authornamehash}{e2de8cece98417baaeb7e6145d1cd970}
+      \strng{authorfullhash}{e2de8cece98417baaeb7e6145d1cd970}
+      \strng{authorfullhashraw}{e2de8cece98417baaeb7e6145d1cd970}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://medium.com/@danushidk507/efficientnet-scaling-depth-width-resolution-11e2d4311357}}
+      \field{title}{EfficientNet — Scaling Depth, Width, Resolution}
+      \field{year}{2023}
+    \endentry
     \entry{Duy2024}{article}{}{}
       \name{author}{3}{}{%
         {{hash=77d5bb5766d493806528903bcabd10a3}{%
@@ -407,6 +429,45 @@
       \verb http://dx.doi.org/10.36227/techrxiv.23002007.v1
       \endverb
     \endentry
+    \entry{2016Gal}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=d4f394bd4030e20e7b1399e0abe7dc6a}{%
+           family={Gal},
+           familyi={G\bibinitperiod},
+           given={Yarin},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=bf5cf30deddddad00a6341ad7a414445}{%
+           family={Ghahramani},
+           familyi={G\bibinitperiod},
+           given={Zoubin},
+           giveni={Z\bibinitperiod}}}%
+      }
+      \strng{namehash}{ea98ec178dc61973ac54967bc78906b7}
+      \strng{fullhash}{ea98ec178dc61973ac54967bc78906b7}
+      \strng{fullhashraw}{ea98ec178dc61973ac54967bc78906b7}
+      \strng{bibnamehash}{ea98ec178dc61973ac54967bc78906b7}
+      \strng{authorbibnamehash}{ea98ec178dc61973ac54967bc78906b7}
+      \strng{authornamehash}{ea98ec178dc61973ac54967bc78906b7}
+      \strng{authorfullhash}{ea98ec178dc61973ac54967bc78906b7}
+      \strng{authorfullhashraw}{ea98ec178dc61973ac54967bc78906b7}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{stat.ML}
+      \field{eprinttype}{arXiv}
+      \field{title}{Dropout as a Bayesian Approximation: Representing Model Uncertainty in Deep Learning}
+      \field{year}{2016}
+      \verb{eprint}
+      \verb 1506.02142
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/1506.02142
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/1506.02142
+      \endverb
+    \endentry
     \entry{Gupta2019}{article}{}{}
       \name{author}{8}{}{%
         {{hash=19aa757b3cf8b5a1ce784025affb6be7}{%
@@ -482,6 +543,82 @@
       \verb{url}
       \verb https://doi.org/10.1371/journal.pone.0222446
       \endverb
+    \endentry
+    \entry{he2015delving}{inproceedings}{}{}
+      \name{author}{4}{}{%
+        {{hash=6b4b60e909e78633945f3f9c9dc83e01}{%
+           family={He},
+           familyi={H\bibinitperiod},
+           given={Kaiming},
+           giveni={K\bibinitperiod}}}%
+        {{hash=5e72bc22dbcf0984c6d113d280e36990}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Xiangyu},
+           giveni={X\bibinitperiod}}}%
+        {{hash=bb295293acacd54387339079ebbe4ead}{%
+           family={Ren},
+           familyi={R\bibinitperiod},
+           given={Shaoqing},
+           giveni={S\bibinitperiod}}}%
+        {{hash=f85751488058842b5777c7b4074077b5}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={Jian},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{6edb98fe38401d2fe4a026f5ce6e8451}
+      \strng{fullhash}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \strng{fullhashraw}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \strng{bibnamehash}{6edb98fe38401d2fe4a026f5ce6e8451}
+      \strng{authorbibnamehash}{6edb98fe38401d2fe4a026f5ce6e8451}
+      \strng{authornamehash}{6edb98fe38401d2fe4a026f5ce6e8451}
+      \strng{authorfullhash}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \strng{authorfullhashraw}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the IEEE International Conference on Computer Vision}
+      \field{title}{Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification}
+      \field{year}{2015}
+      \field{pages}{1026\bibrangedash 1034}
+      \range{pages}{9}
+    \endentry
+    \entry{2021Hoang}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=8d87a7c4ac1e9ef18c99474d0fb05941}{%
+           family={Hoang},
+           familyi={H\bibinitperiod},
+           given={Van-Thanh},
+           giveni={V\bibinithyphendelim T\bibinitperiod}}}%
+        {{hash=0ab0f66307f5004cdb195c726467e809}{%
+           family={Jo},
+           familyi={J\bibinitperiod},
+           given={Kang-Hyun},
+           giveni={K\bibinithyphendelim H\bibinitperiod}}}%
+      }
+      \strng{namehash}{f05e3e99355924a683c5110da8f7cffe}
+      \strng{fullhash}{f05e3e99355924a683c5110da8f7cffe}
+      \strng{fullhashraw}{f05e3e99355924a683c5110da8f7cffe}
+      \strng{bibnamehash}{f05e3e99355924a683c5110da8f7cffe}
+      \strng{authorbibnamehash}{f05e3e99355924a683c5110da8f7cffe}
+      \strng{authornamehash}{f05e3e99355924a683c5110da8f7cffe}
+      \strng{authorfullhash}{f05e3e99355924a683c5110da8f7cffe}
+      \strng{authorfullhashraw}{f05e3e99355924a683c5110da8f7cffe}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2021 14th International Conference on Human System Interaction (HSI)}
+      \field{title}{Practical Analysis on Architecture of EfficientNet}
+      \field{year}{2021}
+      \field{pages}{1\bibrangedash 4}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1109/HSI52170.2021.9538782
+      \endverb
+      \keyw{Computer vision;Analytical models;Costs;Computational modeling;Computer architecture;Real-time systems;Mobile handsets;efficient CNN architecture;efficientnet;SE module}
     \endentry
     \entry{Islam2023}{article}{}{}
       \name{author}{5}{}{%
@@ -625,6 +762,138 @@
       \verb 10.3389/fnagi.2019.00220
       \endverb
     \endentry
+    \entry{keskar2017largebatchtrainingdeeplearning}{misc}{}{}
+      \name{author}{5}{}{%
+        {{hash=15ea9bc75db0deb69067396346fde185}{%
+           family={Keskar},
+           familyi={K\bibinitperiod},
+           given={Nitish\bibnamedelima Shirish},
+           giveni={N\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=7665aa4c66ae17e55251a67c635e7ad3}{%
+           family={Mudigere},
+           familyi={M\bibinitperiod},
+           given={Dheevatsa},
+           giveni={D\bibinitperiod}}}%
+        {{hash=88a342d927bf795b0d92af8a5613da31}{%
+           family={Nocedal},
+           familyi={N\bibinitperiod},
+           given={Jorge},
+           giveni={J\bibinitperiod}}}%
+        {{hash=9e7183ff690cd4bd193b4b725fad9621}{%
+           family={Smelyanskiy},
+           familyi={S\bibinitperiod},
+           given={Mikhail},
+           giveni={M\bibinitperiod}}}%
+        {{hash=37eb652c3d36bdbb7322e979993ff09c}{%
+           family={Tang},
+           familyi={T\bibinitperiod},
+           given={Ping\bibnamedelimb Tak\bibnamedelima Peter},
+           giveni={P\bibinitperiod\bibinitdelim T\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \strng{namehash}{4ea18b0d98cb5bcd3aceb7e05ae41c54}
+      \strng{fullhash}{2831feb38bd4e8784193a9f7506679d8}
+      \strng{fullhashraw}{2831feb38bd4e8784193a9f7506679d8}
+      \strng{bibnamehash}{4ea18b0d98cb5bcd3aceb7e05ae41c54}
+      \strng{authorbibnamehash}{4ea18b0d98cb5bcd3aceb7e05ae41c54}
+      \strng{authornamehash}{4ea18b0d98cb5bcd3aceb7e05ae41c54}
+      \strng{authorfullhash}{2831feb38bd4e8784193a9f7506679d8}
+      \strng{authorfullhashraw}{2831feb38bd4e8784193a9f7506679d8}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.LG}
+      \field{eprinttype}{arXiv}
+      \field{title}{On Large-Batch Training for Deep Learning: Generalization Gap and Sharp Minima}
+      \field{year}{2017}
+      \verb{eprint}
+      \verb 1609.04836
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/1609.04836
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/1609.04836
+      \endverb
+    \endentry
+    \entry{loss_functions_image_classification}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=4225801de04136fc9a4203c207ccd567}{%
+           family={Khan},
+           familyi={K\bibinitperiod},
+           given={Asifullah},
+           giveni={A\bibinitperiod}}}%
+        {{hash=973ea55a2109564bf4ff7b43701be1f8}{%
+           family={Sohail},
+           familyi={S\bibinitperiod},
+           given={Ahmed},
+           giveni={A\bibinitperiod}}}%
+        {{hash=d123ef165dbcd935397f53ac7fb1699f}{%
+           family={Zahoora},
+           familyi={Z\bibinitperiod},
+           given={Usman},
+           giveni={U\bibinitperiod}}}%
+        {{hash=0f9a8cdf6b19e9699f8b85327053f582}{%
+           family={Qureshi},
+           familyi={Q\bibinitperiod},
+           given={Asim},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{b821fa44ac7393b9c6a7810125207d23}
+      \strng{fullhash}{907d40fde350a38ecb38d0de52979b71}
+      \strng{fullhashraw}{907d40fde350a38ecb38d0de52979b71}
+      \strng{bibnamehash}{b821fa44ac7393b9c6a7810125207d23}
+      \strng{authorbibnamehash}{b821fa44ac7393b9c6a7810125207d23}
+      \strng{authornamehash}{b821fa44ac7393b9c6a7810125207d23}
+      \strng{authorfullhash}{907d40fde350a38ecb38d0de52979b71}
+      \strng{authorfullhashraw}{907d40fde350a38ecb38d0de52979b71}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:2005.14647}
+      \field{title}{A Wide Analysis of Loss Functions for Image Classification Using Convolution Neural Network}
+      \field{year}{2020}
+    \endentry
+    \entry{2017Kingma}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=b6fbd171848aad4edf3925543f1f1522}{%
+           family={Kingma},
+           familyi={K\bibinitperiod},
+           given={Diederik\bibnamedelima P.},
+           giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=8aa66e8231cc2fdbe67aa4f18ca970c6}{%
+           family={Ba},
+           familyi={B\bibinitperiod},
+           given={Jimmy},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{a09df9f123146b8e2c7f1134c9496932}
+      \strng{fullhash}{a09df9f123146b8e2c7f1134c9496932}
+      \strng{fullhashraw}{a09df9f123146b8e2c7f1134c9496932}
+      \strng{bibnamehash}{a09df9f123146b8e2c7f1134c9496932}
+      \strng{authorbibnamehash}{a09df9f123146b8e2c7f1134c9496932}
+      \strng{authornamehash}{a09df9f123146b8e2c7f1134c9496932}
+      \strng{authorfullhash}{a09df9f123146b8e2c7f1134c9496932}
+      \strng{authorfullhashraw}{a09df9f123146b8e2c7f1134c9496932}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.LG}
+      \field{eprinttype}{arXiv}
+      \field{title}{Adam: A Method for Stochastic Optimization}
+      \field{year}{2017}
+      \verb{eprint}
+      \verb 1412.6980
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/1412.6980
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/1412.6980
+      \endverb
+    \endentry
     \entry{Latif2023}{article}{}{}
       \name{author}{4}{}{%
         {{hash=1fa7a2ab6d2b05b9ca7231076fd126ff}{%
@@ -713,6 +982,84 @@
       \field{year}{2022}
       \verb{doi}
       \verb 10.1038/s41598-022-20674-x
+      \endverb
+    \endentry
+    \entry{2017Loshchilov}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=1241b8181104f1917578d4c7f9b323b6}{%
+           family={Loshchilov},
+           familyi={L\bibinitperiod},
+           given={Ilya},
+           giveni={I\bibinitperiod}}}%
+        {{hash=528d4af87fd2ecf5fb8a22db913ce088}{%
+           family={Hutter},
+           familyi={H\bibinitperiod},
+           given={Frank},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{b308ccb07134a06ec3735828ac4f15e2}
+      \strng{fullhash}{b308ccb07134a06ec3735828ac4f15e2}
+      \strng{fullhashraw}{b308ccb07134a06ec3735828ac4f15e2}
+      \strng{bibnamehash}{b308ccb07134a06ec3735828ac4f15e2}
+      \strng{authorbibnamehash}{b308ccb07134a06ec3735828ac4f15e2}
+      \strng{authornamehash}{b308ccb07134a06ec3735828ac4f15e2}
+      \strng{authorfullhash}{b308ccb07134a06ec3735828ac4f15e2}
+      \strng{authorfullhashraw}{b308ccb07134a06ec3735828ac4f15e2}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.LG}
+      \field{eprinttype}{arXiv}
+      \field{title}{SGDR: Stochastic Gradient Descent with Warm Restarts}
+      \field{year}{2017}
+      \verb{eprint}
+      \verb 1608.03983
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/1608.03983
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/1608.03983
+      \endverb
+    \endentry
+    \entry{masters2018revisitingsmallbatchtraining}{misc}{}{}
+      \name{author}{2}{}{%
+        {{hash=ec92f0dd274ff9a59095fa1703241295}{%
+           family={Masters},
+           familyi={M\bibinitperiod},
+           given={Dominic},
+           giveni={D\bibinitperiod}}}%
+        {{hash=aef227e83950f89d6d579e67ef634944}{%
+           family={Luschi},
+           familyi={L\bibinitperiod},
+           given={Carlo},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{d0c57535dab7550dc486e3c264a8655b}
+      \strng{fullhash}{d0c57535dab7550dc486e3c264a8655b}
+      \strng{fullhashraw}{d0c57535dab7550dc486e3c264a8655b}
+      \strng{bibnamehash}{d0c57535dab7550dc486e3c264a8655b}
+      \strng{authorbibnamehash}{d0c57535dab7550dc486e3c264a8655b}
+      \strng{authornamehash}{d0c57535dab7550dc486e3c264a8655b}
+      \strng{authorfullhash}{d0c57535dab7550dc486e3c264a8655b}
+      \strng{authorfullhashraw}{d0c57535dab7550dc486e3c264a8655b}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.LG}
+      \field{eprinttype}{arXiv}
+      \field{title}{Revisiting Small Batch Training for Deep Neural Networks}
+      \field{year}{2018}
+      \verb{eprint}
+      \verb 1804.07612
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/1804.07612
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/1804.07612
       \endverb
     \endentry
     \entry{10.3389/fnagi.2024.1363458}{article}{}{}
@@ -851,6 +1198,60 @@
       \endverb
       \keyw{Magnetic resonance imaging;Feature extraction;Alzheimer's disease;Brain modeling;Deep learning;Neuroimaging;Computational modeling;Deep learning;Alzheimer’s Disease;MRI image;convolutional neural network;Cohen’s kappa}
     \endentry
+    \entry{1996Lutz}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=c33e375f7c45363931f7e4ffe01192cc}{%
+           family={Prechelt},
+           familyi={P\bibinitperiod},
+           given={Lutz},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{c33e375f7c45363931f7e4ffe01192cc}
+      \strng{fullhash}{c33e375f7c45363931f7e4ffe01192cc}
+      \strng{fullhashraw}{c33e375f7c45363931f7e4ffe01192cc}
+      \strng{bibnamehash}{c33e375f7c45363931f7e4ffe01192cc}
+      \strng{authorbibnamehash}{c33e375f7c45363931f7e4ffe01192cc}
+      \strng{authornamehash}{c33e375f7c45363931f7e4ffe01192cc}
+      \strng{authorfullhash}{c33e375f7c45363931f7e4ffe01192cc}
+      \strng{authorfullhashraw}{c33e375f7c45363931f7e4ffe01192cc}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Neural Networks}
+      \field{title}{Early Stopping-But When?}
+      \field{year}{1996}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:14049040
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:14049040
+      \endverb
+    \endentry
+    \entry{epackprinting_rgb}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=559ffcf0249f59f5ab2a10cdc2372738}{%
+           family={Printing},
+           familyi={P\bibinitperiod},
+           prefix={ePack},
+           prefixi={e\bibinitperiod}}}%
+      }
+      \strng{namehash}{559ffcf0249f59f5ab2a10cdc2372738}
+      \strng{fullhash}{559ffcf0249f59f5ab2a10cdc2372738}
+      \strng{fullhashraw}{559ffcf0249f59f5ab2a10cdc2372738}
+      \strng{bibnamehash}{559ffcf0249f59f5ab2a10cdc2372738}
+      \strng{authorbibnamehash}{559ffcf0249f59f5ab2a10cdc2372738}
+      \strng{authornamehash}{559ffcf0249f59f5ab2a10cdc2372738}
+      \strng{authorfullhash}{559ffcf0249f59f5ab2a10cdc2372738}
+      \strng{authorfullhashraw}{559ffcf0249f59f5ab2a10cdc2372738}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.epackprinting.com/support/what-is-rgb-color/}}
+      \field{title}{Understanding RGB Color Model}
+      \field{year}{2023}
+    \endentry
     \entry{sarraf2016}{article}{}{}
       \name{author}{2}{}{%
         {{hash=b255192ff82bbdf9ae48be666266a023}{%
@@ -956,6 +1357,83 @@
       \verb https://www.mdpi.com/2075-4418/12/8/1833
       \endverb
     \endentry
+    \entry{dsp_rgb_hsv}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=706352e11e3ed3978e1072c08ed1b7a4}{%
+           family={StackExchange},
+           familyi={S\bibinitperiod},
+           given={DSP},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{706352e11e3ed3978e1072c08ed1b7a4}
+      \strng{fullhash}{706352e11e3ed3978e1072c08ed1b7a4}
+      \strng{fullhashraw}{706352e11e3ed3978e1072c08ed1b7a4}
+      \strng{bibnamehash}{706352e11e3ed3978e1072c08ed1b7a4}
+      \strng{authorbibnamehash}{706352e11e3ed3978e1072c08ed1b7a4}
+      \strng{authornamehash}{706352e11e3ed3978e1072c08ed1b7a4}
+      \strng{authorfullhash}{706352e11e3ed3978e1072c08ed1b7a4}
+      \strng{authorfullhashraw}{706352e11e3ed3978e1072c08ed1b7a4}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://dsp.stackexchange.com/questions/2687/why-do-we-use-the-hsv-colour-space-so-often-in-vision-and-image-processing}}
+      \field{title}{Why do we use the HSV colour space so often in vision and image processing?}
+      \field{year}{2012}
+    \endentry
+    \entry{tan2019efficientnet}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=1e7d6abb8225099acc71f672b9ec336e}{%
+           family={Tan},
+           familyi={T\bibinitperiod},
+           given={Mingxing},
+           giveni={M\bibinitperiod}}}%
+        {{hash=c636f146591d51579a8119b777394878}{%
+           family={Le},
+           familyi={L\bibinitperiod},
+           given={Quoc\bibnamedelima V},
+           giveni={Q\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+      }
+      \strng{namehash}{d029e8131f7a0bef056d7edc726f1529}
+      \strng{fullhash}{d029e8131f7a0bef056d7edc726f1529}
+      \strng{fullhashraw}{d029e8131f7a0bef056d7edc726f1529}
+      \strng{bibnamehash}{d029e8131f7a0bef056d7edc726f1529}
+      \strng{authorbibnamehash}{d029e8131f7a0bef056d7edc726f1529}
+      \strng{authornamehash}{d029e8131f7a0bef056d7edc726f1529}
+      \strng{authorfullhash}{d029e8131f7a0bef056d7edc726f1529}
+      \strng{authorfullhashraw}{d029e8131f7a0bef056d7edc726f1529}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:1905.11946}
+      \field{title}{EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks}
+      \field{year}{2019}
+    \endentry
+    \entry{keras_efficientnet}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=223bf2a82b36647ecfc4d214f4d21449}{%
+           family={Team},
+           familyi={T\bibinitperiod},
+           given={Keras},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{223bf2a82b36647ecfc4d214f4d21449}
+      \strng{fullhash}{223bf2a82b36647ecfc4d214f4d21449}
+      \strng{fullhashraw}{223bf2a82b36647ecfc4d214f4d21449}
+      \strng{bibnamehash}{223bf2a82b36647ecfc4d214f4d21449}
+      \strng{authorbibnamehash}{223bf2a82b36647ecfc4d214f4d21449}
+      \strng{authornamehash}{223bf2a82b36647ecfc4d214f4d21449}
+      \strng{authorfullhash}{223bf2a82b36647ecfc4d214f4d21449}
+      \strng{authorfullhashraw}{223bf2a82b36647ecfc4d214f4d21449}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://keras.io/examples/vision/image_classification_efficientnet_fine_tuning/}}
+      \field{title}{Image classification via fine-tuning with EfficientNet}
+      \field{year}{2020}
+    \endentry
     \entry{Yu2023}{article}{}{}
       \name{author}{1}{}{%
         {{hash=295289d4f67d93b294fa22bc113cc457}{%
@@ -999,6 +1477,88 @@
       \verb https://doi.org/10.1145/3573428.3573691
       \endverb
       \keyw{Convolution neural network,Deep learning,Image classification}
+    \endentry
+    \entry{robust_multiclass_classification}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=87f628db6da99dc0a2a20f276e51b3ac}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Xiang},
+           giveni={X\bibinitperiod}}}%
+        {{hash=0bf1b08466636bf5ead9445ddbec1524}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Liang},
+           giveni={L\bibinitperiod}}}%
+        {{hash=5a1cb92dc789e714fb5aaf67809119a6}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Jian},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{77e4b8308861cf697550c763cc2d89e5}
+      \strng{fullhash}{77e4b8308861cf697550c763cc2d89e5}
+      \strng{fullhashraw}{77e4b8308861cf697550c763cc2d89e5}
+      \strng{bibnamehash}{77e4b8308861cf697550c763cc2d89e5}
+      \strng{authorbibnamehash}{77e4b8308861cf697550c763cc2d89e5}
+      \strng{authornamehash}{77e4b8308861cf697550c763cc2d89e5}
+      \strng{authorfullhash}{77e4b8308861cf697550c763cc2d89e5}
+      \strng{authorfullhashraw}{77e4b8308861cf697550c763cc2d89e5}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Neural Networks and Learning Systems}
+      \field{title}{Robust Multi-Class Classification Using Linearly Scored Categorical Cross-Entropy}
+      \field{year}{2021}
+    \endentry
+    \entry{generalization_cross_entropy}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=f5acec98b29ee91fa6b08b85a6a0adad}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Ying},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=32082b87b2a27da1d252f9fb371f9642}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Kyong\bibnamedelima Hwan},
+           giveni={K\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=b32f61b294f8e4aa5306c6ea6859da26}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Wei},
+           giveni={W\bibinitperiod}}}%
+        {{hash=d2b260f95f60851323cf5e899c79dcea}{%
+           family={Yang},
+           familyi={Y\bibinitperiod},
+           given={Hyun\bibnamedelima Jong},
+           giveni={H\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{3361f474fef1167024fc9b87eba4e9d2}
+      \strng{fullhash}{ff5896944ff90d7f9d5b370ccc3eb510}
+      \strng{fullhashraw}{ff5896944ff90d7f9d5b370ccc3eb510}
+      \strng{bibnamehash}{3361f474fef1167024fc9b87eba4e9d2}
+      \strng{authorbibnamehash}{3361f474fef1167024fc9b87eba4e9d2}
+      \strng{authornamehash}{3361f474fef1167024fc9b87eba4e9d2}
+      \strng{authorfullhash}{ff5896944ff90d7f9d5b370ccc3eb510}
+      \strng{authorfullhashraw}{ff5896944ff90d7f9d5b370ccc3eb510}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Access}
+      \field{title}{Generalization of Cross-Entropy Loss Function for Image Classification}
+      \field{volume}{7}
+      \field{year}{2019}
+      \field{pages}{86441\bibrangedash 86453}
+      \range{pages}{13}
     \endentry
     \entry{zou2023}{article}{}{}
       \name{author}{6}{}{%

@@ -19,7 +19,7 @@ app = Flask(
 
 # Load your trained model
 model = tf.keras.models.load_model(
-    "/Volumes/Jason's T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/src/scripts/jason_alzheimer_prediction_model.keras"
+    "/Volumes/JasonT7/2.Education/Research/Thesis/Paper/0017. alzheimerPrediction/src/scripts/jason_alzheimer_prediction_model.keras"
 )
 
 # Define class labels

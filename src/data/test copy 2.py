@@ -21,17 +21,27 @@ import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib.colors as mcolors
 from rich import print
+import time
 
 
-ep = 10
+ep = 1
 bs = 32
+
+timing_results = []
+
+
+def record_time(stage_name, start_time, end_time):
+    elapsed_time = end_time - start_time
+    timing_results.append({"Stage": stage_name, "Time (s)": elapsed_time})
+    print(f"{stage_name} completed in {elapsed_time:.2f} seconds.")
+
 
 warnings.filterwarnings(action="ignore")
 
-MildDemented_dir = "/Volumes/Jason's T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data/external/MildDemented"
-ModerateDemented_dir = "/Volumes/Jason's T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data/external/ModerateDemented"
-NonDemented_dir = "/Volumes/Jason's T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data/external/NonDemented"
-VeryMildDemented_dir = "/Volumes/Jason's T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/data/external/VeryMildDemented"
+MildDemented_dir = "/Volumes/JasonT7/2.Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/MildDemented"
+ModerateDemented_dir = "/Volumes/JasonT7/2.Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/ModerateDemented"
+NonDemented_dir = "/Volumes/JasonT7/2.Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/NonDemented"
+VeryMildDemented_dir = "/Volumes/JasonT7/2.Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/VeryMildDemented"
 
 filepaths, labels = [], []
 class_labels = [
@@ -54,6 +64,8 @@ for i, j in enumerate(dict_list):
         filepaths.append(fpath)
         labels.append(class_labels[i])
 
+start_time = time.time()
+
 valid_filepaths, valid_labels = [], []
 for filepath, label in zip(filepaths, labels):
     try:
@@ -64,63 +76,58 @@ for filepath, label in zip(filepaths, labels):
     except (IOError, SyntaxError):
         print(f"Corrupted image file: {filepath}")
 
-data_df = pd.DataFrame({"filepaths": valid_filepaths, "labels": valid_labels})
-print(data_df["labels"].value_counts())
+    data_df = pd.DataFrame({"filepaths": valid_filepaths, "labels": valid_labels})
+    end_time = time.time()
+    record_time("Data Loading and Preprocessing", start_time, end_time)
+    print(data_df["labels"].value_counts())
+
+    from sklearn.model_selection import train_test_split
+
+    train_set, test_images = train_test_split(data_df, test_size=0.3, random_state=42)
+    val_set, test_images = train_test_split(test_images, test_size=0.5, random_state=42)
+
+    image_gen_train = ImageDataGenerator(preprocessing_function=preprocess_input)
+    image_gen_val_test = ImageDataGenerator(preprocessing_function=preprocess_input)
+
+    train = image_gen_train.flow_from_dataframe(
+        train_set,
+        x_col="filepaths",
+        y_col="labels",
+        target_size=(224, 224),
+        color_mode="rgb",
+        class_mode="categorical",
+        batch_size=bs,
+        shuffle=False,
+    )
+
+    val = image_gen_val_test.flow_from_dataframe(
+        val_set,
+        x_col="filepaths",
+        y_col="labels",
+        target_size=(224, 224),
+        color_mode="rgb",
+        class_mode="categorical",
+        batch_size=bs,
+        shuffle=False,
+    )
+
+    test = image_gen_val_test.flow_from_dataframe(
+        test_images,
+        x_col="filepaths",
+        y_col="labels",
+        target_size=(224, 224),
+        color_mode="rgb",
+        class_mode="categorical",
+        batch_size=bs,
+        shuffle=False,
+    )
+
+    print(f"Train images:{len(train_set)}")
+    print(f"Val images:{len(val_set)}")
+    print(f"Test images:{len(test_images)}")
 
 
-from sklearn.model_selection import train_test_split
-
-train_set, test_images = train_test_split(data_df, test_size=0.3, random_state=42)
-val_set, test_images = train_test_split(test_images, test_size=0.5, random_state=42)
-
-
-image_gen_train = ImageDataGenerator(
-    preprocessing_function=preprocess_input,
-    rotation_range=20,
-    width_shift_range=0.2,
-    height_shift_range=0.2,
-    shear_range=0.2,
-    zoom_range=0.2,
-    horizontal_flip=True,
-)
-image_gen_val_test = ImageDataGenerator(preprocessing_function=preprocess_input)
-
-train = image_gen_train.flow_from_dataframe(
-    train_set,
-    x_col="filepaths",
-    y_col="labels",
-    target_size=(224, 224),
-    color_mode="rgb",
-    class_mode="categorical",
-    batch_size=bs,
-    shuffle=False,
-)
-
-val = image_gen_val_test.flow_from_dataframe(
-    val_set,
-    x_col="filepaths",
-    y_col="labels",
-    target_size=(224, 224),
-    color_mode="rgb",
-    class_mode="categorical",
-    batch_size=bs,
-    shuffle=False,
-)
-
-test = image_gen_val_test.flow_from_dataframe(
-    test_images,
-    x_col="filepaths",
-    y_col="labels",
-    target_size=(224, 224),
-    color_mode="rgb",
-    class_mode="categorical",
-    batch_size=bs,
-    shuffle=False,
-)
-
-print(f"Train images:{len(train_set)}")
-print(f"Val images:{len(val_set)}")
-print(f"Test images:{len(test_images)}")
+start_time = time.time()
 
 base_model = EfficientNetB0(
     include_top=False, weights="imagenet", input_shape=(224, 224, 3), pooling="avg"
@@ -147,28 +154,37 @@ early_stopping = EarlyStopping(
 )
 
 reduce_lr = ReduceLROnPlateau(monitor="val_loss", factor=0.5, patience=3, min_lr=1e-6)
+end_time = time.time()
+record_time("Model Building", start_time, end_time)
 
 model.summary()
 
+
+start_time = time.time()
 history = model.fit(
     train, epochs=ep, validation_data=val, callbacks=[early_stopping, reduce_lr]
 )
+end_time = time.time()
+record_time("Model Training", start_time, end_time)
 
 # model = tf.keras.models.load_model(
-#     f"/Volumes/Jason's T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/models/jason_alzheimer_prediction_model_{num_train_images}_images_{ep}_epochs.keras"
+#     f"/Volumes/JasonT7/2.Education/Research/Thesis/Paper/0017. alzheimerPrediction/models/jason_alzheimer_prediction_model_{num_train_images}_images_{ep}_epochs.keras"
 # )
 
+start_time = time.time()
 test_loss, test_accuracy = model.evaluate(test)
+end_time = time.time()
+record_time("Model Evaluation", start_time, end_time)
 print(f"Test Accuracy: {test_accuracy}")
 
 num_train_images = len(train_set)
-model_save_path = f"/Volumes/Jason's T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/models/jason_alzheimer_prediction_model_{num_train_images}_images_{ep}_epochs.keras"
+model_save_path = f"/Volumes/JasonT7/2.Education/Research/Thesis/Paper/0017. alzheimerPrediction/models/jason_alzheimer_prediction_model_{num_train_images}_images_{ep}_epochs.keras"
 model.save(model_save_path)
 print("Model saved successfully.")
 
 
 model = tf.keras.models.load_model(
-    f"/Volumes/Jason's T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/models/jason_alzheimer_prediction_model_{num_train_images}_images_{ep}_epochs.keras"
+    f"/Volumes/JasonT7/2.Education/Research/Thesis/Paper/0017. alzheimerPrediction/models/jason_alzheimer_prediction_model_{num_train_images}_images_{ep}_epochs.keras"
 )
 
 from tqdm import tqdm
@@ -220,7 +236,10 @@ def predict_with_uncertainty(model, dataset, n_samples=5):
     return mean_preds, uncertainty
 
 
+start_time = time.time()
 mean_predictions, uncertainty = predict_with_uncertainty(model, test, n_samples=5)
+end_time = time.time()
+record_time("Uncertainty Prediction", start_time, end_time)
 y_true = test.classes
 y_true = np.array(y_true)
 y_pred = np.argmax(mean_predictions, axis=1)
@@ -322,7 +341,7 @@ def visualize_predictions_with_uncertainty(
     plt.tight_layout()
     plt.show()
     plt.savefig(
-        "/Volumes/Jason's T7/2. Education/Research/Thesis/Paper/0017. alzheimerPrediction/reports/figures/predictions_with_uncertainty.png",
+        "/Volumes/JasonT7/2.Education/Research/Thesis/Paper/0017. alzheimerPrediction/reports/figures/predictions_with_uncertainty.png",
         dpi=300,
         bbox_inches="tight",
     )
@@ -337,6 +356,24 @@ visualize_predictions_with_uncertainty(
 )
 
 
+import pandas as pd
+
+timing_df = pd.DataFrame(timing_results)
+print("\n[bold green]Timing Results for Each Stage[/bold green]")
+print(timing_df)
+
+timing_df.to_csv("timing_results.csv", index=False)
 # ==================================
 
 
+# model_1 = pd.read_csv("model_1_timing_results.csv")
+# model_2 = pd.read_csv("model_2_timing_results.csv")
+
+# comparison_df = pd.concat(
+#     [model_1.rename(columns={"Time (s)": "Model 1 Time (s)"}),
+#      model_2.rename(columns={"Time (s)": "Model 2 Time (s)"})],
+#     axis=1
+# )
+
+# print("\n[bold blue]Comparison of Models' Timing[/bold blue]")
+# print(comparison_df)

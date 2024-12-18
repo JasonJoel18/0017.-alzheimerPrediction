@@ -1,6 +1,16 @@
-\documentclass[12pt,twocolumn]{report}
+\documentclass[12pt,onecolumn]{report}
 
+
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{array}
 \usepackage{ulem}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\sloppy
+\renewcommand{\thesection}{\thechapter.\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
 
 % -------------------- Document Layout --------------------
 
@@ -22,7 +32,7 @@
 \pagestyle{fancy}            % Set fancy header/footer style
 \renewcommand{\headrulewidth}{0.4pt}   % Header rule thickness
 \renewcommand{\footrulewidth}{0.4pt}   % Footer rule thickness
-\setlength{\headheight}{15pt} % Header height (adjust as needed)
+\setlength{\headheight}{24.65pt} % Header height (adjust as needed)
 
 % Define custom color
 \definecolor{lightgray}{gray}{0.7}
@@ -51,6 +61,7 @@
 \usepackage[utf8]{inputenc}  % UTF-8 encoding
 \usepackage[T1]{fontenc}     % Font encoding
 \usepackage{ebgaramond}      % Use EB Garamond font
+% \usepackage{mathptmx}      % Use EB Garamond font
 \usepackage{caption}         % For customizing captions
 
 % Set caption style to small and italic
@@ -78,11 +89,23 @@
 
 \titlespacing*{\chapter}{0pt}{-10pt}{15pt}   % Adjust chapter spacing
 
+\usepackage{chngcntr}
+\counterwithin{chapter}{part}
+
+\titleformat{\chapter}[block]
+  {\normalfont\bfseries\LARGE}{Chapter \thechapter}{1em}{\Large}
+
+\titleformat{\chapter}[display]
+{\normalfont\bfseries\LARGE}   % Font style and size for the chapter title
+{Chapter \thechapter}         % "Chapter X" text
+{1em}                         % Spacing between "Chapter X" and the title
+{\Large}                      % Font size for the chapter title on a new line
+
 % -------------------- Page Break Management --------------------
 
 % Remove page breaks between chapters
-\newcommand{\chapterbreak}{\vspace{1.5cm}} % Adjust spacing if needed
-\titleclass{\chapter}{straight}[\chapterbreak] 
+% \newcommand{\chapterbreak}{\vspace{1.5cm}} % Adjust spacing if needed
+% \titleclass{\chapter}{straight}[\chapterbreak] 
 
 % -------------------- Bibliography and Citations --------------------
 
@@ -175,7 +198,7 @@ Incomplete.... Need to fill the rest.
 \listoftables  % Optional
 
 % Chapters
-\chapter{Introduction}
+\chapter{Introductions}
 
 Alzheimer's is a neurological problem that starts with a build up of proteins called amyloid plaques and neurofibrillary tangles. This leads to the brain cells to die over time and this leads to the shrinkage of the brain size\cite{mayo_alzheimers_2024}. Studies show us that about 5.4 million people in the States have Alzheimer's. And the studies show upward trend in the newer generations in getting Alzheimer's Disease. It is expected to increase by 10 million people. As of today every 68 second and new person is being diagnosed by Alzheimer's Disease. And the studies show that by 2050 this is going to decrease to 33 seconds\cite{2012131}. Between the year 2000 and 2017 the deaths reported due to alzheimer's have been increased by 143 \%\cite{2019321}. Alzheimer's is a disease which get's worse over the years, it keeps on progressing and the worst thing it is not reversible. Once worsened a lot of time and efforts go into the alzheimer's diseace. Which might end up being one of the costliest disease for any countries economy\cite{10.3389/fnagi.2024.1363458}. Hence it becomes very important that it is diagnosed as a early stage so that it can be controlled and treated. If it is detected early then doctor's with the help of medications can make sure that brain damage is not worsened. Currently magnetic resonance imaging (MRI),functional magetic resonance imaging(fMRI), computer tomography and positron emission tomography (PET) are used in order to early detect the Alzheimer's disease. These technologies are very expensive, very time consuming task and not very accessible for everyone as it Requirement sophisticated machines.
 
@@ -294,113 +317,288 @@ Table \ref{tab:methods_comparison} all the previous existing papers and research
 \section{Novelty of the Proposed Approach}
 The integration of uncertainty estimation into deep learning models addresses critical gaps in existing research. By providing confidence scores alongside predictions, clinicians can make informed decisions, reducing the risks associated with false negatives or overfitting to biased datasets. This approach also enhances model interpretability, a vital factor for clinical adoption.
 
-% =====================================
-% =====================================
-% =====================================
+
 
 \chapter{Methodology}
 
-This chapter elaborates on the methodology adopted to develop, train, and evaluate an uncertainty-aware deep learning model for Alzheimer’s disease (AD) detection using MRI scans. Each step, from dataset preparation to model evaluation, is designed to ensure reproducibility, robustness, and clinical utility.
+In this chapter the methedology used in this thesis for training, developing, evaluating and developing an uncertainty-aware deep learning model will be discussed. This sections will be taking you into the deep dive into why certain things are choosen over others. Each and every step from the loading of the dataset, data augmentation, model building, evaluation metrics, uncertainty awareness in the model and as well building an web application to predict Alzheimer's which can be used in a clinical environment.
 
-\section{Data Acquisition and Description}
+\section{Dataset used for this research}
 
-\subsection{Dataset Sources}
-This study combines three publicly available datasets to ensure diversity in imaging protocols and patient demographics:
+\subsection{About Dataset}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\columnwidth]{figures/dataset.png}  % Adjust the width to your liking
+    \caption{Sample images of the dataset} % Caption for the image
+    \label{fig:dataset} % Label to reference the image later in the document
+\end{figure}
+
+For this study the dataset used from a publicly available dataset. The dataset is availabel here \url{https://www.kaggle.com/datasets/uraninjo/augmented-alzheimer-mri-dataset}. This dataset is derived from the MRI dataset that is available on the ADNI website \url{https://adni.loni.usc.edu/}. This dataset consists of high quality 2D Magnetic Resonance imaging(MRI) scans images. Magnetic Resonance imaging scans are usually 3D, but this particular images dataset that is availabel on Kaggle is being processed and converted into high quality 2D images. This dataset is best suited for multi class classification task. The images are being divided into 4 different classes based on the stages of the alzheimer's the patients are in. And the folder names are the true labels of the images:
 \begin{enumerate}
-    \item \textbf{Kaggle MRI Dataset} – A collection of 5,000 T1-weighted MRI scans labeled into cognitively normal (CN), mild cognitive impairment (MCI), and Alzheimer’s disease (AD).
-    \item \textbf{OASIS Database} – A dataset of 3,000 MRIs, supplemented with demographic details like age and gender for secondary analyses.
-    \item \textbf{ADNI (Alzheimer’s Disease Neuroimaging Initiative)} – Provides 4,500 MRI scans, including longitudinal data that capture disease progression.
+    \item \textbf{NonDemented} – This consits of MRI images of brains which does not show any sign of having Alzheimer’s Diseace or in other words cognitive impairment. There are a total of 9600 images of the Non Demeted brains in this dataset.
+    \item \textbf{VeryMildDemented} – This consists of MRI images of the brains which shows slight early sign's of patient progressing towards Alzheimer’s Disease. There are a total of 8960 images of the Very Mild Demented brains in this dataset.
+    \item \textbf{MildDemented} – This consists of MRI images of the brains which show mild structural brain changes of patient progressing towards Alzheimer’s Disease. These patients will start having noticeable memory problems and cognitive problems. There are a total of 8960 images of the Mild Demented brains in this dataset.
+    \item \textbf{ModerateDemented} – This consists of MRI images of the brains which shows significant structural brain changes of patient Alzheimer’s Disease. This is a advanced stage of the Alzheimer’s disease. These patients will start having noticeable memory problems and cognitive problems as well. There are a total of 6464 images of the Mild Demented brains in this dataset.
 \end{enumerate}
 
-\subsection{Data Integration and Class Balancing}
-Since the datasets differ in class distributions, a resampling strategy is employed. Under-sampling is applied to the majority class (CN), while over-sampling techniques, such as Synthetic Minority Over-sampling Technique (SMOTE), are applied to the minority class (AD).
+
+\subsection{Dataset Features}
+Let's look at the features of the dataset that is used for this paper. There are two set's of images data in this dataset. One is the original images and the second one is the augmented images. For this research we will be taking Augmented images as the base models that we are taking from the Kaggle source has used this dataset. Hence we will be using this. The images are divided into 4 classes and images of each classes are placed in their on Folder's namely, NonDemented, VeryMildDemented, MildDemented and ModerateDemented.
+\begin{enumerate}
+    \item \textbf{Size of Dataset} 
+    – The total size of the dataset is 366 megabytes. It consists of thousands of high quality 2 dimensional images for each classes. Which makes this dataset a perfect fit for the building a machine learning models by training the model using these real world datasets.
+    \item \textbf{Dimensions of the Dataset} – The original images of this datasets roots from the collection of MRI images from ADNI dataset. These images are originally 3 Dimensional. Having said that the dataset used for thesis are the processed images of the ADNI dataset. The images have been processed to convert to 2 Dimensional images. This helps to reduce the complexity of the model.
+    \item \textbf{Class balance} 
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.8\columnwidth]{figures/dataset_class_distribution.png}  % Adjust the width to your liking
+        \caption{Dataset Class distribution} % Caption for the image
+        \label{fig:dataset_class_distribution} % Label to reference the image later in the document
+    \end{figure}
+    – The figure \ref{fig:dataset_class_distribution} shows the class distribution in the dataset. As you can see in the figure \ref{fig:dataset_class_distribution} there 9600 images for Non Demented Class, and 8960 images for Mild Demented and Very Mild Demented Class and 6464 images for Moderately Demented Class. It is a moderately imbalanced dataset. But since we are going to check for accuracy scores for each classes we are not going to balance this dataset.
+    \item \textbf{Dataset Format} – Originally the ADNI datasets are stored in NIfTI format. But the Kaggle dataset that we are using is being preprocessed and saved in 2D format, all the images are stored in JPG format.
+\end{enumerate}
 
 \subsection{Ethical and Legal Considerations}
-All datasets are anonymized and publicly released under ethical agreements. This study adheres strictly to their terms of use, ensuring no patient-sensitive data is accessed or distributed.
+This research used a publicly available Kaggle dataset for Alzheimer’s disease detection, which strictly adheres to its licensing terms and conditions. The dataset used in this thesis is already anonymized by its authors which complies with data privacy and confidentiality standards by excluding personally identifiable information. Ethical considerations, including fairness, transparency, and interoperability, were of highest priority when designing the model. The use of Kaggle data aligns with non-commercial academic purposes, and proper attribution to the dataset’s creators is provided. No new data was collected for this study.
 
-\section{Data Preprocessing}
+\section{Pre-Processing the Dataset}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\columnwidth]{figures/image_preprocessing_full.png}  % Adjust the width to your liking
+    \caption{pre-processing flow} % Caption for the image
+    \label{fig:image_preprocessing_full} % Label to reference the image later in the document
+\end{figure}
 
-Preprocessing is a critical step in preparing MRI scans for deep learning. It ensures consistency, reduces noise, and enhances interpretability.
+In order for the model to learn from the patterns in the images it is very import that the images are being processed properly. Data is processed so that the model can learn from it in a efficient and effective way. Figure \ref{fig:image_preprocessing} shows the steps applied on the images so that it can compatible with the model, and read as much details as possible but at the same time be efficient in learning from it.
 
-\subsection{Image Standardization}
-MRI scans are normalized to ensure uniformity in pixel intensity values. The pixel values are scaled to the range [0,1] to align with deep learning input requirements.
+\subsection{Data Cleaning}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\columnwidth]{figures/data_cleaning.png}  % Adjust the width to your liking
+    \caption{Dataset cleaning} % Caption for the image
+    \label{fig:dataset_Cleaning} % Label to reference the image later in the document
+\end{figure}
+In this step the corrupt image will be removed if incase any are found. But in this particular dataset we were not getting error. Hence none of the image were deleted from the dataframe.
 
-\subsection{Resizing and Cropping}
-All images are resized to $224 \times 224$ pixels. Additionally, brain regions are cropped using bounding boxes generated by automated segmentation algorithms, reducing irrelevant spatial details.
+\subsection{Data Resizing}
+The images are resized into the size of to $224 \times 224$ pixels. This is because the model that we are using i.e. EfficientNet-B0 are designed for a specific image size that is $224 \times 224$ pixels. That is because EfficientNet-B0 uses compound scaling method where the width of the network, depth and the resolution are uniformly scaled. If the input sizes are changed the performance and the efficiency of model will be hampered. And accuracy of the model will be lowered. And if higher pixels are used then there will not be any performance gains but just extra effort while training the data . Hence we have to scale it down to that size \cite{tan2019efficientnet} \cite{efficientnet_medium} \cite{keras_efficientnet}. While it is possible to input the sizes like  $244 \times 244$ the performance of the model will be degrading hence it is better to get the input size as the one that is well optimized for for the best results. 
 
-\subsection{Skull Stripping and Brain Masking}
-To isolate brain structures, skull-stripping tools like SimpleITK are used. This step reduces extraneous anatomical features (e.g., bones, skin) that may confound model predictions.
+\subsection{Color Mode}
+The image color is chosen to be in RGB more. Generally, the color in all the digital images and displays is usually RGB (Red, Green, Blue). By using these three primary colors in different intensities, the model will be able to find patterns in a wider range of hues \cite{epackprinting_rgb}. RGB is considered to be a standard right now as input for many trained convolution neural networks (CNNs) \cite{dsp_rgb_hsv}. Using RGB images guarantees compatibility with these models, allowing for transfer learning and the utilization of pre-existing architectures. In many image identification tasks, color is an essential element. Because RGB photos preserve all the color information, models may recognize and learn complex patterns from color fluctuations much better than using the black-and-white color modes. This is especially beneficial for image classification tasks.
 
-\subsection{Augmentation Strategies}
-Data augmentation techniques enhance data diversity and improve model robustness. The following transformations are applied:
+\subsection{Class Mode}
+So the generator is told to give one-hot encoded labels,' where each label will have its own unique pattern in vector form \cite{loss_functions_image_classification}. Only one indices in the vector will have value other indices will be zero. That way the model will be able to understand which image is of which class. Training models with categorical is a common loss function in the case of multi-class classification.\cite{generalization_cross_entropy} The categorical cross-entropy loss function, commonly used in multi-class classification, goes well with one-hot encoded labels. This loss function efficiently calculates the difference between the actual distribution and the predicted probability distribution. Hence, by utilizing category labels, the model can generate a probability distribution for all categories \cite{robust_multiclass_classification}.
+
+\subsection{Batch size}
+In the preprocessing step a batch size of 32 is chosen for training. This will ensure that there is a balance between computational efficiency and model performance. Smaller batch sizes like 32 offer a trade-off between efficiency and gradient stability, potentially helping escape local minima and generalize better. They fit within modern GPUs’ memory constraints while maintaining stability \cite{keskar2017largebatchtrainingdeeplearning}. Larger batch sizes will be even though smoother it will require require alot more more memory and there is a high risk of overfitting.Additionally, batch size affects convergence speed, allowing sufficient weight updates without excessive overhead, balancing training speed and learned representation quality \cite{masters2018revisitingsmallbatchtraining}.
+
+\subsection{Normalization}
+The images are preprocessed using\texttt{preprocess\_input} normalization for the model, this is by using the  function from the EfficientNet library itself. This was used so that input images are properly scaled as required by the model itself. This ensures that the images are standardized by transforming pixel values into a range that aligns with the data the model was trained on. This kind of normalization becomes very much important in deep learning models to that it can improve the performance and efficiency of the models\cite{tan2019efficientnet}.
+
+The approach used in EfficientNet's \texttt{preprocess\_input} function will rescale values of the pixelfrom their original range of $[0, 255]$ to $[-1, 1]$. In this process it subtracts the mean and divided it by the standard deviation of pixel values.The formula for normalization is:
+
+\[
+\text{Normalized Pixel Value} = \frac{\text{Pixel Value} - \mu}{\sigma}
+\]
+
+where:
 \begin{itemize}
-    \item \textit{Rotation}: Random rotations within $\pm15^\circ$.
-    \item \textit{Flipping}: Horizontal flips to simulate variations in patient positioning.
-    \item \textit{Intensity Variations}: Gaussian noise and brightness adjustments mimic imaging artifacts.
-    \item \textit{Elastic Deformations}: Applied to simulate anatomical variations.
+    \item $\mu$ represents the mean of the pixel values across the dataset.
+    \item $\sigma$ stands for the standard deviation of the values of the pixel values across the dataset.
 \end{itemize}
+
+Normalizing the image will ensures that all input data will lie withing a similar scale this will prevent the issues issues like convergence caused due to having large variations in input magnitudes \cite{he2015delving}.
 
 \section{Proposed Model Architecture}
+This section outlines the about the model architecture that is used for this research. The model of choice for this task is EfficientNetB0. It is a very powerful and efficient pertained model that extracts the features and then will be used to include uncertainty estimation into the pipeline. This will help in improving the reliability in these models for the clinical environment.
 
-The model employs a ResNet-50 backbone for feature extraction and incorporates uncertainty estimation mechanisms.
+\subsection{Base Model Architecture}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\columnwidth]{figures/model_base.png}  % Adjust the width to your liking
+    \caption{Model Base} % Caption for the image
+    \label{fig:base model} % Label to reference the image later in the document
+\end{figure}
+EfficientNet is considered to be one among the best models in the world on Convolution Neural Network. It is known to be one of the best models made for these sort of tasks which is able to do it much more efficiently but not compromising the performance. EfficientNetB0 known for its efficient scaling of depth, width, and resolution and it is used as backbone of the proposed model \cite{2021Hoang}. The network will be initialized with pre-trained ImageNet weights so as to make use of the transfer learning. The architecture includes global average pooling at the output of the backbone, followed by a fully connected layer with 128 neurons and a ReLU activation function. A Dropout layer with a rate of 0.3 is introduced to prevent overfitting. And the input shape of the images will be set to $224 \times 224$ pixels as expected by the EfficientNetB0 model for best performance.
 
-\subsection{Backbone Architecture}
-ResNet-50, a convolutional neural network (CNN) with residual connections, is chosen due to its superior performance on medical imaging tasks. The residual connections mitigate the vanishing gradient problem, enabling effective training of deeper networks.
+\subsection{Adding Uncertainty Estimation}
+As seen in the paper that have been working on Alzheimer’s detection problem, inclusion of uncertainty/confidence parameters for the output to show the confidence of the models is something that is used little to none. Inclusion of this parameter will give the clinicians an idea of how confidently the model is been able to classify the image into that class. In this study to quantify uncertainty, Monte Carlo (MC) Dropout is been used during inference step. This means a dropout layer will be included while conducting the prediction to perform multiple stochastic forward passes. To calculate the uncertainty, we use the standard deviation of the predictions across all these passes. Let’s break down the formal definition of uncertainty for a set of $n$ forward passes:
 
-\subsection{Incorporating Uncertainty Estimation}
-To model uncertainty, Monte Carlo (MC) Dropout is applied. Dropout layers are inserted after key convolutional blocks, enabling stochastic forward passes during inference. Uncertainty is quantified as:
-% \begin{equation}
-%     \text{Uncertainty} = \text{Var}\left(\hat{y}_1, \hat{y}_2, \dots, \hat{y}_N\right),
-% \end{equation}
-% where $\hat{y}_i$ represents the prediction from the $i$-th stochastic pass.
+\begin{equation}
+\sigma = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (p_i - \bar{p})^2},
+\end{equation}
+here $p_i$ stands for the prediction for the $i$-th forward pass, and $\bar{p}$ is the mean prediction.
 
 \subsection{Output Layer}
-The final layer includes three neurons (one per class) with softmax activation, yielding probability scores for CN, MCI, and AD. A temperature-scaling mechanism calibrates these scores.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\columnwidth]{figures/model_sequential.png}  % Adjust the width to your liking
+    \caption{Model sequential} % Caption for the image
+    \label{fig:sequential model} % Label to reference the image later in the document
+\end{figure}
+The output layer has 4 neurons. This is because there are four different classes that the model will be predicting. Hence there are four neurons. The activation layer user for the final output layer is 'softmax'. The output layer will be creating probability scores for each class: NonDemented, MildDemented, VeryMildDemented and ModerateDemented. 
 
-\section{Training and Optimization}
+\subsection{Training and Evaluation}
+The model is compiled using the Adamax optimizer with a learning rate of 0.001. The categorical crossentropy loss function is employed to optimize multi-class classification performance. Early stopping and learning rate reduction strategies are implemented to ensure robust convergence.
 
-\subsection{Loss Function}
-The model optimizes a combined loss function:
-\begin{itemize}
-    \item \textbf{Cross-Entropy Loss} ($\mathcal{L}_{CE}$): For classification accuracy.
-    \item \textbf{KL-Divergence Loss} ($\mathcal{L}_{KL}$): To penalize overconfidence in predictions.
-\end{itemize}
-The total loss $\mathcal{L}$ is defined as:
+The model is trained on the training dataset for $N$ epochs with validation monitoring. Performance metrics, including accuracy, precision, recall, and F1 score, are computed on the test dataset. Monte Carlo predictions are utilized during evaluation to derive the mean prediction and uncertainty values.
+
+
+\section{Model Training and Optimization}
+
+\subsection{Training Configuration}
+This step is consider to be the most critical steps in the machine learning process. How model is configured has a huge impact on the models perfomance on the final task as well as the efficiency of the model while training as well while predicting the results. The model used here make use of the Adamax optimizer. It is a variant of the Adam optimizer. But we make use of Adamax optimizer particularly because Adamax is suits extremely well for the sparse gradients and high dimensional data.So it fit's well for the image dataset that we are using. The learning rate is set to \(0.001\). In several studies it has been showed that learning rate of \(0.001\) balances convergence speed and model stability as it has been demonstrated in prior studies to balance convergence speed and model stability \cite{2017Kingma}. The categorical crossentropy loss function is utilized as this is a multi class classification. It has proved to be very effective for the multi-class classification.The Formula for categorical crossentropy is as follows \ref{eq:categorical_crossentropy}:
+
 \begin{equation}
-    \mathcal{L} = \mathcal{L}_{CE} + \lambda \mathcal{L}_{KL},
+    L = -\sum_{i=1}^{N} y_i \log(\hat{y}_i),
+    \label{eq:categorical_crossentropy}
 \end{equation}
-where $\lambda$ is a weighting factor.
+here \(y_i\) stands for the true label, and \(\hat{y}_i\) stands for the predicted probability for the \(i\)-th class.
 
-\subsection{Optimization Techniques}
-The Adam optimizer is used with:
-\begin{itemize}
-    \item Learning rate: $1 \times 10^{-3}$.
-    \item Batch size: 32.
-    \item Regularization: L2 weight decay ($1 \times 10^{-4}$).
-\end{itemize}
+\subsection{Optimization Strategies}
+To improve the model's generalization, the proposed model introduces two optimization strategies: Early Stopping and Learning Rate reduction
 
-\subsection{Training Schedule}
-Training is conducted for 50 epochs, with early stopping based on validation loss. Learning rate scheduling reduces the rate by 10\% upon plateau.
+\subsubsection{Early Stopping}
+Introduction of the Early stopping while training model will make sure the the validation loss in always monitored. And when performance of the validation set does not improve it will stop the training, once the patience period is reached. This will ensure that the model is not overfitted for the test model. This is improve the generalizability of the model. And also this will prevent the unnecessary computation power that is required \cite{1996Lutz}. The patience parameter is set to five epochs. The parameter \texttt{restore\_best\_weights} will make sure thaat model always comes back to it's best-performing weights. This is an example algorithm \ref{alg:early_stopping} showing the same.
+
+\begin{algorithm}[h]
+\caption{Early Stopping}
+\label{alg:early_stopping}
+\begin{algorithmic}[1]
+\State Set's patience \( p \) to 0
+\For{every epoch}
+    \If{Validation loss improves}
+        \State Saves the model weights
+        \State Resets patience \( p \) equals 0
+    \Else
+        \State Increments patience \( p \) by 1
+    \EndIf
+    \If{p is >= to patience}
+        \State Training will be Stopped
+    \EndIf
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+\subsubsection{Learning Rate Reduction on Plateau}
+If the learning rate doesn’t improve for three epochs in a row, we decrease it by half. This way, the model finds a better local minimum and keeps training stable. \cite{2017Loshchilov} says this method works really well. After the reduction, we calculate the new learning rate \(lr_t\) as follows:
+
+\begin{equation}
+    lr_t = \max(f \cdot lr_{t-1}, lr_{\text{min}}),
+\end{equation}
+where \(f\) is the reduction factor, \(lr_{t-1}\) is the learning rate in the previous epoch, and \(lr_{\text{min}}\) is the minimum allowable learning rate.
+
+\subsection{Training Process}
+The model training process was done using 10 epochs, on the training set and then it is validated on the validation set. So that model can be evaluated on each epoch. The history which training will be saved which included parameters such as accuracy, loss information. These evaluation are being saved for both the sets i.e. training set as well as the validation set.Table \ref{tab:training_parameters} give a overall summary of the full training process.
+
+\begin{table}[h]
+    \centering
+    \caption{Training Parameters and Configuration}
+    \label{tab:training_parameters}
+    \begin{tabular}{|l|l|}
+        \hline
+        \textbf{Parameter} & \textbf{Value} \\
+        \hline
+        Optimizer          & Adamax \\
+        Learning Rate      & 0.001 \\
+        Loss Function      & Categorical Crossentropy \\
+        Early Stopping Patience & 5 epochs \\
+        Learning Rate Reduction Factor & 0.5 \\
+        Minimum Learning Rate & \(1 \times 10^{-6}\) \\
+        Epochs             & Set to 10 but it is Dynamic (Based on Early Stopping) \\
+        \hline
+    \end{tabular}
+\end{table}
 
 \section{Evaluation Metrics}
 
-\subsection{Performance Metrics}
-The model’s predictive performance is measured using:
-\begin{itemize}
-    \item \textbf{Accuracy}: Overall correctness of predictions.
-    \item \textbf{Precision, Recall, F1-Score}: Metrics for imbalanced datasets.
-    \item \textbf{Area Under Curve (AUC)}: Evaluates discriminative capability.
-\end{itemize}
+To evaluate the performance of the base as well as the proposed model, we will be taking into account several metrics. They are  accuracy, precision, recall, F1-score, macro average and weighted average. This will allows to get a very detailed understand of the models performance. Additionally because this is a multi class classification this thesis put light to the evaluation metrics on each classes to that it records how well it performs for each class. These metrics will provide a detailed view of how well the model is being able to make predictions for each class. Furthermore, uncertainty evaluation is being implemented in this thesis. This is something that was not included in the base model. Tell me give us idea about how confident the model is when it comes to predicting the values.
 
-\subsection{Uncertainty Metrics}
-Uncertainty estimates are evaluated using:
-\begin{itemize}
-    \item \textbf{Expected Calibration Error (ECE)}: Measures the alignment of confidence with accuracy.
-    \item \textbf{Reliability Diagrams}: Visualize calibration quality.
-\end{itemize}
+\subsection{Accuracy}
+Accuracy is a very important metric while evaluating classification models, in this case a multi class classification model. Accuracy shows the ratio of correct predictions to the total number of predictions made. The formula used to calculate accuracy is as follows:
 
-\subsection{Explainability Assessment}
-Grad-CAM is used to generate heatmaps highlighting brain regions contributing to predictions. This ensures clinical interpretability.
+\begin{equation}
+    \text{Accuracy} = \frac{\text{No. of correct predictions}}{\text{Total no. of predictions}} = \frac{\sum_{i} I(y_{\text{pred},i} = y_{\text{true},i})}{N},
+\end{equation}
+here \( y_{\text{pred},i} \) stands for the predicted label \( i \), \( y_{\text{true},i} \) stands for the true label, and \( N \) is the total number of samples.
+
+\subsection{Precision}
+Precision metrics will find a proportion of positive predictions that are that are actually positive. It is important for this thesis because the cost of false positive can be very risky. When it comes to medical diagnosis a false positive prediction can lead to unnecessary medications and treatments. And since the dataset is moderately imbalanced this evaluation metrics becomes very important. The formula for calculating Precision is as follows:
+\begin{equation}
+    \text{Precision} = \frac{TP}{TP + FP},
+\end{equation}
+where \( TP \) represents true positives and \( FP \) represents false positives.
+In our case of Alzheimer’s diagnose it becomes important because minimizing false positive is very important to avoid over diagnosis.
+
+\subsection{Recall}
+Recall is also called sensitivity or true positive rate. Recall will be measuring the proportion of actual positive class that are correctly identified by the model. In the context of Alzheimer's disease detection, recall indicates the model’s ability to classify all potential Alzheimer’s patients. High recall ensures that fewer true positives are missed, which is crucial for early diagnosis. The formula to calculate Recall is:
+\begin{equation}
+    \text{Recall} = \frac{TP}{TP + FN},
+\end{equation}
+where \( TP \) represents true positives and \( FN \) represents false negatives.
+
+In our case of Alzheimer’s classification it becomes where important to check if the model is failing to detect positive case of Alzheimer’s or in other words false positives. Because if the model is failing to tell the class which the patient is in then the disease might go unnoticed and it might worsen at the later stages of his/her life.
+
+\subsection{F1-Score}
+F1-score is calculated using all of the above scores. It is a 2 times the multiplication of Precision and Recall and devided by addition of Precision and Recall as shown in the equation. The Formula for F1 score is as follow: 
+The F1-score is the harmonic mean of precision and recall, providing a balanced measure of the model's performance. It is particularly useful when dealing with class imbalance, as it considers both false positives and false negatives. The F1-score is defined as:
+
+\begin{equation}
+    \text{F1-score} = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}},
+\end{equation}
+
+
+\subsection{Confusion Matrix}
+By using the confusion matrix we are able to visualize the performance of the model. Confusion matrix visualizes the number of correctly predicted items and incorrectly predicted items across all classes. This will enable to calculate the evaluation metrics like accuracy, recall, precision and F1-score for each class as shown the table \ref{tab:confusion_matrix}.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\rowcolor[HTML]{EFEFEF} 
+& \multicolumn{4}{c|}{\textbf{Predicted}} \\ \hline
+\textbf{True} & \textbf{NonDemented} & \textbf{VeryMildDemented} & \textbf{MildDemented} & \textbf{ModerateDemented} \\ \hline
+\textbf{NonDemented} & \cellcolor[HTML]{DFF0D8} TP1 & FN1 & FN2 & FN3 \\ \hline
+\textbf{VeryMildDemented} & FP1 & \cellcolor[HTML]{DFF0D8} TP2 & FN3 & FN4 \\ \hline
+\textbf{MildDemented} & FP2 & FP3 & \cellcolor[HTML]{DFF0D8} TP3 & FN5 \\ \hline
+\textbf{ModerateDemented} & FP4 & FP5 & FP6 & \cellcolor[HTML]{DFF0D8} TP4 \\ \hline
+\end{tabular}
+\caption{Confusion Matrix for Model Evaluation}
+\label{tab:confusion_matrix}
+\end{table}
+
+\subsection{Uncertainty Estimation}
+Along with all the standard classification metrics that are used in previous researches, in this research models uncertainty while predicting the class in being calculated. For this task the chosen method is Monte Carlo Sampling. For each prediction the model will evaluate multiple times, and the variance which predicting among all samples is used to calculate uncertainty. The predicted mean and the uncertainty is calculated using the below formula:
+
+\begin{equation}
+    \text{mean predictions} = \frac{1}{N_{\text{samples}}} \sum_{i=1}^{N_{\text{samples}}} \hat{y}_i,
+\end{equation}
+\begin{equation}
+    \text{uncertainty} = \sqrt{\frac{1}{N_{\text{samples}}} \sum_{i=1}^{N_{\text{samples}}} (\hat{y}_i - \text{mean predictions})^2},
+\end{equation}
+where \( \hat{y}_i \) represents the \( i \)-th prediction, and \( N_{\text{samples}} \) is the number of Monte Carlo samples \cite{2016Gal}.
+
+In this study, we used 5 samples for each test input, and the predictions with higher uncertainty (above a threshold of 0.2) were identified to assess where the model's confidence is low.
+
+\subsection{Performance Evaluation on Test Set}
+
+The model's performance was evaluated on the test set using the metrics discussed above. The test accuracy was computed and reported, along with the confusion matrix, as shown in Table \ref{tab:confusion_matrix}. Additionally, class-specific metrics such as precision, recall, and F1-score were calculated and displayed in a detailed classification report.
+
+\subsection{Model Saving and Loading}
+
+Once the evaluation metrics were computed, the model was saved to disk for future use. The model's architecture and weights were stored in a Keras-compatible format:
+
+\begin{quote}
+    \texttt{model.save('path/to/save/model')}.
+\end{quote}
+
+The saved model was then reloaded for subsequent testing and predictions using the following code:
+
+\begin{quote}
+    \texttt{model = tf.keras.models.load\_model('path/to/load/model')}.
+\end{quote}
 
 \section{Pipeline Integration}
 
@@ -437,9 +635,10 @@ A sincere thank you goes to all my friends and colleagues, who offered encourage
 
 This thesis is dedicated to everyone who contributed to making this research a reality. Thank you all for your profound impact on my academic and personal growth.
 
+
 \begin{flushright}
-\textit{[Jason Joel Pinto]} \\
-\textit{[22 December 2024]}
+\textit{Jason Joel Pinto} \\
+\textit{22 December 2024}
 \end{flushright}
 
 % Appendices

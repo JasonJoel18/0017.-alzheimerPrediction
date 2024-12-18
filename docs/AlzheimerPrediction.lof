@@ -1,2 +1,17 @@
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Comparison of a normal brain (left) and an Alzheimer's patient's brain (right). Images credit: Professor John O'Brien, University of Cambridge and Newcastle University}}{6}{figure.caption.1}%
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Person suffering from Dementia}}{7}{figure.caption.2}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {.1.1}{\ignorespaces Comparison of a normal brain (left) and an Alzheimer's patient's brain (right). Images credit: Professor John O'Brien, University of Cambridge and Newcastle University}}{7}{figure.caption.5}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {.2.1}{\ignorespaces Person suffering from Dementia}}{8}{figure.caption.6}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {.5.1}{\ignorespaces Sample images of the dataset}}{16}{figure.caption.8}%
+\contentsline {figure}{\numberline {.5.2}{\ignorespaces Dataset Class distribution}}{18}{figure.caption.9}%
+\contentsline {figure}{\numberline {.5.3}{\ignorespaces pre-processing flow}}{19}{figure.caption.10}%
+\contentsline {figure}{\numberline {.5.4}{\ignorespaces Dataset cleaning}}{20}{figure.caption.11}%
+\contentsline {figure}{\numberline {.5.5}{\ignorespaces Model Base}}{22}{figure.caption.12}%
+\contentsline {figure}{\numberline {.5.6}{\ignorespaces Model sequential}}{23}{figure.caption.13}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
