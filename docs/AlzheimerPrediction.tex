@@ -586,34 +586,94 @@ In this study, we used 5 samples for each test input, and the predictions with h
 
 The model's performance was evaluated on the test set using the metrics discussed above. The test accuracy was computed and reported, along with the confusion matrix, as shown in Table \ref{tab:confusion_matrix}. Additionally, class-specific metrics such as precision, recall, and F1-score were calculated and displayed in a detailed classification report.
 
-\subsection{Model Saving and Loading}
-
-Once the evaluation metrics were computed, the model was saved to disk for future use. The model's architecture and weights were stored in a Keras-compatible format:
-
-\begin{quote}
-    \texttt{model.save('path/to/save/model')}.
-\end{quote}
-
-The saved model was then reloaded for subsequent testing and predictions using the following code:
-
-\begin{quote}
-    \texttt{model = tf.keras.models.load\_model('path/to/load/model')}.
-\end{quote}
-
 \section{Pipeline Integration}
 
-The final model is integrated into a Flask-based web application, enabling clinicians to upload MRI scans and visualize predictions with confidence scores.
+The final model after all the testing and comparisons in integrated with a Web Application which based on Flask API. This will allow the clinicians to upload the MRI images and get the predictions along with the uncertainty scores. The web application is ready to be deployed and will be accessible through a web browser. You can install the model locally and then move it to a cloud server later. The interface is super easy to use, with a simple way to upload photos and see the predictions. Plus, the uncertainty ratings are shown alongside the predictions, so you can see how reliable the model is. That’s will be a big help for clinicians!
 
-\section{Implementation Details}
+\section{Implementation}
+\label{sec:implementation}
 
-The model is developed using PyTorch and trained on an NVIDIA RTX 3090 GPU with 24 GB VRAM. A detailed workflow of the pipeline is illustrated in Figure~\ref{fig:pipeline}.
+This section outlines the detailed implementation of the Alzheimer's disease prediction model. The process encompasses data preparation, model development, uncertainty estimation, and deployment using a Flask-based web application.
 
-% \begin{figure}[h!]
-%     \centering
-%     \includegraphics[width=0.8\textwidth]{pipeline_diagram.png}
-%     \caption{Proposed Pipeline Workflow}
-%     \label{fig:pipeline}
-% \end{figure}
+\subsection{Data Preparation}
+The dataset used for this thesis comprises MRI images categorized into four classes: \textit{Mild Demented}, \textit{Moderate Demented}, \textit{Non-Demented}, and \textit{Very Mild Demented}. The data preparation phase involved the following steps:
+\begin{itemize}
+    \item \textbf{Data Loading}: Image paths were loaded into a structured format, and labels were assigned based on the folder structure.
+    \item \textbf{Data Validation}: Corrupted images were identified and excluded using the Python PIL library to ensure data integrity.
+    \item \textbf{Data Splitting}: The dataset was divided into training, validation, and test sets using the \textit{train\_test\_split} function from \texttt{scikit-learn}. A stratified split ensured balanced class representation.
+    \item \textbf{Data Augmentation}: Image preprocessing was performed using the \texttt{ImageDataGenerator} class from TensorFlow's Keras API. This included resizing images to \(224 \times 224\) and applying preprocessing functions specific to the EfficientNetB0 model.
+\end{itemize}
+
+\subsection{Model Development}
+\subsubsection{Base Model Selection}
+The EfficientNetB0 architecture, pre-trained on the ImageNet dataset, was employed as the base model. Its robust feature extraction capabilities make it suitable for medical image analysis. The pre-trained model was integrated with a custom classification head consisting of the following layers:
+\begin{itemize}
+    \item A \texttt{Flatten} layer to convert the feature maps into a one-dimensional vector.
+    \item A dense layer with 128 neurons and ReLU activation.
+    \item A \texttt{Dropout} layer with a rate of 0.3 to reduce overfitting.
+    \item A final dense layer with 4 neurons and a \texttt{softmax} activation function for multi-class classification.
+\end{itemize}
+
+\subsubsection{Model Compilation and Training}
+The model was compiled using the Adamax optimizer with a learning rate of \(0.001\), and the \textit{categorical cross-entropy} loss function. Accuracy was chosen as the evaluation metric. Training was performed with the following parameters:
+\begin{itemize}
+    \item Batch size: 32
+    \item Number of epochs: 1 (as a proof-of-concept for this phase)
+    \item Callbacks: \texttt{EarlyStopping} and \texttt{ReduceLROnPlateau} for adaptive learning rate adjustment and early termination based on validation loss.
+\end{itemize}
+
+The training and validation accuracy and loss were monitored to evaluate model performance during training. The trained model was subsequently saved for further evaluation.
+
+\subsection{Uncertainty Estimation}
+To enhance clinical applicability, uncertainty estimation was integrated using a Monte Carlo dropout technique. This method provides a measure of model confidence by performing stochastic forward passes during inference. The steps are as follows:
+\begin{enumerate}
+    \item Perform \(n\)-samples of forward passes for each input image, keeping dropout active.
+    \item Compute the mean prediction and standard deviation across all samples.
+    \item Interpret the standard deviation as a measure of uncertainty.
+\end{enumerate}
+This approach enables the identification of high-uncertainty predictions, which can guide clinical decision-making.
+
+\subsection{Performance Evaluation}
+The model's performance was evaluated using metrics such as Accuracy, Precision, Recall, F1-Score, and Area Under the Curve (AUC). Additionally, the confusion matrix provided insights into class-specific performance. Metrics were calculated using \texttt{scikit-learn}'s \textit{classification\_report} and \textit{confusion\_matrix} utilities.
+
+\subsection{Web Application Deployment}
+The trained model was deployed as a web-based application using Flask, enabling real-time image classification and uncertainty visualization. The web application includes the following features:
+\begin{itemize}
+    \item A user-friendly interface for uploading MRI images.
+    \item Real-time predictions displayed alongside uncertainty scores.
+    \item Visualization of model confidence for each class.
+\end{itemize}
+
+\subsubsection{Flask API Integration}
+The Flask application integrates the trained model with a RESTful API. Upon receiving an uploaded image, the API:
+\begin{enumerate}
+    \item Preprocesses the image to match the model's input requirements.
+    \item Performs inference using the trained model.
+    \item Computes uncertainty metrics using the Monte Carlo dropout technique.
+    \item Returns the prediction results and uncertainty measures to the frontend.
+\end{enumerate}
+
+\subsubsection{Frontend Design}
+The web application's frontend is designed for intuitive user interaction. Key components include:
+\begin{itemize}
+    \item A drag-and-drop interface for image uploads.
+    \item Dynamically updated prediction results and confidence levels.
+    \item Visualizations of uncertainty for better interpretability.
+\end{itemize}
+
+\subsection{Visualization of Predictions and Uncertainty}
+A custom visualization pipeline was implemented to showcase model predictions alongside uncertainty levels. This included:
+\begin{itemize}
+    \item A grid display of sample images, their predicted and actual labels, and confidence levels.
+    \item Color-coded uncertainty bars to indicate the reliability of predictions.
+    \item Enhanced visual clarity through high-resolution plots.
+\end{itemize}
+
+\subsection{Performance Timing Analysis}
+To ensure the pipeline's efficiency, timing analyses were conducted at various stages, including data loading, model training, and uncertainty prediction. Results were recorded and visualized in a tabular format to identify bottlenecks and optimize performance.
+
+% \section{Conclusion}
+% The implementation phase demonstrated the feasibility of integrating advanced deep learning techniques with uncertainty estimation for Alzheimer's disease detection. The development of a user-friendly web application further emphasizes the practical utility of the proposed solution in clinical settings.
 
 
 \chapter{Results}

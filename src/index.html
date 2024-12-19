@@ -5,124 +5,139 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alzheimer's Prediction</title>
     <link rel="stylesheet" href="static/styles/styles.css">
-    <!-- Link to Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <h1>Alzheimer's Prediction with Uncertainty</h1>
         <form id="upload-form">
-            <label for="file-upload" class="file-upload-label">
-                <i class="fas fa-cloud-upload-alt"></i> Upload MRI Image
-            </label>
-            <input type="file" id="file-upload" name="file" required>
-            <button type="submit" id="predict-btn" disabled>
-                <i class="fas fa-play"></i> Predict
-            </button>
+            <div class="button-group">
+                <label for="file-upload" class="file-upload-label">
+                    <i class="fas fa-cloud-upload-alt"></i> Upload MRI Image
+                </label>
+                <input type="file" id="file-upload" name="file" required>
+                <button type="submit" id="predict-btn" disabled>
+                    <i class="fas fa-brain"></i> Predict
+                </button>
+            </div>
         </form>
         
-        <!-- Show uploaded image preview or output image -->
         <div id="image-display" class="image-display">
             <img id="input-image" src="" alt="Uploaded Image" style="display: none;">
-            <img id="output-image" src="static/output.png" alt="Prediction Visualization" style="display: none;">
+            <img id="output-image" alt="Prediction Visualization" style="display: none;">
         </div>
         
-        <!-- Progress bar for processing -->
-        <div class="progress-bar" id="progress-bar">
-            <div class="progress-bar-inner" id="progress-bar-inner"></div>
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar">
+                <div class="progress-bar-inner" id="progress-bar-inner"></div>
+            </div>
         </div>
 
-        <!-- Prediction result -->
         <div id="result" class="result">
             <h2>Prediction Result</h2>
             <p id="prediction-text"></p>
+            <div class="confidence-bar-container">
+                <div class="confidence-bar" id="confidence-bar"></div>
+                <span class="confidence-text" id="confidence-text"></span>
+            </div>
         </div>
 
-        <!-- New prediction button -->
         <button id="new-prediction-btn" class="new-prediction-btn">
             <i class="fas fa-redo"></i> New Prediction
         </button>
     </div>
 
     <script>
-        const form = document.getElementById('upload-form');
-        const predictBtn = document.getElementById('predict-btn');
-        const inputImage = document.getElementById('input-image');
-        const outputImage = document.getElementById('output-image');
-        const predictionText = document.getElementById('prediction-text');
-        const uploadedImageDiv = document.getElementById('image-display');
-        const resultDiv = document.getElementById('result');
-        const progressBar = document.getElementById('progress-bar');
-        const progressBarInner = document.getElementById('progress-bar-inner');
-        const newPredictionBtn = document.getElementById('new-prediction-btn');
+    const form = document.getElementById('upload-form');
+    const fileUpload = document.getElementById('file-upload');
+    const predictBtn = document.getElementById('predict-btn');
+    const inputImage = document.getElementById('input-image');
+    const outputImage = document.getElementById('output-image');
+    const predictionText = document.getElementById('prediction-text');
+    const imageDisplay = document.getElementById('image-display');
+    const resultDiv = document.getElementById('result');
+    const progressBar = document.getElementById('progress-bar');
+    const progressBarInner = document.getElementById('progress-bar-inner');
+    const newPredictionBtn = document.getElementById('new-prediction-btn');
+    const confidenceBar = document.getElementById('confidence-bar');
+    const confidenceText = document.getElementById('confidence-text');
 
-        document.getElementById('file-upload').addEventListener('change', (e) => {
-            if (e.target.files.length > 0) {
-                // Show uploaded image and enable the predict button
-                inputImage.src = URL.createObjectURL(e.target.files[0]);
-                inputImage.style.display = 'block';  // Show the uploaded image
-                outputImage.style.display = 'none'; // Hide the output image initially
-                uploadedImageDiv.style.display = 'block';
-                predictBtn.disabled = false;
+    function resetUI() {
+        imageDisplay.style.display = 'none';
+        resultDiv.style.display = 'none';
+        newPredictionBtn.style.display = 'none';
+        predictBtn.disabled = true;
+        form.style.display = 'block';
+        fileUpload.value = '';
+        inputImage.style.display = 'none';
+        inputImage.src = '';
+        outputImage.src = '';
+        outputImage.style.display = 'none';
+        progressBar.style.display = 'none';
+        progressBarInner.style.width = '0';
+    }
+
+    fileUpload.addEventListener('change', (e) => {
+        if (e.target.files.length > 0) {
+            inputImage.src = URL.createObjectURL(e.target.files[0]);
+            inputImage.style.display = 'block';
+            outputImage.style.display = 'none';
+            imageDisplay.style.display = 'flex';
+            predictBtn.disabled = false;
+        } else {
+            imageDisplay.style.display = 'none';
+            predictBtn.disabled = true;
+        }
+    });
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        progressBar.style.display = 'block';
+        let progress = 0;
+        const interval = setInterval(() => {
+            if (progress < 100) {
+                progress += 10;
+                progressBarInner.style.width = `${progress}%`;
             } else {
-                uploadedImageDiv.style.display = 'none';
-                predictBtn.disabled = true;
+                clearInterval(interval);
             }
-        });
+        }, 300);
 
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const formData = new FormData(form);
-            progressBar.style.display = 'block';  // Show progress bar
-            let progress = 0;
-            const interval = setInterval(() => {
-                if (progress < 100) {
-                    progress += 10;
-                    progressBarInner.style.width = `${progress}%`;
-                } else {
-                    clearInterval(interval);
-                }
-            }, 300);
-
+        try {
             const response = await fetch('/predict', {
                 method: 'POST',
                 body: formData,
             });
             const data = await response.json();
             if (data.error) {
-                alert(data.error);
-                return;
+                throw new Error(data.error);
             }
 
-            // Hide progress bar
             progressBar.style.display = 'none';
             progressBarInner.style.width = '0';
 
-            // Hide initial image and show prediction result
             inputImage.style.display = 'none';
+            outputImage.src = `data:image/png;base64,${data.output_image}`;
             outputImage.style.display = 'block';
             
-            predictionText.innerHTML = `Prediction: ${data.predicted_label}<br>Confidence: ${(data.confidence * 100).toFixed(2)}%`;
+            predictionText.textContent = `Prediction: ${data.predicted_label}`;
             resultDiv.style.display = 'block';
 
-            // Show new prediction button
+            const confidence = data.confidence * 100;
+            confidenceBar.style.width = `${confidence}%`;
+            confidenceText.textContent = `${confidence.toFixed(2)}%`;
+
             newPredictionBtn.style.display = 'inline-block';
+            form.style.display = 'none';
+        } catch (error) {
+            alert(error.message);
+            resetUI();
+        }
+    });
 
-            // Hide the upload and predict buttons
-            document.getElementById('upload-form').style.display = 'none';
-        });
-
-        newPredictionBtn.addEventListener('click', () => {
-            // Reset everything for a new prediction
-            uploadedImageDiv.style.display = 'none';
-            resultDiv.style.display = 'none';
-            newPredictionBtn.style.display = 'none';
-            predictBtn.disabled = true;
-            document.getElementById('upload-form').style.display = 'block';
-            document.getElementById('file-upload').value = '';
-            inputImage.style.display = 'none';
-            outputImage.style.display = 'none';
-        });
+    newPredictionBtn.addEventListener('click', resetUI);
     </script>
 </body>
 </html>
+

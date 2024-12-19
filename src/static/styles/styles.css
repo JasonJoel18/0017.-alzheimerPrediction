@@ -1,211 +1,248 @@
 /* Base styles and variables */
 :root {
-    --bg-primary: #000000;
-    --bg-secondary: #1c1c1e;
-    --text-primary: #ffffff;
-    --text-secondary: #ebebf5;
-    --accent: #0a84ff;
-    --border-radius: 10px;
-    --blur-amount: 20px;
-  }
-  
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
-  
-  /* Container with iOS-like blur effect */
+  --bg-primary: #000000;
+  --bg-secondary: rgba(28, 28, 30, 0.8);
+  --text-primary: #ffffff;
+  --text-secondary: #ebebf5;
+  --accent: #0a84ff;
+  --border-radius: 12px;
+  --blur-amount: 20px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-primary);
+  background-image: url('76684121_9781485.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--text-primary);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Container with iOS-like blur effect */
+.container {
+  max-width: 600px;
+  width: 90%;
+  padding: 30px;
+  background: var(--bg-secondary);
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(var(--blur-amount));
+  -webkit-backdrop-filter: blur(var(--blur-amount));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+/* Heading */
+h1 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: var(--text-primary);
+}
+
+/* Button group */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+/* Upload button appearance */
+.file-upload-label {
+  display: inline-block;
+  padding: 12px 20px;
+  background-color: var(--accent);
+  color: var(--text-primary);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.file-upload-label:hover {
+  background-color: #0071e3;
+  transform: translateY(-2px);
+}
+
+/* Hide the default file input */
+input[type="file"] {
+  display: none;
+}
+
+/* Predict button appearance */
+button {
+  padding: 12px 20px;
+  background-color: var(--accent);
+  color: var(--text-primary);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+button:disabled {
+  background-color: #424245;
+  color: #8e8e93;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #0071e3;
+  transform: translateY(-2px);
+}
+
+/* Progress bar styles */
+.progress-container {
+  margin-top: 20px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background-color: #424245;
+  border-radius: 2px;
+  overflow: hidden;
+  display: none;
+}
+
+.progress-bar-inner {
+  height: 100%;
+  width: 0;
+  background-color: var(--accent);
+  transition: width 0.3s ease;
+}
+
+/* Image display container */
+.image-display {
+  margin: 30px auto;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 300px;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  background-color: rgba(44, 44, 46, 0.5);
+}
+
+/* Image styles */
+#input-image, #output-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: var(--border-radius);
+}
+
+/* Result section */
+.result {
+  display: none;
+  margin-top: 30px;
+  text-align: center;
+  background-color: rgba(44, 44, 46, 0.5);
+  padding: 20px;
+  border-radius: var(--border-radius);
+}
+
+.result h2 {
+  color: var(--text-primary);
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+/* Prediction text */
+.result p {
+  margin-top: 15px;
+  font-size: 18px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Confidence bar */
+.confidence-bar-container {
+  margin-top: 20px;
+  background-color: #424245;
+  border-radius: 10px;
+  height: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.confidence-bar {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(to right, #ff4b4b, #ffaf4b, #52fa5a);
+  transition: width 0.5s ease-out;
+}
+
+.confidence-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--text-primary);
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* New prediction button */
+.new-prediction-btn {
+  display: none;
+  margin-top: 20px;
+  background-color: #424245;
+}
+
+.new-prediction-btn:hover {
+  background-color: #48484a;
+}
+
+/* Icons */
+.fas {
+  margin-right: 8px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.container, .image-display, .result {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
   .container {
-    max-width: 600px;
-    width: 90%;
-    padding: 30px;
-    background: rgba(28, 28, 30, 0.6);
-    border-radius: var(--border-radius);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(var(--blur-amount));
-    -webkit-backdrop-filter: blur(var(--blur-amount));
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    text-align: center;
-    transition: all 0.3s ease;
-  }
-  
-  /* Heading */
-  h1 {
-    font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 30px;
-    color: var(--text-primary);
-  }
-  
-  /* Upload button appearance */
-  .file-upload-label {
-    display: inline-block;
-    padding: 12px 20px;
-    background-color: var(--accent);
-    color: var(--text-primary);
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    margin-bottom: 15px;
-  }
-  
-  .file-upload-label:hover {
-    background-color: #0071e3;
-  }
-  
-  /* Hide the default file input */
-  input[type="file"] {
-    display: none;
-  }
-  
-  /* Predict button appearance */
-  button {
-    margin-top: 15px;
-    padding: 12px 20px;
-    background-color: var(--accent);
-    color: var(--text-primary);
-    border: none;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-  }
-  
-  button:disabled {
-    background-color: #424245;
-    color: #8e8e93;
-    cursor: not-allowed;
-  }
-  
-  button:hover:not(:disabled) {
-    background-color: #0071e3;
-  }
-  
-  /* Progress bar styles */
-  .progress-bar {
-    width: 100%;
-    height: 4px;
-    background-color: #424245;
-    margin-top: 20px;
-    border-radius: 2px;
-    overflow: hidden;
-    display: none;
-  }
-  
-  .progress-bar-inner {
-    height: 100%;
-    width: 0;
-    background-color: var(--accent);
-    transition: width 0.3s ease;
-  }
-  
-  /* Image display container */
-  .image-display {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 300px;
-    position: relative;
-    overflow: hidden;
-    border-radius: var(--border-radius);
-    background-color: rgba(44, 44, 46, 0.5);
-  }
-  
-  /* Image styles */
-  #input-image, #output-image {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    border-radius: var(--border-radius);
-    display: block;
-  }
-  
-  /* Result section */
-  .result {
-    display: none;
-    margin-top: 30px;
-    text-align: center;
-    background-color: rgba(44, 44, 46, 0.5);
+    width: 95%;
     padding: 20px;
-    border-radius: var(--border-radius);
   }
-  
-  .result h2 {
-    color: var(--text-primary);
-    margin-bottom: 15px;
-    font-weight: 600;
+
+  h1 {
+    font-size: 24px;
   }
-  
-  /* Prediction text */
-  .result p {
-    margin-top: 15px;
-    font-size: 16px;
-    color: var(--text-secondary);
-    line-height: 1.6;
+
+  .file-upload-label, button {
+    font-size: 14px;
+    padding: 10px 16px;
   }
-  
-  /* New prediction button */
-  .new-prediction-btn {
-    display: none;
-    margin-top: 20px;
-    padding: 12px 20px;
-    background-color: #424245;
-    color: var(--text-primary);
-    border: none;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 500;
-    transition: all 0.3s ease;
+
+  .button-group {
+    flex-direction: column;
   }
-  
-  .new-prediction-btn:hover {
-    background-color: #48484a;
-  }
-  
-  /* Icons */
-  .fas {
-    margin-right: 8px;
-  }
-  
-  /* Animations */
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  
-  .container, .image-display, .result {
-    animation: fadeIn 0.3s ease-out;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 480px) {
-    .container {
-      width: 95%;
-      padding: 20px;
-    }
-  
-    h1 {
-      font-size: 24px;
-    }
-  
-    .file-upload-label, button {
-      font-size: 14px;
-      padding: 10px 16px;
-    }
-  }
-  
-  
+}
+
