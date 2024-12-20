@@ -1,4 +1,3 @@
-/* Base styles and variables */
 :root {
   --bg-primary: #000000;
   --bg-secondary: rgba(28, 28, 30, 0.8);
@@ -12,7 +11,7 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   background-color: var(--bg-primary);
-  background-image: url('76684121_9781485.jpg');
+  background-image: url('background1.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -26,7 +25,6 @@ body {
   min-height: 100vh;
 }
 
-/* Container with iOS-like blur effect */
 .container {
   max-width: 600px;
   width: 90%;
@@ -38,18 +36,14 @@ body {
   -webkit-backdrop-filter: blur(var(--blur-amount));
   border: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
-  transition: all 0.3s ease;
 }
 
-/* Heading */
 h1 {
   font-size: 28px;
   font-weight: 600;
   margin-bottom: 30px;
-  color: var(--text-primary);
 }
 
-/* Button group */
 .button-group {
   display: flex;
   justify-content: center;
@@ -57,8 +51,7 @@ h1 {
   margin-bottom: 20px;
 }
 
-/* Upload button appearance */
-.file-upload-label {
+.file-upload-label, button {
   display: inline-block;
   padding: 12px 20px;
   background-color: var(--accent);
@@ -68,29 +61,12 @@ h1 {
   font-size: 16px;
   font-weight: 500;
   transition: all 0.3s ease;
+  border: none;
 }
 
-.file-upload-label:hover {
+.file-upload-label:hover, button:hover:not(:disabled) {
   background-color: #0071e3;
   transform: translateY(-2px);
-}
-
-/* Hide the default file input */
-input[type="file"] {
-  display: none;
-}
-
-/* Predict button appearance */
-button {
-  padding: 12px 20px;
-  background-color: var(--accent);
-  color: var(--text-primary);
-  border: none;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 500;
-  transition: all 0.3s ease;
 }
 
 button:disabled {
@@ -99,12 +75,10 @@ button:disabled {
   cursor: not-allowed;
 }
 
-button:hover:not(:disabled) {
-  background-color: #0071e3;
-  transform: translateY(-2px);
+input[type="file"] {
+  display: none;
 }
 
-/* Progress bar styles */
 .progress-container {
   margin-top: 20px;
 }
@@ -125,7 +99,6 @@ button:hover:not(:disabled) {
   transition: width 0.3s ease;
 }
 
-/* Image display container */
 .image-display {
   margin: 30px auto;
   display: none;
@@ -140,15 +113,13 @@ button:hover:not(:disabled) {
   background-color: rgba(44, 44, 46, 0.5);
 }
 
-/* Image styles */
-#input-image, #output-image {
+#display-image {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
   border-radius: var(--border-radius);
 }
 
-/* Result section */
 .result {
   display: none;
   margin-top: 30px;
@@ -164,7 +135,6 @@ button:hover:not(:disabled) {
   font-weight: 600;
 }
 
-/* Prediction text */
 .result p {
   margin-top: 15px;
   font-size: 18px;
@@ -172,7 +142,6 @@ button:hover:not(:disabled) {
   line-height: 1.6;
 }
 
-/* Confidence bar */
 .confidence-bar-container {
   margin-top: 20px;
   background-color: #424245;
@@ -199,7 +168,6 @@ button:hover:not(:disabled) {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-/* New prediction button */
 .new-prediction-btn {
   display: none;
   margin-top: 20px;
@@ -210,12 +178,10 @@ button:hover:not(:disabled) {
   background-color: #48484a;
 }
 
-/* Icons */
 .fas {
   margin-right: 8px;
 }
 
-/* Animations */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -225,7 +191,6 @@ button:hover:not(:disabled) {
   animation: fadeIn 0.3s ease-out;
 }
 
-/* Responsive adjustments */
 @media (max-width: 480px) {
   .container {
     width: 95%;

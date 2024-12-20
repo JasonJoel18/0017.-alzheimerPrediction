@@ -15,7 +15,7 @@
                 <label for="file-upload" class="file-upload-label">
                     <i class="fas fa-cloud-upload-alt"></i> Upload MRI Image
                 </label>
-                <input type="file" id="file-upload" name="file" required>
+                <input type="file" id="file-upload" name="file" required accept="image/*">
                 <button type="submit" id="predict-btn" disabled>
                     <i class="fas fa-brain"></i> Predict
                 </button>
@@ -23,8 +23,7 @@
         </form>
         
         <div id="image-display" class="image-display">
-            <img id="input-image" src="" alt="Uploaded Image" style="display: none;">
-            <img id="output-image" alt="Prediction Visualization" style="display: none;">
+            <img id="display-image" src="" alt="Uploaded Image" style="display: none;">
         </div>
         
         <div class="progress-container">
@@ -51,8 +50,7 @@
     const form = document.getElementById('upload-form');
     const fileUpload = document.getElementById('file-upload');
     const predictBtn = document.getElementById('predict-btn');
-    const inputImage = document.getElementById('input-image');
-    const outputImage = document.getElementById('output-image');
+    const displayImage = document.getElementById('display-image');
     const predictionText = document.getElementById('prediction-text');
     const imageDisplay = document.getElementById('image-display');
     const resultDiv = document.getElementById('result');
@@ -69,19 +67,18 @@
         predictBtn.disabled = true;
         form.style.display = 'block';
         fileUpload.value = '';
-        inputImage.style.display = 'none';
-        inputImage.src = '';
-        outputImage.src = '';
-        outputImage.style.display = 'none';
+        displayImage.style.display = 'none';
+        displayImage.src = '';
         progressBar.style.display = 'none';
         progressBarInner.style.width = '0';
+        confidenceBar.style.width = '0';
+        confidenceText.textContent = '';
     }
 
     fileUpload.addEventListener('change', (e) => {
         if (e.target.files.length > 0) {
-            inputImage.src = URL.createObjectURL(e.target.files[0]);
-            inputImage.style.display = 'block';
-            outputImage.style.display = 'none';
+            displayImage.src = URL.createObjectURL(e.target.files[0]);
+            displayImage.style.display = 'block';
             imageDisplay.style.display = 'flex';
             predictBtn.disabled = false;
         } else {
@@ -117,16 +114,27 @@
             progressBar.style.display = 'none';
             progressBarInner.style.width = '0';
 
-            inputImage.style.display = 'none';
-            outputImage.src = `data:image/png;base64,${data.output_image}`;
-            outputImage.style.display = 'block';
+            displayImage.src = `data:image/png;base64,${data.image}`;
+            displayImage.style.display = 'block';
             
             predictionText.textContent = `Prediction: ${data.predicted_label}`;
             resultDiv.style.display = 'block';
 
             const confidence = data.confidence * 100;
-            confidenceBar.style.width = `${confidence}%`;
-            confidenceText.textContent = `${confidence.toFixed(2)}%`;
+            confidenceBar.style.width = '0';
+            confidenceText.textContent = '0%';
+            
+            // Animate confidence bar
+            let currentWidth = 0;
+            const animationInterval = setInterval(() => {
+                if (currentWidth < confidence) {
+                    currentWidth += 1;
+                    confidenceBar.style.width = `${currentWidth}%`;
+                    confidenceText.textContent = `${currentWidth.toFixed(2)}%`;
+                } else {
+                    clearInterval(animationInterval);
+                }
+            }, 20);
 
             newPredictionBtn.style.display = 'inline-block';
             form.style.display = 'none';

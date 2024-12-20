@@ -1,6 +1,5 @@
 \documentclass[12pt,onecolumn]{report}
 
-
 \usepackage[table,xcdraw]{xcolor}
 \usepackage{array}
 \usepackage{ulem}
@@ -75,12 +74,16 @@
 % -------------------- Title and Section Formatting --------------------
 
 \usepackage{titlesec}        % For title formatting
+
 \titleformat{\title}[block]
   {\normalfont\bfseries\Huge}{\thetitle}{0pt}{}  % Title formatting (Huge font size, bold)
 
-\titleformat{\chapter}[block]
-  {\normalfont\bfseries\LARGE}{}{0pt}{\Large}     % Chapter headings (LARGE font size, bold)
-  
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries\LARGE}   % Font style and size for the chapter title
+  {Chapter \thechapter}          % "Chapter X" text
+  {1em}                          % Spacing between "Chapter X" and the title
+  {\Large}                       % Font size for the chapter title on a new line
+
 \titleformat{\section}
   {\normalfont\Large\bfseries}{\thesection}{1em}{}  % Section headings (Large font size, bold)
 
@@ -89,23 +92,15 @@
 
 \titlespacing*{\chapter}{0pt}{-10pt}{15pt}   % Adjust chapter spacing
 
+% -------------------- Chapter Numbering Fix --------------------
+
 \usepackage{chngcntr}
-\counterwithin{chapter}{part}
-
-\titleformat{\chapter}[block]
-  {\normalfont\bfseries\LARGE}{Chapter \thechapter}{1em}{\Large}
-
-\titleformat{\chapter}[display]
-{\normalfont\bfseries\LARGE}   % Font style and size for the chapter title
-{Chapter \thechapter}         % "Chapter X" text
-{1em}                         % Spacing between "Chapter X" and the title
-{\Large}                      % Font size for the chapter title on a new line
+\counterwithout{chapter}{part} % Fix pre-leading period in chapter numbering
 
 % -------------------- Page Break Management --------------------
 
-% Remove page breaks between chapters
-% \newcommand{\chapterbreak}{\vspace{1.5cm}} % Adjust spacing if needed
-% \titleclass{\chapter}{straight}[\chapterbreak] 
+% Uncomment this line if you want to remove page breaks between chapters
+% \renewcommand{\chapter}{\vspace{1.5cm}\chapter}
 
 % -------------------- Bibliography and Citations --------------------
 
@@ -131,21 +126,6 @@
 
 % Begin document
 \begin{document}
-
-% Title page
-%\begin{titlepage}
-%    \centering
-%    {\bfseries\Huge Early Prediction and Progression Modelling of Alzheimer’s Disease Using Multi-Modal Time Series Data \par} % Title (22pt, bold)
-%    \vspace{1.5cm}
-%    {\Large Jason Joel Pinto \par} % Author name (14pt)
-%    \vfill
-%    A Thesis Submitted in Partial Fulfillment of the Requirements for the Degree of \par
-%    {\large MSc in Data Science, AI and Digital Marketing \par} % Program (12pt)
-%    \vspace{1cm}
-%    {\large Gisma University of Applied Sciences \par} % University (12pt)
-%    {\large Dec, 2024 \par} % Month and year (12pt)
-%    \vfill
-%\end{titlepage}
 
 \begin{titlepage}
     \begin{center}
@@ -447,6 +427,14 @@ The model is trained on the training dataset for $N$ epochs with validation moni
 
 
 \section{Model Training and Optimization}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1.0\columnwidth]{figures/model_training_optimization.png}  % Adjust the width to your liking
+    \caption{Flow of model training and output} % Caption for the image
+    \label{fig:model training} % Label to reference the image later in the document
+\end{figure}
+
+
 
 \subsection{Training Configuration}
 This step is consider to be the most critical steps in the machine learning process. How model is configured has a huge impact on the models perfomance on the final task as well as the efficiency of the model while training as well while predicting the results. The model used here make use of the Adamax optimizer. It is a variant of the Adam optimizer. But we make use of Adamax optimizer particularly because Adamax is suits extremely well for the sparse gradients and high dimensional data.So it fit's well for the image dataset that we are using. The learning rate is set to \(0.001\). In several studies it has been showed that learning rate of \(0.001\) balances convergence speed and model stability as it has been demonstrated in prior studies to balance convergence speed and model stability \cite{2017Kingma}. The categorical crossentropy loss function is utilized as this is a multi class classification. It has proved to be very effective for the multi-class classification.The Formula for categorical crossentropy is as follows \ref{eq:categorical_crossentropy}:
@@ -592,49 +580,106 @@ The final model after all the testing and comparisons in integrated with a Web A
 
 \section{Implementation}
 \label{sec:implementation}
+A thesis implementation is what bridges the gap between the theory what is taught about to implement and the practical application of the ideas. It will show how we have turned everything that we have discussed in the Methodology section into code , and it will also explain what steps are taken and the reason behind the choices that are make. It will also include the challenges faced during the implementation phase of the thesis.
 
-This section outlines the detailed implementation of the Alzheimer's disease prediction model. The process encompasses data preparation, model development, uncertainty estimation, and deployment using a Flask-based web application.
+Here we will also include the detailed explanation of the environment used for the development, including programming languages, hardware and software specs, and the additional tools used. It explains the steps taken, the choices made, and the reasons behind the approaches chosen. This is to make sure that the others who will be continuing this study can to follow the research and even build on it later on.
+
+Any changes or differences from the original plan will also be covered in the this chapter, along with the reasons for them. So that it gives a realistic view of how practical the suggested solution is by showing how real-world limitations and constraints affect it. This important study shows possible directions for further research and helps us understand the topic better.
+
+In summary, a thesis’s implementation chapter is a key part that turns ideas into real-world applications. It shows how the research was done, makes it easy to repeat the research, and gives a clear understanding of the results.
 
 \subsection{Data Preparation}
-The dataset used for this thesis comprises MRI images categorized into four classes: \textit{Mild Demented}, \textit{Moderate Demented}, \textit{Non-Demented}, and \textit{Very Mild Demented}. The data preparation phase involved the following steps:
+The performance and dependability of machine learning models are greatly impacted by the data preparation stage of implementation. This process includes operations like data cleansing, normalization, transformation, and feature engineering, entails converting raw data into a clear and organized format which is more optimized for the model that chosen. The efficiency of machine learning models is directly impacted by the quality of the input data. Hence it is very important spend enough time and effort on data preparation procedures in order to make sure precise and significant improvement of the models performance. 
+
+To reduce problems like data noise, input size error, data preparation methods are very important. This includes deleting corrupt images, encoding class values using one hot encoding, and normalizing images data according to the requirement of the model.By taking these actions, the model's capacity to efficiently learn from the data is increased, improving its prediction performance. 
+
+In conclusion, careful data preparation is essential to machine learning model deployment success. Practitioners can greatly improve model performance and obtain more precise and useful insights from their studies by guaranteeing data quality and relevance through thorough preprocessing. The data preparation will have these 5 steps:
 \begin{itemize}
-    \item \textbf{Data Loading}: Image paths were loaded into a structured format, and labels were assigned based on the folder structure.
-    \item \textbf{Data Validation}: Corrupted images were identified and excluded using the Python PIL library to ensure data integrity.
-    \item \textbf{Data Splitting}: The dataset was divided into training, validation, and test sets using the \textit{train\_test\_split} function from \texttt{scikit-learn}. A stratified split ensured balanced class representation.
-    \item \textbf{Data Augmentation}: Image preprocessing was performed using the \texttt{ImageDataGenerator} class from TensorFlow's Keras API. This included resizing images to \(224 \times 224\) and applying preprocessing functions specific to the EfficientNetB0 model.
+    \item \textbf{Loading the Images Data}:
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=1.0\columnwidth]{figures/loading_images.png}  % Adjust the width to your liking
+        \caption{Loading the image paths into a dataset} % Caption for the image
+        \label{fig:loading image paths a dataset} % Label to reference the image later in the document
+    \end{figure}
+    In order to organize and label MRI image data associated with Alzheimer's disease, the given code segment is an essential component of data preparation for a machine learning assignment. It starts by specifying the directory paths for four different types of images: Very Mild Demented, Moderate Demented, Non-Demented, and Mild Demented. Unambiguous access to the data stored in the filesystem is ensured by the absolute paths used to specify these directories.
+
+    The MRI scans in each directory correspond to the associated categorization, which makes supervised learning easier by matching each image to the appropriate label. Next, two empty lists, \texttt{filepaths} and \texttt{labels}, are created. These lists were created to hold the full paths of all image files and the class labels that the images belong to. Additionally, it creates a list called \texttt{class\_labels} that will store the class names for each Alzheimer's disease category that are present in our dataset. This list keeps a relationship in the code by acting as a mapping to the class labels and the path. In order for the script to cycle over the directories in an organized way, a list called \texttt{dict\_list} is simultaneously formed that will store the directory paths.
+
+    A nested loop structure is used for achieving the main functionality. The outer loop uses an enumeration to loop through the \texttt{dict\_list}, where \texttt{i} refers to the image paths's index and \texttt{j} is the image path. This code stores the names of all the files in the current folder after retrieving the list of filenames for each directory using the \texttt{os.listdir()} method. Each file in this list is processed by an inner loop, which uses \texttt{os.path.join()} to add the directory path that is \texttt{j} and the filename that is \texttt{f} to create the file's complete path.
+
+    The proper class labels, obtained from the \texttt{class\_labels} list using the index \texttt{i}, is added to the \texttt{labels} list, and these complete file paths are appended to the \texttt{filepaths} list. The organized dataset that this code creates, where each image corresponds to its proper class name, allows the machine learning model to differentiate between the different stages of Alzheimer's disease. By keeping separate lists of file locations and labels, the code makes sure that the data is ready for further procedures like data splitting, preprocessing, and input into the learning method. Additionally, because it uses directory-specific processing and relative indexing, this method is adaptable and scalable for datasets with similar structures. Further, this integrated method for dataset preparation enables efficient handling of huge, complex data and improves reproducibility.
+    \item \textbf{Validation the images using File Path}: 
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.6\columnwidth]{figures/validating_images.png}  % Adjust the width to your liking
+        \caption{code for validate the images} % Caption for the image
+        \label{fig:validating_the_image_using_image_paths} % Label to reference the image later in the document
+    \end{figure}
+    The \ref{fig:validating_the_image_using_image_paths} shows the code for the preprocessing step meant to make sure that only valid, uncorrupted images files are included in an array of image files and the labels which belong to them. It works by continuously iterating through the lists of \texttt{filepaths} and \texttt{labels}, where each \texttt{filepath} is an image file's disk location and the \texttt{label} is the class or category that goes with it. The \texttt{Image.open(filepath)} function will attempt to try to open each image file that is given by filepath within the loop. The \texttt{img.verify()} method, which checks the image file's validity without fully decoding it. The code adds the image file's path into the \texttt{valid\_filepaths} list and the correct label to the \texttt{valid\_labels} list if the image file is legitimate. The final list will have \texttt{filepaths} and \texttt{labels} for the images that are valid only.
+
+    The code will use the except block to catch any errors that arise in this procedure, whether they are caused by damaged, unreadable, or invalid file formats. Particularly, the code deals with two exceptions: \texttt{SyntaxError}, which may be raised if the file is incorrectly written as an image, and \texttt{IOError}, which usually happens when a file cannot be read. By using this method, it is ensured that corrupted files won't interfere with further processing steps or model training, which might otherwise end up in mistakes or lower dataset quality. 
+    \item \textbf{Dividing the data}:
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.9\columnwidth]{figures/data_spliting.png}  % Adjust the width to your liking
+        \caption{code for dividing the dataset} % Caption for the image
+        \label{fig:dividing_the_dataset} % Label to reference the
+    \end{figure}
+    Figure \ref{fig:dividing_the_dataset} shows the code snippet for having the dataset ready for training, validation, and testing. It makes use of the \texttt{sklearn.model\_selection} module's \texttt{train\_test\_split} function to divide datasets into three dataframes that is test, train and validation. The dataset, denoted by \texttt{data\_df}, is divided into two halves in the first line, a temporary test set (\texttt{test\_images}) and a training set (\texttt{train\_set}). 30\% of the dataset is allotted to the test set, with the remaining 70\% left aside for training, according to the \texttt{test\_size}=0.3 option. The reproducibility of the splitting operation is guaranteed by the setting \texttt{random\_state}=42.The second line splits the temporary test set (\texttt{test\_images}) into two equal parts, a final test set  and a validation set (\texttt{val\_set}). The code makes sure that the temporary test set is divided equally by assigning 50\% of its data to each subgroup by setting \texttt{test\_size=0.5}. To keep the splitting procedure consistent, the \texttt{random\_state=42} argument is again used.
+    \item \textbf{Preprocessing the Images}:
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.6\columnwidth]{figures/imp_data_preprocessing.png}  % Adjust the width to your liking
+        \caption{code for image data pre-processing} % Caption for the image
+        \label{fig:imp_data_preprocessing} % Label to reference the
+    \end{figure}
+    This is an important step for getting the picture datasets set up for training, validation, and testing with \texttt{Keras'} \texttt{ImageDataGenerator} class. The figure \ref{fig:imp_data_preprocessing} shows the code for pre-processing. Image Data Generator is a component of the \texttt{TensorFlow} library. It guarantees that the information is correctly organized and preprocessed before being fed into a convolutional neural network. For the training data (\texttt{image\_gen\_train}) and the validation and test datasets (\texttt{image\_gen\_val\_test}), \texttt{ImageDataGenerator} is generated. The preprocessing function \texttt{preprocess\_input}, which is utilized by the generators, standardizes the input photos in accordance with the expected specifications of the \texttt{EfficientNetB0} model. 
+
+    The training, validation, and testing datasets are then loaded and preprocessed using the \texttt{flow\_from\_dataframe} function. It resizes photos to 224x224 pixels, formats them as \texttt{RGB}, applies categorical labels for a multi-class classification task, and extracts image paths and labels from the corresponding dataframes (\texttt{train\_set}, \texttt{val\_set}, \texttt{test\_images}). The number of photos processed in each batch is determined by the \texttt{batch\_size}, and the data order is maintained by using \texttt{shuffle=False}.
+    
+    For consistency, the same generator is used to process the training and validation datasets, while a different generator (\texttt{image\_gen\_val\_test}) handles the test set, providing flexibility for different preprocessing if necessary. Every dataset preserves consistent transformations, guaranteeing that the model assesses performance in a consistent manner.
 \end{itemize}
 
 \subsection{Model Development}
-\subsubsection{Base Model Selection}
-The EfficientNetB0 architecture, pre-trained on the ImageNet dataset, was employed as the base model. Its robust feature extraction capabilities make it suitable for medical image analysis. The pre-trained model was integrated with a custom classification head consisting of the following layers:
-\begin{itemize}
-    \item A \texttt{Flatten} layer to convert the feature maps into a one-dimensional vector.
-    \item A dense layer with 128 neurons and ReLU activation.
-    \item A \texttt{Dropout} layer with a rate of 0.3 to reduce overfitting.
-    \item A final dense layer with 4 neurons and a \texttt{softmax} activation function for multi-class classification.
-\end{itemize}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\columnwidth]{figures/imp_model_training.png}  % Adjust the width to your liking
+    \caption{code for model training} % Caption for the image
+    \label{fig:imp_model_training} % Label to reference the
+\end{figure}
+\subsubsection{Base model}
+\texttt{EfficientNetB0}, a pretrained model, is selected as the base model to extract the basic features at the beginning of the process. \texttt{EfficientNetB0} is an advanced convolutional neural network that was trained on the dataset from \texttt{ImageNet}. It is known for its effectiveness and strong performance on a range of uses. The pretrained model's top classification layer is excluded by setting \texttt{include\_top=False}, enabling customization for the task at hand. \texttt{Pooling="avg"} uses global average pooling to lower the dimensionality of the output from the convolutional layers, while the \texttt{input\_shape} parameter sets the size of the input images to ensure network compatibility. Pretrained weights from \texttt{ImageNet} are included to guarantee that the network makes use of a wealth of characteristics acquired during extensive training, greatly accelerating convergence and enhancing accuracy for the specified dataset.
 
-\subsubsection{Model Compilation and Training}
-The model was compiled using the Adamax optimizer with a learning rate of \(0.001\), and the \textit{categorical cross-entropy} loss function. Accuracy was chosen as the evaluation metric. Training was performed with the following parameters:
-\begin{itemize}
-    \item Batch size: 32
-    \item Number of epochs: 1 (as a proof-of-concept for this phase)
-    \item Callbacks: \texttt{EarlyStopping} and \texttt{ReduceLROnPlateau} for adaptive learning rate adjustment and early termination based on validation loss.
-\end{itemize}
 
-The training and validation accuracy and loss were monitored to evaluate model performance during training. The trained model was subsequently saved for further evaluation.
 
-\subsection{Uncertainty Estimation}
-To enhance clinical applicability, uncertainty estimation was integrated using a Monte Carlo dropout technique. This method provides a measure of model confidence by performing stochastic forward passes during inference. The steps are as follows:
-\begin{enumerate}
-    \item Perform \(n\)-samples of forward passes for each input image, keeping dropout active.
-    \item Compute the mean prediction and standard deviation across all samples.
-    \item Interpret the standard deviation as a measure of uncertainty.
-\end{enumerate}
-This approach enables the identification of high-uncertainty predictions, which can guide clinical decision-making.
+\subsubsection{Training the Model and Optimizing}
+The base model is then easily customized and made more adaptable by integrating it into a \texttt{Sequential} model, which is a linear stack of layers in \texttt{Keras}. The output is flattened using the \texttt{Flatten()} layer after the base model, which transforms the multidimensional tensor into a one-dimensional vector appropriate for the dense layers. The addition of a \texttt{Dense} layer with 128 units and \texttt{ReLU} activation creates a fully connected layer that can recognize intricate patterns in the data. A \texttt{Dropout} layer with a rate of 0.3 is incorporated to lessen overfitting. During training, 30\% of the weights are randomly set to zero. The last layer, another \texttt{Dense} layer, uses a \texttt{softmax} activation function to output class probabilities and has four units, which correspond to the number of output classes.
+The \texttt{Adamax} optimizer is an adaptive learning rate optimization method that was inspired by \texttt{Adam}. \texttt{Adamax} is used to construct the model. It is set up with a learning rate of 0.001 and is especially good at managing sparse gradients. \texttt{Accuracy}, which measures the percentage of accurate predictions, is the evaluation metric. The loss function is set to \texttt{categorical\_crossentropy}, a common option for multi-class classification tasks.
+
+Two callbacks, \texttt{EarlyStopping} and \texttt{ReduceLROnPlateau}, are used to improve training efficiency and avoid overfitting. The \texttt{EarlyStopping} callback restores the optimal weights seen during training by tracking the validation loss (\texttt{val\_loss}) and stopping training if there is no improvement for five consecutive epochs. With a minimum learning rate threshold of \(1 \times 10^{-6}\), the \texttt{ReduceLROnPlateau} callback automatically lowers the learning rate by a factor of 0.5 if the validation loss does not improve after three epochs. By avoiding needless training epochs, these callbacks guarantee that the model converges efficiently.
+
+And then a summary of the model is generated. The \texttt{fit} method, which starts training, requires three inputs: the validation dataset (\texttt{val}), the number of epochs (\texttt{ep}), and the training dataset (\texttt{train}). To ensure no dynamic changes during training, the callbacks are provided as a list. The training duration is measured using the \texttt{time.time()} method, which offers information about the model's computational effectiveness. To attain the best results in multi-class image classification jobs, this end-to-end configuration incorporates cutting-edge methods and resources.
+
+\subsection{Adding Uncertainity estimation to the mix}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\columnwidth]{figures/imp_uncertainity_estimation.png}  % Adjust the width to your liking
+    \caption{code for uncertainity estimation} % Caption for the image
+    \label{fig:imp_uncertainity_estimation} % Label to reference the
+\end{figure}
+This code uses \texttt{Monte Carlo dropout} sampling for calculating uncertainty. It is a \texttt{Bayesian} technique that takes into account model prediction variability based on the random nature of \texttt{dropout} layers, to evaluate predictive uncertainty. To measure uncertainty, the \texttt{predict\_with\_uncertainty} function does multiple forward tests with the model in training mode even during inference. This function needs three inputs: the number of \texttt{MC} samples (\texttt{n\_samples}), a dataset (usually for testing), and the trained model. It determines the total number of batches in the dataset and initializes an empty list called \texttt{predictions} to hold the outcomes of several forward runs. Throughout the designated number of iterations, the sampling process is tracked via a progress bar (\texttt{pbar\_outer}).
+
+To make sure of consistent processing, the dataset is reset after every \texttt{MC} sample, and batch-wise progress is monitored by a separate progress bar (\texttt{pbar\_inner}). The model adds predictions to \texttt{batch\_preds} as \texttt{NumPy} arrays while processing batches of photos while maintaining \texttt{dropout} layers active, that is, with \texttt{training=True}. Predictions for the sample are stacked and added to the \texttt{predictions} list once all batches have been processed. For the designated number of samples, this procedure is repeated. \texttt{Predictions} are merged into a three-dimensional array after every sample is finished. Along the sample axis, the function computes the \texttt{standard deviation} (that is, \texttt{uncertainty}) and \texttt{mean predictions} (that is, \texttt{mean\_preds}). The standard deviation measures the degree of uncertainty surrounding the model's final predictions, whereas the mean represents those forecasts.
 
 \subsection{Performance Evaluation}
-The model's performance was evaluated using metrics such as Accuracy, Precision, Recall, F1-Score, and Area Under the Curve (AUC). Additionally, the confusion matrix provided insights into class-specific performance. Metrics were calculated using \texttt{scikit-learn}'s \textit{classification\_report} and \textit{confusion\_matrix} utilities.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\columnwidth]{figures/imp_uncertainity_estimation.png}  % Adjust the width to your liking
+    \caption{code for uncertainity estimation} % Caption for the image
+    \label{fig:imp_uncertainity_estimation} % Label to reference the
+\end{figure}
+This code evaluates a multi-class classification model by calculating metrics and organizing them. It extracts ground truth labels \texttt{y\_true} from the test dataset and converts them into a \texttt{NumPy} array. Predicted labels \texttt{y\_pred} are generated using \texttt{np.argmax} on \texttt{mean\_predictions}. The \texttt{sklearn.metrics} \texttt{classification\_report} function computes precision, recall, and F1-score for each class, linking them to class names with \texttt{target\_names=class\_labels}. The \texttt{output\_dict=True} option returns the report as a dictionary, converted to a \texttt{Pandas DataFrame} \texttt{class\_metrics} for analysis. Class-level accuracies are calculated as correct predictions per class relative to total samples, stored in \texttt{class\_accuracy} and added to \texttt{class\_metrics}. Aggregate accuracy metrics—macro, micro, and weighted averages—are computed for broader evaluation. Precision, recall, and F1-score are also computed for micro-average, stored in the \texttt{"micro avg"} row of \texttt{class\_metrics}. Finally, \texttt{class\_metrics} \texttt{DataFrame} is displayed, offering a comprehensive breakdown of metrics for each class and overall performance.
 
 \subsection{Web Application Deployment}
 The trained model was deployed as a web-based application using Flask, enabling real-time image classification and uncertainty visualization. The web application includes the following features:
@@ -644,33 +689,24 @@ The trained model was deployed as a web-based application using Flask, enabling 
     \item Visualization of model confidence for each class.
 \end{itemize}
 
-\subsubsection{Flask API Integration}
-The Flask application integrates the trained model with a RESTful API. Upon receiving an uploaded image, the API:
-\begin{enumerate}
-    \item Preprocesses the image to match the model's input requirements.
-    \item Performs inference using the trained model.
-    \item Computes uncertainty metrics using the Monte Carlo dropout technique.
-    \item Returns the prediction results and uncertainty measures to the frontend.
-\end{enumerate}
+% \subsubsection{Flask API Integration}
+% The Flask application integrates the trained model with a RESTful API. Upon receiving an uploaded image, the API:
+% \begin{enumerate}
+%     \item Preprocesses the image to match the model's input requirements.
+%     \item Performs inference using the trained model.
+%     \item Computes uncertainty metrics using the Monte Carlo dropout technique.
+%     \item Returns the prediction results and uncertainty measures to the frontend.
+% \end{enumerate}
 
-\subsubsection{Frontend Design}
-The web application's frontend is designed for intuitive user interaction. Key components include:
-\begin{itemize}
-    \item A drag-and-drop interface for image uploads.
-    \item Dynamically updated prediction results and confidence levels.
-    \item Visualizations of uncertainty for better interpretability.
-\end{itemize}
+% \subsubsection{Frontend Design}
+% The web application's frontend is designed for intuitive user interaction. Key components include:
+% \begin{itemize}
+%     \item A drag-and-drop interface for image uploads.
+%     \item Dynamically updated prediction results and confidence levels.
+%     \item Visualizations of uncertainty for better interpretability.
+% \end{itemize}
 
-\subsection{Visualization of Predictions and Uncertainty}
-A custom visualization pipeline was implemented to showcase model predictions alongside uncertainty levels. This included:
-\begin{itemize}
-    \item A grid display of sample images, their predicted and actual labels, and confidence levels.
-    \item Color-coded uncertainty bars to indicate the reliability of predictions.
-    \item Enhanced visual clarity through high-resolution plots.
-\end{itemize}
 
-\subsection{Performance Timing Analysis}
-To ensure the pipeline's efficiency, timing analyses were conducted at various stages, including data loading, model training, and uncertainty prediction. Results were recorded and visualized in a tabular format to identify bottlenecks and optimize performance.
 
 % \section{Conclusion}
 % The implementation phase demonstrated the feasibility of integrating advanced deep learning techniques with uncertainty estimation for Alzheimer's disease detection. The development of a user-friendly web application further emphasizes the practical utility of the proposed solution in clinical settings.

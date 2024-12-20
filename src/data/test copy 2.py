@@ -23,6 +23,8 @@ import matplotlib.colors as mcolors
 from rich import print
 import time
 
+warnings.filterwarnings(action="ignore")
+
 
 ep = 1
 bs = 32
@@ -35,8 +37,6 @@ def record_time(stage_name, start_time, end_time):
     timing_results.append({"Stage": stage_name, "Time (s)": elapsed_time})
     print(f"{stage_name} completed in {elapsed_time:.2f} seconds.")
 
-
-warnings.filterwarnings(action="ignore")
 
 MildDemented_dir = "/Volumes/JasonT7/2.Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/MildDemented"
 ModerateDemented_dir = "/Volumes/JasonT7/2.Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/ModerateDemented"
@@ -86,10 +86,9 @@ for filepath, label in zip(filepaths, labels):
     train_set, test_images = train_test_split(data_df, test_size=0.3, random_state=42)
     val_set, test_images = train_test_split(test_images, test_size=0.5, random_state=42)
 
-    image_gen_train = ImageDataGenerator(preprocessing_function=preprocess_input)
-    image_gen_val_test = ImageDataGenerator(preprocessing_function=preprocess_input)
+    image_gen = ImageDataGenerator(preprocessing_function=preprocess_input)
 
-    train = image_gen_train.flow_from_dataframe(
+    train = image_gen.flow_from_dataframe(
         train_set,
         x_col="filepaths",
         y_col="labels",
@@ -100,7 +99,7 @@ for filepath, label in zip(filepaths, labels):
         shuffle=False,
     )
 
-    val = image_gen_val_test.flow_from_dataframe(
+    val = image_gen.flow_from_dataframe(
         val_set,
         x_col="filepaths",
         y_col="labels",
@@ -240,6 +239,8 @@ start_time = time.time()
 mean_predictions, uncertainty = predict_with_uncertainty(model, test, n_samples=5)
 end_time = time.time()
 record_time("Uncertainty Prediction", start_time, end_time)
+
+
 y_true = test.classes
 y_true = np.array(y_true)
 y_pred = np.argmax(mean_predictions, axis=1)

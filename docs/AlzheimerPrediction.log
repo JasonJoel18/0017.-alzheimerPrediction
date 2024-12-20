@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.9)  19 DEC 2024 03:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.9)  20 DEC 2024 11:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -602,7 +602,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 )
 \Hy@SectionHShift=\skip94
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 123.
+Package hyperref Info: Option `colorlinks' set `true' on input line 118.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
  (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphics.sty
@@ -627,33 +627,37 @@ Package: enumitem 2019/06/20 v3.9 Customized lists
 )
 \@quotelevel=\count441
 \@quotereset=\count442
-LaTeX Font Info:    Trying to load font information for T1+EBGaramond-OsF on input line 133.
+LaTeX Font Info:    Trying to load font information for T1+EBGaramond-OsF on input line 128.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/ebgaramond/T1EBGaramond-OsF.fd
 File: T1EBGaramond-OsF.fd 2023/03/19 (autoinst) Font definitions for T1/EBGaramond-OsF.
 )
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 133.
- (./AlzheimerPrediction.aux)
+(Font)              scaled to size 12.0pt on input line 128.
+ (./AlzheimerPrediction.aux
+
+LaTeX Warning: Label `fig:imp_uncertainity_estimation' multiply defined.
+
+)
 \openout1 = `AlzheimerPrediction.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 128.
+LaTeX Font Info:    ... okay on input line 128.
  (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count443
@@ -725,41 +729,41 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'AlzheimerPrediction.bbl' found.
  (./AlzheimerPrediction.bbl)
-Package biblatex Info: Reference section=0 on input line 133.
-Package biblatex Info: Reference segment=0 on input line 133.
-Package hyperref Info: Link coloring ON on input line 133.
+Package biblatex Info: Reference section=0 on input line 128.
+Package biblatex Info: Reference segment=0 on input line 128.
+Package hyperref Info: Link coloring ON on input line 128.
  (./AlzheimerPrediction.out) (./AlzheimerPrediction.out)
 \@outlinefile=\write4
 \openout4 = `AlzheimerPrediction.out'.
 
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/sc' will be
-(Font)              scaled to size 12.0pt on input line 156.
+(Font)              scaled to size 12.0pt on input line 136.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/sc' will be
-(Font)              scaled to size 17.28pt on input line 156.
+(Font)              scaled to size 17.28pt on input line 136.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/b/n' will be
-(Font)              scaled to size 12.0pt on input line 160.
+(Font)              scaled to size 12.0pt on input line 140.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/b/n' will be
-(Font)              scaled to size 24.88pt on input line 160.
+(Font)              scaled to size 24.88pt on input line 140.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/n' will be
-(Font)              scaled to size 17.28pt on input line 164.
+(Font)              scaled to size 17.28pt on input line 144.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/b/n' will be
-(Font)              scaled to size 17.28pt on input line 164.
+(Font)              scaled to size 17.28pt on input line 144.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/n' will be
-(Font)              scaled to size 14.4pt on input line 167.
+(Font)              scaled to size 14.4pt on input line 147.
 
 
 [1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/ebgaramond/ebg_byuyni.enc}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/ebgaramond/ebg_tcdnmr.enc}]
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/b/n' will be
-(Font)              scaled to size 20.74pt on input line 178.
+(Font)              scaled to size 20.74pt on input line 158.
 
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.196 \tableofcontents
+l.176 \tableofcontents
                        [1
 
 ] (./AlzheimerPrediction.toc
@@ -773,9 +777,9 @@ l.196 \tableofcontents
 
 
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/it' will be
-(Font)              scaled to size 12.0pt on input line 197.
+(Font)              scaled to size 12.0pt on input line 177.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/it' will be
-(Font)              scaled to size 10.95pt on input line 197.
+(Font)              scaled to size 10.95pt on input line 177.
 
 Package fancyhdr Warning: \headheight is too small (10.0pt): 
 (fancyhdr)                Make it at least 24.64995pt, for example:
@@ -784,7 +788,7 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-14.64995pt}.
 
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/b/n' will be
-(Font)              scaled to size 14.4pt on input line 197.
+(Font)              scaled to size 14.4pt on input line 177.
 [3{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/ebgaramond/ebg_ljow5q.enc}] (./AlzheimerPrediction.lof)
 \tf@lof=\write6
 \openout6 = `AlzheimerPrediction.lof'.
@@ -802,14 +806,14 @@ LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/b/n' will be
 [5
 
 ]
-Chapter .1.
-<figures/fig1.png, id=322, 1261.71375pt x 948.54375pt>
+Chapter 1.
+<figures/fig1.png, id=328, 1261.71375pt x 948.54375pt>
 File: figures/fig1.png Graphic file (type png)
 <use figures/fig1.png>
-Package pdftex.def Info: figures/fig1.png  used on input line 209.
+Package pdftex.def Info: figures/fig1.png  used on input line 189.
 (pdftex.def)             Requested size: 408.62796pt x 307.20201pt.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/n' will be
-(Font)              scaled to size 10.95pt on input line 210.
+(Font)              scaled to size 10.95pt on input line 190.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -827,11 +831,11 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-14.64995pt}.
 
 [7 <./figures/fig1.png>]
-Chapter .2.
-<figures/fig2.jpeg, id=344, 1682.285pt x 1260.71pt>
+Chapter 2.
+<figures/fig2.jpeg, id=350, 1682.285pt x 1260.71pt>
 File: figures/fig2.jpeg Graphic file (type jpg)
 <use figures/fig2.jpeg>
-Package pdftex.def Info: figures/fig2.jpeg  used on input line 230.
+Package pdftex.def Info: figures/fig2.jpeg  used on input line 210.
 (pdftex.def)             Requested size: 408.62796pt x 306.23158pt.
 
 
@@ -847,7 +851,7 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-14.64995pt}.
 
 [9]
-Chapter .3.
+Chapter 3.
 
 
 [10
@@ -862,88 +866,88 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-14.64995pt}.
 
 [11]
-Chapter .4.
+Chapter 4.
 
 
 [12
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 295--295
+Underfull \hbox (badness 10000) in paragraph at lines 275--275
 []|\T1/EBGaramond-OsF/m/n/12 Sharma, Sarang
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 295--295
+Underfull \hbox (badness 10000) in paragraph at lines 275--275
 []|\T1/EBGaramond-OsF/m/n/12 Hybrid Deep
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 295--295
+Underfull \hbox (badness 10000) in paragraph at lines 275--275
 []|\T1/EBGaramond-OsF/m/n/12 No un-cer-tainty es-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 295--295
+Underfull \hbox (badness 10000) in paragraph at lines 275--275
 \T1/EBGaramond-OsF/m/n/12 ti-ma-tion, lim-ited
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 296--296
+Underfull \hbox (badness 10000) in paragraph at lines 276--276
 []|\T1/EBGaramond-OsF/m/n/12 Desai, Maitri
  []
 
 
-Underfull \hbox (badness 3861) in paragraph at lines 296--296
+Underfull \hbox (badness 3861) in paragraph at lines 276--276
 []|\T1/EBGaramond-OsF/m/n/12 Limited gen-er-al-iz-abil-ity,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 297--297
+Underfull \hbox (badness 10000) in paragraph at lines 277--277
 []|\T1/EBGaramond-OsF/m/n/12 Ahmed, Gul-naz
  []
 
 
-Underfull \hbox (badness 1400) in paragraph at lines 297--297
+Underfull \hbox (badness 1400) in paragraph at lines 277--277
 []|\T1/EBGaramond-OsF/m/n/12 No re-li-a-bil-ity or un-cer-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 299--299
+Underfull \hbox (badness 10000) in paragraph at lines 279--279
 []|\T1/EBGaramond-OsF/m/n/12 Custom MRI
  []
 
 
-Underfull \hbox (badness 3758) in paragraph at lines 299--299
+Underfull \hbox (badness 3758) in paragraph at lines 279--279
 []|\T1/EBGaramond-OsF/m/n/12 No un-cer-tainty es-ti-ma-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 301--301
+Underfull \hbox (badness 10000) in paragraph at lines 281--281
 []|\T1/EBGaramond-OsF/m/n/12 El-Latif et al.
  []
 
 
-Underfull \hbox (badness 1038) in paragraph at lines 301--301
+Underfull \hbox (badness 1038) in paragraph at lines 281--281
 []|\T1/EBGaramond-OsF/m/n/12 Lightweight Deep
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 302--302
+Underfull \hbox (badness 10000) in paragraph at lines 282--282
 []|\T1/EBGaramond-OsF/m/n/12 Isunuri et al.
  []
 
 
-Underfull \hbox (badness 2753) in paragraph at lines 302--302
+Underfull \hbox (badness 2753) in paragraph at lines 282--282
 []|\T1/EBGaramond-OsF/m/n/12 Transfer Learn-ing
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 303--303
+Underfull \hbox (badness 10000) in paragraph at lines 283--283
 []|\T1/EBGaramond-OsF/m/n/12 Murugan et al.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 303--303
+Underfull \hbox (badness 10000) in paragraph at lines 283--283
 []|\T1/EBGaramond-OsF/m/n/12 No un-cer-tainty as-sess-
  []
 
@@ -975,21 +979,21 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-14.64995pt}.
 
 [15]
-Chapter .5.
-<figures/dataset.png, id=427, 936.07718pt x 861.09705pt>
+Chapter 5.
+<figures/dataset.png, id=433, 936.07718pt x 861.09705pt>
 File: figures/dataset.png Graphic file (type png)
 <use figures/dataset.png>
-Package pdftex.def Info: figures/dataset.png  used on input line 332.
+Package pdftex.def Info: figures/dataset.png  used on input line 312.
 (pdftex.def)             Requested size: 408.62796pt x 375.90126pt.
 
 
 [16
 
  <./figures/dataset.png>]
-<figures/dataset_class_distribution.png, id=436, 407.78348pt x 335.87483pt>
+<figures/dataset_class_distribution.png, id=442, 407.78348pt x 335.87483pt>
 File: figures/dataset_class_distribution.png Graphic file (type png)
 <use figures/dataset_class_distribution.png>
-Package pdftex.def Info: figures/dataset_class_distribution.png  used on input line 355.
+Package pdftex.def Info: figures/dataset_class_distribution.png  used on input line 335.
 (pdftex.def)             Requested size: 408.62796pt x 336.571pt.
 
 
@@ -1001,10 +1005,10 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-14.64995pt}.
 
 [17{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
-<figures/image_preprocessing_full.png, id=451, 2220.295pt x 2176.13pt>
+<figures/image_preprocessing_full.png, id=457, 2220.295pt x 2176.13pt>
 File: figures/image_preprocessing_full.png Graphic file (type png)
 <use figures/image_preprocessing_full.png>
-Package pdftex.def Info: figures/image_preprocessing_full.png  used on input line 369.
+Package pdftex.def Info: figures/image_preprocessing_full.png  used on input line 349.
 (pdftex.def)             Requested size: 408.62796pt x 400.48584pt.
 
 
@@ -1017,12 +1021,12 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 
 [18 <./figures/dataset_class_distribution.png>]
 
-LaTeX Warning: Reference `fig:image_preprocessing' on page 19 undefined on input line 374.
+LaTeX Warning: Reference `fig:image_preprocessing' on page 19 undefined on input line 354.
 
-<figures/data_cleaning.png, id=461, 3131.7pt x 1975.38pt>
+<figures/data_cleaning.png, id=467, 3131.7pt x 1975.38pt>
 File: figures/data_cleaning.png Graphic file (type png)
 <use figures/data_cleaning.png>
-Package pdftex.def Info: figures/data_cleaning.png  used on input line 379.
+Package pdftex.def Info: figures/data_cleaning.png  used on input line 359.
 (pdftex.def)             Requested size: 408.62796pt x 257.74281pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -1047,15 +1051,15 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 
 [20 <./figures/data_cleaning.png>]
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 403.
+(Font)              scaled to size 8.0pt on input line 383.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/n' will be
-(Font)              scaled to size 6.0pt on input line 403.
-LaTeX Font Info:    Trying to load font information for TS1+EBGaramond-OsF on input line 408.
+(Font)              scaled to size 6.0pt on input line 383.
+LaTeX Font Info:    Trying to load font information for TS1+EBGaramond-OsF on input line 388.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/ebgaramond/TS1EBGaramond-OsF.fd
 File: TS1EBGaramond-OsF.fd 2023/03/19 (autoinst) Font definitions for TS1/EBGaramond-OsF.
 )
 LaTeX Font Info:    Font shape `TS1/EBGaramond-OsF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 408.
+(Font)              scaled to size 12.0pt on input line 388.
 
 
 
@@ -1066,20 +1070,20 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-14.64995pt}.
 
 [21{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/ebgaramond/ebg_yod6vr.enc}]
-<figures/model_base.png, id=503, 4932.4275pt x 1029.8475pt>
+<figures/model_base.png, id=509, 4932.4275pt x 1029.8475pt>
 File: figures/model_base.png Graphic file (type png)
 <use figures/model_base.png>
-Package pdftex.def Info: figures/model_base.png  used on input line 420.
+Package pdftex.def Info: figures/model_base.png  used on input line 400.
 (pdftex.def)             Requested size: 408.62796pt x 85.31232pt.
 
-Underfull \hbox (badness 3895) in paragraph at lines 427--428
+Underfull \hbox (badness 3895) in paragraph at lines 407--408
 \T1/EBGaramond-OsF/m/n/12 As seen in the pa-per that have been work-ing on Alzheimer's de-tec-tion prob-lem, in-clu-sion of un-cer-
  []
 
-<figures/model_sequential.png, id=505, 3131.7pt x 1842.885pt>
+<figures/model_sequential.png, id=511, 3131.7pt x 1842.885pt>
 File: figures/model_sequential.png Graphic file (type png)
 <use figures/model_sequential.png>
-Package pdftex.def Info: figures/model_sequential.png  used on input line 437.
+Package pdftex.def Info: figures/model_sequential.png  used on input line 417.
 (pdftex.def)             Requested size: 408.62796pt x 240.45518pt.
 
 
@@ -1091,6 +1095,16 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-14.64995pt}.
 
 [22 <./figures/model_base.png>]
+<figures/model_training_optimization.png, id=522, 2778.38pt x 1003.75pt>
+File: figures/model_training_optimization.png Graphic file (type png)
+<use figures/model_training_optimization.png>
+Package pdftex.def Info: figures/model_training_optimization.png  used on input line 432.
+(pdftex.def)             Requested size: 510.78302pt x 184.52682pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
 
 
 Package fancyhdr Warning: \headheight is too small (10.0pt): 
@@ -1100,9 +1114,13 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-14.64995pt}.
 
 [23 <./figures/model_sequential.png>]
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 467.
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 455.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 470.
+(Font)              scaled to size 10.0pt on input line 458.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 
 
 
@@ -1112,7 +1130,7 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-14.64995pt}.
 
-[24]
+[24 <./figures/model_training_optimization.png>]
 
 
 Package fancyhdr Warning: \headheight is too small (10.0pt): 
@@ -1122,10 +1140,6 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-14.64995pt}.
 
 [25]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
 
 
 Package fancyhdr Warning: \headheight is too small (10.0pt): 
@@ -1153,15 +1167,12 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-14.64995pt}.
 
 [28]
+<figures/loading_images.png, id=576, 5540.7pt x 4553.01pt>
+File: figures/loading_images.png Graphic file (type png)
+<use figures/loading_images.png>
+Package pdftex.def Info: figures/loading_images.png  used on input line 601.
+(pdftex.def)             Requested size: 510.78302pt x 419.6879pt.
 
-
-Package fancyhdr Warning: \headheight is too small (10.0pt): 
-(fancyhdr)                Make it at least 24.64995pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.64995pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-14.64995pt}.
-
-[29]
 
 
 Package fancyhdr Warning: \headheight is too small (10.0pt): 
@@ -1170,61 +1181,190 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-14.64995pt}.
 
-[30]
-Chapter .6.
+[29 <./figures/loading_images.png>]
+<figures/validating_images.png, id=582, 3179.88pt x 1842.885pt>
+File: figures/validating_images.png Graphic file (type png)
+<use figures/validating_images.png>
+Package pdftex.def Info: figures/validating_images.png  used on input line 615.
+(pdftex.def)             Requested size: 306.47292pt x 177.6067pt.
 
 
-[31
+
+Package fancyhdr Warning: \headheight is too small (10.0pt): 
+(fancyhdr)                Make it at least 24.64995pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.64995pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-14.64995pt}.
+
+[30 <./figures/validating_images.png>]
+<figures/data_spliting.png, id=590, 5209.4625pt x 1029.8475pt>
+File: figures/data_spliting.png Graphic file (type png)
+<use figures/data_spliting.png>
+Package pdftex.def Info: figures/data_spliting.png  used on input line 625.
+(pdftex.def)             Requested size: 459.7016pt x 90.87514pt.
+<figures/imp_data_preprocessing.png, id=592, 4330.1775pt x 5769.555pt>
+File: figures/imp_data_preprocessing.png Graphic file (type png)
+<use figures/imp_data_preprocessing.png>
+Package pdftex.def Info: figures/imp_data_preprocessing.png  used on input line 633.
+(pdftex.def)             Requested size: 306.47292pt x 408.31194pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (10.0pt): 
+(fancyhdr)                Make it at least 24.64995pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.64995pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-14.64995pt}.
+
+[31 <./figures/data_spliting.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 639--640
+[]\T1/EBGaramond-OsF/m/n/12 The train-ing, val-i-da-tion, and test-ing datasets are then loaded and pre-pro-cessed us-ing the
+ []
+
+<figures/imp_model_training.png, id=599, 5101.0575pt x 4956.5175pt>
+File: figures/imp_model_training.png Graphic file (type png)
+<use figures/imp_model_training.png>
+Package pdftex.def Info: figures/imp_model_training.png  used on input line 647.
+(pdftex.def)             Requested size: 408.62796pt x 396.98329pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (10.0pt): 
+(fancyhdr)                Make it at least 24.64995pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.64995pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-14.64995pt}.
+
+[32 <./figures/imp_data_preprocessing.png>]
+
+
+Package fancyhdr Warning: \headheight is too small (10.0pt): 
+(fancyhdr)                Make it at least 24.64995pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.64995pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-14.64995pt}.
+
+[33 <./figures/imp_model_training.png>]
+<figures/imp_uncertainity_estimation.png, id=611, 5155.26pt x 5227.53pt>
+File: figures/imp_uncertainity_estimation.png Graphic file (type png)
+<use figures/imp_uncertainity_estimation.png>
+Package pdftex.def Info: figures/imp_uncertainity_estimation.png  used on input line 667.
+(pdftex.def)             Requested size: 408.62796pt x 414.30243pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (10.0pt): 
+(fancyhdr)                Make it at least 24.64995pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.64995pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-14.64995pt}.
+
+[34]
+
+
+Package fancyhdr Warning: \headheight is too small (10.0pt): 
+(fancyhdr)                Make it at least 24.64995pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.64995pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-14.64995pt}.
+
+[35 <./figures/imp_uncertainity_estimation.png>]
+File: figures/imp_uncertainity_estimation.png Graphic file (type png)
+<use figures/imp_uncertainity_estimation.png>
+Package pdftex.def Info: figures/imp_uncertainity_estimation.png  used on input line 678.
+(pdftex.def)             Requested size: 408.62796pt x 414.30243pt.
+
+Underfull \hbox (badness 1371) in paragraph at lines 682--683
+\T1/EBGaramond-OsF/m/n/12 This code eval-u-ates a multi-class clas-si-fi-ca-tion model by cal-cu-lat-ing met-rics and or-ga-niz-ing them. It ex-
+ []
+
+
+Underfull \hbox (badness 2608) in paragraph at lines 682--683
+\T1/EBGaramond-OsF/m/n/12 tracts ground truth la-bels \T1/cmtt/m/n/12 y_true \T1/EBGaramond-OsF/m/n/12 from the test dataset and con-verts them into a \T1/cmtt/m/n/12 NumPy \T1/EBGaramond-OsF/m/n/12 ar-ray. Pre-
+ []
+
+
+Underfull \hbox (badness 1152) in paragraph at lines 682--683
+\T1/EBGaramond-OsF/m/n/12 dicted la-bels \T1/cmtt/m/n/12 y_pred \T1/EBGaramond-OsF/m/n/12 are gen-er-ated us-ing \T1/cmtt/m/n/12 np.argmax \T1/EBGaramond-OsF/m/n/12 on \T1/cmtt/m/n/12 mean_predictions\T1/EBGaramond-OsF/m/n/12 . The \T1/cmtt/m/n/12 sklearn.metrics
+ []
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (10.0pt): 
+(fancyhdr)                Make it at least 24.64995pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.64995pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-14.64995pt}.
+
+[36]
+
+
+Package fancyhdr Warning: \headheight is too small (10.0pt): 
+(fancyhdr)                Make it at least 24.64995pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.64995pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-14.64995pt}.
+
+[37]
+Chapter 6.
+
+
+[38
 
 ]
-Chapter .7.
+Chapter 7.
 
 
-[32
-
-]
-Chapter .8.
-
-
-[33
+[39
 
 ]
+Chapter 8.
 
-[34
+
+[40
+
+]
+
+[41
 
 ]
 Appendix A.
 
 
-[35
+[42
 
 ]
-Underfull \hbox (badness 2503) in paragraph at lines 712--712
+Underfull \hbox (badness 2503) in paragraph at lines 748--748
 []\T1/EBGaramond-OsF/m/n/12 DhanushKumar. |   []. [][]$\T1/cmtt/m/n/12 https : / / medium . com /
  []
 
 
-Underfull \hbox (badness 2781) in paragraph at lines 712--712
+Underfull \hbox (badness 2781) in paragraph at lines 748--748
 []\T1/EBGaramond-OsF/m/n/12 Dheiver Fran-cisco San-tos. ``Ad-vanc-ing Au-to-mated Di-ag-no-sis: Con-vo-lu-tional Neu-ral Net-works for
  []
 
 
 
-[36
+[43
 
 
 ]
-Overfull \hbox (27.02092pt too wide) in paragraph at lines 712--712
+Overfull \hbox (27.02092pt too wide) in paragraph at lines 748--748
 []\T1/EBGaramond-OsF/m/n/12 Nitish Shirish Keskar et al. |   [].
  []
 
 
-Underfull \hbox (badness 2012) in paragraph at lines 712--712
+Underfull \hbox (badness 2012) in paragraph at lines 748--748
 \T1/EBGaramond-OsF/m/n/12 Learn-ing Model on MRI Data''. In: |   [] 13.7 (2023). \T1/EBGaramond-OsF/m/sc/12 issn\T1/EBGaramond-OsF/m/n/12 : 2075-4418. \T1/EBGaramond-OsF/m/sc/12 doi\T1/EBGaramond-OsF/m/n/12 : [][]$\T1/cmtt/m/n/12 10 . 3390 /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 712--712
+Underfull \hbox (badness 10000) in paragraph at lines 748--748
 []\T1/EBGaramond-OsF/m/n/12 Jie Mi et al. ``Light on Alzheimer's dis-ease: from ba-sic in-sights to pre-clin-i-cal stud-ies''. In:
  []
 
@@ -1237,13 +1377,13 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-14.64995pt}.
 
-[37]
-Underfull \hbox (badness 10000) in paragraph at lines 712--712
+[44]
+Underfull \hbox (badness 10000) in paragraph at lines 748--748
 []\T1/EBGaramond-OsF/m/n/12 DSP Stack-Ex-change. |   []
  []
 
 
-Underfull \hbox (badness 2753) in paragraph at lines 712--712
+Underfull \hbox (badness 2753) in paragraph at lines 748--748
 []\T1/EBGaramond-OsF/m/n/12 Ying Zhang et al. ``Gen-er-al-iza-tion of Cross-Entropy Loss Func-tion for Im-age Clas-si-fi-ca-tion''. In:
  []
 
@@ -1256,7 +1396,7 @@ Package fancyhdr Warning: \headheight is too small (10.0pt):
 (fancyhdr)                You might also make \topmargin smaller to compensate:
 (fancyhdr)                \addtolength{\topmargin}{-14.64995pt}.
 
-[38] (./AlzheimerPrediction.aux)
+[45] (./AlzheimerPrediction.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 1
 L3 programming layer <2024-11-02>
@@ -1265,25 +1405,28 @@ L3 programming layer <2024-11-02>
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `AlzheimerPrediction.out' has not changed.
-(rerunfilecheck)             Checksum: 12A03FEB7E983CFC747AE77E1365D99C;8181.
+(rerunfilecheck)             Checksum: D40E671A5926412A3B21400D168D8630;7611.
 Package logreq Info: Writing requests to 'AlzheimerPrediction.run.xml'.
 \openout1 = `AlzheimerPrediction.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22001 strings out of 473330
- 390605 string characters out of 5719763
- 1227244 words of memory out of 5000000
- 44664 multiletter control sequences out of 15000+600000
+ 22060 strings out of 473330
+ 392535 string characters out of 5719763
+ 1227669 words of memory out of 5000000
+ 44719 multiletter control sequences out of 15000+600000
  665360 words of font info for 84 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  69i,13n,117p,2488b,1517s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/ebgaramond/EBGaramond-Bold.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/ebgaramond/EBGaramond-Italic.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/ebgaramond/EBGaramond-Regular.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on AlzheimerPrediction.pdf (39 pages, 2580236 bytes).
+Output written on AlzheimerPrediction.pdf (46 pages, 7119874 bytes).
 PDF statistics:
- 793 PDF objects out of 1000 (max. 8388607)
- 705 compressed objects within 8 object streams
- 187 named destinations out of 1000 (max. 500000)
- 449 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 836 PDF objects out of 1000 (max. 8388607)
+ 727 compressed objects within 8 object streams
+ 191 named destinations out of 1000 (max. 500000)
+ 468 words of extra memory for PDF output out of 10000 (max. 10000000)
 

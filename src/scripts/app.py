@@ -4,21 +4,14 @@ import numpy as np
 import tensorflow as tf
 from PIL import Image
 from tensorflow.keras.applications.efficientnet import preprocess_input
-import matplotlib
-import time
-import io
-import base64
 import tempfile
-
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
-import matplotlib.colors as mcolors
+import base64
 
 # Initialize Flask app
 app = Flask(
     __name__,
-    static_folder="../static",  # Locate `static/` at `src/static`
-    template_folder="../",  # Locate `index.html` at `src/`
+    static_folder="../static",
+    template_folder="../",
 )
 
 # Load your trained model
@@ -34,47 +27,19 @@ class_labels = [
     "Very Mild Demented",
 ]
 
-# Preprocess image
 def preprocess_image(image_path):
     img = Image.open(image_path).resize((224, 224)).convert("RGB")
     img_array = np.array(img) / 255.0
     img_array = np.expand_dims(img_array, axis=0)
     return preprocess_input(img_array)
 
-# Predict with uncertainty
 def predict_with_uncertainty(model, image, n_samples=10):
     predictions = [model(image, training=True) for _ in range(n_samples)]
-    predictions = tf.stack(predictions, axis=0)
-    mean_preds = tf.reduce_mean(predictions, axis=0).numpy()
-    uncertainty = tf.math.reduce_std(predictions, axis=0).numpy()
+    predictions = np.stack(predictions, axis=0)
+    mean_preds = np.mean(predictions, axis=0)
+    uncertainty = np.std(predictions, axis=0)
     return mean_preds, uncertainty
 
-# Visualization
-def visualize_prediction_with_uncertainty(image_path, predicted_label, confidence):
-    img = Image.open(image_path).resize((224, 224))
-    colors = ["#FF4C4C", "#FFD34F", "#4CFF4C"]
-    cmap = mcolors.LinearSegmentedColormap.from_list("custom_gradient", colors, N=100)
-
-    plt.figure(figsize=(8, 6))
-    plt.imshow(img)
-    plt.axis("off")
-    plt.title(
-        f"Predicted: {predicted_label}\nConfidence: {confidence * 100:.2f}%",
-        fontsize=14,
-        color="green" if confidence > 0.85 else "red",
-    )
-    
-    # Save the plot to a BytesIO object
-    buf = io.BytesIO()
-    plt.savefig(buf, format='png')
-    plt.close()
-    buf.seek(0)
-    
-    # Convert BytesIO to base64 string
-    img_base64 = base64.b64encode(buf.getvalue()).decode('utf-8')
-    return img_base64
-
-# Flask routes
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -101,8 +66,9 @@ def predict():
             predicted_label = class_labels[np.argmax(mean_preds)]
             confidence = 1 - uncertainty.flatten()[0]
             
-            # Generate visualization
-            output_image = visualize_prediction_with_uncertainty(filepath, predicted_label, confidence)
+            # Read the original image and convert to base64
+            with open(filepath, "rb") as image_file:
+                encoded_image = base64.b64encode(image_file.read()).decode('utf-8')
             
             # Remove the temporary file
             os.unlink(filepath)
@@ -110,7 +76,7 @@ def predict():
             return jsonify({
                 "predicted_label": predicted_label, 
                 "confidence": float(confidence),
-                "output_image": output_image
+                "image": encoded_image
             })
         except Exception as e:
             return jsonify({"error": str(e)}), 500

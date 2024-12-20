@@ -1,69 +1,30 @@
-import os
-import numpy as np
-import matplotlib.pyplot as plt
-from PIL import Image
+y_true = test.classes
+y_true = np.array(y_true)
+y_pred = np.argmax(mean_predictions, axis=1)
 
-def plot_dementia_classes(directories):
-    """
-    Plot images from each dementia class in a clean, modern 2x2 grid.
-    
-    Args:
-        directories (dict): Dictionary mapping class names to directory paths
-    """
-    # Create a modern, clean figure
-    plt.figure(figsize=(16, 12), dpi=400, facecolor='#F5F5F5')
-    plt.subplots_adjust(wspace=0.1, hspace=0.15, top=0.95, bottom=0.05, left=0.05, right=0.95)
-    
-    # Iterate through directories and plot images
-    for i, (class_name, directory) in enumerate(directories.items()):
-        # Get the first image in the directory
-        image_files = [f for f in os.listdir(directory) if f.lower().endswith(('.png', '.jpg', '.jpeg'))]
-        
-        if image_files:
-            # Create subplot in 2x2 grid
-            plt.subplot(2, 2, i+1)
-            
-            # Open and process the image
-            image_path = os.path.join(directory, image_files[0])
-            img = Image.open(image_path)
-            
-            # Convert to grayscale and ensure consistent size
-            img_array = np.array(img)
-            
-            # If color image, convert to grayscale
-            if len(img_array.shape) == 3:
-                img_array = np.mean(img_array, axis=2)
-            
-            # Display image with tight cropping and aspect preservation
-            plt.imshow(img_array, cmap='gray', aspect='equal')
-            
-            # Remove axes
-            plt.gca().set_axis_off()
-            
-            # Add subtle border
-            plt.gca().spines['top'].set_color('#3498db')
-            plt.gca().spines['bottom'].set_color('#3498db')
-            plt.gca().spines['left'].set_color('#3498db')
-            plt.gca().spines['right'].set_color('#3498db')
-            
-            # Add class name closer to the image
-            plt.text(0.5, -0.05, class_name, 
-                     horizontalalignment='center', 
-                     verticalalignment='top', 
-                     transform=plt.gca().transAxes,
-                     fontweight='bold',
-                     fontsize=14)
-    
-    plt.tight_layout()
-    plt.show()
 
-# Directories for different dementia classes
-dementia_dirs = {
-    'Mild Demented': "/Volumes/JasonT7/2.Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/MildDemented",
-    'Moderate Demented': "/Volumes/JasonT7/2.Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/ModerateDemented",
-    'Non Demented': "/Volumes/JasonT7/2.Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/NonDemented",
-    'Very Mild Demented': "/Volumes/JasonT7/2.Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/VeryMildDemented"
-}
+report = classification_report(
+    y_true, y_pred, target_names=class_labels, output_dict=True
+)
+class_metrics = pd.DataFrame(report).transpose()
+class_accuracy = [
+    np.sum(y_pred == idx) / len(y_true) for idx in range(len(class_labels))
+]
+class_metrics.loc[class_labels, "accuracy"] = class_accuracy
+accuracy_macro = np.mean(class_accuracy)
+accuracy_micro = np.sum(y_pred == y_true) / len(y_true)
+accuracy_weighted = np.average(
+    class_accuracy, weights=[np.sum(y_true == i) for i in range(len(class_labels))]
+)
+class_metrics.loc["macro avg", "accuracy"] = accuracy_macro
+class_metrics.loc["micro avg", "accuracy"] = accuracy_micro
+class_metrics.loc["weighted avg", "accuracy"] = accuracy_weighted
+precision_micro = precision_score(y_true, y_pred, average="micro")
+recall_micro = recall_score(y_true, y_pred, average="micro")
+f1_micro = f1_score(y_true, y_pred, average="micro")
+class_metrics.loc["micro avg", "precision"] = precision_micro
+class_metrics.loc["micro avg", "recall"] = recall_micro
+class_metrics.loc["micro avg", "f1-score"] = f1_micro
 
-# Call the visualization function
-plot_dementia_classes(dementia_dirs)
+print("\nEach Class Metrics")
+display(class_metrics)
