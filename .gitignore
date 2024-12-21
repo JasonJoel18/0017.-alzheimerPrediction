@@ -9,3 +9,5 @@ data2/external/NonDemented/
 data2/external/VeryMildDemented/
 
 models/
+
+docs/base_model/base_model.keras

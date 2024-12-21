@@ -6,11 +6,16 @@
 \usepackage{amsmath}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
+\usepackage{subfig}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{float}
 \sloppy
 \renewcommand{\thesection}{\thechapter.\arabic{section}}
 \renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
 \renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
-
+\setlength{\fboxsep}{4pt}
+\setlength{\fboxrule}{0.3pt}
 % -------------------- Document Layout --------------------
 
 \usepackage{geometry}        % For page layout
@@ -282,26 +287,25 @@ Let's check some of the recent studies. The summary of the studies is provided i
         Isunuri et al. (2023) \cite{Isunuri2023} & Kaggle & Transfer Learning with CNN & 97.32\% & Limited interpretability \\ \hline
         Murugan et al. (2023) \cite{Murugan2021} & Kaggle & DEMNET & 95.23\% & No uncertainty assessment \\ \hline
         Gupta et al. (2023) \cite{Gupta2019} & NRC Korea & DEMNET & 96.89\% & No reliability metrics \\ \hline
+        Mohammad. (2023) \cite{Gupta2019} & Kaggle & Xception & 99.6\% & No uncertainty calculation \\ \hline
     \end{tabular}
 \end{table*}
 
 In recent studies, various different techniques have been used to predict the alzheimers disease. Out of all of them deep learning models have shows a lot of potential and promise with great results. Deep learning is widely used acrross various fields or study, but the stream where we excel the most is classification of the images. As in recent times people are able to get hands on the powerful hardware as it has become accessible, and more research are being conducted on Deep Learning models there has been alot of improvement in the performance and hence the reliability of these models have been increased \cite{Yu2023}.
 Particularly for alzheimer's there have been several studied that have been conducted. In this study we will be looking at few of them. In a paper by Sharma et al. \cite{2022Sarang} they propose HTLML. It is a hybrid deep learning model that uses the Kaggle dataset to predict the Alzheimer’s Disease. In their implementations they were able to achieve an accuracy of 91.75\%. Which is a very good performace. But what it lacks is the implementation of uncertainty estimation. When it comes to a clinical environment it would be very advantageous for clinicians to know how confident the model is. The lack of uncertainty estimation is a rather common gap found in many existing studies, limiting them to consider for a clinical deployment.In the reseach conducted by Desai et al. \cite{2024Desai}, they use a Multi-Task CNN model using the OASIS dataset to diagnose Alzheimer’s. Their model achieved an accuracy of 91.0\%, but limitations of the model is it's generalizability. The authors themselves mention in the paper that the model performs good on the OSIS dataset but it might struggle to perform well in the real-world clinical data. Generalizability is considered to be a very common issue with the deep learning models. Specially when there is not enough data to be trained on or there is no diverse patient data. Or when tested to perform with the real world data. In a paper by author Ahmed et al. \cite{2022Ahmed} has experimented with DAD-Net, it is also a deep learning-based model for Alzheimer’s detection. Here they have used ADASYN to oversample the data as the dataset they used was imbalanced. Using the deep leaning network they managed to get an impressive accuracy of 99.22\%. This model again however does not incorporate Uncertainty calcucation. Even through the model prediction is high, without the model confidence/ Uncertainty implementation it's implementation in a clinical environment will be very low because even when the model is struggling the clinicians needs to know it so that they can take a informed desicion. the model does not incorporate uncertainty estimation, which is a crucial factor for clinical decision-making. While the high accuracy is promising, the lack of uncertainty estimation limits the model's applicability in high-stakes environments such as healthcare.
 Sarraf et al. \cite{sarraf2016} use CNNs and LeNet-5 for the classification of Alzheimer’s classification with the ADNI image dataset. They achieved an accuracy of 98.84\%. However, the study is criticized for its high false-negative rate, which can lead to misdiagnosis in clinical applications. Additionally, this work does not include any discussion of uncertainty estimation, further limiting its clinical relevance. Islam et al. \cite{Islam2023} proposed a method using the ResNet50 feature extractor and an SVM classifier for diagnosing Alzheimer’s disease from MRI images. This study achieved an accuracy of 98.71\%, but it lacked assessment of the model reliability. Since there is no assessment with the unseen data the reliablity of the model is hard to know with the real world data. Even in this paper the Uncertainty calcucation is not considered. Further in the study of neural network model for Alzheimer’s prediction by Santos et al. \cite{Santos2023}, they employed a neural network model on  the Kaggle dataset, and were able to get a accuracy of 80.6\%. While the model is able to provide the diagnosis and classification the performance of the model could be improved compared to other models. In the conclusion the authors suggested that the model could be improved through further research, but uncertainty estimation is not part of their investigation, which is a limitation. El-Latif et al. \cite{Latif2023} presented a very lightweight deep learning model for Alzheimer’s disease detection using MRI data. The model achieved an accuracy of 95.9\%, but like the previous case the authors acknowledged that the performance could be improved further. Again the lack of uncertainty estimation is a limitation. Isunuri et al. \cite{Isunuri2023} employ transfer learning and a CNN for Alzheimer’s severity classification, achieving an accuracy of 97.32\%. Even though the model demonstrates very good performance performance, there is no mention of uncertainty estimation, which could add a layer of reliability and interpretability to the model’s predictions. The authors also note that the model outperforms competing models in several metrics, yet its generalizability to other datasets is unclear.
-Murugan et al. \cite{Murugan2021} introduced DEMNET, again it a type of deep learning model itself for the sake of early diagnosis of Alzheimer’s disease from MRI images. The model achieved an accuracy of 95.23\%, but the authors acknowledged that the performance of the model could have been be improved. While the model is promising, it does not incorporate uncertainty estimation, which is a critical aspect for clinical use as earlier mentioned where decisions based on model predictions can have serious consequences. Gupta et al. \cite{Gupta2019} use combined features from voxel-based morphometry and cortical, subcortical, and hippocampus regions of MRI T1 brain images for early Alzheimer’s diagnosis. With an accuracy of 96.89\%, the study demonstrates a robust method for Alzheimer’s detection. But similar to other studies, it lacks a mechanism for assessing uncertainty, which is important for practical deployment in healthcare environments.
+Murugan et al. \cite{Murugan2021} introduced DEMNET, again it a type of deep learning model itself for the sake of early diagnosis of Alzheimer’s disease from MRI images. The model achieved an accuracy of 95.23\%, but the authors acknowledged that the performance of the model could have been be improved. While the model is promising, it does not incorporate uncertainty estimation, which is a critical aspect for clinical use as earlier mentioned where decisions based on model predictions can have serious consequences. Gupta et al. \cite{Gupta2019} use combined features from voxel-based morphometry and cortical, subcortical, and hippocampus regions of MRI T1 brain images for early Alzheimer’s diagnosis. With an accuracy of 96.89\%, the study demonstrates a robust method for Alzheimer’s detection. But similar to other studies, it lacks a mechanism for assessing uncertainty, which is important for practical deployment in healthcare environments. One of the model which particularly caught my attention was a kaggle model where with the kaggle dataset it was able to achieve a accuracy of 99.6\%. I will be selecting this model as my based model. The reason why I am selecting this model is because it was able to achieve this high accuracy score, even though the model was not have a complex architecture. This make the model very efficient and easy to deploy and maintain as a final product. But having said that there were some limitations in these model.
 
 \section{Limitations of Existing Approaches}
-Table \ref{tab:methods_comparison} all the previous existing papers and research have been summarized, it also highlights the study's limitations. Many papers and research have models that do exceptionally well with accuracy, but then all the paper lacks the attempt to include uncertainty score as an output which might turn out to be invaluable and crucial in a clinical environment in decision-making. Furthermore, some of the models had issues with high false-negative rates, less generalizability, and dataset bias still exists. These problems support a requirement or necessity for the inclusion of uncertainty estimation so that the clinical usability and reliability of the model can be improved. When the stakes are high in clinical settings, it is challenging to trust models that lack uncertainty measurements. Adding uncertainty estimates to deep learning models can improve their interpretability and give medical professionals important information about the accuracy of the model's predictions. By using uncertainty-aware deep learning to enhance the applicability of Alzheimer's diagnosis models, this study fills a significant gap in the body of existing literature.
+Table \ref{tab:methods_comparison} all the previous existing papers and research have been summarized, it also highlights the study's limitations. Many papers and research have models that do exceptionally well with accuracy, but then all the paper lacks the attempt to include uncertainty score as an output which might turn out to be invaluable and crucial in a clinical environment in decision-making. Furthermore, some of the models had issues with high false-negative rates, less generalizability, and dataset bias still exists. These problems support a requirement or necessity for the inclusion of uncertainty estimation so that the clinical usability and reliability of the model can be improved. When the stakes are high in clinical settings, it is challenging to trust models that lack uncertainty measurements. Adding uncertainty estimates to deep learning models can improve their interoperability and give medical professionals important information about the accuracy of the model's predictions. By using uncertainty-aware deep learning to enhance the applicability of Alzheimer's diagnosis models, this study fills a significant gap in the body of existing literature.
 
 
 \section{Novelty of the Proposed Approach}
-The integration of uncertainty estimation into deep learning models addresses critical gaps in existing research. By providing confidence scores alongside predictions, clinicians can make informed decisions, reducing the risks associated with false negatives or overfitting to biased datasets. This approach also enhances model interpretability, a vital factor for clinical adoption.
-
-
+The integration of uncertainty estimation into deep learning models addresses critical gaps in existing research. By providing confidence scores alongside predictions, clinicians can make informed decisions, reducing the risks associated with false negatives or overfitting to biased datasets. This approach also enhances model interoperability, a vital factor for clinical adoption.
 
 \chapter{Methodology}
 
-In this chapter the methedology used in this thesis for training, developing, evaluating and developing an uncertainty-aware deep learning model will be discussed. This sections will be taking you into the deep dive into why certain things are choosen over others. Each and every step from the loading of the dataset, data augmentation, model building, evaluation metrics, uncertainty awareness in the model and as well building an web application to predict Alzheimer's which can be used in a clinical environment.
+In this chapter the methodology used in this thesis for training, developing, evaluating and developing an uncertainty-aware deep learning model will be discussed. This sections will be taking you into the deep dive into why certain things are chosen over others. Each and every step from the loading of the dataset, data augmentation, model building, evaluation metrics, uncertainty awareness in the model and as well building an web application to predict Alzheimer's which can be used in a clinical environment.
 
 \section{Dataset used for this research}
 
@@ -314,9 +318,9 @@ In this chapter the methedology used in this thesis for training, developing, ev
     \label{fig:dataset} % Label to reference the image later in the document
 \end{figure}
 
-For this study the dataset used from a publicly available dataset. The dataset is availabel here \url{https://www.kaggle.com/datasets/uraninjo/augmented-alzheimer-mri-dataset}. This dataset is derived from the MRI dataset that is available on the ADNI website \url{https://adni.loni.usc.edu/}. This dataset consists of high quality 2D Magnetic Resonance imaging(MRI) scans images. Magnetic Resonance imaging scans are usually 3D, but this particular images dataset that is availabel on Kaggle is being processed and converted into high quality 2D images. This dataset is best suited for multi class classification task. The images are being divided into 4 different classes based on the stages of the alzheimer's the patients are in. And the folder names are the true labels of the images:
+For this study the dataset used from a publicly available dataset. The dataset is available here \url{https://www.kaggle.com/datasets/uraninjo/augmented-alzheimer-mri-dataset}. This dataset is derived from the MRI dataset that is available on the ADNI website \url{https://adni.loni.usc.edu/}. This dataset consists of high quality 2D Magnetic Resonance imaging(MRI) scans images. Magnetic Resonance imaging scans are usually 3D, but this particular images dataset that is available on Kaggle is being processed and converted into high quality 2D images. This dataset is best suited for multi class classification task. The images are being divided into 4 different classes based on the stages of the alzheimer's the patients are in. And the folder names are the true labels of the images:
 \begin{enumerate}
-    \item \textbf{NonDemented} – This consits of MRI images of brains which does not show any sign of having Alzheimer’s Diseace or in other words cognitive impairment. There are a total of 9600 images of the Non Demeted brains in this dataset.
+    \item \textbf{NonDemented} – This consist of MRI images of brains which does not show any sign of having Alzheimer’s Disease or in other words cognitive impairment. There are a total of 9600 images of the Non Demeted brains in this dataset.
     \item \textbf{VeryMildDemented} – This consists of MRI images of the brains which shows slight early sign's of patient progressing towards Alzheimer’s Disease. There are a total of 8960 images of the Very Mild Demented brains in this dataset.
     \item \textbf{MildDemented} – This consists of MRI images of the brains which show mild structural brain changes of patient progressing towards Alzheimer’s Disease. These patients will start having noticeable memory problems and cognitive problems. There are a total of 8960 images of the Mild Demented brains in this dataset.
     \item \textbf{ModerateDemented} – This consists of MRI images of the brains which shows significant structural brain changes of patient Alzheimer’s Disease. This is a advanced stage of the Alzheimer’s disease. These patients will start having noticeable memory problems and cognitive problems as well. There are a total of 6464 images of the Mild Demented brains in this dataset.
@@ -397,7 +401,7 @@ This section outlines the about the model architecture that is used for this res
 \subsection{Base Model Architecture}
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.8\columnwidth]{figures/model_base.png}  % Adjust the width to your liking
+    \includegraphics[width=0.8\columnwidth]{figures/res_model_base.png}  % Adjust the width to your liking
     \caption{Model Base} % Caption for the image
     \label{fig:base model} % Label to reference the image later in the document
 \end{figure}
@@ -681,55 +685,188 @@ To make sure of consistent processing, the dataset is reset after every \texttt{
 \end{figure}
 This code evaluates a multi-class classification model by calculating metrics and organizing them. It extracts ground truth labels \texttt{y\_true} from the test dataset and converts them into a \texttt{NumPy} array. Predicted labels \texttt{y\_pred} are generated using \texttt{np.argmax} on \texttt{mean\_predictions}. The \texttt{sklearn.metrics} \texttt{classification\_report} function computes precision, recall, and F1-score for each class, linking them to class names with \texttt{target\_names=class\_labels}. The \texttt{output\_dict=True} option returns the report as a dictionary, converted to a \texttt{Pandas DataFrame} \texttt{class\_metrics} for analysis. Class-level accuracies are calculated as correct predictions per class relative to total samples, stored in \texttt{class\_accuracy} and added to \texttt{class\_metrics}. Aggregate accuracy metrics—macro, micro, and weighted averages—are computed for broader evaluation. Precision, recall, and F1-score are also computed for micro-average, stored in the \texttt{"micro avg"} row of \texttt{class\_metrics}. Finally, \texttt{class\_metrics} \texttt{DataFrame} is displayed, offering a comprehensive breakdown of metrics for each class and overall performance.
 
-\subsection{Web Application Deployment}
-The trained model was deployed as a web-based application using Flask, enabling real-time image classification and uncertainty visualization. The web application includes the following features:
+\subsection{Integrating the Model with a Web Application}
+The model that is trained on these images of MRI multiples classes images will be saved to the directory, and then this model will be used to connect to an web application which makes use of Flask API to upload the image and the predict the images into the class which it belongs to. Python code used to write the backend of this webapplication and a basic html to design the page and the a css is applied on top of this html to style the web application. The Flask framework will make use fo RESTfull API. The Webapplication has two buttons:
 \begin{itemize}
-    \item A user-friendly interface for uploading MRI images.
-    \item Real-time predictions displayed alongside uncertainty scores.
-    \item Visualization of model confidence for each class.
+    \item \textbf{Upload Button}: The upload button is used to select the images from the local storage. Once it is upload there will be a preview of the image that is being uploaded.
+    \item \textbf{Predict Button}: The Predict button will take the user to the prediction screen where the predicted class and the confidence score is calculated and displayed in the progress bar.
 \end{itemize}
 
-% \subsubsection{Flask API Integration}
-% The Flask application integrates the trained model with a RESTful API. Upon receiving an uploaded image, the API:
-% \begin{enumerate}
-%     \item Preprocesses the image to match the model's input requirements.
-%     \item Performs inference using the trained model.
-%     \item Computes uncertainty metrics using the Monte Carlo dropout technique.
-%     \item Returns the prediction results and uncertainty measures to the frontend.
-% \end{enumerate}
 
-% \subsubsection{Frontend Design}
-% The web application's frontend is designed for intuitive user interaction. Key components include:
-% \begin{itemize}
-%     \item A drag-and-drop interface for image uploads.
-%     \item Dynamically updated prediction results and confidence levels.
-%     \item Visualizations of uncertainty for better interpretability.
-% \end{itemize}
-
+\subsubsection{Connect the backend with the Flask API Integration}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\columnwidth]{figures/imp_flask.png}  % Adjust the width to your liking
+    \caption{code for flask api to predict the image} % Caption for the image
+    \label{fig:imp_flask} % Label to reference the
+\end{figure}
+To connect the Front end with the back end prediction code we have made use to Flask API. It will be using RESTfull API. There is only one POST method that is used which will be sending the image, which once recieved in the backend will run the prediction model with uncertainity score and confidence score. The figure \ref{fig:imp_flask} shows you the code for predict method that is called to predict the image and also send you the confidence score. The confidence score and the predicted class will be then sent to the front end. The results will be then with a progresss bar.
+\begin{enumerate} 
+    \item Preprocesses the image to match the model's input requirements.
+    \item Performs inference using the trained model.
+    \item Computes uncertainty metrics using the Monte Carlo dropout technique.
+    \item Returns the prediction results and uncertainty measures to the frontend.
+\end{enumerate}
 
 
-% \section{Conclusion}
-% The implementation phase demonstrated the feasibility of integrating advanced deep learning techniques with uncertainty estimation for Alzheimer's disease detection. The development of a user-friendly web application further emphasizes the practical utility of the proposed solution in clinical settings.
+\chapter{Results and Discussion}
+The results of the implementation of the code developed for creating a deep learning model for Alzheimer's disease using MRI image will be shows here in this section. The results consists of multi-class classification model’s performance metrics, an analysis of uncertainty estimations, performance analysis and a study of the insights gained from these. The results are analyzed in terms of overall accuracy of the model, class-wise performance of the model, and the advantages of incorporating uncertainty estimates to improve the model’s reliability and interpretability. To further underscore the benefits of the suggested approach, comparisons with base models are provided.
+
+\section{Overall performance of the model}
+The performance of the model was excellent. Once the model was created it was  run on the test dataset. It was able to predictes the four classes of Alzheimer's stages in our dataset exceptionally well. The model was consistent and reliability in correctly determining MRI images among the four target classes Mild Demented, Moderate Demented, Non-Demented, and Very Mild Demented were shown by its 99.55\% overall accuracy on the test dataset. Let's now compare that to the base model.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\columnwidth]{figures/res_model_comparison.png}  % Adjust the width to your liking
+    \caption{figure showing the performance improvement in the proposed model (Higher the Better)} % Caption for the image
+    \label{fig:res_model_comparison} % Label to reference the
+\end{figure}
+Note: the figure \ref{fig:res_model_comparison} is zoomed in between 99\% to 99.1\% to view the performance impovement in the proposed model. And these numbers are based on my tests conducted on these same exacpt system specifications.
+This figure figure \ref{fig:res_model_comparison} shows the slight improvement in the models accuracy percentage. This improve might look not very significant, but when it comes to a medical world even a sligtest of mistakes can major impact on a persons life. Hence this a good performance gain achieved.
+
+\section{Evaluating Classwise the model using the Metrics Chosen}
+\begin{table*}[h!]
+    \centering
+    \begin{tabular}{|l|c|c|c|c|c|}
+    \hline
+    \textbf{Class} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-Score} & \textbf{Accuracy} \\ \hline
+    Mild Demented       & 0.99 & 1.00 & 1.00 & 1.00 \\ \hline
+    Moderate Demented   & 1.00 & 1.00 & 1.00 & 1.00 \\ \hline
+    Non Demented        & 0.99 & 0.99 & 0.99 & 0.99 \\ \hline
+    Very Mild Demented  & 0.99 & 0.99 & 0.99 & 0.99 \\ \hline
+    Macro Avg           & 0.99 & 0.99 & 0.99 & 0.99 \\ \hline
+    Weighted Avg        & 0.99 & 0.99 & 0.99 & 0.99 \\ \hline
+    \end{tabular}
+    \caption{Table showing classwise evaluation metrics}
+    \label{tab:class_eval}
+\end{table*}
+This class wise evaluation metrics in the figure \ref{tab:class_eval} provides a better idea of model's performance for each stages of the Alzheimers disease classes that are present in our dataset provided by the class-wise summary. In medical applications, where particular classes may need higher sensitivity because of their clinical implications, this precision is essential.For the Moderate Demented and Mild Demented classes, the model shows perfect scores that is Precision, Recall, F1-Score, and Accuracy, showing its great reliability in identifying these states. Strong generalization across all diagnostic classes is shown by the metrics for the Non-Demented and Very Mild Demented classes, which are a little lower but yet so close to ideal score that is 0.99 across all categories. So we can see that accross all the metrics the results are very balanced. Even the the dataset being moderately imbalanced did not have any effect on the final results as seen the weighted average row.
 
 
-\chapter{Results}
-Your results go here.
+\section{visualizing the confidence score to the plot}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\columnwidth]{figures/res_uncertainity_sample_plot.png}  % Adjust the width to your liking
+    \caption{image plotting the predicted class, actual class as well as the condifence percentage in progress bar.} % Caption for the image
+    \label{fig:res_uncertainity_sample_plot} % Label to reference the
+\end{figure}
+A sample code was writen to predict a sample of 10 image and plot them in a image and show the confidence(1 - uncertainity) indicator  as a progress bar. The figure \ref{fig:res_uncertainity_sample_plot} show us as plot of these sample 10 images. As you can see in this figure out of the 10 images except the 2 images the rest of the images were predicted correctly. The images which are predicted wrong , the text is been highlighted in red. And this image is a proof why including confidence score is such a gamechanger. Because if you see the first image in the second row even though the image class is predicted correctly, the model does not look confident of this class. When there are scenarios where a models get's a input which is different from the one's it has been trained on it's tends to be uncertain. This is where having this as a output will make sure that the clinicians take further action and analysis thes MRI's further and take a informed decision.
 
-\chapter{Discussion}
-Your discussion goes here. 123456
+\section{Model implementation on the WebPage}
+\begin{figure}[H]
+    \centering
+    \subfloat[step 1: Upload and preview image]{\includegraphics
+    [width=0.45\textwidth]{figures/imp_webapp1.png}}
+    \label{fig:webapp_subfig_a}
+    \hfill
+    \subfloat[step 2: Predict the image class with confidence score]
+    {\includegraphics[width=0.45\textwidth]{figures/imp_webapp2.png}}
+    \label{fig:webapp_subfig_b}
+    \caption{Image Classification Web Application Workflow}
+    \label{fig:webapp_workflow}
+\end{figure}
+The figure \ref{fig:webapp_workflow} shows the final images of a simple webpage application where in the initial screen there are two buttons. Upload and predict. The user needs to click on the upload button first which will take him to the image selection dialogue box. Once selected it will give a preview of the image. Next, predict botton needs to be clicked. Which make a predict API call. The model is  connected to the webpage using Flask architecture. Using RESTfull API's a method called 'predict' is created. The API will then send the predicted class and the confidence score in return. The final screen has progress bar which has a gradient of red to green. That is where the uncertainity score is shown to the user. Anything below 80\% is considered as bad confidence score. If in that case further study needs needs to be done on that case. 
+
+\section{Model Training performance and Comparision with base model}
+\begin{table}[h!]
+    \centering
+    \caption{Computing time comparison between the base model and the proposed model (in seconds).}
+    \label{tab:timing-results}
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Stage} & \textbf{Base Model} & \textbf{Proposed Model} \\
+        \hline
+        Data Loading and Preprocessing & 0.01 & 0.00 \\
+        Model Building & 0.51 & 0.56 \\
+        Model Training & 1041.34 & 242.27 \\
+        Model Evaluation & 12.22 & 3.34 \\
+        Prediction & 0.00 & 67.59 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{figure}[h!]
+    \centering
+    % Row 1: Two plots side by side
+    \subfloat[\tiny\itshape Data Loading and Preprocessing\label{fig:res_time_loading}]{
+        \fbox{\includegraphics[width=0.45\textwidth]{figures/res_time_loading.png}}
+    }
+    \hfill
+    \subfloat[\tiny\itshape Model Building\label{fig:res_time_building}]{
+        \fbox{\includegraphics[width=0.45\textwidth]{figures/res_time_building.png}}
+    }
+
+    % Row 2: Two plots side by side
+    \subfloat[\tiny\itshape Model Training\label{fig:res_time_training}]{
+        \fbox{\includegraphics[width=0.45\textwidth]{figures/res_time_training.png}}
+    }
+    \hfill
+    \subfloat[\tiny\itshape Model Evaluation\label{fig:res_time_evaluation}]{
+        \fbox{\includegraphics[width=0.45\textwidth]{figures/res_time_evaluation.png}}
+    }
+
+    % Row 3: Single centered plot
+    \subfloat[\tiny\itshape Prediction Time\label{fig:res_time_prediction}]{
+        \fbox{\includegraphics[width=0.55\textwidth]{figures/res_time_prediction.png}}
+    }
+
+    \caption{Computing time comparison between the base model and the proposed model for different stages of the pipeline. Lower values indicate better performance.}
+    \label{fig:timing-comparisons}
+\end{figure}
+
+\subsection{Data Loading and Preprocessing}
+The proposed model demonstrated a marginally faster time of 0.00 seconds compared to the base model of 0.01 seconds. This is very negligible and can be ignored due to the fact that 0.01 secs does not effect the computational cost. You can see this in the Figure~\ref{fig:res_time_loading}.
+
+\subsection{Model Building}
+While comes to Model building there 4 secs more taken by the proposed mode. This maybe due to the fact the as base model (Xception) code was giving some errors we had to download and and then load it. Which reduced the time to download and load it in the process flow itself. You can refer this in the Figure~\ref{fig:res_time_building}, it provides a bar chart comparison of the model-building times.
+
+\subsection{Model Training}
+The most significant improvement notices was in the training stage. The proposed model reduced the training time to 242.27 seconds, compared to 1041.34 seconds for the base model which is approximately 4x times faster that the base mode. This reduction shows that the proposed model's design enables more efficient learning without compromise on the perfomance. As seen in Figure~\ref{fig:res_time_training}, this stage is a critical performance improvement.
+
+\subsection{Model Evaluation}
+In the evaluation stage, the proposed model completed the process in just 3.34 seconds, significantly outperforming the base model, which required 12.22 seconds. This improvement is shown in the Figure~\ref{fig:res_time_evaluation}, where the proposed model again shows a 4x times better performance improvement.
+
+\subsection{Prediction}
+The prediction stage showed us a differnt story where base model clearly outperformed the proposed model by 6x times better perfomance. The base model's prediction time was very negligible that is 0.00 seconds and the proposed model took 67.59 seconds. The reason behind this might be the inclusion of uncertainity calculation layer and calation of confidence percentage. And the prediction runs for number of time for each image this add for extra computation time and overhead. Figure~\ref{fig:res_time_prediction} shows these prediction times.
+
+\subsection{Summary of Observations}
+The proposed model consistently outperformed the base model in most stages, particularly in training and evaluation. These stages contribute significantly to the overall pipeline, making the proposed model a better candidate for scenarios emphasizing training and evaluation efficiency. However, the longer prediction time is a bit of a problem but having said the what we are getting after this little extra time is a more robust model that is better performing that the base model and the confidence score which it a significant improvement over the base model as the user will know how confidently the model is abount Alzheimer’s class. So that they can take a informed decision.
+
+\begin{table}[h!]
+    \centering
+    \caption{Computing time comparison between the base model and the proposed model (in seconds).}
+    \label{tab:timing-results}
+    \begin{tabular}{|l|c|c|}
+        \hline
+        \textbf{Stage} & \textbf{Base Model} & \textbf{Proposed Model} \\
+        \hline
+        Data Loading and Preprocessing & 0.01 & 0.00 \\
+        Model Building & 0.51 & 0.56 \\
+        Model Training & 1041.34 & 242.27 \\
+        Model Evaluation & 12.22 & 3.34 \\
+        Prediction & 0.00 & 67.59 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\chapter{Limitation found in this study and what can be improved}
+
+Even if the proproposed model's findings showed great results in many number of areas, there are still various ways to increase the model's functionality and performance. The possible options for further research that might improve on the present findings will be covered in this section.
+A main area where this research can be improved in the furture is the improving the time taken to prediction the images along with Uncertainity. As demonstrated in Section 6.5.5, the proposed model's prediction time is significantly longer compared to the base model, mainly due to the addition of the uncertainty estimation layer and the calcution of confidence scores. One possible way for improvement is to explore more efficient methods for calculating uncertainty like approximate inference techniques or employing model compression methods to reduce the computational load during prediction.
+The model is currently only trained on MRI scans in order to detect the stage of Alzheimer's disease. However, adding other data modalities like genetic data, PET scans, or cognitive test results could improve the model's performance and robustness. In addition to maybe increasing the model's overall accuracy, multimodal learning techniques, in which the model may process various forms of input at once, may offer more thorough insights into the patient's state. This would be especially helpful in situations where MRI data might not be enough on its own to make precise predictions.
+Despite its strong performance, the suggested model could be improved by experimenting with various deep learning architectures and carrying out more thorough hyperparameter tuning. Performance gains might be possible, for example, by investigating alternative neural network designs like Transformer-based models or hybrid models that combine convolutional and recurrent layers. More optimization and effective training may also result from adjusting the learning rate, batch size, and other hyperparameters.
+In the future we could involve collaborating with medical institutions to conduct clinical trials and gather feedback to improve the model’s usability and reliability in practice.
+Although the proposed model's use of uncertainty estimations is a significant addition, this part still needs work. Alternative approaches to measuring uncertainty, like Bayesian Neural Networks, or other ensemble techniques may be explored in future research. These techniques may yield more accurate estimates of uncertainty, especially when the model comes into new or unclear data that it hasn't encountered during training.
 
 \chapter{Conclusion}
-Your conclusion goes here.
+
 
 \chapter*{Acknowledgements}
 
-First of all, I like to thank my Professor, Prof. Dr. Mazhar Hameed, for their invaluable guidance, encouragement, and their continuous input and support throughout this research. Their expertise in the field of machine leaning and the insights provided by them have been have been a great value add for me in this thesis journey. They have also given their valuable hours towards me to discuss with about the updates and guide me to the right direction. Even though they had a busy schedule, they mangaged to squeeze some time of for me which helped me achieve great progress in this whole thesis.
-
-I am also very thankful to the faculty and staff of Gisma University of Applied Sciences for providing a supportive academic environment and access to the resources necessary for conducting my research. 
-
-A sincere thank you goes to all my friends and colleagues, who offered encouragement, shared knowledge, and supported me throughout this journey. All of Their companionship and moral support have been a source of motivation during challenging times. I would like to express my deepest gratitude to my family for their unwavering love, patience, and understanding. Their belief in my abilities has been my greatest source of strength and inspiration. As special thanks to partner who has been very support to me in this entire thesis duration.
-
-This thesis is dedicated to everyone who contributed to making this research a reality. Thank you all for your profound impact on my academic and personal growth.
+I I sincerely thank Prof. Dr. Mazhar Hameed for all of his guidance and encouragement during the writing process of my thesis. His knowledge in machine learning and his helpful criticism have greatly influenced the quality and trajectory of this work.
+I want to express my gratitude to the faculty and staff at Gisma University of Applied Sciences for offering me the materials and space I needed to carry out my research. Their understanding and motivation have been crucial in helping me in accomplishing this goal.
+I express utmost gratitude for my friends and peers who encouraged me along this journey by sharing their knowledge and providing unwavering support. Particularly in trying times, their assistance and companionship have been a source of strength.
+I am truly and incredibly grateful to my family for their constant uncomditional love, understanding, and patience. Their constant support for me and my goals has been a continual source of inspiration and has been essential in enabling me to overcome every challenge.
+In the end, I extend my sincere gratitude and dedicate my work to everyone who have helped and motivated , directly or indirectly. The contribution has had an enormous influence on my academic and personal growth as well as to this thesis.
 
 
 \begin{flushright}

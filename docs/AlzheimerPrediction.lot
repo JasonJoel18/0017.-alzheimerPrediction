@@ -7,6 +7,9 @@
 \contentsline {table}{\numberline {5.1}{\ignorespaces Training Parameters and Configuration}}{25}{table.caption.17}%
 \contentsline {table}{\numberline {5.2}{\ignorespaces Confusion Matrix for Model Evaluation}}{27}{table.caption.18}%
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {6.1}{\ignorespaces Table showing classwise evaluation metrics}}{40}{table.caption.31}%
+\contentsline {table}{\numberline {6.2}{\ignorespaces Computing time comparison between the base model and the proposed model (in seconds).}}{42}{table.caption.34}%
+\contentsline {table}{\numberline {6.3}{\ignorespaces Computing time comparison between the base model and the proposed model (in seconds).}}{44}{table.caption.36}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

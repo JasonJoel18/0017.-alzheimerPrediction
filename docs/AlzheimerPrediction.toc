@@ -46,8 +46,20 @@
 \contentsline {subsubsection}{Training the Model and Optimizing}{34}{subsubsection*.25}%
 \contentsline {subsection}{\numberline {5.7.3}Adding Uncertainity estimation to the mix}{35}{subsection.5.7.3}%
 \contentsline {subsection}{\numberline {5.7.4}Performance Evaluation}{36}{subsection.5.7.4}%
-\contentsline {subsection}{\numberline {5.7.5}Web Application Deployment}{37}{subsection.5.7.5}%
-\contentsline {chapter}{\numberline {6}Results}{38}{chapter.6}%
-\contentsline {chapter}{\numberline {7}Discussion}{39}{chapter.7}%
-\contentsline {chapter}{\numberline {8}Conclusion}{40}{chapter.8}%
-\contentsline {chapter}{\numberline {A}Appendix Title}{42}{appendix.A}%
+\contentsline {subsection}{\numberline {5.7.5}Integrating the Model with a Web Application}{37}{subsection.5.7.5}%
+\contentsline {subsubsection}{Connect the backend with the Flask API Integration}{38}{subsubsection*.28}%
+\contentsline {chapter}{\numberline {6}Results and Discussion}{39}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Overall performance of the model}{39}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Evaluating Classwise the model using the Metrics Chosen}{40}{section.6.2}%
+\contentsline {section}{\numberline {6.3}visualizing the confidence score to the plot}{41}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Model implementation on the WebPage}{42}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Model Training performance and Comparision with base model}{42}{section.6.5}%
+\contentsline {subsection}{\numberline {6.5.1}Data Loading and Preprocessing}{43}{subsection.6.5.1}%
+\contentsline {subsection}{\numberline {6.5.2}Model Building}{43}{subsection.6.5.2}%
+\contentsline {subsection}{\numberline {6.5.3}Model Training}{44}{subsection.6.5.3}%
+\contentsline {subsection}{\numberline {6.5.4}Model Evaluation}{44}{subsection.6.5.4}%
+\contentsline {subsection}{\numberline {6.5.5}Prediction}{44}{subsection.6.5.5}%
+\contentsline {subsection}{\numberline {6.5.6}Summary of Observations}{44}{subsection.6.5.6}%
+\contentsline {chapter}{\numberline {7}Limitation found in this study and what can be improved}{45}{chapter.7}%
+\contentsline {chapter}{\numberline {8}Conclusion}{46}{chapter.8}%
+\contentsline {chapter}{\numberline {A}Appendix Title}{48}{appendix.A}%

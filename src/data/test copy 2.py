@@ -44,7 +44,7 @@ NonDemented_dir = "/Volumes/JasonT7/2.Education/Research/Thesis/Paper/0017. alzh
 VeryMildDemented_dir = "/Volumes/JasonT7/2.Education/Research/Thesis/Paper/0017. alzheimerPrediction/data2/external/VeryMildDemented"
 
 filepaths, labels = [], []
-class_labels = [
+cls_lbl = [
     "Mild Demented",
     "Moderate Demented",
     "Non Demented",
@@ -62,7 +62,7 @@ for i, j in enumerate(dict_list):
     for f in flist:
         fpath = os.path.join(j, f)
         filepaths.append(fpath)
-        labels.append(class_labels[i])
+        labels.append(cls_lbl[i])
 
 start_time = time.time()
 
@@ -76,54 +76,54 @@ for filepath, label in zip(filepaths, labels):
     except (IOError, SyntaxError):
         print(f"Corrupted image file: {filepath}")
 
-    data_df = pd.DataFrame({"filepaths": valid_filepaths, "labels": valid_labels})
-    end_time = time.time()
-    record_time("Data Loading and Preprocessing", start_time, end_time)
-    print(data_df["labels"].value_counts())
+data_df = pd.DataFrame({"filepaths": valid_filepaths, "labels": valid_labels})
+end_time = time.time()
+record_time("Data Loading and Preprocessing", start_time, end_time)
+print(data_df["labels"].value_counts())
 
-    from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split
 
-    train_set, test_images = train_test_split(data_df, test_size=0.3, random_state=42)
-    val_set, test_images = train_test_split(test_images, test_size=0.5, random_state=42)
+train_set, test_images = train_test_split(data_df, test_size=0.3, random_state=42)
+val_set, test_images = train_test_split(test_images, test_size=0.5, random_state=42)
 
-    image_gen = ImageDataGenerator(preprocessing_function=preprocess_input)
+image_gen = ImageDataGenerator(preprocessing_function=preprocess_input)
 
-    train = image_gen.flow_from_dataframe(
-        train_set,
-        x_col="filepaths",
-        y_col="labels",
-        target_size=(224, 224),
-        color_mode="rgb",
-        class_mode="categorical",
-        batch_size=bs,
-        shuffle=False,
-    )
+train = image_gen.flow_from_dataframe(
+    train_set,
+    x_col="filepaths",
+    y_col="labels",
+    target_size=(224, 224),
+    color_mode="rgb",
+    class_mode="categorical",
+    batch_size=bs,
+    shuffle=False,
+)
 
-    val = image_gen.flow_from_dataframe(
-        val_set,
-        x_col="filepaths",
-        y_col="labels",
-        target_size=(224, 224),
-        color_mode="rgb",
-        class_mode="categorical",
-        batch_size=bs,
-        shuffle=False,
-    )
+val = image_gen.flow_from_dataframe(
+    val_set,
+    x_col="filepaths",
+    y_col="labels",
+    target_size=(224, 224),
+    color_mode="rgb",
+    class_mode="categorical",
+    batch_size=bs,
+    shuffle=False,
+)
 
-    test = image_gen_val_test.flow_from_dataframe(
-        test_images,
-        x_col="filepaths",
-        y_col="labels",
-        target_size=(224, 224),
-        color_mode="rgb",
-        class_mode="categorical",
-        batch_size=bs,
-        shuffle=False,
-    )
+test = image_gen.flow_from_dataframe(
+    test_images,
+    x_col="filepaths",
+    y_col="labels",
+    target_size=(224, 224),
+    color_mode="rgb",
+    class_mode="categorical",
+    batch_size=bs,
+    shuffle=False,
+)
 
-    print(f"Train images:{len(train_set)}")
-    print(f"Val images:{len(val_set)}")
-    print(f"Test images:{len(test_images)}")
+print(f"Train images:{len(train_set)}")
+print(f"Val images:{len(val_set)}")
+print(f"Test images:{len(test_images)}")
 
 
 start_time = time.time()
@@ -166,9 +166,9 @@ history = model.fit(
 end_time = time.time()
 record_time("Model Training", start_time, end_time)
 
-# model = tf.keras.models.load_model(
-#     f"/Volumes/JasonT7/2.Education/Research/Thesis/Paper/0017. alzheimerPrediction/models/jason_alzheimer_prediction_model_{num_train_images}_images_{ep}_epochs.keras"
-# )
+model = tf.keras.models.load_model(
+    f"/Volumes/JasonT7/2.Education/Research/Thesis/Paper/0017. alzheimerPrediction/models/jason_alzheimer_prediction_model_{len(train_set)}_images_{ep}_epochs.keras"
+)
 
 start_time = time.time()
 test_loss, test_accuracy = model.evaluate(test)
@@ -177,13 +177,13 @@ record_time("Model Evaluation", start_time, end_time)
 print(f"Test Accuracy: {test_accuracy}")
 
 num_train_images = len(train_set)
-model_save_path = f"/Volumes/JasonT7/2.Education/Research/Thesis/Paper/0017. alzheimerPrediction/models/jason_alzheimer_prediction_model_{num_train_images}_images_{ep}_epochs.keras"
+model_save_path = f"/Volumes/JasonT7/2.Education/Research/Thesis/Paper/0017. alzheimerPrediction/models/jason_alzheimer_prediction_model_{len(train_set)}_images_{ep}_epochs.keras"
 model.save(model_save_path)
 print("Model saved successfully.")
 
 
 model = tf.keras.models.load_model(
-    f"/Volumes/JasonT7/2.Education/Research/Thesis/Paper/0017. alzheimerPrediction/models/jason_alzheimer_prediction_model_{num_train_images}_images_{ep}_epochs.keras"
+    f"/Volumes/JasonT7/2.Education/Research/Thesis/Paper/0017. alzheimerPrediction/models/jason_alzheimer_prediction_model_{len(train_set)}_images_{ep}_epochs.keras"
 )
 
 from tqdm import tqdm
@@ -202,7 +202,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 
-def predict_with_uncertainty(model, dataset, n_samples=5):
+def predict_with_uncertainty(model, dataset, n_samples=50):
     predictions = []
     total_batches = len(dataset)
     pbar_outer = tqdm(total=n_samples, desc="Monte Carlo Sampling", dynamic_ncols=True)
@@ -238,44 +238,63 @@ def predict_with_uncertainty(model, dataset, n_samples=5):
 start_time = time.time()
 mean_predictions, uncertainty = predict_with_uncertainty(model, test, n_samples=5)
 end_time = time.time()
-record_time("Uncertainty Prediction", start_time, end_time)
-
+record_time("Prediction", start_time, end_time)
 
 y_true = test.classes
 y_true = np.array(y_true)
 y_pred = np.argmax(mean_predictions, axis=1)
 
+cls_ct = np.bincount(y_true)
+cls_wt = cls_ct / len(y_true)
 
 report = classification_report(
-    y_true, y_pred, target_names=class_labels, output_dict=True
+    y_true, y_pred, target_names=cls_lbl, output_dict=True
 )
-class_metrics = pd.DataFrame(report).transpose()
-class_accuracy = [
-    np.sum(y_pred == idx) / len(y_true) for idx in range(len(class_labels))
-]
-class_metrics.loc[class_labels, "accuracy"] = class_accuracy
-accuracy_macro = np.mean(class_accuracy)
-accuracy_micro = np.sum(y_pred == y_true) / len(y_true)
-accuracy_weighted = np.average(
-    class_accuracy, weights=[np.sum(y_true == i) for i in range(len(class_labels))]
-)
-class_metrics.loc["macro avg", "accuracy"] = accuracy_macro
-class_metrics.loc["micro avg", "accuracy"] = accuracy_micro
-class_metrics.loc["weighted avg", "accuracy"] = accuracy_weighted
-precision_micro = precision_score(y_true, y_pred, average="micro")
-recall_micro = recall_score(y_true, y_pred, average="micro")
-f1_micro = f1_score(y_true, y_pred, average="micro")
-class_metrics.loc["micro avg", "precision"] = precision_micro
-class_metrics.loc["micro avg", "recall"] = recall_micro
-class_metrics.loc["micro avg", "f1-score"] = f1_micro
 
-print("\nEach Class Metrics")
-display(class_metrics)
+m_df = pd.DataFrame()
+
+for no, cls in enumerate(cls_lbl):
+    m_df.loc[cls, "precision"] = report[cls]["precision"]
+    m_df.loc[cls, "recall"] = report[cls]["recall"]
+    m_df.loc[cls, "f1-score"] = report[cls]["f1-score"]
+
+    cls_msk = y_true == no
+    class_accuracy = np.mean(y_pred[cls_msk] == y_true[cls_msk])
+    m_df.loc[cls, "accuracy"] = class_accuracy
+
+m_df.loc["macro avg", "precision"] = m_df.loc[
+    cls_lbl, "precision"
+].mean()
+m_df.loc["macro avg", "recall"] = m_df.loc[cls_lbl, "recall"].mean()
+m_df.loc["macro avg", "f1-score"] = m_df.loc[
+    cls_lbl, "f1-score"
+].mean()
+m_df.loc["macro avg", "accuracy"] = m_df.loc[
+    cls_lbl, "accuracy"
+].mean()
+
+m_df.loc["weighted avg", "precision"] = np.average(
+    m_df.loc[cls_lbl, "precision"], weights=cls_wt
+)
+m_df.loc["weighted avg", "recall"] = np.average(
+    m_df.loc[cls_lbl, "recall"], weights=cls_wt
+)
+m_df.loc["weighted avg", "f1-score"] = np.average(
+    m_df.loc[cls_lbl, "f1-score"], weights=cls_wt
+)
+m_df.loc["weighted avg", "accuracy"] = np.average(
+    m_df.loc[cls_lbl, "accuracy"], weights=cls_wt
+)
+
+m_df = m_df.round(2)
+
+print("\nClassification Metrics by Class:")
+display(m_df)
 
 threshold = 0.2
 high_uncertainty_count = sum(u > threshold for u in uncertainty)
 print(
-    f"Number of high-uncertainty predictions (uncertainty > {threshold}): {high_uncertainty_count}"
+    f"No. high-uncertainty pred where (uncertainty > {threshold}): {high_uncertainty_count}"
 )
 
 sample_images, sample_labels = next(test)
@@ -353,7 +372,7 @@ visualize_predictions_with_uncertainty(
     actual_labels_indices,
     predicted_labels,
     uncertainty[:10],
-    class_labels,
+    cls_lbl,
 )
 
 
@@ -367,14 +386,4 @@ timing_df.to_csv("timing_results.csv", index=False)
 # ==================================
 
 
-# model_1 = pd.read_csv("model_1_timing_results.csv")
-# model_2 = pd.read_csv("model_2_timing_results.csv")
 
-# comparison_df = pd.concat(
-#     [model_1.rename(columns={"Time (s)": "Model 1 Time (s)"}),
-#      model_2.rename(columns={"Time (s)": "Model 2 Time (s)"})],
-#     axis=1
-# )
-
-# print("\n[bold blue]Comparison of Models' Timing[/bold blue]")
-# print(comparison_df)

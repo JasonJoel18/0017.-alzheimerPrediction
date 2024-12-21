@@ -1,6 +1,6 @@
 Stage,Time (s)
-Data Loading and Preprocessing,0.09412717819213867
-Model Building,1.3675642013549805
-Model Training,43.33294486999512
-Model Evaluation,0.5369219779968262
-Uncertainty Prediction,8.060546159744263
+Data Loading and Preprocessing,0.06097292900085449
+Model Building,0.7086668014526367
+Model Training,34.58123803138733
+Model Evaluation,2.9316508769989014
+Prediction,3.9509902000427246

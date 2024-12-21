@@ -19,7 +19,19 @@
 \contentsline {figure}{\numberline {5.12}{\ignorespaces code for model training}}{33}{figure.caption.23}%
 \contentsline {figure}{\numberline {5.13}{\ignorespaces code for uncertainity estimation}}{35}{figure.caption.26}%
 \contentsline {figure}{\numberline {5.14}{\ignorespaces code for uncertainity estimation}}{36}{figure.caption.27}%
+\contentsline {figure}{\numberline {5.15}{\ignorespaces code for flask api to predict the image}}{38}{figure.caption.29}%
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces figure showing the performance improvement in the proposed model (Higher the Better)}}{39}{figure.caption.30}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces image plotting the predicted class, actual class as well as the condifence percentage in progress bar.}}{41}{figure.caption.32}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Image Classification Web Application Workflow}}{42}{figure.caption.33}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {step 1: Upload and preview image}}}{42}{subfigure.3.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {step 2: Predict the image class with confidence score}}}{42}{subfigure.3.2}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Computing time comparison between the base model and the proposed model for different stages of the pipeline. Lower values indicate better performance.}}{43}{figure.caption.35}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\tiny \itshape Data Loading and Preprocessing}}}{43}{subfigure.4.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\tiny \itshape Model Building}}}{43}{subfigure.4.2}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {\tiny \itshape Model Training}}}{43}{subfigure.4.3}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {\tiny \itshape Model Evaluation}}}{43}{subfigure.4.4}%
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {\tiny \itshape Prediction Time}}}{43}{subfigure.4.5}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
