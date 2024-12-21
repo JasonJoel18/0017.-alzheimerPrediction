@@ -15,13 +15,14 @@
 \usepackage{xcolor}          % For text color customization
 \usepackage[utf8]{inputenc}  % UTF-8 encoding
 \usepackage[T1]{fontenc}     % Font encoding
-% \usepackage{ebgaramond}      % Use EB Garamond font
+\usepackage{ebgaramond}      % Use EB Garamond font
 \usepackage{caption}         % For customizing captions
 \usepackage{setspace}        % For line spacing
 \usepackage{titlesec}        % For title formatting
 \usepackage{chngcntr}        % For chapter numbering
-\usepackage[backend=biber]{biblatex}  % For bibliography management
-\usepackage{hyperref}        % For clickable links
+\usepackage[backend=biber,hyperref=true]{biblatex}
+\usepackage{csquotes}
+\usepackage[hyphenbreaks]{breakurl}
 \usepackage{enumitem}        % For customizations like "nosep"
 \usepackage{tikz}
 \usepackage{eso-pic}
@@ -31,44 +32,52 @@
 \usepackage{parskip}
 \usepackage{hyperref}
 
+
+
 % -------------------- Document Layout --------------------
 \geometry{
-    a4paper,                 % Paper size
-    margin=2cm
+a4paper,                 % Paper size
+margin=0.5in,            % General margin
+top=1in,                 % Top margin
+bottom=1in,              % Bottom margin
+left=0.6in,              % Left margin
+right=0.6in              % Right margin
 }
+
 
 % -------------------- Header and Footer Setup --------------------
 \definecolor{lightgray}{gray}{0.7}
-\pagestyle{fancy}            % Set fancy header/footer style
-\renewcommand{\headrulewidth}{0.4pt}   % Header rule thickness
-\renewcommand{\footrulewidth}{0.4pt}   % Footer rule thickness
-\setlength{\headheight}{24.65pt} % Header height (adjust as needed)
-\fancyhf{}  % Clear existing header and footer settings
-\lhead{\textit{\textcolor{lightgray}{\small Jason Joel Pinto}}} % Left header
-\chead{}  % Center header (empty)
-\rhead{\hfill \textit{\textcolor{lightgray}{\small Uncertainty-Aware Deep Learning for Early Detection of Alzheimer’s Disease Using MRI Images Data}}} % Right-aligned header
-\lfoot{\textit{\textcolor{lightgray}{\small Gisma University of Applied Sciences}}}  % Left footer
-\cfoot{\textcolor{lightgray}{\large \bfseries \thepage}}                             % Center footer (page number)
-\rfoot{\hfill \textit{\textcolor{lightgray}{\small December, 2024}}}                % Right footer with date
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\pagestyle{fancy}  
+\setlength{\headheight}{26pt}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\headrule}{\color{lightgray}\hrule height 0.4pt}
+\renewcommand{\footrule}{\color{lightgray}\hrule height 0.4pt}
+\fancyhf{} 
+\lhead{\textit{\textcolor{lightgray}{\small Jason Joel Pinto}}} 
+\chead{}  
 
+\rhead{\hspace{0.5cm} \textit{\textcolor{lightgray}{\small \nouppercase{\rightmark}}}} 
+\lfoot{\textit{\textcolor{lightgray}{\small Gisma University of Applied Sciences}}}  
+\cfoot{\textcolor{lightgray}{\large \bfseries \thepage}}                            
+\rfoot{\hfill \textit{\textcolor{lightgray}{\small December, 2024}}}   
 % -------------------- Title and Section Formatting --------------------
 \titleformat{\title}[block]
-  {\normalfont\bfseries\Huge}{\thetitle}{0pt}{}  % Title formatting
-
+  {\normalfont\bfseries\Huge}{\thetitle}{0pt}{}
 \titleformat{\chapter}[display]
-  {\normalfont\bfseries\LARGE}   % Font style and size for the chapter title
-  {Chapter \thechapter}          % "Chapter X" text
-  {1em}                          % Spacing between "Chapter X" and the title
-  {\Large}                       % Font size for the chapter title on a new line
-
+  {\normalfont\bfseries\LARGE}
+  {Chapter \thechapter}
+  {1em}
+  {\Large}
 \titleformat{\section}
-  {\normalfont\Large\bfseries}{\thesection}{1em}{}  % Section headings (Large font size, bold)
+  {\normalfont\Large\bfseries}{\thesection}{1em}{}
 
 \titleformat{\subsection}
-  {\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}  % Subsection headings (normal size, bold)
+  {\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
 
-\titlespacing*{\chapter}{0pt}{-10pt}{15pt}   % Adjust chapter spacing
-\counterwithout{chapter}{part} % Fix pre-leading period in chapter numbering
+\titlespacing*{\chapter}{0pt}{-10pt}{15pt}
+\counterwithout{chapter}{part}
 
 % -------------------- Bibliography and Citations --------------------
 \addbibresource{mybib.bib}  % Add .bib file for references
@@ -95,6 +104,7 @@
 \newcommand{\submissiontime}{December 2024}
 
 \renewcommand\maketitle{
+    \thispagestyle{empty}
     {
         \center
         \begin{tikzpicture}[remember picture, overlay]
@@ -126,20 +136,28 @@
 
 % Begin document
 \begin{document}
-\pagestyle{plain}
+
 \maketitle
 
 % Abstract
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
 
-Alzheimer's is a neurological disorder, which is a main cause for dementia \cite{Ewers2011}. There are a lot of researches are that being conducted right now all over the world for the Alzheimer disease. A disease such as alzheimer's is very hard to predict as studies show that it can be cause due to multiple factors. Now when it comes to Multi modal machine learning models, it integrates different data sources such as a persons demographic data, lifestyle, medical history, clinical assessment, and cognitive assessment etc. This has sparked a new idea to process the data and understand a patter to detect the disease at a early stage. To achieve this various advanced machine learning models are being used.
+In this research paper, an robust, effective and efficient deep learning model is developed. And aims to improve the intepretablity of predictions for clinical applications. This paper included the devel and assessment of a deep learning model for the categorization of Alzheimer's disease stages using MRI images. Building on a well performing Kaggle model, the model adds many improvements, such as the ability to estimate uncertainty to produce prediction confidence scores. These confidence scores help doctors or clinicians to make well-informed decisions by offering insightful information about the model's decision-making process. The algorithm successfully classifies MRI pictures into the four stages of Alzheimer's disease that is Mild Demented, Moderate Demented, Non-Demented, and Very Mild Demented in achieving an accuracy of 99.55\% on the test dataset which was a slight improvement over the base model. By measuring prediction uncertainty estimation using Monte Carlo Dropout improves the model's robustness. This helps the clinicians to get the idea about the confidence of the model
+Even though introduction of uncertainty estimation leads to longer prediction time, the suggested model shows improvement in training and assessment times when compared to the base Kaggle model. The model's better performance and ability to provide confidence scores makes up for the extra calculation expenses. A web application has been developed to increase the model's accessibility even further. Users can input MRI pictures to receive predictions and confidence scores. This intuitive interface allows simple integration into clinical settings, helping doctors in efficiently evaluating the model's results. The findings show how integrating uncertainty-aware deep learning models into medical diagnostics will improve Alzheimer's disease patient care, clinical desicion making, and early detection.
 
-As new advancement are being done in the medical fields, the aged population is going to rise. And more and more people, their relatives and family members are going to face deadly diseases such as Alzheimer's. Studies has shown that the early detection of alzheimer's Disease is more likely to get treated or leads to less serious problems when compared to the medications started at a later stage \cite{Cummings2024}.
-
-For this study the data being used is based on the Alzheimer's research organization called Open Access Series of Imaging Studies (OSIS). Various traditional as well and deep learning models are used to find the best model as well as the best parameters in order to reach a most accuracy score possible. The measurement scores used to select the best model out of all will be Recall, Accuracy, F1-score and Precision. 
-
-Incomplete.... Need to fill the rest.
+\vfill
+\chapter*{Acknowledgements}
+I sincerely thank Prof. Dr. Mazhar Hameed for all of his guidance and encouragement during the writing process of my thesis. His knowledge in machine learning and his helpful criticism have greatly influenced the quality and trajectory of this work.
+I want to express my gratitude to the faculty and staff at Gisma University of Applied Sciences for offering me the materials and space I needed to carry out my research. Their understanding and motivation have been crucial in helping me in accomplishing this goal.
+I express utmost gratitude for my friends and peers who encouraged me along this journey by sharing their knowledge and providing unwavering support. Particularly in trying times, their assistance and companionship have been a source of strength.
+I am truly and incredibly grateful to my family for their constant unconditional love, understanding, and patience. Their constant support for me and my goals has been a continual source of inspiration and has been essential in enabling me to overcome every challenge.
+In the end, I extend my sincere gratitude and dedicate my work to everyone who have helped and motivated , directly or indirectly. The contribution has had an enormous influence on my academic and personal growth as well as to this thesis.
+\begin{flushright}
+    \textit{Jason Joel Pinto} \\
+    \textit{21 December 2024}
+\end{flushright}
+\vfill
 
 
 % Acknowledgments
@@ -154,6 +172,7 @@ Incomplete.... Need to fill the rest.
 
 % Chapters
 \chapter{Introductions}
+\thispagestyle{fancy}
 
 Alzheimer's is a neurological problem that starts with a build up of proteins called amyloid plaques and neurofibrillary tangles. This leads to the brain cells to die over time and this leads to the shrinkage of the brain size\cite{mayo_alzheimers_2024}. Studies show us that about 5.4 million people in the States have Alzheimer's. And the studies show upward trend in the newer generations in getting Alzheimer's Disease. It is expected to increase by 10 million people. As of today every 68 second and new person is being diagnosed by Alzheimer's Disease. And the studies show that by 2050 this is going to decrease to 33 seconds\cite{2012131}. Between the year 2000 and 2017 the deaths reported due to alzheimer's have been increased by 143 \%\cite{2019321}. Alzheimer's is a disease which get's worse over the years, it keeps on progressing and the worst thing it is not reversible. Once worsened a lot of time and efforts go into the alzheimer's diseace. Which might end up being one of the costliest disease for any countries economy\cite{10.3389/fnagi.2024.1363458}. Hence it becomes very important that it is diagnosed as a early stage so that it can be controlled and treated. If it is detected early then doctor's with the help of medications can make sure that brain damage is not worsened. Currently magnetic resonance imaging (MRI),functional magetic resonance imaging(fMRI), computer tomography and positron emission tomography (PET) are used in order to early detect the Alzheimer's disease. These technologies are very expensive, very time consuming task and not very accessible for everyone as it Requirement sophisticated machines.
 
@@ -366,7 +385,7 @@ where:
 Normalizing the image will ensures that all input data will lie withing a similar scale this will prevent the issues issues like convergence caused due to having large variations in input magnitudes \cite{he2015delving}.
 
 \section{Proposed Model Architecture}
-This section outlines the about the model architecture that is used for this research. The model of choice for this task is EfficientNetB0. It is a very powerful and efficient pertained model that extracts the features and then will be used to include uncertainty estimation into the pipeline. This will help in improving the reliability in these models for the clinical environment.
+This section outlines the about the model architecture that is used for this research. The model of choice for this task is EfficientNetB0, because it is a very powerful and efficient pertained model which as it's names suggest's is very efficient and requires less computing power without compromising the final results. It will extract that features and then can be used to include uncertainty estimation into the pipeline.  This will help in improving the reliability in these models for the clinical environment.
 
 \subsection{Base Model Architecture}
 \begin{figure}[h!]
@@ -378,12 +397,22 @@ This section outlines the about the model architecture that is used for this res
 EfficientNet is considered to be one among the best models in the world on Convolution Neural Network. It is known to be one of the best models made for these sort of tasks which is able to do it much more efficiently but not compromising the performance. EfficientNetB0 known for its efficient scaling of depth, width, and resolution and it is used as backbone of the proposed model \cite{2021Hoang}. The network will be initialized with pre-trained ImageNet weights so as to make use of the transfer learning. The architecture includes global average pooling at the output of the backbone, followed by a fully connected layer with 128 neurons and a ReLU activation function. A Dropout layer with a rate of 0.3 is introduced to prevent overfitting. And the input shape of the images will be set to $224 \times 224$ pixels as expected by the EfficientNetB0 model for best performance.
 
 \subsection{Adding Uncertainty Estimation}
-As seen in the paper that have been working on Alzheimer’s detection problem, inclusion of uncertainty/confidence parameters for the output to show the confidence of the models is something that is used little to none. Inclusion of this parameter will give the clinicians an idea of how confidently the model is been able to classify the image into that class. In this study to quantify uncertainty, Monte Carlo (MC) Dropout is been used during inference step. This means a dropout layer will be included while conducting the prediction to perform multiple stochastic forward passes. To calculate the uncertainty, we use the standard deviation of the predictions across all these passes. Let’s break down the formal definition of uncertainty for a set of $n$ forward passes:
+As seen in the paper that have been working on Alzheimer’s detection problem, inclusion of uncertainty/confidence parameters for the output to show the confidence of the models is something that is used little to none. Inclusion of this parameter will give the clinicians an idea of how confidently the model is been able to classify the image into that class. In this study to quantify uncertainty, Monte Carlo (MC) Dropout is been used during inference step. Monete Carlo is choosen as the method to calculate uncertainity because this model does not require additional model training. This means a dropout layer will be included while conducting the prediction to perform multiple stochastic forward passes. To calculate the uncertainty, we use the standard deviation of the predictions across all these passes. Let’s break down the formal definition of uncertainty for a set of $n$ forward passes:
 
 \begin{equation}
 \sigma = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (p_i - \bar{p})^2},
 \end{equation}
 here $p_i$ stands for the prediction for the $i$-th forward pass, and $\bar{p}$ is the mean prediction.
+
+The uncertainty value is then converted to a confidence score deducting the uncertainty score by 1. This is because the uncertainty and confidence are inversely promotional. Hence by deducting the value we get a  confidence score of the model. Confidence score is calculated using the below formula:
+
+\begin{equation}
+    C = 1 - \sigma,
+\end{equation}
+where $C$ represents the confidence score and $\sigma$ is the uncertainty score that is calculated using the previous formula. 
+To determine whether a prediction is reliable or not, a confidence score threshold of 0.2 is selected. The model's prediction is considered as confident if the score is greater than 0.8 and anything below will be considered.
+
+
 
 \subsection{Output Layer}
 \begin{figure}[h!]
@@ -551,6 +580,25 @@ The model's performance was evaluated on the test set using the metrics discusse
 \section{Pipeline Integration}
 
 The final model after all the testing and comparisons in integrated with a Web Application which based on Flask API. This will allow the clinicians to upload the MRI images and get the predictions along with the uncertainty scores. The web application is ready to be deployed and will be accessible through a web browser. You can install the model locally and then move it to a cloud server later. The interface is super easy to use, with a simple way to upload photos and see the predictions. Plus, the uncertainty ratings are shown alongside the predictions, so you can see how reliable the model is. That’s will be a big help for clinicians!
+
+\section{Training environment for Model Comparison}
+
+To make sure that there is farness in comparing the base model and the and the proposed model. Both were run in the Kaggle notebook. Below table shows the system configuration sleeted for training the model. 
+
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+ & \textbf{Configuration} \\ \hline
+\textbf{Platform}   & Kaggle Notebooks       \\ \hline
+\textbf{language}   & Python       \\ \hline
+\textbf{GPU}        & GPU T4 x2        \\ \hline
+\textbf{CPU}        & Intel Xenon  \\ \hline
+\textbf{RAM}        & Max 29 GB                  \\ \hline
+\end{tabular}
+\caption{System configuration}
+\end{table}
 
 \section{Implementation}
 \label{sec:implementation}
@@ -835,22 +883,10 @@ Although the prediction time was marginally higher because of the uncertainty co
 Future research should concentrate on improving uncertainty estimation techniques, investigating multimodal learning with new kinds of meaningful data, and optimizing prediction time. Real-world applicability will also be ensured by working with medical institutions to conduct clinical studies. By incorporating uncertainty-aware deep learning, this study improves Alzheimer's detection and provides important assistance for clinical decision-making and early diagnosis.
 
 
-\chapter*{Acknowledgements}
-
-I I sincerely thank Prof. Dr. Mazhar Hameed for all of his guidance and encouragement during the writing process of my thesis. His knowledge in machine learning and his helpful criticism have greatly influenced the quality and trajectory of this work.
-I want to express my gratitude to the faculty and staff at Gisma University of Applied Sciences for offering me the materials and space I needed to carry out my research. Their understanding and motivation have been crucial in helping me in accomplishing this goal.
-I express utmost gratitude for my friends and peers who encouraged me along this journey by sharing their knowledge and providing unwavering support. Particularly in trying times, their assistance and companionship have been a source of strength.
-I am truly and incredibly grateful to my family for their constant uncomditional love, understanding, and patience. Their constant support for me and my goals has been a continual source of inspiration and has been essential in enabling me to overcome every challenge.
-In the end, I extend my sincere gratitude and dedicate my work to everyone who have helped and motivated , directly or indirectly. The contribution has had an enormous influence on my academic and personal growth as well as to this thesis.
-
-
-\begin{flushright}
-\textit{Jason Joel Pinto} \\
-\textit{22 December 2024}
-\end{flushright}
-
 
 % References
 \cleardoublepage
+\begin{sloppypar}
 \printbibliography
+\end{sloppypar}
 \end{document}

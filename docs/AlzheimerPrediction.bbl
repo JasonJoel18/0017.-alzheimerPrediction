@@ -190,60 +190,6 @@
       \verb https://www.mayoclinic.org/diseases-conditions/alzheimers-disease/symptoms-causes/syc-20350447
       \endverb
     \endentry
-    \entry{Cummings2024}{article}{}{}
-      \name{author}{5}{}{%
-        {{hash=ef8d5963741dc94bd63f3d747e8f7957}{%
-           family={Cummings},
-           familyi={C\bibinitperiod},
-           given={Jeffrey},
-           giveni={J\bibinitperiod}}}%
-        {{hash=f3ae7d3b1ff24c2354fab86ed7d389a2}{%
-           family={Osse},
-           familyi={O\bibinitperiod},
-           given={Annemieke\bibnamedelima ML},
-           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
-        {{hash=97e65a0b6b766b98b15220e39aa985bb}{%
-           family={Cammann},
-           familyi={C\bibinitperiod},
-           given={Danielle},
-           giveni={D\bibinitperiod}}}%
-        {{hash=d9340eeac093f13f58e894a0f22c032b}{%
-           family={Powell},
-           familyi={P\bibinitperiod},
-           given={Julie},
-           giveni={J\bibinitperiod}}}%
-        {{hash=11c05b885f1bc92570da26e49722e81d}{%
-           family={Chen},
-           familyi={C\bibinitperiod},
-           given={Jing},
-           giveni={J\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Springer}%
-      }
-      \strng{namehash}{fd7e77cd1209bcfa715281191fda134b}
-      \strng{fullhash}{e9450fdc2e9ae408fb02c8cbbae2c9a5}
-      \strng{fullhashraw}{e9450fdc2e9ae408fb02c8cbbae2c9a5}
-      \strng{bibnamehash}{fd7e77cd1209bcfa715281191fda134b}
-      \strng{authorbibnamehash}{fd7e77cd1209bcfa715281191fda134b}
-      \strng{authornamehash}{fd7e77cd1209bcfa715281191fda134b}
-      \strng{authorfullhash}{e9450fdc2e9ae408fb02c8cbbae2c9a5}
-      \strng{authorfullhashraw}{e9450fdc2e9ae408fb02c8cbbae2c9a5}
-      \field{sortinit}{C}
-      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{BioDrugs}
-      \field{number}{1}
-      \field{title}{Anti-Amyloid Monoclonal Antibodies for the Treatment of Alzheimer's Disease}
-      \field{volume}{38}
-      \field{year}{2024}
-      \field{pages}{5\bibrangedash 22}
-      \range{pages}{18}
-      \verb{doi}
-      \verb 10.1007/s40259-023-00633-2
-      \endverb
-    \endentry
     \entry{2024Desai}{article}{}{}
       \name{author}{3}{}{%
         {{hash=701aeeb148d56b6b5cc2d5ec86fc507a}{%
@@ -340,57 +286,6 @@
       \verb{doi}
       \verb 10.48550/arXiv.2411.05860
       \endverb
-    \endentry
-    \entry{Ewers2011}{article}{}{}
-      \name{author}{5}{}{%
-        {{hash=e22c9b96e574e21442daa83290a763cb}{%
-           family={Ewers},
-           familyi={E\bibinitperiod},
-           given={Michael},
-           giveni={M\bibinitperiod}}}%
-        {{hash=c6f2dc574dfc5425c0300dd8eeea36fa}{%
-           family={Sperling},
-           familyi={S\bibinitperiod},
-           given={Reisa\bibnamedelima A},
-           giveni={R\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
-        {{hash=b690c15863489fff6b23038a093e2774}{%
-           family={Klunk},
-           familyi={K\bibinitperiod},
-           given={William\bibnamedelima E},
-           giveni={W\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
-        {{hash=f359ac64f21049a1484bcd89003b917d}{%
-           family={Weiner},
-           familyi={W\bibinitperiod},
-           given={Michael\bibnamedelima W},
-           giveni={M\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
-        {{hash=95cbc57f9fd77a7dc55e5c4a837f5f36}{%
-           family={Hampel},
-           familyi={H\bibinitperiod},
-           given={Harald},
-           giveni={H\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Elsevier}%
-      }
-      \strng{namehash}{becee31403896add76d84edf4f87eafe}
-      \strng{fullhash}{5c3c38aa2332b88a2dfa237921ac8909}
-      \strng{fullhashraw}{5c3c38aa2332b88a2dfa237921ac8909}
-      \strng{bibnamehash}{becee31403896add76d84edf4f87eafe}
-      \strng{authorbibnamehash}{becee31403896add76d84edf4f87eafe}
-      \strng{authornamehash}{becee31403896add76d84edf4f87eafe}
-      \strng{authorfullhash}{5c3c38aa2332b88a2dfa237921ac8909}
-      \strng{authorfullhashraw}{5c3c38aa2332b88a2dfa237921ac8909}
-      \field{sortinit}{E}
-      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Trends in neurosciences}
-      \field{number}{8}
-      \field{title}{Neuroimaging markers for the prediction and early diagnosis of Alzheimer's disease dementia}
-      \field{volume}{34}
-      \field{year}{2011}
-      \field{pages}{430\bibrangedash 442}
-      \range{pages}{13}
     \endentry
     \entry{Santos2023}{article}{}{}
       \name{author}{1}{}{%

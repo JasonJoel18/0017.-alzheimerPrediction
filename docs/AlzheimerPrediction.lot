@@ -2,13 +2,14 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Comparison of Studies on Alzheimer’s Disease Detection}}{15}{table.caption.7}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Comparison of Studies on Alzheimer’s Disease Detection}}{16}{table.caption.8}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Training Parameters and Configuration}}{27}{table.caption.17}%
-\contentsline {table}{\numberline {5.2}{\ignorespaces Confusion Matrix for Model Evaluation}}{29}{table.caption.18}%
+\contentsline {table}{\numberline {5.1}{\ignorespaces Training Parameters and Configuration}}{30}{table.caption.18}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces Confusion Matrix for Model Evaluation}}{31}{table.caption.19}%
+\contentsline {table}{\numberline {5.3}{\ignorespaces System configuration}}{32}{table.caption.20}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {6.1}{\ignorespaces Table showing classwise evaluation metrics}}{42}{table.caption.31}%
-\contentsline {table}{\numberline {6.2}{\ignorespaces Computing time comparison between the base model and the proposed model (in seconds).}}{44}{table.caption.34}%
-\contentsline {table}{\numberline {6.3}{\ignorespaces Computing time comparison between the base model and the proposed model (in seconds).}}{46}{table.caption.36}%
+\contentsline {table}{\numberline {6.1}{\ignorespaces Table showing classwise evaluation metrics}}{45}{table.caption.33}%
+\contentsline {table}{\numberline {6.2}{\ignorespaces Computing time comparison between the base model and the proposed model (in seconds).}}{47}{table.caption.36}%
+\contentsline {table}{\numberline {6.3}{\ignorespaces Computing time comparison between the base model and the proposed model (in seconds).}}{49}{table.caption.38}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

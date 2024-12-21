@@ -1,36 +1,36 @@
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Comparison of a normal brain (left) and an Alzheimer's patient's brain (right). Images credit: Professor John O'Brien, University of Cambridge and Newcastle University}}{8}{figure.caption.5}%
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Comparison of a normal brain (left) and an Alzheimer's patient's brain (right). Images credit: Professor John O'Brien, University of Cambridge and Newcastle University}}{10}{figure.caption.6}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Person suffering from Dementia}}{9}{figure.caption.6}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Person suffering from Dementia}}{11}{figure.caption.7}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Sample images of the dataset}}{18}{figure.caption.8}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Dataset Class distribution}}{20}{figure.caption.9}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces pre-processing flow}}{21}{figure.caption.10}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Dataset cleaning}}{22}{figure.caption.11}%
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Model Base}}{24}{figure.caption.12}%
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Model sequential}}{25}{figure.caption.13}%
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Flow of model training and output}}{26}{figure.caption.14}%
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Loading the image paths into a dataset}}{32}{figure.caption.19}%
-\contentsline {figure}{\numberline {5.9}{\ignorespaces code for validate the images}}{33}{figure.caption.20}%
-\contentsline {figure}{\numberline {5.10}{\ignorespaces code for dividing the dataset}}{34}{figure.caption.21}%
-\contentsline {figure}{\numberline {5.11}{\ignorespaces code for image data pre-processing}}{34}{figure.caption.22}%
-\contentsline {figure}{\numberline {5.12}{\ignorespaces code for model training}}{35}{figure.caption.23}%
-\contentsline {figure}{\numberline {5.13}{\ignorespaces code for uncertainity estimation}}{37}{figure.caption.26}%
-\contentsline {figure}{\numberline {5.14}{\ignorespaces code for uncertainity estimation}}{38}{figure.caption.27}%
-\contentsline {figure}{\numberline {5.15}{\ignorespaces code for flask api to predict the image}}{40}{figure.caption.29}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Sample images of the dataset}}{21}{figure.caption.9}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Dataset Class distribution}}{22}{figure.caption.10}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces pre-processing flow}}{23}{figure.caption.11}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Dataset cleaning}}{24}{figure.caption.12}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Model Base}}{26}{figure.caption.13}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Model sequential}}{27}{figure.caption.14}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Flow of model training and output}}{28}{figure.caption.15}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Loading the image paths into a dataset}}{34}{figure.caption.21}%
+\contentsline {figure}{\numberline {5.9}{\ignorespaces code for validate the images}}{35}{figure.caption.22}%
+\contentsline {figure}{\numberline {5.10}{\ignorespaces code for dividing the dataset}}{36}{figure.caption.23}%
+\contentsline {figure}{\numberline {5.11}{\ignorespaces code for image data pre-processing}}{37}{figure.caption.24}%
+\contentsline {figure}{\numberline {5.12}{\ignorespaces code for model training}}{38}{figure.caption.25}%
+\contentsline {figure}{\numberline {5.13}{\ignorespaces code for uncertainity estimation}}{40}{figure.caption.28}%
+\contentsline {figure}{\numberline {5.14}{\ignorespaces code for uncertainity estimation}}{41}{figure.caption.29}%
+\contentsline {figure}{\numberline {5.15}{\ignorespaces code for flask api to predict the image}}{43}{figure.caption.31}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces figure showing the performance improvement in the proposed model (Higher the Better)}}{41}{figure.caption.30}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces image plotting the predicted class, actual class as well as the condifence percentage in progress bar.}}{43}{figure.caption.32}%
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Image Classification Web Application Workflow}}{44}{figure.caption.33}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {step 1: Upload and preview image}}}{44}{subfigure.3.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {step 2: Predict the image class with confidence score}}}{44}{subfigure.3.2}%
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Computing time comparison between the base model and the proposed model for different stages of the pipeline. Lower values indicate better performance.}}{45}{figure.caption.35}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\tiny \itshape Data Loading and Preprocessing}}}{45}{subfigure.4.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\tiny \itshape Model Building}}}{45}{subfigure.4.2}%
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {\tiny \itshape Model Training}}}{45}{subfigure.4.3}%
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {\tiny \itshape Model Evaluation}}}{45}{subfigure.4.4}%
-\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {\tiny \itshape Prediction Time}}}{45}{subfigure.4.5}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces figure showing the performance improvement in the proposed model (Higher the Better)}}{44}{figure.caption.32}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces image plotting the predicted class, actual class as well as the condifence percentage in progress bar.}}{46}{figure.caption.34}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Image Classification Web Application Workflow}}{47}{figure.caption.35}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {step 1: Upload and preview image}}}{47}{subfigure.3.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {step 2: Predict the image class with confidence score}}}{47}{subfigure.3.2}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Computing time comparison between the base model and the proposed model for different stages of the pipeline. Lower values indicate better performance.}}{48}{figure.caption.37}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\tiny \itshape Data Loading and Preprocessing}}}{48}{subfigure.4.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\tiny \itshape Model Building}}}{48}{subfigure.4.2}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {\tiny \itshape Model Training}}}{48}{subfigure.4.3}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {\tiny \itshape Model Evaluation}}}{48}{subfigure.4.4}%
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {\tiny \itshape Prediction Time}}}{48}{subfigure.4.5}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
