@@ -1,65 +1,64 @@
-\contentsline {chapter}{Abstract}{1}{chapter*.1}%
-\contentsline {chapter}{\numberline {1}Introductions}{6}{chapter.1}%
-\contentsline {chapter}{\numberline {2}Motivation}{8}{chapter.2}%
-\contentsline {chapter}{\numberline {3}Contribution}{10}{chapter.3}%
-\contentsline {chapter}{\numberline {4}Literature Review}{12}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Overview of techniques used on MRI}{12}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Using Deep Learning for Alzheimer’s Detection}{12}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Limitations of Existing Approaches}{15}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Novelty of the Proposed Approach}{15}{section.4.4}%
-\contentsline {chapter}{\numberline {5}Methodology}{16}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Dataset used for this research}{16}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}About Dataset}{16}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Dataset Features}{17}{subsection.5.1.2}%
-\contentsline {subsection}{\numberline {5.1.3}Ethical and Legal Considerations}{18}{subsection.5.1.3}%
-\contentsline {section}{\numberline {5.2}Pre-Processing the Dataset}{19}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Data Cleaning}{19}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Data Resizing}{20}{subsection.5.2.2}%
-\contentsline {subsection}{\numberline {5.2.3}Color Mode}{20}{subsection.5.2.3}%
-\contentsline {subsection}{\numberline {5.2.4}Class Mode}{21}{subsection.5.2.4}%
-\contentsline {subsection}{\numberline {5.2.5}Batch size}{21}{subsection.5.2.5}%
-\contentsline {subsection}{\numberline {5.2.6}Normalization}{21}{subsection.5.2.6}%
-\contentsline {section}{\numberline {5.3}Proposed Model Architecture}{22}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Base Model Architecture}{22}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}Adding Uncertainty Estimation}{22}{subsection.5.3.2}%
-\contentsline {subsection}{\numberline {5.3.3}Output Layer}{23}{subsection.5.3.3}%
-\contentsline {subsection}{\numberline {5.3.4}Training and Evaluation}{23}{subsection.5.3.4}%
-\contentsline {section}{\numberline {5.4}Model Training and Optimization}{23}{section.5.4}%
-\contentsline {subsection}{\numberline {5.4.1}Training Configuration}{23}{subsection.5.4.1}%
-\contentsline {subsection}{\numberline {5.4.2}Optimization Strategies}{24}{subsection.5.4.2}%
-\contentsline {subsubsection}{Early Stopping}{24}{subsubsection*.15}%
-\contentsline {subsubsection}{Learning Rate Reduction on Plateau}{24}{subsubsection*.16}%
-\contentsline {subsection}{\numberline {5.4.3}Training Process}{25}{subsection.5.4.3}%
-\contentsline {section}{\numberline {5.5}Evaluation Metrics}{25}{section.5.5}%
-\contentsline {subsection}{\numberline {5.5.1}Accuracy}{26}{subsection.5.5.1}%
-\contentsline {subsection}{\numberline {5.5.2}Precision}{26}{subsection.5.5.2}%
-\contentsline {subsection}{\numberline {5.5.3}Recall}{26}{subsection.5.5.3}%
-\contentsline {subsection}{\numberline {5.5.4}F1-Score}{27}{subsection.5.5.4}%
-\contentsline {subsection}{\numberline {5.5.5}Confusion Matrix}{27}{subsection.5.5.5}%
-\contentsline {subsection}{\numberline {5.5.6}Uncertainty Estimation}{27}{subsection.5.5.6}%
-\contentsline {subsection}{\numberline {5.5.7}Performance Evaluation on Test Set}{28}{subsection.5.5.7}%
-\contentsline {section}{\numberline {5.6}Pipeline Integration}{28}{section.5.6}%
-\contentsline {section}{\numberline {5.7}Implementation}{28}{section.5.7}%
-\contentsline {subsection}{\numberline {5.7.1}Data Preparation}{28}{subsection.5.7.1}%
-\contentsline {subsection}{\numberline {5.7.2}Model Development}{33}{subsection.5.7.2}%
-\contentsline {subsubsection}{Base model}{33}{subsubsection*.24}%
-\contentsline {subsubsection}{Training the Model and Optimizing}{34}{subsubsection*.25}%
-\contentsline {subsection}{\numberline {5.7.3}Adding Uncertainity estimation to the mix}{35}{subsection.5.7.3}%
-\contentsline {subsection}{\numberline {5.7.4}Performance Evaluation}{36}{subsection.5.7.4}%
-\contentsline {subsection}{\numberline {5.7.5}Integrating the Model with a Web Application}{37}{subsection.5.7.5}%
-\contentsline {subsubsection}{Connect the backend with the Flask API Integration}{38}{subsubsection*.28}%
-\contentsline {chapter}{\numberline {6}Results and Discussion}{39}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Overall performance of the model}{39}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Evaluating Classwise the model using the Metrics Chosen}{40}{section.6.2}%
-\contentsline {section}{\numberline {6.3}visualizing the confidence score to the plot}{41}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Model implementation on the WebPage}{42}{section.6.4}%
-\contentsline {section}{\numberline {6.5}Model Training performance and Comparision with base model}{42}{section.6.5}%
-\contentsline {subsection}{\numberline {6.5.1}Data Loading and Preprocessing}{43}{subsection.6.5.1}%
-\contentsline {subsection}{\numberline {6.5.2}Model Building}{43}{subsection.6.5.2}%
-\contentsline {subsection}{\numberline {6.5.3}Model Training}{44}{subsection.6.5.3}%
-\contentsline {subsection}{\numberline {6.5.4}Model Evaluation}{44}{subsection.6.5.4}%
-\contentsline {subsection}{\numberline {6.5.5}Prediction}{44}{subsection.6.5.5}%
-\contentsline {subsection}{\numberline {6.5.6}Summary of Observations}{44}{subsection.6.5.6}%
-\contentsline {chapter}{\numberline {7}Limitation found in this study and what can be improved}{45}{chapter.7}%
-\contentsline {chapter}{\numberline {8}Conclusion}{46}{chapter.8}%
-\contentsline {chapter}{\numberline {A}Appendix Title}{48}{appendix.A}%
+\contentsline {chapter}{Abstract}{2}{chapter*.1}%
+\contentsline {chapter}{\numberline {1}Introductions}{7}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Motivation}{9}{chapter.2}%
+\contentsline {chapter}{\numberline {3}Contribution}{11}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Literature Review}{13}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Overview of techniques used on MRI}{13}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Using Deep Learning for Alzheimer’s Detection}{13}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Limitations of Existing Approaches}{16}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Novelty of the Proposed Approach}{17}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Methodology}{18}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Dataset used for this research}{18}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}About Dataset}{18}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Dataset Features}{19}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Ethical and Legal Considerations}{20}{subsection.5.1.3}%
+\contentsline {section}{\numberline {5.2}Pre-Processing the Dataset}{21}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Data Cleaning}{21}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Data Resizing}{21}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Color Mode}{22}{subsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.2.4}Class Mode}{22}{subsection.5.2.4}%
+\contentsline {subsection}{\numberline {5.2.5}Batch size}{23}{subsection.5.2.5}%
+\contentsline {subsection}{\numberline {5.2.6}Normalization}{23}{subsection.5.2.6}%
+\contentsline {section}{\numberline {5.3}Proposed Model Architecture}{24}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Base Model Architecture}{24}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Adding Uncertainty Estimation}{24}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Output Layer}{25}{subsection.5.3.3}%
+\contentsline {subsection}{\numberline {5.3.4}Training and Evaluation}{25}{subsection.5.3.4}%
+\contentsline {section}{\numberline {5.4}Model Training and Optimization}{25}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Training Configuration}{25}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Optimization Strategies}{26}{subsection.5.4.2}%
+\contentsline {subsubsection}{Early Stopping}{26}{subsubsection*.15}%
+\contentsline {subsubsection}{Learning Rate Reduction on Plateau}{27}{subsubsection*.16}%
+\contentsline {subsection}{\numberline {5.4.3}Training Process}{27}{subsection.5.4.3}%
+\contentsline {section}{\numberline {5.5}Evaluation Metrics}{28}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Accuracy}{28}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Precision}{28}{subsection.5.5.2}%
+\contentsline {subsection}{\numberline {5.5.3}Recall}{28}{subsection.5.5.3}%
+\contentsline {subsection}{\numberline {5.5.4}F1-Score}{29}{subsection.5.5.4}%
+\contentsline {subsection}{\numberline {5.5.5}Confusion Matrix}{29}{subsection.5.5.5}%
+\contentsline {subsection}{\numberline {5.5.6}Uncertainty Estimation}{29}{subsection.5.5.6}%
+\contentsline {subsection}{\numberline {5.5.7}Performance Evaluation on Test Set}{30}{subsection.5.5.7}%
+\contentsline {section}{\numberline {5.6}Pipeline Integration}{30}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Implementation}{30}{section.5.7}%
+\contentsline {subsection}{\numberline {5.7.1}Data Preparation}{31}{subsection.5.7.1}%
+\contentsline {subsection}{\numberline {5.7.2}Model Development}{35}{subsection.5.7.2}%
+\contentsline {subsubsection}{Base model}{36}{subsubsection*.24}%
+\contentsline {subsubsection}{Training the Model and Optimizing}{36}{subsubsection*.25}%
+\contentsline {subsection}{\numberline {5.7.3}Adding Uncertainity estimation to the mix}{37}{subsection.5.7.3}%
+\contentsline {subsection}{\numberline {5.7.4}Performance Evaluation}{38}{subsection.5.7.4}%
+\contentsline {subsection}{\numberline {5.7.5}Integrating the Model with a Web Application}{39}{subsection.5.7.5}%
+\contentsline {subsubsection}{Connect the backend with the Flask API Integration}{40}{subsubsection*.28}%
+\contentsline {chapter}{\numberline {6}Results and Discussion}{41}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Overall performance of the model}{41}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Evaluating Classwise the model using the Metrics Chosen}{42}{section.6.2}%
+\contentsline {section}{\numberline {6.3}visualizing the confidence score to the plot}{43}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Model implementation on the WebPage}{44}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Model Training performance and Comparision with base model}{44}{section.6.5}%
+\contentsline {subsection}{\numberline {6.5.1}Data Loading and Preprocessing}{45}{subsection.6.5.1}%
+\contentsline {subsection}{\numberline {6.5.2}Model Building}{45}{subsection.6.5.2}%
+\contentsline {subsection}{\numberline {6.5.3}Model Training}{46}{subsection.6.5.3}%
+\contentsline {subsection}{\numberline {6.5.4}Model Evaluation}{46}{subsection.6.5.4}%
+\contentsline {subsection}{\numberline {6.5.5}Prediction}{46}{subsection.6.5.5}%
+\contentsline {subsection}{\numberline {6.5.6}Summary of Observations}{46}{subsection.6.5.6}%
+\contentsline {chapter}{\numberline {7}Limitation found in this study and what can be improved}{47}{chapter.7}%
+\contentsline {chapter}{\numberline {8}Conclusion}{48}{chapter.8}%

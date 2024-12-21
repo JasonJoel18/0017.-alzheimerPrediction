@@ -1,5 +1,6 @@
 \documentclass[12pt,onecolumn]{report}
 
+% -------------------- Package Imports --------------------
 \usepackage[table,xcdraw]{xcolor}
 \usepackage{array}
 \usepackage{ulem}
@@ -8,80 +9,51 @@
 \usepackage{algpseudocode}
 \usepackage{subfig}
 \usepackage{graphicx}
-\usepackage{subfig}
 \usepackage{float}
-\sloppy
-\renewcommand{\thesection}{\thechapter.\arabic{section}}
-\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
-\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
-\setlength{\fboxsep}{4pt}
-\setlength{\fboxrule}{0.3pt}
-% -------------------- Document Layout --------------------
-
 \usepackage{geometry}        % For page layout
+\usepackage{fancyhdr}        % For custom headers and footers
+\usepackage{xcolor}          % For text color customization
+\usepackage[utf8]{inputenc}  % UTF-8 encoding
+\usepackage[T1]{fontenc}     % Font encoding
+% \usepackage{ebgaramond}      % Use EB Garamond font
+\usepackage{caption}         % For customizing captions
+\usepackage{setspace}        % For line spacing
+\usepackage{titlesec}        % For title formatting
+\usepackage{chngcntr}        % For chapter numbering
+\usepackage[backend=biber]{biblatex}  % For bibliography management
+\usepackage{hyperref}        % For clickable links
+\usepackage{enumitem}        % For customizations like "nosep"
+\usepackage{tikz}
+\usepackage{eso-pic}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{parskip}
+\usepackage{hyperref}
+
+% -------------------- Document Layout --------------------
 \geometry{
     a4paper,                 % Paper size
-    margin=0.5in,            % General margin
-    top=1in,                 % Top margin
-    bottom=1in,              % Bottom margin
-    left=0.6in,              % Left margin
-    right=0.6in              % Right margin
+    margin=2cm
 }
 
 % -------------------- Header and Footer Setup --------------------
-
-\usepackage{fancyhdr}        % For custom headers and footers
-\usepackage{xcolor}          % For text color customization
-
+\definecolor{lightgray}{gray}{0.7}
 \pagestyle{fancy}            % Set fancy header/footer style
 \renewcommand{\headrulewidth}{0.4pt}   % Header rule thickness
 \renewcommand{\footrulewidth}{0.4pt}   % Footer rule thickness
 \setlength{\headheight}{24.65pt} % Header height (adjust as needed)
-
-% Define custom color
-\definecolor{lightgray}{gray}{0.7}
-
-% Clear existing header and footer settings
-\fancyhf{}
-
-% Set up the left, center, and right parts of the header
+\fancyhf{}  % Clear existing header and footer settings
 \lhead{\textit{\textcolor{lightgray}{\small Jason Joel Pinto}}} % Left header
-\chead{}                                                       % Center header (empty)
-\rhead{\hfill \textit{\textcolor{lightgray}{\small Uncertainty-Aware Deep Learning for Early Detection of Alzheimer’s Disease Using MRI images Data}}} % Right-aligned header
-
-% Set up the left, center, and right parts of the footer
+\chead{}  % Center header (empty)
+\rhead{\hfill \textit{\textcolor{lightgray}{\small Uncertainty-Aware Deep Learning for Early Detection of Alzheimer’s Disease Using MRI Images Data}}} % Right-aligned header
 \lfoot{\textit{\textcolor{lightgray}{\small Gisma University of Applied Sciences}}}  % Left footer
 \cfoot{\textcolor{lightgray}{\large \bfseries \thepage}}                             % Center footer (page number)
 \rfoot{\hfill \textit{\textcolor{lightgray}{\small December, 2024}}}                % Right footer with date
 
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0.4pt}
-\setlength{\headheight}{10pt}
-\renewcommand{\headrule}{\textcolor{lightgray}{\rule{\textwidth}{0.3pt}}}
-\renewcommand{\footrule}{\textcolor{lightgray}{\rule{\textwidth}{0.3pt}}}
-
-% -------------------- Font and Text Customization --------------------
-
-\usepackage[utf8]{inputenc}  % UTF-8 encoding
-\usepackage[T1]{fontenc}     % Font encoding
-\usepackage{ebgaramond}      % Use EB Garamond font
-% \usepackage{mathptmx}      % Use EB Garamond font
-\usepackage{caption}         % For customizing captions
-
-% Set caption style to small and italic
-\captionsetup{font={small,it} }  % small font and italic style for captions
-
-% -------------------- Line Spacing --------------------
-
-\usepackage{setspace}        % For line spacing
-\onehalfspacing              % Set line spacing to 1.5
-
 % -------------------- Title and Section Formatting --------------------
-
-\usepackage{titlesec}        % For title formatting
-
 \titleformat{\title}[block]
-  {\normalfont\bfseries\Huge}{\thetitle}{0pt}{}  % Title formatting (Huge font size, bold)
+  {\normalfont\bfseries\Huge}{\thetitle}{0pt}{}  % Title formatting
 
 \titleformat{\chapter}[display]
   {\normalfont\bfseries\LARGE}   % Font style and size for the chapter title
@@ -96,25 +68,12 @@
   {\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}  % Subsection headings (normal size, bold)
 
 \titlespacing*{\chapter}{0pt}{-10pt}{15pt}   % Adjust chapter spacing
-
-% -------------------- Chapter Numbering Fix --------------------
-
-\usepackage{chngcntr}
 \counterwithout{chapter}{part} % Fix pre-leading period in chapter numbering
 
-% -------------------- Page Break Management --------------------
-
-% Uncomment this line if you want to remove page breaks between chapters
-% \renewcommand{\chapter}{\vspace{1.5cm}\chapter}
-
 % -------------------- Bibliography and Citations --------------------
-
-\usepackage[backend=biber]{biblatex}  % For bibliography management
-\addbibresource{mybib.bib}            % Add .bib file for references
+\addbibresource{mybib.bib}  % Add .bib file for references
 
 % -------------------- Hyperlinks --------------------
-
-\usepackage{hyperref}        % For clickable links
 \hypersetup{
     colorlinks=true,
     linkcolor=blue,
@@ -122,42 +81,53 @@
     citecolor=blue
 }
 
+% -------------------- Line Spacing --------------------
+\onehalfspacing              % Set line spacing to 1.5
+
 % -------------------- Images and Captions --------------------
+\captionsetup{font={small,it}}  % small font and italic style for captions
 
-\usepackage{graphicx}        % For including images
-\usepackage{caption}         % For customizing captions
-\usepackage{enumitem}        % For customizations like "nosep"
+% -------------------- Title Page Setup --------------------
+\newcommand{\dissertationtitle}{Uncertainty-Aware Deep Learning for Early Detection of Alzheimer’s Disease Using MRI Images Data}
+\newcommand{\student}{Jason Joel Pinto}
+\newcommand{\degree}{MSc in Data Science, AI and Digital Marketing}
+\newcommand{\supervisor}{Prof. Dr. Mazhar Hameed}
+\newcommand{\submissiontime}{December 2024}
 
+\renewcommand\maketitle{
+    {
+        \center
+        \begin{tikzpicture}[remember picture, overlay]
+            \node[opacity=0.2,inner sep=0pt] at (current page.south) [yshift=5cm]{
+                \includegraphics[width=\paperwidth, height=\paperheight, keepaspectratio]{attachments/campus}
+            };
+        \end{tikzpicture}
+        \includegraphics[width=0.6\textwidth]{attachments/logo}\par
+        {\scshape\LARGE\bf Gisma University of Applied Sciences \par}
+        {\scshape\Large\bf Department of Computer and Data Sciences \par}
+        \vspace{2cm}
+        \rule{\linewidth}{0.5mm}\par
+        {\huge\bfseries\dissertationtitle\par} 
+        \rule{\linewidth}{0.5mm}\par
+        \vspace{0.2cm}
+        {\Large\bf\student\par}
+        \vspace{2cm}
+        {\large Submitted in partial fulfillment of the requirements for the degree of\par}
+        {\Large\bf\degree\par}
+        \vspace{1cm}
+        {\large Under supervision of\par}
+        {\large\bf\supervisor\par}
+        \vspace{1cm}
+        {\large\submissiontime\par}
+        \thispagestyle{empty}
+        \newpage
+    }
+}
 
 % Begin document
 \begin{document}
-
-\begin{titlepage}
-    \begin{center}
-        % University Logo (Optional)
-        % \includegraphics[width=0.15\textwidth]{university_logo.png} \\[1cm]
-        
-        % University Name
-        \textsc{\Large Gisma University of Applied Sciences} \\[1.5cm]
-        \vfill  
-        % Title
-        % \rule{\linewidth}{0.2mm} \\[0.4cm]
-        {\bfseries\Huge Uncertainty-Aware Deep Learning for Early Detection of Alzheimer’s Disease Using MRI Images Data \\[0.4cm]}
-        % \rule{\linewidth}{0.2mm} \\[1.5cm]
-        \vfill        
-        % Author Name
-        {\Large \textbf{Jason Joel Pinto}} \\[2cm]
-        \vfill
-        % Submission Text
-        {\large A Thesis Submitted in Partial Fulfillment of the Requirements for the Degree of} \\[0.5cm]
-        {\Large MSc in Data Science, AI and Digital Marketing} \\[1.5cm]
-        
-        % Date
-        {\large December, 2024}
-        
-        \vfill
-    \end{center}
-\end{titlepage}
+\pagestyle{plain}
+\maketitle
 
 % Abstract
 \chapter*{Abstract}
@@ -716,7 +686,7 @@ The results of the implementation of the code developed for creating a deep lear
 The performance of the model was excellent. Once the model was created it was  run on the test dataset. It was able to predictes the four classes of Alzheimer's stages in our dataset exceptionally well. The model was consistent and reliability in correctly determining MRI images among the four target classes Mild Demented, Moderate Demented, Non-Demented, and Very Mild Demented were shown by its 99.55\% overall accuracy on the test dataset. Let's now compare that to the base model.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\columnwidth]{figures/res_model_comparison.png}  % Adjust the width to your liking
+    \includegraphics[width=0.6\columnwidth]{figures/res_model_comparison.png}  % Adjust the width to your liking
     \caption{figure showing the performance improvement in the proposed model (Higher the Better)} % Caption for the image
     \label{fig:res_model_comparison} % Label to reference the
 \end{figure}
@@ -858,6 +828,11 @@ In the future we could involve collaborating with medical institutions to conduc
 Although the proposed model's use of uncertainty estimations is a significant addition, this part still needs work. Alternative approaches to measuring uncertainty, like Bayesian Neural Networks, or other ensemble techniques may be explored in future research. These techniques may yield more accurate estimates of uncertainty, especially when the model comes into new or unclear data that it hasn't encountered during training.
 
 \chapter{Conclusion}
+The deep learning model created to classify the stages Alzheimer's disease from MRI scans performed really well by classifying the four stages of the disease with 99.55\% accuracy. Even with a somewhat unbalanced dataset, the model consistently performed well across all classes. When the model conveys uncertainty, a crucial aspect in medical applications, the inclusion of uncertainty estimation improved the model's understanding and enabled physicians to make well-informed decisions.
+
+Although the prediction time was marginally higher because of the uncertainty computation, the suggested model performed better than the base model in training and evaluation times. More accurate predictions with confidence scores are produced by this additional complexity, which outweighs the computing expense.
+
+Future research should concentrate on improving uncertainty estimation techniques, investigating multimodal learning with new kinds of meaningful data, and optimizing prediction time. Real-world applicability will also be ensured by working with medical institutions to conduct clinical studies. By incorporating uncertainty-aware deep learning, this study improves Alzheimer's detection and provides important assistance for clinical decision-making and early diagnosis.
 
 
 \chapter*{Acknowledgements}
@@ -874,10 +849,6 @@ In the end, I extend my sincere gratitude and dedicate my work to everyone who h
 \textit{22 December 2024}
 \end{flushright}
 
-% Appendices
-\appendix
-\chapter{Appendix Title}
-Appendix content goes here.
 
 % References
 \cleardoublepage
