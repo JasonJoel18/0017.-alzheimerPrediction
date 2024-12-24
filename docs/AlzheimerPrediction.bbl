@@ -363,6 +363,33 @@
       \verb https://arxiv.org/abs/1506.02142
       \endverb
     \endentry
+    \entry{gobara_kaggle_notebook2024}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=fc6293f9a251ba14e190a6d841fcc664}{%
+           family={Gobara},
+           familyi={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{fc6293f9a251ba14e190a6d841fcc664}
+      \strng{fullhash}{fc6293f9a251ba14e190a6d841fcc664}
+      \strng{fullhashraw}{fc6293f9a251ba14e190a6d841fcc664}
+      \strng{bibnamehash}{fc6293f9a251ba14e190a6d841fcc664}
+      \strng{authorbibnamehash}{fc6293f9a251ba14e190a6d841fcc664}
+      \strng{authornamehash}{fc6293f9a251ba14e190a6d841fcc664}
+      \strng{authorfullhash}{fc6293f9a251ba14e190a6d841fcc664}
+      \strng{authorfullhashraw}{fc6293f9a251ba14e190a6d841fcc664}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{99.6\% in Alzheimer MRI Classification}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://www.kaggle.com/code/mohamedgobara/99-6-in-alzheimer-mri-classification
+      \endverb
+      \verb{url}
+      \verb https://www.kaggle.com/code/mohamedgobara/99-6-in-alzheimer-mri-classification
+      \endverb
+    \endentry
     \entry{Gupta2019}{article}{}{}
       \name{author}{8}{}{%
         {{hash=19aa757b3cf8b5a1ce784025affb6be7}{%
@@ -647,7 +674,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Frontiers in Aging Neuroscience}
-      \field{month}{8}
+      \field{month}{08}
       \field{title}{Deep Learning in Alzheimer's Disease: Diagnostic Classification and Prognostic Prediction Using Neuroimaging Data}
       \field{volume}{11}
       \field{year}{2019}

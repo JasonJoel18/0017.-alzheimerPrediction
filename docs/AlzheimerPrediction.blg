@@ -1,19 +1,18 @@
 [0] Config.pm:308> INFO - This is Biber 2.20
 [0] Config.pm:311> INFO - Logfile is 'AlzheimerPrediction.blg'
-[67] biber-darwin:340> INFO - === Sat Dec 21, 2024, 16:11:46
-[83] Biber.pm:420> INFO - Reading 'AlzheimerPrediction.bcf'
-[159] Biber.pm:994> INFO - Found 35 citekeys in bib section 0
-[173] Biber.pm:4463> INFO - Processing section 0
+[67] biber-darwin:340> INFO - === Sun Dec 22, 2024, 14:04:19
+[82] Biber.pm:420> INFO - Reading 'AlzheimerPrediction.bcf'
+[159] Biber.pm:994> INFO - Found 36 citekeys in bib section 0
+[172] Biber.pm:4463> INFO - Processing section 0
 [182] Biber.pm:4654> INFO - Looking for bibtex file 'mybib.bib' for section 0
 [185] bibtex.pm:1713> INFO - LaTeX decoding ...
-[223] bibtex.pm:1519> INFO - Found BibTeX data source 'mybib.bib'
+[222] bibtex.pm:1519> INFO - Found BibTeX data source 'mybib.bib'
 [460] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
 [460] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
 [460] Biber.pm:4283> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'en-US'
 [460] Biber.pm:4289> INFO - No sort tailoring available for locale 'en-US'
-[499] bbl.pm:676> INFO - Writing 'AlzheimerPrediction.bbl' with encoding 'UTF-8'
-[515] bbl.pm:779> INFO - Output to AlzheimerPrediction.bbl
-[517] Biber.pm:131> WARN - Duplicate entry key: 'tan2019efficientnet' in file 'mybib.bib', skipping ...
+[501] bbl.pm:676> INFO - Writing 'AlzheimerPrediction.bbl' with encoding 'UTF-8'
+[517] bbl.pm:779> INFO - Output to AlzheimerPrediction.bbl
+[518] Biber.pm:131> WARN - Duplicate entry key: 'tan2019efficientnet' in file 'mybib.bib', skipping ...
 [518] Biber.pm:131> WARN - Duplicate entry key: 'keras_efficientnet' in file 'mybib.bib', skipping ...
-[518] Biber.pm:131> WARN - legacy month field 'august' in entry '2019Jo' is not an integer - this will probably not sort properly.
-[518] Biber.pm:133> INFO - WARNINGS: 3
+[519] Biber.pm:133> INFO - WARNINGS: 2

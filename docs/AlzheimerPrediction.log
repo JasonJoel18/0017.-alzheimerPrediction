@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.9)  21 DEC 2024 17:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.9)  22 DEC 2024 16:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -561,17 +561,7 @@ Package csquotes Info: Trying to load configuration file 'csquotes.cfg'...
 Package csquotes Info: ... configuration file loaded successfully.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/csquotes/csquotes.cfg
 File: csquotes.cfg 
-)) (/usr/local/texlive/2024/texmf-dist/tex/latex/breakurl/breakurl.sty
-Package: breakurl 2013/04/10 v1.40 Breakable hyperref URLs
- (/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/ifpdf.sty
-Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
-)
-
-Package breakurl Warning: You are using breakurl while processing via pdflatex.
-(breakurl)                \burl will be just a synonym of \url.
-(breakurl)                 on input line 48.
-
-) (/usr/local/texlive/2024/texmf-dist/tex/latex/enumitem/enumitem.sty
+)) (/usr/local/texlive/2024/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
 \labelindent=\skip99
 \enit@outerparindent=\dimen180
@@ -844,7 +834,8 @@ Package hyperref Info: Bookmarks ON on input line 4424.
 \c@Hy@tempcnt=\count477
 LaTeX Info: Redefining \url on input line 4763.
 \XeTeXLinkMargin=\dimen304
- (/usr/local/texlive/2024/texmf-dist/tex/generic/bitset/bitset.sty
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
  (/usr/local/texlive/2024/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
@@ -884,57 +875,64 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
 )
 \Hy@SectionHShift=\skip104
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/afterpage.sty
+Package: afterpage 2023/07/04 v1.08 After-Page Package (DPC)
+\AP@output=\toks50
+\AP@partial=\box80
+\AP@footins=\box81
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks51
+\verbatim@line=\toks52
+\verbatim@in@stream=\read4
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 91.
+Package hyperref Info: Option `colorlinks' set `true' on input line 86.
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... none found.
-LaTeX Font Info:    Trying to load font information for T1+EBGaramond-OsF on input line 138.
+LaTeX Font Info:    Trying to load font information for T1+EBGaramond-OsF on input line 133.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/ebgaramond/T1EBGaramond-OsF.fd
 File: T1EBGaramond-OsF.fd 2023/03/19 (autoinst) Font definitions for T1/EBGaramond-OsF.
 )
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 138.
+(Font)              scaled to size 12.0pt on input line 133.
  (./AlzheimerPrediction.aux
 
 LaTeX Warning: Label `fig:imp_uncertainity_estimation' multiply defined.
 
-
-LaTeX Warning: Label `tab:timing-results' multiply defined.
-
 )
 \openout1 = `AlzheimerPrediction.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 138.
-LaTeX Font Info:    ... okay on input line 138.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 138.
-LaTeX Font Info:    ... okay on input line 138.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 138.
-LaTeX Font Info:    ... okay on input line 138.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 138.
-LaTeX Font Info:    ... okay on input line 138.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 138.
-LaTeX Font Info:    ... okay on input line 138.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 138.
-LaTeX Font Info:    ... okay on input line 138.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 138.
-LaTeX Font Info:    ... okay on input line 138.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 138.
-LaTeX Font Info:    ... okay on input line 138.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 138.
-LaTeX Font Info:    ... okay on input line 138.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
  (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count484
 \scratchdimen=\dimen307
-\scratchbox=\box80
+\scratchbox=\box82
 \nofMPsegments=\count485
 \nofMParguments=\count486
-\everyMPshowfont=\toks50
+\everyMPshowfont=\toks53
 \MPscratchCnt=\count487
 \MPscratchDim=\dimen308
 \MPnumerator=\count488
 \makeMPintoPDFobject=\count489
-\everyMPtoPDFconversion=\toks51
+\everyMPtoPDFconversion=\toks54
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -999,69 +997,66 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'AlzheimerPrediction.bbl' found.
  (./AlzheimerPrediction.bbl)
-Package biblatex Info: Reference section=0 on input line 138.
-Package biblatex Info: Reference segment=0 on input line 138.
-Package hyperref Info: Link coloring ON on input line 138.
+Package biblatex Info: Reference section=0 on input line 133.
+Package biblatex Info: Reference segment=0 on input line 133.
+Package hyperref Info: Link coloring ON on input line 133.
  (./AlzheimerPrediction.out) (./AlzheimerPrediction.out)
 \@outlinefile=\write5
 \openout5 = `AlzheimerPrediction.out'.
 
-<attachments/campus.jpg, id=248, 322.3242pt x 182.3613pt>
+<attachments/campus.jpg, id=252, 322.3242pt x 182.3613pt>
 File: attachments/campus.jpg Graphic file (type jpg)
 <use attachments/campus.jpg>
-Package pdftex.def Info: attachments/campus.jpg  used on input line 140.
+Package pdftex.def Info: attachments/campus.jpg  used on input line 135.
 (pdftex.def)             Requested size: 597.52492pt x 338.06152pt.
-<attachments/logo.png, id=249, 1003.75pt x 405.515pt>
+<attachments/logo.png, id=253, 1003.75pt x 405.515pt>
 File: attachments/logo.png Graphic file (type png)
 <use attachments/logo.png>
-Package pdftex.def Info: attachments/logo.png  used on input line 140.
+Package pdftex.def Info: attachments/logo.png  used on input line 135.
 (pdftex.def)             Requested size: 306.47292pt x 123.81491pt.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/sc' will be
-(Font)              scaled to size 12.0pt on input line 140.
+(Font)              scaled to size 12.0pt on input line 135.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/sc' will be
-(Font)              scaled to size 20.74pt on input line 140.
+(Font)              scaled to size 20.74pt on input line 135.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/n' will be
-(Font)              scaled to size 20.74pt on input line 140.
+(Font)              scaled to size 20.74pt on input line 135.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/b/n' will be
-(Font)              scaled to size 20.74pt on input line 140.
+(Font)              scaled to size 20.74pt on input line 135.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/sc' will be
-(Font)              scaled to size 17.28pt on input line 140.
+(Font)              scaled to size 17.28pt on input line 135.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/n' will be
-(Font)              scaled to size 17.28pt on input line 140.
+(Font)              scaled to size 17.28pt on input line 135.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/b/n' will be
-(Font)              scaled to size 17.28pt on input line 140.
+(Font)              scaled to size 17.28pt on input line 135.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/n' will be
-(Font)              scaled to size 24.88pt on input line 140.
+(Font)              scaled to size 24.88pt on input line 135.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/b/n' will be
-(Font)              scaled to size 24.88pt on input line 140.
+(Font)              scaled to size 24.88pt on input line 135.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/n' will be
-(Font)              scaled to size 14.4pt on input line 140.
+(Font)              scaled to size 14.4pt on input line 135.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/b/n' will be
-(Font)              scaled to size 14.4pt on input line 140.
+(Font)              scaled to size 14.4pt on input line 135.
 
 
 [1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/ebgaramond/ebg_tcdnmr.enc} <./attachments/campus.jpg> <./attachments/logo.png>]
-
-LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/it' will be
-(Font)              scaled to size 12.0pt on input line 140.
-LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/it' will be
-(Font)              scaled to size 10.95pt on input line 140.
-[2{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/ebgaramond/ebg_ljow5q.enc}]
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/b/n' will be
-(Font)              scaled to size 12.0pt on input line 143.
+(Font)              scaled to size 12.0pt on input line 138.
+
+
+[2
+
+]
+LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/it' will be
+(Font)              scaled to size 12.0pt on input line 152.
 
 
 [3
 
-]
+{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/ebgaramond/ebg_ljow5q.enc}] (./AlzheimerPrediction.toc
 
 [4
-
-] (./AlzheimerPrediction.toc
-
-[5
 
 ])
 \tf@toc=\write6
@@ -1069,13 +1064,15 @@ LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/b/n' will be
 
 
 
-[6] (./AlzheimerPrediction.lof)
+LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/it' will be
+(Font)              scaled to size 10.95pt on input line 165.
+[5] (./AlzheimerPrediction.lof)
 \tf@lof=\write7
 \openout7 = `AlzheimerPrediction.lof'.
 
 
 
-[7
+[6
 
 ] (./AlzheimerPrediction.lot)
 \tf@lot=\write8
@@ -1083,242 +1080,245 @@ LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/b/n' will be
 
 
 
-[8
+[7
 
 ]
 Chapter 1.
-<figures/fig1.png, id=416, 1261.71375pt x 948.54375pt>
+<figures/fig1.png, id=415, 1261.71375pt x 948.54375pt>
 File: figures/fig1.png Graphic file (type png)
 <use figures/fig1.png>
-Package pdftex.def Info: figures/fig1.png  used on input line 183.
+Package pdftex.def Info: figures/fig1.png  used on input line 178.
 (pdftex.def)             Requested size: 408.62796pt x 307.20201pt.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/n' will be
-(Font)              scaled to size 10.95pt on input line 184.
+(Font)              scaled to size 10.95pt on input line 179.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
-[9
+[8
 
 ]
 
-[10 <./figures/fig1.png>]
+[9 <./figures/fig1.png>]
 Chapter 2.
-<figures/fig2.jpeg, id=436, 1682.285pt x 1260.71pt>
+<figures/fig2.jpeg, id=435, 1682.285pt x 1260.71pt>
 File: figures/fig2.jpeg Graphic file (type jpg)
 <use figures/fig2.jpeg>
-Package pdftex.def Info: figures/fig2.jpeg  used on input line 204.
+Package pdftex.def Info: figures/fig2.jpeg  used on input line 199.
 (pdftex.def)             Requested size: 408.62796pt x 306.23158pt.
 
 
-[11
+[10
 
  <./figures/fig2.jpeg>]
-Overfull \hbox (3.00739pt too wide) in paragraph at lines 215--216
+Overfull \hbox (3.00739pt too wide) in paragraph at lines 210--211
 []\T1/EBGaramond-OsF/m/n/12 Personally for me this pa-per is driven by the fact that I have seen many peo-ple around me strug-gling with Alzheimer's
  []
 
 
 
-[12]
+[11]
 Chapter 3.
 
 
-[13
+[12
 
 ]
 
-[14]
+[13]
 Chapter 4.
 
 
-[15
+[14
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 269--269
+Underfull \hbox (badness 10000) in paragraph at lines 264--264
 []|\T1/EBGaramond-OsF/m/n/12 Sharma, Sarang
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 269--269
+Underfull \hbox (badness 10000) in paragraph at lines 264--264
 []|\T1/EBGaramond-OsF/m/n/12 Hybrid Deep
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 269--269
+Underfull \hbox (badness 10000) in paragraph at lines 264--264
 []|\T1/EBGaramond-OsF/m/n/12 No un-cer-tainty es-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 269--269
+Underfull \hbox (badness 10000) in paragraph at lines 264--264
 \T1/EBGaramond-OsF/m/n/12 ti-ma-tion, lim-ited
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 270--270
+Underfull \hbox (badness 10000) in paragraph at lines 265--265
 []|\T1/EBGaramond-OsF/m/n/12 Desai, Maitri
  []
 
 
-Underfull \hbox (badness 3861) in paragraph at lines 270--270
+Underfull \hbox (badness 3861) in paragraph at lines 265--265
 []|\T1/EBGaramond-OsF/m/n/12 Limited gen-er-al-iz-abil-ity,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 271--271
+Underfull \hbox (badness 10000) in paragraph at lines 266--266
 []|\T1/EBGaramond-OsF/m/n/12 Ahmed, Gul-naz
  []
 
 
-Underfull \hbox (badness 1400) in paragraph at lines 271--271
+Underfull \hbox (badness 1400) in paragraph at lines 266--266
 []|\T1/EBGaramond-OsF/m/n/12 No re-li-a-bil-ity or un-cer-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 273--273
+Underfull \hbox (badness 10000) in paragraph at lines 268--268
 []|\T1/EBGaramond-OsF/m/n/12 Custom MRI
  []
 
 
-Underfull \hbox (badness 3758) in paragraph at lines 273--273
+Underfull \hbox (badness 3758) in paragraph at lines 268--268
 []|\T1/EBGaramond-OsF/m/n/12 No un-cer-tainty es-ti-ma-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 275--275
+Underfull \hbox (badness 10000) in paragraph at lines 270--270
 []|\T1/EBGaramond-OsF/m/n/12 El-Latif et al.
  []
 
 
-Underfull \hbox (badness 1038) in paragraph at lines 275--275
+Underfull \hbox (badness 1038) in paragraph at lines 270--270
 []|\T1/EBGaramond-OsF/m/n/12 Lightweight Deep
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 276--276
+Underfull \hbox (badness 10000) in paragraph at lines 271--271
 []|\T1/EBGaramond-OsF/m/n/12 Isunuri et al.
  []
 
 
-Underfull \hbox (badness 2753) in paragraph at lines 276--276
+Underfull \hbox (badness 2753) in paragraph at lines 271--271
 []|\T1/EBGaramond-OsF/m/n/12 Transfer Learn-ing
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 277--277
+Underfull \hbox (badness 10000) in paragraph at lines 272--272
 []|\T1/EBGaramond-OsF/m/n/12 Murugan et al.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 277--277
+Underfull \hbox (badness 10000) in paragraph at lines 272--272
 []|\T1/EBGaramond-OsF/m/n/12 No un-cer-tainty as-sess-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 279--279
+Underfull \hbox (badness 10000) in paragraph at lines 274--274
 []|\T1/EBGaramond-OsF/m/n/12 Mohammad.
  []
 
 
-Underfull \hbox (badness 1708) in paragraph at lines 279--279
+Underfull \hbox (badness 1708) in paragraph at lines 274--274
 []|\T1/EBGaramond-OsF/m/n/12 No un-cer-tainty cal-cu-la-
  []
 
 
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+
+[15]
 
 [16]
 
 [17]
 
 [18]
-
-[19]
 Chapter 5.
 
-Overfull \hbox (11.13792pt too wide) in paragraph at lines 297--298
+Overfull \hbox (11.13792pt too wide) in paragraph at lines 292--293
 \T1/EBGaramond-OsF/m/n/12 In this chap-ter the method-ol-ogy used in this the-sis for train-ing, de-vel-op-ing, eval-u-at-ing and de-vel-op-ing an uncertainty-
  []
 
 <figures/dataset.png, id=526, 936.07718pt x 861.09705pt>
 File: figures/dataset.png Graphic file (type png)
 <use figures/dataset.png>
-Package pdftex.def Info: figures/dataset.png  used on input line 305.
+Package pdftex.def Info: figures/dataset.png  used on input line 300.
 (pdftex.def)             Requested size: 408.62796pt x 375.90126pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
-[20
+[19
 
 {/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
 
-[21 <./figures/dataset.png>]
-<figures/dataset_class_distribution.png, id=546, 407.78348pt x 335.87483pt>
+[20 <./figures/dataset.png>]
+<figures/dataset_class_distribution.png, id=547, 407.78348pt x 335.87483pt>
 File: figures/dataset_class_distribution.png Graphic file (type png)
 <use figures/dataset_class_distribution.png>
-Package pdftex.def Info: figures/dataset_class_distribution.png  used on input line 328.
+Package pdftex.def Info: figures/dataset_class_distribution.png  used on input line 323.
 (pdftex.def)             Requested size: 408.62796pt x 336.571pt.
-<figures/image_preprocessing_full.png, id=549, 2220.295pt x 2176.13pt>
+<figures/image_preprocessing_full.png, id=550, 2220.295pt x 2176.13pt>
 File: figures/image_preprocessing_full.png Graphic file (type png)
 <use figures/image_preprocessing_full.png>
-Package pdftex.def Info: figures/image_preprocessing_full.png  used on input line 342.
+Package pdftex.def Info: figures/image_preprocessing_full.png  used on input line 337.
 (pdftex.def)             Requested size: 408.62796pt x 400.48584pt.
 
 
-[22 <./figures/dataset_class_distribution.png>]
+[21 <./figures/dataset_class_distribution.png>]
 
-LaTeX Warning: Reference `fig:image_preprocessing' on page 23 undefined on input line 347.
+LaTeX Warning: Reference `fig:image_preprocessing' on page 22 undefined on input line 342.
 
-<figures/data_cleaning.png, id=557, 3179.88pt x 1842.885pt>
+<figures/data_cleaning.png, id=558, 3179.88pt x 1842.885pt>
 File: figures/data_cleaning.png Graphic file (type png)
 <use figures/data_cleaning.png>
-Package pdftex.def Info: figures/data_cleaning.png  used on input line 352.
+Package pdftex.def Info: figures/data_cleaning.png  used on input line 347.
 (pdftex.def)             Requested size: 408.62796pt x 236.79956pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
-[23 <./figures/image_preprocessing_full.png>]
+[22 <./figures/image_preprocessing_full.png>]
 
-[24 <./figures/data_cleaning.png>]
+[23 <./figures/data_cleaning.png>]
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 376.
+(Font)              scaled to size 8.0pt on input line 371.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/n' will be
-(Font)              scaled to size 6.0pt on input line 376.
-LaTeX Font Info:    Trying to load font information for TS1+EBGaramond-OsF on input line 381.
+(Font)              scaled to size 6.0pt on input line 371.
+LaTeX Font Info:    Trying to load font information for TS1+EBGaramond-OsF on input line 376.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/ebgaramond/TS1EBGaramond-OsF.fd
 File: TS1EBGaramond-OsF.fd 2023/03/19 (autoinst) Font definitions for TS1/EBGaramond-OsF.
 )
 LaTeX Font Info:    Font shape `TS1/EBGaramond-OsF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 381.
+(Font)              scaled to size 12.0pt on input line 376.
 
 
-[25{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/ebgaramond/ebg_yod6vr.enc}]
+[24{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/ebgaramond/ebg_yod6vr.enc}]
 <figures/res_model_base.png, id=600, 4932.4275pt x 1029.8475pt>
 File: figures/res_model_base.png Graphic file (type png)
 <use figures/res_model_base.png>
-Package pdftex.def Info: figures/res_model_base.png  used on input line 393.
+Package pdftex.def Info: figures/res_model_base.png  used on input line 388.
 (pdftex.def)             Requested size: 408.62796pt x 85.31232pt.
 
-Overfull \hbox (2.1782pt too wide) in paragraph at lines 400--401
+Overfull \hbox (2.1782pt too wide) in paragraph at lines 395--396
 \T1/EBGaramond-OsF/m/n/12 As seen in the pa-per that have been work-ing on Alzheimer's de-tec-tion prob-lem, in-clu-sion of un-cer-tainty/confidence
  []
 
 
 
-[26 <./figures/res_model_base.png>]
-<figures/model_sequential.png, id=612, 3131.7pt x 1842.885pt>
+[25 <./figures/res_model_base.png>]
+<figures/model_sequential.png, id=613, 3131.7pt x 1842.885pt>
 File: figures/model_sequential.png Graphic file (type png)
 <use figures/model_sequential.png>
-Package pdftex.def Info: figures/model_sequential.png  used on input line 420.
+Package pdftex.def Info: figures/model_sequential.png  used on input line 415.
 (pdftex.def)             Requested size: 408.62796pt x 240.45518pt.
-<figures/model_training_optimization.png, id=613, 2778.38pt x 1003.75pt>
+<figures/model_training_optimization.png, id=614, 2778.38pt x 1003.75pt>
 File: figures/model_training_optimization.png Graphic file (type png)
 <use figures/model_training_optimization.png>
-Package pdftex.def Info: figures/model_training_optimization.png  used on input line 435.
+Package pdftex.def Info: figures/model_training_optimization.png  used on input line 430.
 (pdftex.def)             Requested size: 510.78302pt x 184.52682pt.
 
 
@@ -1326,29 +1326,29 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
-[27 <./figures/model_sequential.png>]
+[26 <./figures/model_sequential.png>]
 
-[28 <./figures/model_training_optimization.png>]
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 458.
+[27 <./figures/model_training_optimization.png>]
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 453.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 461.
+(Font)              scaled to size 10.0pt on input line 456.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
+[28]
+
 [29]
 
 [30]
 
 [31]
-
-[32]
-<figures/loading_images.png, id=668, 5540.7pt x 4553.01pt>
+<figures/loading_images.png, id=669, 5540.7pt x 4553.01pt>
 File: figures/loading_images.png Graphic file (type png)
 <use figures/loading_images.png>
-Package pdftex.def Info: figures/loading_images.png  used on input line 623.
+Package pdftex.def Info: figures/loading_images.png  used on input line 617.
 (pdftex.def)             Requested size: 510.78302pt x 419.6879pt.
 
 
@@ -1356,160 +1356,150 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
-[33]
+[32]
 
-[34 <./figures/loading_images.png>]
-<figures/validating_images.png, id=678, 3179.88pt x 1842.885pt>
+[33 <./figures/loading_images.png>]
+<figures/validating_images.png, id=679, 3179.88pt x 1842.885pt>
 File: figures/validating_images.png Graphic file (type png)
 <use figures/validating_images.png>
-Package pdftex.def Info: figures/validating_images.png  used on input line 637.
+Package pdftex.def Info: figures/validating_images.png  used on input line 631.
 (pdftex.def)             Requested size: 306.47292pt x 177.6067pt.
 
-Overfull \hbox (3.83942pt too wide) in paragraph at lines 643--644
+Overfull \hbox (3.83942pt too wide) in paragraph at lines 637--638
 \T1/EBGaramond-OsF/m/n/12 dam-aged, un-read-able, or in-valid file for-mats. Par-tic-u-larly, the code deals with two ex-cep-tions: \T1/cmtt/m/n/12 SyntaxError\T1/EBGaramond-OsF/m/n/12 ,
  []
 
-<figures/data_spliting.png, id=680, 5209.4625pt x 1029.8475pt>
+<figures/data_spliting.png, id=681, 5209.4625pt x 1029.8475pt>
 File: figures/data_spliting.png Graphic file (type png)
 <use figures/data_spliting.png>
-Package pdftex.def Info: figures/data_spliting.png  used on input line 647.
+Package pdftex.def Info: figures/data_spliting.png  used on input line 641.
 (pdftex.def)             Requested size: 459.7016pt x 90.87514pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
-[35 <./figures/validating_images.png>]
-<figures/imp_data_preprocessing.png, id=687, 4330.1775pt x 5769.555pt>
+[34 <./figures/validating_images.png>]
+<figures/imp_data_preprocessing.png, id=688, 4330.1775pt x 5769.555pt>
 File: figures/imp_data_preprocessing.png Graphic file (type png)
 <use figures/imp_data_preprocessing.png>
-Package pdftex.def Info: figures/imp_data_preprocessing.png  used on input line 655.
+Package pdftex.def Info: figures/imp_data_preprocessing.png  used on input line 649.
 (pdftex.def)             Requested size: 306.47292pt x 408.31194pt.
 
-Overfull \hbox (53.43382pt too wide) in paragraph at lines 652--660
-\T1/EBGaramond-OsF/m/n/12 by the gen-er-a-tors, stan-dard-izes the in-put pho-tos in ac-cor-dance with the ex-pected spec-i-fi-ca-tions of the \T1/cmtt/m/n/12 EfficientNetB0
+Overfull \hbox (4.04588pt too wide) in paragraph at lines 646--654
+\T1/EBGaramond-OsF/m/n/12 by the gen-er-a-tors, stan-dard-izes the in-put pho-tos in ac-cor-dance with the ex-pected spec-i-fi-ca-tions of the \T1/cmtt/m/n/12 Effici 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Overfull \hbox (26.48235pt too wide) in paragraph at lines 661--662
-[]\T1/EBGaramond-OsF/m/n/12 The train-ing, val-i-da-tion, and test-ing datasets are then loaded and pre-pro-cessed us-ing the \T1/cmtt/m/n/12 flow_from_dataframe
+Overfull \hbox (1.78838pt too wide) in paragraph at lines 655--656
+[]\T1/EBGaramond-OsF/m/n/12 The train-ing, val-i-da-tion, and test-ing datasets are then loaded and pre-pro-cessed us-ing the \T1/cmtt/m/n/12 flow_from_dataf 
  []
 
-
-Overfull \hbox (8.51659pt too wide) in paragraph at lines 661--662
-\T1/cmtt/m/n/12 val_set\T1/EBGaramond-OsF/m/n/12 , \T1/cmtt/m/n/12 test_images\T1/EBGaramond-OsF/m/n/12 ). The num-ber of pho-tos pro-cessed in each batch is de-ter-mined by the \T1/cmtt/m/n/12 batch_size\T1/EBGaramond-OsF/m/n/12 ,
- []
-
-<figures/imp_model_training.png, id=689, 5101.0575pt x 4956.5175pt>
+<figures/imp_model_training.png, id=690, 5101.0575pt x 4956.5175pt>
 File: figures/imp_model_training.png Graphic file (type png)
 <use figures/imp_model_training.png>
-Package pdftex.def Info: figures/imp_model_training.png  used on input line 669.
+Package pdftex.def Info: figures/imp_model_training.png  used on input line 663.
 (pdftex.def)             Requested size: 408.62796pt x 396.98329pt.
 
 
-[36 <./figures/data_spliting.png>]
+[35 <./figures/data_spliting.png>]
 
-[37 <./figures/imp_data_preprocessing.png>]
+[36 <./figures/imp_data_preprocessing.png>]
 
-[38 <./figures/imp_model_training.png>]
-<figures/imp_uncertainity_estimation.png, id=707, 5155.26pt x 5227.53pt>
+[37 <./figures/imp_model_training.png>]
+<figures/imp_uncertainity_estimation.png, id=708, 5155.26pt x 5227.53pt>
 File: figures/imp_uncertainity_estimation.png Graphic file (type png)
 <use figures/imp_uncertainity_estimation.png>
-Package pdftex.def Info: figures/imp_uncertainity_estimation.png  used on input line 689.
+Package pdftex.def Info: figures/imp_uncertainity_estimation.png  used on input line 683.
 (pdftex.def)             Requested size: 408.62796pt x 414.30243pt.
 
 
-[39]
+[38]
 
-[40 <./figures/imp_uncertainity_estimation.png>]
+[39 <./figures/imp_uncertainity_estimation.png>]
 File: figures/imp_uncertainity_estimation.png Graphic file (type png)
 <use figures/imp_uncertainity_estimation.png>
-Package pdftex.def Info: figures/imp_uncertainity_estimation.png  used on input line 700.
+Package pdftex.def Info: figures/imp_uncertainity_estimation.png  used on input line 694.
 (pdftex.def)             Requested size: 408.62796pt x 414.30243pt.
 
-Overfull \hbox (73.66377pt too wide) in paragraph at lines 704--705
-\T1/EBGaramond-OsF/m/n/12 func-tion com-putes pre-ci-sion, re-call, and F1-score for each class, link-ing them to class names with \T1/cmtt/m/n/12 target_names=class_labels\T1/EBGaramond-OsF/m/n/12 .
+Overfull \hbox (1.48885pt too wide) in paragraph at lines 698--699
+\T1/EBGaramond-OsF/m/n/12 are also com-puted for micro-average, stored in the \T1/cmtt/m/n/12 "micro avg" \T1/EBGaramond-OsF/m/n/12 row of \T1/cmtt/m/n/12 class_metrics\T1/EBGaramond-OsF/m/n/12 . Fi-nally, \T1/cmtt/m/n/12 class_metri 
  []
 
 
-Overfull \hbox (35.71855pt too wide) in paragraph at lines 704--705
-\T1/EBGaramond-OsF/m/n/12 The \T1/cmtt/m/n/12 output_dict=True \T1/EBGaramond-OsF/m/n/12 op-tion re-turns the re-port as a dic-tio-nary, con-verted to a \T1/cmtt/m/n/12 Pandas DataFrame class_metrics
- []
 
+[40]
+<figures/imp_flask.png, id=724, 5155.26pt x 5227.53pt>
+File: figures/imp_flask.png Graphic file (type png)
+<use figures/imp_flask.png>
+Package pdftex.def Info: figures/imp_flask.png  used on input line 711.
+(pdftex.def)             Requested size: 408.62796pt x 414.30243pt.
 
 
 [41]
-<figures/imp_flask.png, id=723, 5155.26pt x 5227.53pt>
-File: figures/imp_flask.png Graphic file (type png)
-<use figures/imp_flask.png>
-Package pdftex.def Info: figures/imp_flask.png  used on input line 717.
-(pdftex.def)             Requested size: 408.62796pt x 414.30243pt.
 
-
-[42]
-
-[43 <./figures/imp_flask.png>]
+[42 <./figures/imp_flask.png>]
 Chapter 6.
 <figures/res_model_comparison.png, id=740, 570.933pt x 426.393pt>
 File: figures/res_model_comparison.png Graphic file (type png)
 <use figures/res_model_comparison.png>
-Package pdftex.def Info: figures/res_model_comparison.png  used on input line 737.
+Package pdftex.def Info: figures/res_model_comparison.png  used on input line 731.
 (pdftex.def)             Requested size: 306.47292pt x 228.88898pt.
 
 
-[44
+[43
 
  <./figures/res_model_comparison.png>]
-<figures/res_uncertainity_sample_plot.png, id=749, 4486.7625pt x 2405.98875pt>
+<figures/res_uncertainity_sample_plot.png, id=750, 4486.7625pt x 2405.98875pt>
 File: figures/res_uncertainity_sample_plot.png Graphic file (type png)
 <use figures/res_uncertainity_sample_plot.png>
-Package pdftex.def Info: figures/res_uncertainity_sample_plot.png  used on input line 766.
+Package pdftex.def Info: figures/res_uncertainity_sample_plot.png  used on input line 760.
 (pdftex.def)             Requested size: 408.62796pt x 219.09952pt.
 
 
-[45]
-<figures/imp_webapp1.png, id=755, 2081.7775pt x 1720.4275pt>
+[44]
+<figures/imp_webapp1.png, id=756, 2081.7775pt x 1720.4275pt>
 File: figures/imp_webapp1.png Graphic file (type png)
 <use figures/imp_webapp1.png>
-Package pdftex.def Info: figures/imp_webapp1.png  used on input line 776.
+Package pdftex.def Info: figures/imp_webapp1.png  used on input line 770.
 (pdftex.def)             Requested size: 229.8508pt x 189.93015pt.
-<figures/imp_webapp2.png, id=756, 2067.725pt x 1720.4275pt>
+<figures/imp_webapp2.png, id=757, 2067.725pt x 1720.4275pt>
 File: figures/imp_webapp2.png Graphic file (type png)
 <use figures/imp_webapp2.png>
-Package pdftex.def Info: figures/imp_webapp2.png  used on input line 780.
+Package pdftex.def Info: figures/imp_webapp2.png  used on input line 774.
 (pdftex.def)             Requested size: 229.8508pt x 191.24272pt.
 
 
-[46 <./figures/res_uncertainity_sample_plot.png>]
-<figures/res_time_loading.png, id=762, 2073.7475pt x 972.63374pt>
+[45 <./figures/res_uncertainity_sample_plot.png>]
+<figures/res_time_loading.png, id=763, 2073.7475pt x 972.63374pt>
 File: figures/res_time_loading.png Graphic file (type png)
 <use figures/res_time_loading.png>
-Package pdftex.def Info: figures/res_time_loading.png  used on input line 810.
+Package pdftex.def Info: figures/res_time_loading.png  used on input line 804.
 (pdftex.def)             Requested size: 229.8508pt x 107.79146pt.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/it' will be
-(Font)              scaled to size 6.0pt on input line 810.
-<figures/res_time_building.png, id=763, 2073.7475pt x 972.63374pt>
+(Font)              scaled to size 6.0pt on input line 804.
+<figures/res_time_building.png, id=764, 2073.7475pt x 972.63374pt>
 File: figures/res_time_building.png Graphic file (type png)
 <use figures/res_time_building.png>
-Package pdftex.def Info: figures/res_time_building.png  used on input line 814.
+Package pdftex.def Info: figures/res_time_building.png  used on input line 808.
 (pdftex.def)             Requested size: 229.8508pt x 107.79146pt.
-<figures/res_time_training.png, id=764, 2075.755pt x 972.63374pt>
+<figures/res_time_training.png, id=765, 2075.755pt x 972.63374pt>
 File: figures/res_time_training.png Graphic file (type png)
 <use figures/res_time_training.png>
-Package pdftex.def Info: figures/res_time_training.png  used on input line 819.
+Package pdftex.def Info: figures/res_time_training.png  used on input line 813.
 (pdftex.def)             Requested size: 229.8508pt x 107.68758pt.
-<figures/res_time_evaluation.png, id=765, 2074.75125pt x 972.63374pt>
+<figures/res_time_evaluation.png, id=766, 2074.75125pt x 972.63374pt>
 File: figures/res_time_evaluation.png Graphic file (type png)
 <use figures/res_time_evaluation.png>
-Package pdftex.def Info: figures/res_time_evaluation.png  used on input line 823.
+Package pdftex.def Info: figures/res_time_evaluation.png  used on input line 817.
 (pdftex.def)             Requested size: 229.8508pt x 107.74693pt.
-<figures/res_time_prediction.png, id=766, 2074.75125pt x 972.63374pt>
+<figures/res_time_prediction.png, id=767, 2074.75125pt x 972.63374pt>
 File: figures/res_time_prediction.png Graphic file (type png)
 <use figures/res_time_prediction.png>
-Package pdftex.def Info: figures/res_time_prediction.png  used on input line 828.
+Package pdftex.def Info: figures/res_time_prediction.png  used on input line 822.
 (pdftex.def)             Requested size: 280.9322pt x 131.70059pt.
 
 
@@ -1517,67 +1507,74 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
-[47 <./figures/imp_webapp1.png> <./figures/imp_webapp2.png>]
+[46 <./figures/imp_webapp1.png> <./figures/imp_webapp2.png>]
 
-[48 <./figures/res_time_loading.png> <./figures/res_time_building.png> <./figures/res_time_training.png> <./figures/res_time_evaluation.png> <./figures/res_time_prediction.png>]
+[47 <./figures/res_time_loading.png> <./figures/res_time_building.png> <./figures/res_time_training.png> <./figures/res_time_evaluation.png> <./figures/res_time_prediction.png>]
 
-[49]
+[48]
 Chapter 7.
 
 
-[50
+[49
 
 ]
 Chapter 8.
 
 
-[51
+[50
 
 ]
-Underfull \hbox (badness 2503) in paragraph at lines 891--891
+Underfull \hbox (badness 2503) in paragraph at lines 872--872
 []\T1/EBGaramond-OsF/m/n/12 DhanushKumar. |   []. [][]$\T1/cmtt/m/n/12 https : / / medium . com /
  []
 
 
-Underfull \hbox (badness 2401) in paragraph at lines 891--891
+Underfull \hbox (badness 2401) in paragraph at lines 872--872
 []\T1/EBGaramond-OsF/m/n/12 Dheiver Fran-cisco San-tos. ^^P  Ad-vanc-ing Au-to-mated Di-ag-no-sis: Con-vo-lu-tional Neu-ral Net-works for
  []
 
 
 
-[52
+[51
 
 
 {/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/ebgaramond/ebg_byuyni.enc}]
-Overfull \hbox (27.02092pt too wide) in paragraph at lines 891--891
+Overfull \hbox (27.02092pt too wide) in paragraph at lines 872--872
 []\T1/EBGaramond-OsF/m/n/12 Nitish Shirish Keskar et al. |   [].
  []
 
 
-Underfull \hbox (badness 2012) in paragraph at lines 891--891
+Underfull \hbox (badness 2012) in paragraph at lines 872--872
 \T1/EBGaramond-OsF/m/n/12 Learn-ing Model on MRI Data^^Q. In: |   [] 13.7 (2023). \T1/EBGaramond-OsF/m/sc/12 issn\T1/EBGaramond-OsF/m/n/12 : 2075-4418. \T1/EBGaramond-OsF/m/sc/12 doi\T1/EBGaramond-OsF/m/n/12 : [][]$\T1/cmtt/m/n/12 10 . 3390 /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 891--891
+Underfull \hbox (badness 10000) in paragraph at lines 872--872
 []\T1/EBGaramond-OsF/m/n/12 Jie Mi et al. ^^P  Light on Alzheimer's dis-ease: from ba-sic in-sights to pre-clin-i-cal stud-ies^^Q. In:
  []
 
 
 
-[53]
-Underfull \hbox (badness 10000) in paragraph at lines 891--891
+[52]
+Underfull \hbox (badness 10000) in paragraph at lines 872--872
 []\T1/EBGaramond-OsF/m/n/12 DSP Stack-Ex-change. |   []
  []
 
 
-Underfull \hbox (badness 2753) in paragraph at lines 891--891
+Underfull \hbox (badness 2753) in paragraph at lines 872--872
 []\T1/EBGaramond-OsF/m/n/12 Ying Zhang et al. ^^P  Gen-er-al-iza-tion of Cross-Entropy Loss Func-tion for Im-age Clas-si-fi-ca-tion^^Q. In:
  []
 
 
 
-[54] (./AlzheimerPrediction.aux)
+[53]
+File: "wordcount.txt"  (verbatim)
+
+
+[54
+
+
+] (./AlzheimerPrediction.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 1
 L3 programming layer <2024-11-02>
@@ -1590,24 +1587,24 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `AlzheimerPrediction.out' has not changed.
-(rerunfilecheck)             Checksum: 34AEB5076F14471E169879FA21459C29;10610.
+(rerunfilecheck)             Checksum: B1065E8A2E44492F115DCECABAC4B067;10748.
 Package logreq Info: Writing requests to 'AlzheimerPrediction.run.xml'.
 \openout1 = `AlzheimerPrediction.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33360 strings out of 473330
- 636961 string characters out of 5719763
- 1448581 words of memory out of 5000000
- 55742 multiletter control sequences out of 15000+600000
+ 33383 strings out of 473330
+ 637320 string characters out of 5719763
+ 1444507 words of memory out of 5000000
+ 55764 multiletter control sequences out of 15000+600000
  681387 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,13n,87p,2488b,1600s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,13n,87p,2488b,1598s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/ebgaramond/EBGaramond-Bold.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/ebgaramond/EBGaramond-Italic.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/ebgaramond/EBGaramond-Regular.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on AlzheimerPrediction.pdf (54 pages, 13809413 bytes).
+Output written on AlzheimerPrediction.pdf (54 pages, 13810237 bytes).
 PDF statistics:
- 995 PDF objects out of 1000 (max. 8388607)
- 860 compressed objects within 9 object streams
- 231 named destinations out of 1000 (max. 500000)
- 628 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1004 PDF objects out of 1200 (max. 8388607)
+ 869 compressed objects within 9 object streams
+ 232 named destinations out of 1000 (max. 500000)
+ 636 words of extra memory for PDF output out of 10000 (max. 10000000)
 
